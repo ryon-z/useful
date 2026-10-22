@@ -311,48 +311,126 @@
         </div>
       </div>
 
-      <!-- 사주 결과 영역 -->
-      <div id="saju-result-box" class="hidden space-y-4">
-        <div class="bg-gradient-to-br from-slate-950 to-slate-900 p-5 rounded-xl border border-amber-500/30">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3 mb-4">
-            <div class="flex items-center gap-2">
-              <span id="saju-element-badge" class="bg-amber-400/20 text-amber-300 text-xs font-bold px-2 py-0.5 rounded border border-amber-400/30">
-                오행 분석
-              </span>
-              <span id="saju-summary-title" class="text-sm font-bold text-white">-</span>
+      <!-- 사주 결과 영역 (고도화 버전) -->
+      <div id="saju-result-box" class="hidden space-y-5 transition-all duration-300">
+        
+        <!-- 1. 사주 명식(四柱 命式) & 오행 에너지 분석 카드 -->
+        <div class="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-5 sm:p-6 rounded-2xl border border-amber-500/40 shadow-xl relative overflow-hidden">
+          <div class="absolute -top-12 -right-12 w-48 h-48 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+          <!-- 상단 뱃지 및 제목 -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-4 mb-5">
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                  <i class="fa-solid fa-scroll mr-1"></i>정밀 사주 수리학 감정서
+                </span>
+                <span id="saju-ganji-year" class="text-xs text-slate-400 font-medium">경오년 (말띠)</span>
+              </div>
+              <h3 id="saju-summary-title" class="text-lg sm:text-xl font-black text-white flex items-center gap-2">
+                -
+              </h3>
             </div>
-            <div id="saju-lucky-time" class="text-xs text-slate-400">길시: -</div>
+            <div class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-xs font-bold text-amber-300 flex items-center gap-1.5 self-start sm:self-auto">
+              <i class="fa-regular fa-clock"></i>
+              <span id="saju-lucky-time">길시: -</span>
+            </div>
           </div>
 
-          <!-- 번호 노출 -->
-          <div class="text-center mb-4">
-            <div class="text-xs text-slate-400 mb-2">사주 보완 수리 6개 번호 조합</div>
-            <div id="saju-balls-render" class="flex flex-wrap items-center justify-center gap-2"></div>
+          <!-- 사주 4주 간지 및 오행 분포 미니 표 -->
+          <div class="grid grid-cols-4 gap-2 mb-5 text-center text-xs">
+            <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800">
+              <span class="text-[10px] text-slate-500 block">시주(時柱)</span>
+              <span id="saju-col-time" class="font-bold text-slate-200 text-sm mt-0.5 block">-</span>
+              <span id="saju-elem-time" class="text-[10px] text-slate-400 block mt-0.5">-</span>
+            </div>
+            <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800 ring-1 ring-amber-500/30">
+              <span class="text-[10px] text-amber-400 font-bold block">일주(日柱 - 본명)</span>
+              <span id="saju-col-day" class="font-bold text-amber-300 text-sm mt-0.5 block">-</span>
+              <span id="saju-elem-day" class="text-[10px] text-amber-400/80 block mt-0.5">-</span>
+            </div>
+            <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800">
+              <span class="text-[10px] text-slate-500 block">월주(月柱)</span>
+              <span id="saju-col-month" class="font-bold text-slate-200 text-sm mt-0.5 block">-</span>
+              <span id="saju-elem-month" class="text-[10px] text-slate-400 block mt-0.5">-</span>
+            </div>
+            <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800">
+              <span class="text-[10px] text-slate-500 block">년주(年柱)</span>
+              <span id="saju-col-year" class="font-bold text-slate-200 text-sm mt-0.5 block">-</span>
+              <span id="saju-elem-year" class="text-[10px] text-slate-400 block mt-0.5">-</span>
+            </div>
           </div>
 
-          <!-- 길일 & 길방위 추천 카드 3개 -->
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-800">
-              <div class="text-slate-400 mb-0.5 flex items-center gap-1.5">
+          <!-- 오행 4대 길잡이 나침반 카드 (요일, 방위, 오행, 컬러/오브제) -->
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3 text-xs mb-5">
+            <div class="bg-slate-900/90 p-3 rounded-xl border border-slate-800">
+              <div class="text-slate-400 mb-1 flex items-center gap-1.5 text-[11px]">
                 <i class="fa-regular fa-calendar-check text-amber-400"></i>
-                <span>추천 구매 요일</span>
+                <span>행운의 구매 요일</span>
               </div>
-              <div id="saju-lucky-day" class="font-bold text-slate-100 text-sm mt-0.5">-</div>
+              <div id="saju-lucky-day" class="font-bold text-white text-sm">-</div>
+              <span id="saju-lucky-day-desc" class="text-[10px] text-slate-500 block mt-0.5">-</span>
             </div>
-            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-800">
-              <div class="text-slate-400 mb-0.5 flex items-center gap-1.5">
-                <i class="fa-solid fa-location-arrow text-amber-400"></i>
-                <span>명당 판매점 방위</span>
+
+            <div class="bg-slate-900/90 p-3 rounded-xl border border-slate-800">
+              <div class="text-slate-400 mb-1 flex items-center gap-1.5 text-[11px]">
+                <i class="fa-solid fa-compass text-amber-400"></i>
+                <span>명당 판매점 길방위</span>
               </div>
-              <div id="saju-lucky-direction" class="font-bold text-slate-100 text-sm mt-0.5">-</div>
+              <div id="saju-lucky-direction" class="font-bold text-white text-sm">-</div>
+              <span id="saju-lucky-dir-desc" class="text-[10px] text-slate-500 block mt-0.5">-</span>
             </div>
-            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-800">
-              <div class="text-slate-400 mb-0.5 flex items-center gap-1.5">
+
+            <div class="bg-slate-900/90 p-3 rounded-xl border border-slate-800">
+              <div class="text-slate-400 mb-1 flex items-center gap-1.5 text-[11px]">
                 <i class="fa-solid fa-gem text-amber-400"></i>
-                <span>나의 보완 오행</span>
+                <span>보완 용신(희신)</span>
               </div>
-              <div id="saju-lucky-element" class="font-bold text-amber-300 text-sm mt-0.5">-</div>
+              <div id="saju-lucky-element" class="font-bold text-amber-300 text-sm">-</div>
+              <span id="saju-lucky-elem-desc" class="text-[10px] text-slate-500 block mt-0.5">-</span>
             </div>
+
+            <div class="bg-slate-900/90 p-3 rounded-xl border border-slate-800">
+              <div class="text-slate-400 mb-1 flex items-center gap-1.5 text-[11px]">
+                <i class="fa-solid fa-palette text-amber-400"></i>
+                <span>행운의 색상 & 수리</span>
+              </div>
+              <div id="saju-lucky-color" class="font-bold text-white text-sm">-</div>
+              <span id="saju-lucky-nums-info" class="text-[10px] text-amber-400/90 block mt-0.5 font-medium">-</span>
+            </div>
+          </div>
+
+          <!-- 사주 재물운 총평 박스 -->
+          <div class="p-3.5 rounded-xl bg-slate-950/70 border border-slate-800/80 text-xs leading-relaxed text-slate-300 flex items-start gap-2.5">
+            <i class="fa-solid fa-feather-pointed text-amber-400 mt-0.5"></i>
+            <div>
+              <span class="font-bold text-amber-300 block mb-0.5">명리학 재물운 소견 및 행동 지침:</span>
+              <p id="saju-fortune-desc" class="text-slate-400 text-[11px]">-</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. 사주 맞춤 5게임 (1세트 / 5,000원) 추천 번호 목록 -->
+        <div class="bg-slate-900 p-5 sm:p-6 rounded-2xl border border-slate-800 shadow-xl">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+            <div>
+              <h4 class="text-base font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-dice text-amber-400"></i>
+                <span>사주 맞춤 추천 5게임 (1세트 / 5,000원)</span>
+              </h4>
+              <p class="text-xs text-slate-400 mt-0.5">
+                오행 상응 비전 수리(木:3·8, 火:2·7, 土:5·10, 金:4·9, 水:1·6)와 각 번호의 오행 기운을 배합했습니다.
+              </p>
+            </div>
+            <button type="button" onclick="copySajuGames()" class="text-xs bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 hover:text-white font-semibold py-2 px-3.5 rounded-xl flex items-center gap-1.5 transition self-start sm:self-auto">
+              <i class="fa-regular fa-copy"></i>
+              <span>5게임 전체 복사</span>
+            </button>
+          </div>
+
+          <!-- 5게임 번호 리스트 컨테이너 -->
+          <div id="saju-games-container" class="space-y-3">
+            <!-- JS 동적 렌더링 -->
           </div>
         </div>
       </div>
@@ -640,8 +718,19 @@
       });
     }
 
-    // 4. 사주 명리학 오행 분석 엔진
-    function calculateSajuFortune() {
+    // 4. 사주 명리학 오행 분석 엔진 (고도화 버전)
+    let currentSajuGames = [];
+
+    function getElementOfNumber(num) {
+      const lastDigit = num % 10;
+      if (lastDigit === 1 || lastDigit === 6) return { name: '水', color: 'text-blue-400', badge: 'bg-blue-500/20 text-blue-300 border-blue-500/30' };
+      if (lastDigit === 2 || lastDigit === 7) return { name: '火', color: 'text-rose-400', badge: 'bg-rose-500/20 text-rose-300 border-rose-500/30' };
+      if (lastDigit === 3 || lastDigit === 8) return { name: '木', color: 'text-emerald-400', badge: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30' };
+      if (lastDigit === 4 || lastDigit === 9) return { name: '金', color: 'text-slate-200', badge: 'bg-slate-300/20 text-slate-200 border-slate-300/30' };
+      return { name: '土', color: 'text-amber-400', badge: 'bg-amber-500/20 text-amber-300 border-amber-500/30' };
+    }
+
+    function calculateSajuFortune(shouldScroll = true) {
       const birth = document.getElementById('saju-birth').value;
       const timeVal = parseInt(document.getElementById('saju-time').value, 10);
       if (!birth) {
@@ -654,54 +743,288 @@
       const month = bDate.getMonth() + 1;
       const day = bDate.getDate();
 
-      // 수리 시드 연산
-      const seed = (year * 365) + (month * 31) + day + (timeVal * 7);
+      // 천간 지지 및 십간십이지 정의
+      const stems = ['갑(甲)', '을(乙)', '병(丙)', '정(丁)', '무(戊)', '기(己)', '경(庚)', '신(辛)', '임(壬)', '계(癸)'];
+      const branches = ['자(子)', '축(丑)', '인(寅)', '묘(卯)', '진(辰)', '사(巳)', '오(午)', '미(未)', '신(申)', '유(酉)', '술(戌)', '해(亥)'];
+      const stemElements = ['木', '木', '火', '火', '土', '土', '金', '金', '水', '水'];
+      const branchElements = ['水', '土', '木', '木', '土', '火', '火', '土', '金', '金', '土', '水'];
+      const animals = ['쥐', '소', '호랑이', '토끼', '용', '뱀', '말', '양', '원숭이', '닭', '개', '돼지'];
 
-      // 오행 판정 (0:목, 1:화, 2:토, 3:금, 4:수)
-      const elements = [
-        { name: '목(木 - 푸른 나무의 기운)', nums: [3, 8, 13, 18, 23, 28, 33, 38, 43], day: '목요일', dir: '동쪽(東)', badge: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30' },
-        { name: '화(火 - 붉은 불꽃의 기운)', nums: [2, 7, 12, 17, 22, 27, 32, 37, 42], day: '화요일', dir: '남쪽(南)', badge: 'bg-red-500/20 text-red-400 border-red-500/30' },
-        { name: '토(土 - 황금 대지의 기운)', nums: [5, 10, 15, 20, 25, 30, 35, 40, 45], day: '토요일', dir: '중앙/남서쪽', badge: 'bg-amber-500/20 text-amber-400 border-amber-500/30' },
-        { name: '금(金 - 단단한 보석의 기운)', nums: [4, 9, 14, 19, 24, 29, 34, 39, 44], day: '금요일', dir: '서쪽(西)', badge: 'bg-slate-300/20 text-slate-300 border-slate-300/30' },
-        { name: '수(水 - 깊은 바다의 기운)', nums: [1, 6, 11, 16, 21, 26, 31, 36, 41], day: '수요일', dir: '북쪽(北)', badge: 'bg-blue-500/20 text-blue-400 border-blue-500/30' }
+      // 1. 년주 (Year Pillar)
+      const yStemIdx = ((year - 4) % 10 + 10) % 10;
+      const yBranchIdx = ((year - 4) % 12 + 12) % 12;
+      const yearGanJi = `${stems[yStemIdx].slice(0,1)}${branches[yBranchIdx].slice(0,1)}`;
+      const yearAnimal = animals[yBranchIdx];
+
+      // 2. 일주 (Day Pillar - 기준점: 2000-01-01 = 戊午(무오)일)
+      const baseDate = new Date(Date.UTC(2000, 0, 1));
+      const targetDate = new Date(Date.UTC(year, month - 1, day));
+      const diffDays = Math.round((targetDate - baseDate) / 86400000);
+      const dStemIdx = ((4 + diffDays) % 10 + 10) % 10;
+      const dBranchIdx = ((6 + diffDays) % 12 + 12) % 12;
+      const dayGanJi = `${stems[dStemIdx].slice(0,1)}${branches[dBranchIdx].slice(0,1)}`;
+
+      // 3. 월주 (Month Pillar)
+      const mBranchIdx = (month + 1) % 12;
+      const mStemIdx = (yStemIdx * 2 + month) % 10;
+      const monthGanJi = `${stems[mStemIdx].slice(0,1)}${branches[mBranchIdx].slice(0,1)}`;
+
+      // 4. 시주 (Time Pillar)
+      const tBranchIdx = timeVal;
+      const tStemIdx = (dStemIdx * 2 + tBranchIdx) % 10;
+      const timeGanJi = `${stems[tStemIdx].slice(0,1)}${branches[tBranchIdx].slice(0,1)}`;
+
+      // 본명 오행(일간 기준) 및 세력 분석
+      const primaryElement = stemElements[dStemIdx];
+
+      // 오행별 상세 메타데이터 정의
+      const elementMeta = {
+        '木': {
+          koreanName: '목(木 - 푸른 나무와 청룡의 기운)',
+          shortName: '목(木)',
+          badgeColor: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30',
+          yongshin: '수(水)와 토(土)',
+          yongshinDesc: '나무를 길러내는 샘물과 비옥한 대지',
+          day: '목요일',
+          dayDesc: '목기(木氣)가 뻗어나가며 행운이 싹트는 날',
+          dir: '동쪽(東) 및 남동쪽',
+          dirDesc: '생명력이 번성하는 공원, 수목, 학교 인근 복권방',
+          luckyNums: [3, 8],
+          pool: [3, 8, 13, 18, 23, 28, 33, 38, 43],
+          colors: '에메랄드 그린, 청색, 네이비',
+          timeDesc: '아침 07:30 ~ 09:30 (진시) 또는 오후 13:30 ~ 15:30',
+          advice: '새로운 성장과 번영의 생기를 타고난 사주입니다. 첫 느낌으로 끌리는 번호를 망설이지 않고 밀고 나갈 때 큰 길운이 따릅니다.'
+        },
+        '火': {
+          koreanName: '화(火 - 타오르는 불꽃과 주작의 기운)',
+          shortName: '화(火)',
+          badgeColor: 'bg-rose-500/20 text-rose-300 border-rose-500/30',
+          yongshin: '목(木)과 토(土)',
+          yongshinDesc: '불꽃을 지펴주는 땔감과 열기를 품는 흙',
+          day: '화요일',
+          dayDesc: '화기(火氣)가 만물을 비추어 직관이 최고조에 달하는 날',
+          dir: '남쪽(南)',
+          dirDesc: '유동 인구가 많고 간판이 화려한 상업 중심가 복권방',
+          luckyNums: [2, 7],
+          pool: [2, 7, 12, 17, 22, 27, 32, 37, 42],
+          colors: '레드, 진홍색, 와인, 오렌지',
+          timeDesc: '태양의 열기가 가득한 11:30 ~ 13:30 (오시)',
+          advice: '직관력과 결단력이 매우 뛰어난 명식입니다. 복잡한 계산보다는 직관적인 영감으로 선택한 번호 조합에서 횡재수가 발현됩니다.'
+        },
+        '土': {
+          koreanName: '토(土 - 풍요로운 황금 대지의 기운)',
+          shortName: '토(土)',
+          badgeColor: 'bg-amber-500/20 text-amber-300 border-amber-500/30',
+          yongshin: '화(火)와 금(金)',
+          yongshinDesc: '대지를 따스하게 데우는 온기와 결실의 보석',
+          day: '토요일',
+          dayDesc: '모든 기운이 대지로 모여들어 안정을 이루는 날',
+          dir: '중앙 및 남서쪽(坤方)',
+          dirDesc: '전통시장 입구, 사거리 교차로, 평지에 위치한 복권방',
+          luckyNums: [5, 10],
+          pool: [5, 10, 15, 20, 25, 30, 35, 40, 45],
+          colors: '황금색, 카멜, 옐로우, 브라운',
+          timeDesc: '음양이 조화롭게 균형을 이루는 13:30 ~ 15:30 (미시)',
+          advice: '포용력과 재물을 품어 안는 저축운이 뛰어납니다. 조급해하지 않고 정갈한 마음으로 꾸준히 정성을 다할 때 큰 결실의 서기가 깃듭니다.'
+        },
+        '金': {
+          koreanName: '금(金 - 빛나는 보석과 결실의 기운)',
+          shortName: '금(金)',
+          badgeColor: 'bg-slate-300/20 text-slate-200 border-slate-300/30',
+          yongshin: '토(土)와 수(水)',
+          yongshinDesc: '원석을 품는 단단한 바위와 보석을 씻어내는 맑은 물',
+          day: '금요일',
+          dayDesc: '결실과 수확의 금기(金氣)가 충만하여 재물이 응집하는 날',
+          dir: '서쪽(西) 및 북서쪽',
+          dirDesc: '은행·증권사 등 금융기관 인근, 신축 현대식 건물 1층 복권방',
+          luckyNums: [4, 9],
+          pool: [4, 9, 14, 19, 24, 29, 34, 39, 44],
+          colors: '백색, 실버, 메탈릭, 샴페인 골드',
+          timeDesc: '결실의 결속력이 강해지는 15:30 ~ 17:30 (신시)',
+          advice: '정밀하고 원칙이 뚜렷하며 결실의 기운을 천부적으로 타고났습니다. 규칙적이고 정돈된 번호 배합에서 확실한 당첨운이 발현됩니다.'
+        },
+        '水': {
+          koreanName: '수(水 - 마르지 않는 샘과 지혜의 기운)',
+          shortName: '수(水)',
+          badgeColor: 'bg-blue-500/20 text-blue-300 border-blue-500/30',
+          yongshin: '금(金)과 목(木)',
+          yongshinDesc: '맑은 물을 샘솟게 하는 암반과 물을 머금고 자라는 나무',
+          day: '수요일',
+          dayDesc: '수기(水氣)가 유연하게 흘러 막힌 재물운의 통로를 여는 날',
+          dir: '북쪽(北) 및 북동쪽',
+          dirDesc: '수변(하천·호수·바다) 인근 및 교통 요지의 번화한 복권방',
+          luckyNums: [1, 6],
+          pool: [1, 6, 11, 16, 21, 26, 31, 36, 41],
+          colors: '블랙, 감청색, 딥블루, 챠콜',
+          timeDesc: '달빛이 물결을 비추는 19:30 ~ 21:30 (술시·해시)',
+          advice: '유연함과 통찰력이 뛰어나며 막힘없는 흐름의 복을 지녔습니다. 순리에 맡기듯 편안한 마음으로 임할 때 뜻밖의 거대한 횡재수를 만납니다.'
+        }
+      };
+
+      const userMeta = elementMeta[primaryElement];
+
+      // UI 1. 상단 타이틀 & 간지 바인딩
+      document.getElementById('saju-ganji-year').textContent = `${yearGanJi}년 (${yearAnimal}띠) · ${dayGanJi}일 생`;
+      document.getElementById('saju-summary-title').innerHTML = `
+        <span class="px-2 py-0.5 rounded border text-xs font-bold ${userMeta.badgeColor}">${userMeta.shortName}</span>
+        <span>${userMeta.koreanName}</span>
+      `;
+      document.getElementById('saju-lucky-time').textContent = userMeta.timeDesc.split(' ')[0] + ' ' + userMeta.timeDesc.split(' ')[1];
+
+      // UI 2. 사주 4주 간지 미니 표
+      document.getElementById('saju-col-time').textContent = timeGanJi;
+      document.getElementById('saju-elem-time').textContent = `${stemElements[tStemIdx]}·${branchElements[tBranchIdx]}`;
+
+      document.getElementById('saju-col-day').textContent = dayGanJi;
+      document.getElementById('saju-elem-day').textContent = `${stemElements[dStemIdx]}(본명)·${branchElements[dBranchIdx]}`;
+
+      document.getElementById('saju-col-month').textContent = monthGanJi;
+      document.getElementById('saju-elem-month').textContent = `${stemElements[mStemIdx]}·${branchElements[mBranchIdx]}`;
+
+      document.getElementById('saju-col-year').textContent = yearGanJi;
+      document.getElementById('saju-elem-year').textContent = `${stemElements[yStemIdx]}·${branchElements[yBranchIdx]}`;
+
+      // UI 3. 4대 길잡이 나침반 카드
+      document.getElementById('saju-lucky-day').textContent = userMeta.day;
+      document.getElementById('saju-lucky-day-desc').textContent = userMeta.dayDesc;
+
+      document.getElementById('saju-lucky-direction').textContent = userMeta.dir;
+      document.getElementById('saju-lucky-dir-desc').textContent = userMeta.dirDesc;
+
+      document.getElementById('saju-lucky-element').textContent = userMeta.yongshin;
+      document.getElementById('saju-lucky-elem-desc').textContent = userMeta.yongshinDesc;
+
+      document.getElementById('saju-lucky-color').textContent = userMeta.colors.split(',')[0];
+      document.getElementById('saju-lucky-nums-info').textContent = `길수: ${userMeta.luckyNums.join(', ')} (상응: ${userMeta.pool.slice(0, 5).join(',')})`;
+
+      // UI 4. 명리학 총평
+      document.getElementById('saju-fortune-desc').textContent = userMeta.advice;
+
+      // UI 5. 사주 맞춤 5게임(A~E) 조합 생성 알고리즘
+      const gameThemes = [
+        { label: 'A', name: '본명 오행 극대화', desc: '타고난 본원의 기운을 집중 증폭' },
+        { label: 'B', name: '재물 보완 용신', desc: '부족한 기운을 채워 재물운 강화' },
+        { label: 'C', name: '상생 음양 조화', desc: '오행 상생(相生) 흐름을 맞춘 균형 배합' },
+        { label: 'D', name: '천간 비전 수리', desc: '하늘의 기운(천간)에 응답하는 비전수' },
+        { label: 'E', name: '명당 방위 결실', desc: '길방위의 서기를 담은 대지 수리' }
       ];
 
-      const elemIdx = (seed % 5);
-      const userElem = elements[elemIdx];
+      currentSajuGames = [];
+      const sajuPool = userMeta.pool;
 
-      // 번호 추출 (오행 수리 번호에서 2~3개 확정 차출 + 나머지 조화 추출)
-      const picks = [];
-      const primaryPool = [...userElem.nums];
-      for (let i = 0; i < 3; i++) {
-        const randIdx = Math.floor(Math.random() * primaryPool.length);
-        picks.push(primaryPool.splice(randIdx, 1)[0]);
+      for (let g = 0; g < 5; g++) {
+        const set = new Set();
+
+        // 게임별 오행 우선 배정
+        if (g === 0) {
+          // A: 본명 오행 수리 3개 이상
+          while (set.size < 3 && sajuPool.length >= 3) {
+            set.add(sajuPool[Math.floor(Math.random() * sajuPool.length)]);
+          }
+        } else if (g === 1) {
+          // B: 용신/희신 수리 우선
+          const yongshinPool = [1, 6, 4, 9, 2, 7, 5, 10, 3, 8].filter(n => !userMeta.luckyNums.includes(n % 10 || 10));
+          while (set.size < 3) {
+            const base = yongshinPool[Math.floor(Math.random() * yongshinPool.length)];
+            const fullNum = base + (Math.floor(Math.random() * 4) * 10);
+            if (fullNum >= 1 && fullNum <= 45) set.add(fullNum);
+          }
+        } else {
+          // C, D, E: 사주 상응수 2개 + 1~45 골고루
+          while (set.size < 2) {
+            set.add(sajuPool[Math.floor(Math.random() * sajuPool.length)]);
+          }
+        }
+
+        // 6개 채우기
+        while (set.size < 6) {
+          let rand;
+          if (window.crypto && window.crypto.getRandomValues) {
+            const arr = new Uint32Array(1);
+            window.crypto.getRandomValues(arr);
+            rand = (arr[0] % 45) + 1;
+          } else {
+            rand = Math.floor(Math.random() * 45) + 1;
+          }
+          set.add(rand);
+        }
+
+        const sorted = Array.from(set).sort((a, b) => a - b);
+        currentSajuGames.push({
+          label: gameThemes[g].label,
+          theme: gameThemes[g].name,
+          desc: gameThemes[g].desc,
+          numbers: sorted
+        });
       }
 
-      // 45개 전체 풀에서 중복 없이 나머지 3개 선택
-      while (picks.length < 6) {
-        const rand = Math.floor(Math.random() * 45) + 1;
-        if (!picks.includes(rand)) picks.push(rand);
-      }
-      picks.sort((a, b) => a - b);
+      // 5게임 UI 렌더링
+      const gamesContainer = document.getElementById('saju-games-container');
+      gamesContainer.innerHTML = currentSajuGames.map((game) => {
+        const sum = game.numbers.reduce((a, b) => a + b, 0);
+        const odd = game.numbers.filter(n => n % 2 !== 0).length;
 
-      // UI 노출
+        // 각 번호별 오행 뱃지 + 볼 렌더링
+        const ballsHtml = game.numbers.map(num => {
+          const el = getElementOfNumber(num);
+          return `
+            <div class="flex flex-col items-center gap-1 group/ball">
+              <span class="text-[9px] font-bold px-1.5 py-0.2 rounded border ${el.badge}">${el.name}</span>
+              ${renderBall(num, true)}
+            </div>
+          `;
+        }).join('');
+
+        return `
+          <div class="p-3.5 sm:p-4 rounded-2xl bg-slate-950/70 border border-slate-800/90 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:border-amber-500/40 transition">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-300 border border-amber-500/40 flex items-center justify-center font-black text-sm shadow-sm">
+                ${game.label}
+              </span>
+              <div>
+                <div class="flex items-center gap-2 mb-1.5">
+                  <span class="text-xs font-bold text-white">${game.theme}</span>
+                  <span class="text-[10px] text-slate-500 hidden sm:inline">(${game.desc})</span>
+                </div>
+                <div class="flex flex-wrap items-center gap-2">
+                  ${ballsHtml}
+                </div>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between sm:justify-end gap-3 text-[11px] text-slate-400 pt-2 sm:pt-0 border-t sm:border-0 border-slate-800/60">
+              <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">홀짝 ${odd}:${6-odd}</span>
+                <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">총합 ${sum}</span>
+              </div>
+              <button type="button" onclick="copySingleSajuGame('${game.label}', '${game.numbers.join(', ')}')" class="p-2 rounded-lg bg-slate-900 hover:bg-slate-800 hover:text-white text-slate-400 border border-slate-800 transition" title="이 게임 복사">
+                <i class="fa-regular fa-copy text-xs"></i>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      // 결과 박스 보이기 및 스크롤
       const resBox = document.getElementById('saju-result-box');
       resBox.classList.remove('hidden');
+      if (shouldScroll) {
+        resBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
 
-      const badge = document.getElementById('saju-element-badge');
-      badge.className = `text-xs font-bold px-2 py-0.5 rounded border ${userElem.badge}`;
-      badge.textContent = userElem.name.split(' ')[0];
+    function copySajuGames() {
+      if (!currentSajuGames.length) return;
+      const text = `[사주로또 명리학 5게임 추천 조합]\n` + currentSajuGames.map(g => `[${g.label}] ${g.numbers.join(', ')} (${g.theme})`).join('\n');
+      navigator.clipboard.writeText(text).then(() => {
+        alert('사주 맞춤 5게임 번호 조합이 클립보드에 복사되었습니다.');
+      });
+    }
 
-      document.getElementById('saju-summary-title').textContent = `${userElem.name}을 타고난 귀하를 위한 길상수`;
-      
-      const timeNames = ['자시(23~01시)', '축시(01~03시)', '인시(03~05시)', '묘시(05~07시)', '진시(07~09시)', '사시(09~11시)', '오시(11~13시)', '미시(13~15시)', '신시(15~17시)', '유시(17~19시)', '술시(19~21시)', '해시(21~23시)'];
-      const luckyTime = timeNames[(timeVal + 4) % 12];
-      document.getElementById('saju-lucky-time').textContent = `추천 발걸음 길시: ${luckyTime}`;
-
-      document.getElementById('saju-balls-render').innerHTML = picks.map(n => renderBall(n)).join('');
-      document.getElementById('saju-lucky-day').textContent = `${userElem.day} 오후`;
-      document.getElementById('saju-lucky-direction').textContent = `거주지 기준 ${userElem.dir}`;
-      document.getElementById('saju-lucky-element').textContent = userElem.name.substring(0, 4);
+    function copySingleSajuGame(label, nums) {
+      navigator.clipboard.writeText(`[${label}게임] ${nums}`).then(() => {
+        alert(`[${label}게임] 번호(${nums})가 클립보드에 복사되었습니다.`);
+      });
     }
 
     // 6. 세금 계산기 로직
@@ -973,8 +1296,9 @@
     // 초기화
     window.addEventListener('DOMContentLoaded', () => {
       loadLatestLotto();
-      calculateTax(); // 기본 20억 세금 계산 1회 수행
+      calculateTax(); // 세금 계산 1회 수행
       SajuCalendar.init(); // 커스텀 캘린더 초기화
+      calculateSajuFortune(false); // 사주 결과 초기 1회 사전 렌더링 (스크롤 이동 없음)
 
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('./sw.js').catch(() => {});
