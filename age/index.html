@@ -85,8 +85,10 @@
   <main class="max-w-5xl mx-auto px-4 py-6 space-y-7 flex-1 w-full">
 
     <!-- 1. 입력 섹션 (생년월일 및 기준일자) -->
-    <section class="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-7 shadow-xl relative overflow-hidden">
-      <div class="absolute -top-12 -right-12 w-48 h-48 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <section class="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-7 shadow-xl relative z-20">
+      <div class="absolute inset-0 rounded-3xl overflow-hidden pointer-events-none">
+        <div class="absolute -top-12 -right-12 w-48 h-48 bg-sky-500/10 rounded-full blur-3xl"></div>
+      </div>
 
       <div class="flex items-center gap-2 mb-2">
         <i class="fa-solid fa-id-card text-sky-400 text-xl sm:text-2xl"></i>
@@ -98,7 +100,7 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-slate-950/60 p-4 sm:p-5 rounded-2xl border border-slate-800 mb-5">
         <!-- 생년월일 입력 (커스텀 다크 캘린더) -->
-        <div class="relative" id="birth-calendar-root">
+        <div class="relative z-30" id="birth-calendar-root">
           <div class="flex items-center justify-between mb-2">
             <label class="text-sm sm:text-base font-bold text-slate-200 flex items-center gap-1.5 cursor-pointer" onclick="toggleBirthCalendar()">
               <i class="fa-regular fa-calendar text-sky-400 text-base"></i>
@@ -118,7 +120,7 @@
           <input type="hidden" id="birth-input" value="1970-06-15">
 
           <!-- 다크 캘린더 팝업 -->
-          <div id="birth-calendar-popup" class="hidden absolute top-full left-0 mt-2 w-[330px] sm:w-[360px] bg-slate-900/98 backdrop-blur-xl border border-slate-700 rounded-2xl p-4 sm:p-5 shadow-2xl shadow-black/90 z-50 transition-all select-none">
+          <div id="birth-calendar-popup" class="hidden absolute top-full left-1/2 -translate-x-1/2 sm:left-0 sm:translate-x-0 mt-2 w-[92vw] max-w-[360px] sm:w-[360px] bg-slate-900/98 backdrop-blur-xl border border-slate-700 rounded-2xl p-4 sm:p-5 shadow-2xl shadow-black/90 z-50 transition-all select-none">
             <div class="flex items-center justify-between gap-1 pb-3 border-b border-slate-800">
               <button type="button" id="cal-prev" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 flex items-center justify-center transition text-sm active:scale-95" title="이전 달">
                 <i class="fa-solid fa-chevron-left"></i>

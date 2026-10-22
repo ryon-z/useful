@@ -242,7 +242,7 @@
     </div>
 
     <!-- 3. 사주 명리학 오행(五行) 맞춤 번호 및 구매 날짜 추천 엔진 -->
-    <section id="saju-section" class="bg-slate-900 border border-slate-800 rounded-2xl p-5 sm:p-7 shadow-xl relative">
+    <section id="saju-section" class="bg-slate-900 border border-slate-800 rounded-2xl p-5 sm:p-7 shadow-xl relative z-20">
       <div class="flex items-center gap-2 mb-2">
         <i class="fa-solid fa-compass text-amber-400 text-xl sm:text-2xl"></i>
         <h2 class="text-2xl sm:text-3xl font-black text-white">사주 명리학 오행(五行) 맞춤 추천</h2>
@@ -253,7 +253,7 @@
 
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 bg-slate-950/60 p-4 sm:p-5 rounded-xl border border-slate-800 mb-5">
         <!-- 생년월일 (모던 커스텀 다크 캘린더) -->
-        <div class="relative" id="saju-calendar-root">
+        <div class="relative z-30" id="saju-calendar-root">
           <div class="flex items-center justify-between mb-2">
             <label class="text-sm sm:text-base font-bold text-slate-200 flex items-center gap-1.5 cursor-pointer" onclick="toggleCustomCalendar()">
               <i class="fa-regular fa-calendar-days text-amber-400 text-base"></i>
@@ -275,7 +275,7 @@
           <input type="hidden" id="saju-birth" value="1990-05-15">
 
           <!-- 모던 커스텀 다크 캘린더 팝업 드롭다운 (50대 친화적 대형 캘린더) -->
-          <div id="custom-calendar-popup" class="hidden absolute top-full left-0 mt-2 w-[330px] sm:w-[360px] bg-slate-900/98 backdrop-blur-xl border border-slate-700 rounded-2xl p-4 sm:p-5 shadow-2xl shadow-black/90 z-50 transition-all select-none">
+          <div id="custom-calendar-popup" class="hidden absolute top-full left-1/2 -translate-x-1/2 sm:left-0 sm:translate-x-0 mt-2 w-[92vw] max-w-[360px] sm:w-[360px] bg-slate-900/98 backdrop-blur-xl border border-slate-700 rounded-2xl p-4 sm:p-5 shadow-2xl shadow-black/90 z-50 transition-all select-none">
             
             <!-- 1. 헤더: 이전/다음 버튼 & 년/월 드롭다운 -->
             <div class="flex items-center justify-between gap-1 pb-3 border-b border-slate-800">
