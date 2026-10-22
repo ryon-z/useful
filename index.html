@@ -19,6 +19,12 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+  <!-- Flatpickr (모던 캘린더 라이브러리 & 한국어 & 다크 테마) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/dark.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
+
   <style>
     @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
     body { font-family: 'Pretendard', sans-serif; }
@@ -42,6 +48,63 @@
     .ball-red    { background: radial-gradient(circle at 35% 35%, #fca5a5, #b91c1c); }
     .ball-gray   { background: radial-gradient(circle at 35% 35%, #d1d5db, #4b5563); }
     .ball-green  { background: radial-gradient(circle at 35% 35%, #86efac, #15803d); }
+
+    /* Flatpickr 캘린더 다크 테마 커스텀 */
+    .flatpickr-calendar {
+      background: #0f172a !important;
+      border: 1px solid #334155 !important;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.7), 0 0 20px rgba(245, 158, 11, 0.25) !important;
+      border-radius: 1rem !important;
+      font-family: inherit !important;
+      padding: 0.5rem !important;
+    }
+    .flatpickr-calendar .flatpickr-month {
+      color: #f1f5f9 !important;
+      fill: #f1f5f9 !important;
+    }
+    .flatpickr-current-month {
+      font-size: 0.95rem !important;
+      padding: 0.5rem 0 !important;
+    }
+    .flatpickr-current-month .flatpickr-monthDropdown-months {
+      background: #1e293b !important;
+      color: #f8fafc !important;
+      border-radius: 0.5rem !important;
+      font-weight: 700 !important;
+    }
+    .flatpickr-current-month input.cur-year {
+      font-weight: 800 !important;
+      color: #f59e0b !important;
+    }
+    span.flatpickr-weekday {
+      color: #94a3b8 !important;
+      font-weight: 700 !important;
+    }
+    .flatpickr-day {
+      color: #e2e8f0 !important;
+      border-radius: 0.5rem !important;
+      font-weight: 600 !important;
+    }
+    .flatpickr-day:hover {
+      background: #334155 !important;
+    }
+    .flatpickr-day.today {
+      border-color: #f59e0b !important;
+      color: #f59e0b !important;
+    }
+    .flatpickr-day.selected, .flatpickr-day.selected:hover {
+      background: #f59e0b !important;
+      border-color: #f59e0b !important;
+      color: #0f172a !important;
+      font-weight: 900 !important;
+    }
+    .flatpickr-calendar .flatpickr-prev-month, .flatpickr-calendar .flatpickr-next-month {
+      color: #f59e0b !important;
+      fill: #f59e0b !important;
+    }
+    .flatpickr-calendar .flatpickr-prev-month:hover svg, .flatpickr-calendar .flatpickr-next-month:hover svg {
+      fill: #fbbf24 !important;
+    }
   </style>
 
   <!-- 구글 애드센스 스크립트 슬롯 (승인 후 ca-pub 번호 입력) -->
@@ -198,8 +261,28 @@
 
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 bg-slate-950/60 p-4 rounded-xl border border-slate-800 mb-5">
         <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1.5">생년월일 (양력 기준)</label>
-          <input type="date" id="saju-birth" value="1990-05-15" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-amber-400">
+          <div class="flex items-center justify-between mb-1.5">
+            <label for="saju-birth" class="text-xs font-semibold text-slate-300 flex items-center gap-1.5 cursor-pointer">
+              <i class="fa-regular fa-calendar-days text-amber-400"></i>
+              <span>생년월일 (캘린더 선택)</span>
+            </label>
+            <span class="text-[10px] text-amber-400/80 font-medium">양력 기준</span>
+          </div>
+          <div class="relative flex items-center">
+            <input type="text" id="saju-birth" value="1990-05-15" placeholder="YYYY-MM-DD" readonly
+              class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2.5 pl-3 pr-10 text-xs text-white font-semibold focus:outline-none focus:border-amber-400 cursor-pointer shadow-inner">
+            <button type="button" id="btn-open-calendar" class="absolute right-2.5 p-1 text-slate-400 hover:text-amber-400 transition" title="달력 열기">
+              <i class="fa-regular fa-calendar text-sm"></i>
+            </button>
+          </div>
+          <!-- 빠른 연대 선택 버튼 -->
+          <div class="flex items-center gap-1 mt-1.5 text-[10px] text-slate-400">
+            <span class="text-slate-500">빠른 이동:</span>
+            <button type="button" class="quick-year-btn px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 hover:border-amber-500/50 hover:text-amber-300 transition" data-year="1970">70년대</button>
+            <button type="button" class="quick-year-btn px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 hover:border-amber-500/50 hover:text-amber-300 transition" data-year="1980">80년대</button>
+            <button type="button" class="quick-year-btn px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 hover:border-amber-500/50 hover:text-amber-300 transition" data-year="1990">90년대</button>
+            <button type="button" class="quick-year-btn px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 hover:border-amber-500/50 hover:text-amber-300 transition" data-year="2000">00년대</button>
+          </div>
         </div>
         <div>
           <label class="block text-xs font-semibold text-slate-300 mb-1.5">태어난 시간 (12시진)</label>
@@ -642,6 +725,47 @@
     window.addEventListener('DOMContentLoaded', () => {
       loadLatestLotto();
       calculateTax(); // 기본 20억 세금 계산 1회 수행
+
+      // Flatpickr 캘린더 초기화 (한국어, 다크 모드, 드롭다운 지원)
+      let sajuCalendar = null;
+      if (typeof flatpickr !== 'undefined') {
+        sajuCalendar = flatpickr('#saju-birth', {
+          locale: 'ko',
+          dateFormat: 'Y-m-d',
+          defaultDate: '1990-05-15',
+          maxDate: 'today',
+          minDate: '1920-01-01',
+          monthSelectorType: 'dropdown',
+          disableMobile: true, // 일관된 커스텀 다크 캘린더 UI 표시
+        });
+
+        const openBtn = document.getElementById('btn-open-calendar');
+        if (openBtn) {
+          openBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (sajuCalendar) sajuCalendar.open();
+          });
+        }
+
+        // 빠른 연대 선택 버튼 (70년대~00년대)
+        document.querySelectorAll('.quick-year-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetYear = btn.getAttribute('data-year');
+            const curVal = document.getElementById('saju-birth').value || '1990-05-15';
+            const parts = curVal.split('-');
+            const newDateStr = `${targetYear}-${parts[1] || '05'}-${parts[2] || '15'}`;
+            if (sajuCalendar) {
+              sajuCalendar.setDate(newDateStr, true);
+              sajuCalendar.jumpToDate(newDateStr);
+              sajuCalendar.open();
+            } else {
+              document.getElementById('saju-birth').value = newDateStr;
+            }
+          });
+        });
+      }
+
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('./sw.js').catch(() => {});
       }
