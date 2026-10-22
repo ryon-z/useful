@@ -116,14 +116,23 @@ async function main() {
     process.exit(1);
   }
 
-  const outputDir = path.resolve(__dirname, '..', 'data');
-  if (!fs.existsSync(outputDir)) {
-    fs.mkdirSync(outputDir, { recursive: true });
+  // 1. lottery/data/latest.json 저장 (하위 서비스 디렉터리)
+  const lotteryDir = path.resolve(__dirname, '..', 'lottery', 'data');
+  if (!fs.existsSync(lotteryDir)) {
+    fs.mkdirSync(lotteryDir, { recursive: true });
   }
+  const lotteryPath = path.join(lotteryDir, 'latest.json');
+  fs.writeFileSync(lotteryPath, JSON.stringify(finalData, null, 2), 'utf-8');
+  console.log(`[DONE] 로또 하위 폴더 저장 완료: ${lotteryPath}`);
 
-  const outputPath = path.join(outputDir, 'latest.json');
-  fs.writeFileSync(outputPath, JSON.stringify(finalData, null, 2), 'utf-8');
-  console.log(`[DONE] 파일 저장 완료: ${outputPath}`);
+  // 2. 루트 data/latest.json 동기화 저장 (하위 호환성 유지)
+  const rootDir = path.resolve(__dirname, '..', 'data');
+  if (!fs.existsSync(rootDir)) {
+    fs.mkdirSync(rootDir, { recursive: true });
+  }
+  const rootPath = path.join(rootDir, 'latest.json');
+  fs.writeFileSync(rootPath, JSON.stringify(finalData, null, 2), 'utf-8');
+  console.log(`[DONE] 루트 데이터 동기화 완료: ${rootPath}`);
 }
 
 main().catch(err => {
