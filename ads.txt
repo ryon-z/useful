@@ -1,0 +1,3 @@
+# Google AdSense ads.txt placeholder
+# 실제 승인된 AdSense 퍼블리셔 ID가 발급되면 아래 형식을 입력하세요:
+# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0

@@ -1,0 +1,16 @@
+{
+  "name": "사주 로또 - 명리학 오행 기반 스마트 로또 분석기",
+  "short_name": "사주로또",
+  "description": "사주 명리학 오행 분석 및 통계 필터링 기반의 스마트 로또 6/45 번호 추천 및 실시간 당첨 대조·세금 계산기",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#1e293b",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23f59e0b'/><text x='50' y='65' font-size='42' font-family='sans-serif' font-weight='bold' text-anchor='middle' fill='%23111827'>運</text></svg>",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}

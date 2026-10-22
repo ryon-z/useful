@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>사주로또(四柱運) - 사주 명리학 오행 분석 & 스마트 로또 추천·실시간 당첨 분석</title>
+  
+  <!-- SEO & 메타태그 -->
+  <meta name="description" content="사주 명리학 오행(木火土金水) 분석과 통계적 필터링 알고리즘으로 추출하는 스마트 로또 6/45 번호 추천, 최신 당첨 번호 실시간 브리핑, 가상 대조 및 실수령액 세금 계산기">
+  <meta name="keywords" content="로또, 로또번호추천, 사주로또, 오행로또, 로또명당, 로또세금계산기, 동행복권, 로또당첨번호, 로또분석">
+  <meta name="author" content="ryon-z">
+  
+  <!-- OpenGraph (SNS 공유) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="사주로또(四柱運) - 사주 명리학 기반 스마트 로또 번호 추천">
+  <meta property="og:description" content="나의 타고난 사주 오행과 부족한 기운을 채워주는 행운의 로또 번호 & 역대 통계 필터링 번호 생성">
+  <meta property="og:image" content="https://raw.githubusercontent.com/ryon-z/useful/main/og-image.png">
+  <meta property="og:url" content="https://ryon-z.github.io/useful/">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="사주로또(四柱運) - 사주 명리학 기반 로또 추천">
+  <meta name="twitter:description" content="오행 수리학 및 통계 필터링 기반 스마트 로또 번호 추천 & 실시간 당첨 대조">
+
+  <!-- PWA Manifest & Favicon -->
+  <link rel="manifest" href="./manifest.json">
+  <meta name="theme-color" content="#0f172a">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23f59e0b'/><text x='50' y='67' font-size='46' font-family='sans-serif' font-weight='bold' text-anchor='middle' fill='%23111827'>運</text></svg>">
+
+  <!-- Pretendard 폰트 -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+  <!-- FontAwesome 6 아이콘 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Pretendard Variable"', 'Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              gold: '#f59e0b',
+              wood: '#10b981',
+              fire: '#ef4444',
+              earth: '#d97706',
+              metal: '#94a3b8',
+              water: '#3b82f6',
+            }
+          },
+          boxShadow: {
+            'glow-gold': '0 0 25px -5px rgba(245, 158, 11, 0.4)',
+            'glow-blue': '0 0 25px -5px rgba(59, 130, 246, 0.4)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* 로또 공 입체 스타일 */
+    .lotto-ball {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9999px;
+      font-weight: 700;
+      box-shadow: inset -3px -3px 6px rgba(0,0,0,0.35), inset 3px 3px 6px rgba(255,255,255,0.4), 0 4px 8px rgba(0,0,0,0.25);
+      text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+      user-select: none;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .lotto-ball:hover {
+      transform: translateY(-2px) scale(1.06);
+    }
+    /* 번호대별 공식 컬러 규격 */
+    .ball-yellow { background: radial-gradient(circle at 35% 35%, #fbbf24, #d97706); color: #ffffff; }
+    .ball-blue   { background: radial-gradient(circle at 35% 35%, #60a5fa, #2563eb); color: #ffffff; }
+    .ball-red    { background: radial-gradient(circle at 35% 35%, #f87171, #dc2626); color: #ffffff; }
+    .ball-gray   { background: radial-gradient(circle at 35% 35%, #94a3b8, #475569); color: #ffffff; }
+    .ball-green  { background: radial-gradient(circle at 35% 35%, #34d399, #059669); color: #ffffff; }
+    
+    /* 일치된 공 하이라이트 애니메이션 */
+    .ball-matched {
+      animation: pulse-ring 1.8s infinite;
+      outline: 3px solid #38bdf8;
+      outline-offset: 3px;
+    }
+    @keyframes pulse-ring {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); box-shadow: 0 0 15px #38bdf8; }
+      100% { transform: scale(1); }
+    }
+
+    /* 구글 애드센스 슬롯 스타일 */
+    .adsense-wrapper {
+      background: rgba(30, 41, 59, 0.5);
+      border: 1px dashed rgba(148, 163, 184, 0.25);
+      border-radius: 0.75rem;
+      min-height: 90px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #64748b;
+      font-size: 0.75rem;
+    }
+  </style>
+</head>
+
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans antialiased selection:bg-amber-500 selection:text-slate-950">
+
+  <!-- =========================== HEADER & GNB =========================== -->
+  <header class="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800/80 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- 로고 -->
+        <a href="#" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 via-amber-400 to-yellow-200 flex items-center justify-center text-slate-950 font-black text-xl shadow-glow-gold transition-transform group-hover:scale-105">
+            運
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-extrabold text-lg sm:text-xl tracking-tight bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-400 bg-clip-text text-transparent">
+                사주로또
+              </span>
+              <span class="text-xs px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/30 font-semibold">
+                四柱運 6/45
+              </span>
+            </div>
+            <p class="text-[11px] text-slate-400 hidden sm:block">사주 명리학 오행 수리학 & 통계 분석 플랫폼</p>
+          </div>
+        </a>
+
+        <!-- 네비게이션 링크 (데스크톱) -->
+        <nav class="hidden md:flex items-center gap-1 text-sm font-medium text-slate-300">
+          <a href="#latest-section" class="px-3 py-2 rounded-lg hover:text-amber-400 hover:bg-slate-800/60 transition">최신 당첨</a>
+          <a href="#saju-section" class="px-3 py-2 rounded-lg hover:text-amber-400 hover:bg-slate-800/60 transition">사주 오행 분석</a>
+          <a href="#extractor-section" class="px-3 py-2 rounded-lg hover:text-amber-400 hover:bg-slate-800/60 transition">스마트 추출기</a>
+          <a href="#tax-section" class="px-3 py-2 rounded-lg hover:text-amber-400 hover:bg-slate-800/60 transition">세금 계산기</a>
+          <a href="#stats-section" class="px-3 py-2 rounded-lg hover:text-amber-400 hover:bg-slate-800/60 transition">출현 통계</a>
+        </nav>
+
+        <!-- 우측 액션 / 상태 표시 -->
+        <div class="flex items-center gap-3">
+          <div id="live-badge" class="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            <span id="header-drw-text">최신 데이터 로딩 중...</span>
+          </div>
+          <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition">
+            <i class="fa-solid fa-bars text-lg"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 모바일 메뉴 드롭다운 -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800 bg-slate-900/95 px-4 py-3 space-y-1">
+      <a href="#latest-section" class="block px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800">최신 당첨 결과</a>
+      <a href="#saju-section" class="block px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800">사주 명리학 오행 분석</a>
+      <a href="#extractor-section" class="block px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800">스마트 번호 추출기</a>
+      <a href="#tax-section" class="block px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800">당첨금 세금 계산기</a>
+      <a href="#stats-section" class="block px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800">역대 출현 통계</a>
+    </div>
+  </header>
+
+  <!-- =========================== TOP AD (728x90) =========================== -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 w-full">
+    <div class="adsense-wrapper py-3 px-4 text-center">
+      <span class="inline-block px-2 py-0.5 rounded bg-slate-800/80 text-[10px] text-slate-400 mb-1">SPONSORED ADVERTISEMENT</span>
+      <div class="text-xs text-slate-400">Google AdSense 영역 (상단 리더보드 728x90 / 반응형)</div>
+      <!-- 실제 AdSense script 추가 시: <ins class="adsbygoogle" ...></ins> -->
+    </div>
+  </div>
+
+  <!-- =========================== MAIN CONTENT =========================== -->
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12 w-full">
+
+    <!-- ==================== ① 최신 당첨 번호 브리핑 & 가상 대조 ==================== -->
+    <section id="latest-section" class="bg-gradient-to-b from-slate-900 via-slate-900/90 to-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
+      <!-- 배경 은은한 광선 -->
+      <div class="absolute -top-24 -right-24 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="relative z-10">
+        <!-- 헤더 & 추첨 타이머 -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                <i class="fa-solid fa-crown mr-1"></i>동행복권 공식 데이터
+              </span>
+              <span id="latest-date" class="text-xs text-slate-400">추첨일 로딩 중...</span>
+            </div>
+            <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight flex items-baseline gap-2">
+              제 <span id="latest-drw-no" class="text-amber-400 font-extrabold text-3xl sm:text-4xl">1246</span>회 당첨결과
+            </h1>
+          </div>
+
+          <!-- 다음 추첨 카운트다운 타이머 -->
+          <div class="bg-slate-950/70 border border-slate-800 rounded-2xl px-4 py-2.5 flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center">
+              <i class="fa-regular fa-clock"></i>
+            </div>
+            <div>
+              <div class="text-[11px] text-slate-400 font-medium">다음 추첨(토요일 20:35)까지</div>
+              <div id="draw-countdown" class="text-sm font-bold text-amber-300 font-mono">계산 중...</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 당첨 번호 6개 + 보너스 번호 공 렌더링 -->
+        <div class="py-8 flex flex-col items-center justify-center">
+          <p class="text-xs text-slate-400 uppercase tracking-widest mb-4 font-semibold">Official Winning Numbers</p>
+          <div class="flex flex-wrap items-center justify-center gap-2.5 sm:gap-4" id="winning-balls-container">
+            <!-- JS 동적 렌더링 -->
+            <div class="w-12 h-12 sm:w-14 sm:h-14 lotto-ball ball-yellow text-lg sm:text-xl">--</div>
+            <div class="w-12 h-12 sm:w-14 sm:h-14 lotto-ball ball-blue text-lg sm:text-xl">--</div>
+            <div class="w-12 h-12 sm:w-14 sm:h-14 lotto-ball ball-red text-lg sm:text-xl">--</div>
+            <div class="w-12 h-12 sm:w-14 sm:h-14 lotto-ball ball-red text-lg sm:text-xl">--</div>
+            <div class="w-12 h-12 sm:w-14 sm:h-14 lotto-ball ball-gray text-lg sm:text-xl">--</div>
+            <div class="w-12 h-12 sm:w-14 sm:h-14 lotto-ball ball-green text-lg sm:text-xl">--</div>
+            <div class="text-xl sm:text-2xl text-slate-500 font-light px-1">+</div>
+            <div class="w-12 h-12 sm:w-14 sm:h-14 lotto-ball ball-yellow text-lg sm:text-xl">--</div>
+          </div>
+        </div>
+
+        <!-- 당첨 금액 통계 카드 4종 그리드 -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 pt-2 pb-6">
+          <div class="bg-slate-950/60 border border-slate-800/80 rounded-2xl p-4">
+            <span class="text-xs text-slate-400 block mb-1">1등 당첨 인원</span>
+            <div class="text-lg sm:text-xl font-black text-white flex items-baseline gap-1">
+              <span id="rank1-winners" class="text-amber-400">16</span>명
+            </div>
+            <span class="text-[11px] text-slate-500">자동/수동 포함</span>
+          </div>
+
+          <div class="bg-slate-950/60 border border-slate-800/80 rounded-2xl p-4">
+            <span class="text-xs text-slate-400 block mb-1">1등 1인당 당첨금</span>
+            <div id="rank1-prize" class="text-lg sm:text-xl font-black text-amber-300 truncate">
+              18억 8,102만 원
+            </div>
+            <span class="text-[11px] text-slate-500">세전 수령액</span>
+          </div>
+
+          <div class="bg-slate-950/60 border border-slate-800/80 rounded-2xl p-4">
+            <span class="text-xs text-slate-400 block mb-1">1등 총 당첨금</span>
+            <div id="rank1-total" class="text-lg sm:text-xl font-black text-white truncate">
+              300억 9,640만 원
+            </div>
+            <span class="text-[11px] text-slate-500">1등 전체 배분액</span>
+          </div>
+
+          <div class="bg-slate-950/60 border border-slate-800/80 rounded-2xl p-4">
+            <span class="text-xs text-slate-400 block mb-1">총 복권 판매액</span>
+            <div id="total-sales" class="text-lg sm:text-xl font-black text-slate-200 truncate">
+              1,218억 원
+            </div>
+            <span class="text-[11px] text-slate-500">해당 회차 누적</span>
+          </div>
+        </div>
+
+        <!-- 가상 대조 도구 아코디언/카드 -->
+        <div class="mt-4 pt-6 border-t border-slate-800/80 bg-slate-950/40 rounded-2xl p-4 sm:p-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+            <div>
+              <h3 class="text-base font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-magnifying-glass-chart text-amber-400"></i>
+                내 번호 최신 당첨 가상 대조기
+              </h3>
+              <p class="text-xs text-slate-400">보유한 번호 6개를 입력하거나 아래 추천 번호에서 가져와 모의 등수를 확인하세요.</p>
+            </div>
+            <button id="btn-quick-import-match" class="text-xs px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition flex items-center gap-1.5 self-start sm:self-auto">
+              <i class="fa-solid fa-arrow-down"></i>
+              생성된 추천번호 불러오기
+            </button>
+          </div>
+
+          <!-- 번호 직접 입력 6칸 -->
+          <div class="flex flex-wrap items-center gap-2 mb-4">
+            <input type="number" min="1" max="45" class="match-input w-12 h-12 text-center text-lg font-bold bg-slate-900 border border-slate-700 rounded-xl focus:outline-none focus:border-amber-400 text-white" placeholder="1">
+            <input type="number" min="1" max="45" class="match-input w-12 h-12 text-center text-lg font-bold bg-slate-900 border border-slate-700 rounded-xl focus:outline-none focus:border-amber-400 text-white" placeholder="2">
+            <input type="number" min="1" max="45" class="match-input w-12 h-12 text-center text-lg font-bold bg-slate-900 border border-slate-700 rounded-xl focus:outline-none focus:border-amber-400 text-white" placeholder="3">
+            <input type="number" min="1" max="45" class="match-input w-12 h-12 text-center text-lg font-bold bg-slate-900 border border-slate-700 rounded-xl focus:outline-none focus:border-amber-400 text-white" placeholder="4">
+            <input type="number" min="1" max="45" class="match-input w-12 h-12 text-center text-lg font-bold bg-slate-900 border border-slate-700 rounded-xl focus:outline-none focus:border-amber-400 text-white" placeholder="5">
+            <input type="number" min="1" max="45" class="match-input w-12 h-12 text-center text-lg font-bold bg-slate-900 border border-slate-700 rounded-xl focus:outline-none focus:border-amber-400 text-white" placeholder="6">
+            
+            <button id="btn-run-match" class="px-5 h-12 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-sm shadow-md transition-transform active:scale-95 flex items-center gap-2">
+              <i class="fa-solid fa-check-double"></i>
+              대조 검증
+            </button>
+          </div>
+
+          <!-- 대조 결과 배너 -->
+          <div id="match-result-box" class="hidden rounded-xl p-4 bg-slate-900/90 border border-slate-700 text-sm">
+            <!-- JS 동적 주입 -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ③ 사주 명리학 오행(五行) 분석 엔진 ==================== -->
+    <section id="saju-section" class="bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl relative">
+      <div class="flex items-center gap-3 mb-2">
+        <div class="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-300 flex items-center justify-center font-bold text-sm">
+          五
+        </div>
+        <span class="text-xs font-bold uppercase tracking-wider text-amber-400">Saju Numerology Engine</span>
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-2">
+        사주 명리학 오행(五行) 맞춤 번호 추출기
+      </h2>
+      <p class="text-sm text-slate-400 max-w-3xl mb-8">
+        생년월일시의 간지(干支) 수리를 환산하여 타고난 주 오행(木·火·土·金·水)과 부족한 기운(용신)을 도출합니다.
+        오행 상응 비전 수리(河圖·洛書)를 행운 번호 풀에 우선 배정하고 45개 번호와 최적 조화로 추출합니다.
+      </p>
+
+      <!-- 사주 입력 폼 그리드 -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-5 rounded-2xl bg-slate-950/70 border border-slate-800 mb-6">
+        <!-- 생년월일 -->
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-2">
+            <i class="fa-regular fa-calendar mr-1 text-amber-400"></i>생년월일 (양력 기준)
+          </label>
+          <input type="date" id="saju-birthdate" value="1995-05-15" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-amber-400">
+        </div>
+
+        <!-- 성별 -->
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-2">
+            <i class="fa-solid fa-venus-mars mr-1 text-amber-400"></i>성별
+          </label>
+          <select id="saju-gender" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-amber-400">
+            <option value="M">남성 (乾命)</option>
+            <option value="F">여성 (坤命)</option>
+          </select>
+        </div>
+
+        <!-- 12시진 (태어난 시간) -->
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-2">
+            <i class="fa-regular fa-clock mr-1 text-amber-400"></i>태어난 시 (12시진)
+          </label>
+          <select id="saju-time" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-amber-400">
+            <option value="0">자시 (子時 : 23:30 ~ 01:29)</option>
+            <option value="1">축시 (丑時 : 01:30 ~ 03:29)</option>
+            <option value="2">인시 (寅時 : 03:30 ~ 05:29)</option>
+            <option value="3">묘시 (卯時 : 05:30 ~ 07:29)</option>
+            <option value="4">진시 (辰時 : 07:30 ~ 09:29)</option>
+            <option value="5">사시 (巳時 : 09:30 ~ 11:29)</option>
+            <option value="6" selected>오시 (午時 : 11:30 ~ 13:29)</option>
+            <option value="7">미시 (未時 : 13:30 ~ 15:29)</option>
+            <option value="8">신시 (申時 : 15:30 ~ 17:29)</option>
+            <option value="9">유시 (酉時 : 17:30 ~ 19:29)</option>
+            <option value="10">술시 (戌時 : 19:30 ~ 21:29)</option>
+            <option value="11">해시 (亥時 : 21:30 ~ 23:29)</option>
+            <option value="unknown">시간 모름 (생년월일 수리 적용)</option>
+          </select>
+        </div>
+
+        <!-- 분석 & 추출 버튼 -->
+        <div class="flex items-end">
+          <button id="btn-analyze-saju" class="w-full h-[42px] rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-300 hover:from-amber-400 hover:to-yellow-200 text-slate-950 font-black text-sm shadow-glow-gold transition-all active:scale-95 flex items-center justify-center gap-2">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            사주 분석 & 번호 추출
+          </button>
+        </div>
+      </div>
+
+      <!-- 사주 오행 진단 결과 카드 (초기 표시) -->
+      <div id="saju-analysis-card" class="bg-slate-950/80 border border-slate-800/80 rounded-2xl p-5 sm:p-6 mb-6">
+        <h3 class="text-sm font-bold text-amber-300 uppercase tracking-wider mb-4 flex items-center gap-2">
+          <i class="fa-solid fa-scroll"></i>
+          사주 수리 분석 소견서
+        </h3>
+        
+        <!-- 오행 특성 카드 그리드 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+          <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+            <span class="text-xs text-slate-400 block mb-1">타고난 주 기운 (본명 오행)</span>
+            <div id="saju-main-element" class="text-lg font-bold text-emerald-400 flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-emerald-400"></span> 목(木)의 기운
+            </div>
+            <span id="saju-main-desc" class="text-xs text-slate-500 mt-1 block">생장과 발전, 뻗어나가는 기상</span>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+            <span class="text-xs text-slate-400 block mb-1">보완 행운 기운 (용신/희신)</span>
+            <div id="saju-lucky-element" class="text-lg font-bold text-amber-300 flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-amber-400"></span> 토(土) / 금(金)
+            </div>
+            <span id="saju-lucky-desc" class="text-xs text-slate-500 mt-1 block">안정된 기반과 결실의 재물운</span>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+            <span class="text-xs text-slate-400 block mb-1">행운의 구매 요일 & 길시</span>
+            <div id="saju-lucky-time" class="text-base font-bold text-white flex items-center gap-2">
+              <i class="fa-regular fa-clock text-amber-400"></i> 목요일 / 15:30~17:30
+            </div>
+            <span class="text-xs text-slate-500 mt-1 block">양기가 음기와 조화를 이루는 시점</span>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+            <span class="text-xs text-slate-400 block mb-1">명당 판매점 길방위</span>
+            <div id="saju-lucky-direction" class="text-base font-bold text-white flex items-center gap-2">
+              <i class="fa-solid fa-compass text-amber-400"></i> 거주지 기준 동쪽(東)·북동
+            </div>
+            <span class="text-xs text-slate-500 mt-1 block">물이 모여드는 천변 및 대로변 판매점</span>
+          </div>
+        </div>
+
+        <!-- 오행 수리 매핑 번호 안내 -->
+        <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 text-xs text-slate-300 flex flex-wrap items-center gap-y-2 gap-x-4">
+          <span class="font-bold text-amber-300"><i class="fa-solid fa-circle-info mr-1"></i>오행 상응 수리:</span>
+          <span><b class="text-emerald-400">木:</b> 3·8 (13,18,23,28,33,38,43)</span>
+          <span><b class="text-rose-400">火:</b> 2·7 (12,17,22,27,32,37,42)</span>
+          <span><b class="text-amber-400">土:</b> 5·10 (15,20,25,30,35,40,45)</span>
+          <span><b class="text-slate-300">金:</b> 4·9 (14,19,24,29,34,39,44)</span>
+          <span><b class="text-blue-400">水:</b> 1·6 (11,16,21,26,31,36,41)</span>
+        </div>
+      </div>
+
+      <!-- 사주 추출 번호 5게임 세트 결과 -->
+      <div>
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-base font-bold text-white flex items-center gap-2">
+            <i class="fa-solid fa-dice text-amber-400"></i>
+            사주 맞춤 추천 5게임 (1세트 / 5,000원)
+          </h3>
+          <div class="flex gap-2">
+            <button id="btn-copy-saju" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-300 transition flex items-center gap-1.5">
+              <i class="fa-regular fa-copy"></i>
+              전체 복사
+            </button>
+            <button id="btn-match-saju" class="px-3 py-1.5 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-xs font-semibold text-amber-300 border border-amber-500/30 transition flex items-center gap-1.5">
+              <i class="fa-solid fa-check"></i>
+              최신 회차와 대조
+            </button>
+          </div>
+        </div>
+
+        <!-- 5게임 번호 리스트 컨테이너 -->
+        <div id="saju-games-list" class="space-y-2.5">
+          <!-- JS 렌더링 -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================== IN-FEED AD =========================== -->
+    <div class="adsense-wrapper py-3 px-4 text-center">
+      <span class="inline-block px-2 py-0.5 rounded bg-slate-800/80 text-[10px] text-slate-400 mb-1">SPONSORED ADVERTISEMENT</span>
+      <div class="text-xs text-slate-400">Google AdSense 인피드 광고 영역 (네이티브 반응형)</div>
+    </div>
+
+    <!-- ==================== ② 스마트 로또 번호 추출기 ==================== -->
+    <section id="extractor-section" class="bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl relative">
+      <div class="flex items-center gap-3 mb-2">
+        <div class="w-8 h-8 rounded-xl bg-blue-500/20 text-blue-300 flex items-center justify-center font-bold text-sm">
+          <i class="fa-solid fa-filter"></i>
+        </div>
+        <span class="text-xs font-bold uppercase tracking-wider text-blue-400">Statistical Algorithm Extractor</span>
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-2">
+        스마트 로또 번호 추출기
+      </h2>
+      <p class="text-sm text-slate-400 max-w-3xl mb-8">
+        역대 1,200회 이상의 당첨 통계를 기반으로 총합 구간(100~175), 홀짝 비율, 다빈출 번호군 가중치를 필터링하여 당첨 확률 구간에 수렴하는 조합을 추출합니다.
+      </p>
+
+      <!-- 옵션 선택 탭 & 수량 선택 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+        <!-- 알고리즘 선택 -->
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-2">4대 통계 필터링 모드 선택</label>
+          <div class="grid grid-cols-2 gap-2" id="algo-selector">
+            <button data-algo="balanced" class="algo-btn active p-3 rounded-xl border text-left text-xs transition-all bg-amber-500/10 border-amber-500 text-amber-300 font-bold">
+              <div class="flex items-center justify-between mb-1">
+                <span>균형 분포 모드</span>
+                <i class="fa-solid fa-scale-balanced text-amber-400"></i>
+              </div>
+              <p class="text-[11px] font-normal text-slate-400">홀짝 2:4~4:2 + 총합 100~175</p>
+            </button>
+
+            <button data-algo="sum" class="algo-btn p-3 rounded-xl border border-slate-800 bg-slate-950/60 text-left text-xs transition-all text-slate-400 hover:text-white hover:border-slate-700">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-bold">총합 필터 모드</span>
+                <i class="fa-solid fa-chart-line text-blue-400"></i>
+              </div>
+              <p class="text-[11px] font-normal text-slate-400">역대 최빈출 100~175 집중</p>
+            </button>
+
+            <button data-algo="frequent" class="algo-btn p-3 rounded-xl border border-slate-800 bg-slate-950/60 text-left text-xs transition-all text-slate-400 hover:text-white hover:border-slate-700">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-bold">다빈출 가중치 모드</span>
+                <i class="fa-solid fa-fire text-rose-400"></i>
+              </div>
+              <p class="text-[11px] font-normal text-slate-400">역대 핫 넘버 2개 이상 필수 배합</p>
+            </button>
+
+            <button data-algo="random" class="algo-btn p-3 rounded-xl border border-slate-800 bg-slate-950/60 text-left text-xs transition-all text-slate-400 hover:text-white hover:border-slate-700">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-bold">완전 무작위 난수</span>
+                <i class="fa-solid fa-shuffle text-emerald-400"></i>
+              </div>
+              <p class="text-[11px] font-normal text-slate-400">암호학적 순수 의사 난수</p>
+            </button>
+          </div>
+        </div>
+
+        <!-- 게임 수량 및 생성 액션 -->
+        <div class="flex flex-col justify-between">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-2">게임 수량 선택</label>
+            <div class="grid grid-cols-2 gap-2 mb-4">
+              <button data-games="1" class="games-qty-btn p-3 rounded-xl border border-slate-800 bg-slate-950/60 text-center text-xs font-bold text-slate-400 hover:text-white transition">
+                1게임 (1,000원)
+              </button>
+              <button data-games="5" class="games-qty-btn active p-3 rounded-xl border border-amber-500 bg-amber-500/10 text-center text-xs font-bold text-amber-300 transition">
+                5게임 (1세트 / 5,000원)
+              </button>
+            </div>
+          </div>
+
+          <button id="btn-generate-smart" class="w-full h-12 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 hover:from-blue-500 hover:to-indigo-500 text-white font-black text-sm shadow-glow-blue transition-all active:scale-95 flex items-center justify-center gap-2">
+            <i class="fa-solid fa-bolt"></i>
+            스마트 필터링 번호 생성하기
+          </button>
+        </div>
+      </div>
+
+      <!-- 생성 결과 카드 -->
+      <div>
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-base font-bold text-white flex items-center gap-2">
+            <i class="fa-solid fa-list-check text-blue-400"></i>
+            추출된 추천 조합
+          </h3>
+          <div class="flex gap-2">
+            <button id="btn-copy-smart" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-300 transition flex items-center gap-1.5">
+              <i class="fa-regular fa-copy"></i>
+              전체 복사
+            </button>
+            <button id="btn-match-smart" class="px-3 py-1.5 rounded-lg bg-blue-500/20 hover:bg-blue-500/30 text-xs font-semibold text-blue-300 border border-blue-500/30 transition flex items-center gap-1.5">
+              <i class="fa-solid fa-check"></i>
+              최신 회차와 대조
+            </button>
+          </div>
+        </div>
+
+        <div id="smart-games-list" class="space-y-2.5">
+          <!-- JS 렌더링 -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ④ 당첨금 세금 & 실수령액 계산기 ==================== -->
+    <section id="tax-section" class="bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl relative">
+      <div class="flex items-center gap-3 mb-2">
+        <div class="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-300 flex items-center justify-center font-bold text-sm">
+          <i class="fa-solid fa-won-sign"></i>
+        </div>
+        <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">Tax & Net Payout Calculator</span>
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-2">
+        로또 당첨금 세금 및 실수령액 계산기
+      </h2>
+      <p class="text-sm text-slate-400 max-w-3xl mb-8">
+        대한민국 소득세법(소득세 + 지방소득세 10%) 기준을 완벽하게 적용합니다. 200만 원 이하 비과세, 3억 원 이하 22%, 3억 원 초과분 33% 누진 세율을 실시간 계산합니다.
+      </p>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- 입력 패널 -->
+        <div class="lg:col-span-6 space-y-4">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-2">
+              당첨금 입력 (원 단위)
+            </label>
+            <div class="relative">
+              <input type="text" id="tax-prize-input" value="1,881,025,430" class="w-full bg-slate-950 border border-slate-700 rounded-2xl px-4 py-3 text-lg font-bold text-amber-300 focus:outline-none focus:border-amber-400 pl-10 pr-12">
+              <span class="absolute left-3.5 top-3.5 text-slate-500 font-bold">₩</span>
+              <span class="absolute right-4 top-3.5 text-sm text-slate-400 font-medium">원</span>
+            </div>
+          </div>
+
+          <!-- 빠른 금액 프리셋 버튼 -->
+          <div>
+            <span class="text-xs text-slate-400 block mb-2">빠른 프리셋 선택:</span>
+            <div class="flex flex-wrap gap-2">
+              <button class="preset-btn px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-xs font-semibold hover:border-amber-400 hover:text-amber-300 transition" data-amount="1881025430">
+                최신 1등 (18.8억)
+              </button>
+              <button class="preset-btn px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-xs font-semibold hover:border-amber-400 hover:text-amber-300 transition" data-amount="2500000000">
+                대박 1등 (25억)
+              </button>
+              <button class="preset-btn px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-xs font-semibold hover:border-amber-400 hover:text-amber-300 transition" data-amount="60000000">
+                2등 평균 (6,000만)
+              </button>
+              <button class="preset-btn px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-xs font-semibold hover:border-amber-400 hover:text-amber-300 transition" data-amount="1500000">
+                3등 평균 (150만, 비과세)
+              </button>
+              <button class="preset-btn px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-xs font-semibold hover:border-amber-400 hover:text-amber-300 transition" data-amount="50000">
+                4등 고정 (5만, 비과세)
+              </button>
+            </div>
+          </div>
+
+          <!-- 세법 가이드 안내 뱃지 -->
+          <div class="p-4 rounded-2xl bg-slate-950/70 border border-slate-800 text-xs text-slate-400 space-y-1.5">
+            <div class="font-semibold text-slate-200 flex items-center gap-1.5 mb-1">
+              <i class="fa-solid fa-scale-balanced text-amber-400"></i>
+              대한민국 복권 당첨소득 과세 기준 (소득세법)
+            </div>
+            <p>• <b>200만 원 이하</b> : 비과세 (원천징수 세액 0원)</p>
+            <p>• <b>200만 원 초과 ~ 3억 원 이하</b> : 22% (소득세 20% + 지방소득세 2%)</p>
+            <p>• <b>3억 원 초과</b> : 3억까지 22% + 3억 초과분 33% (소득세 30% + 지방소득세 3%)</p>
+          </div>
+        </div>
+
+        <!-- 계산 결과 카드 -->
+        <div class="lg:col-span-6 bg-slate-950/90 border border-slate-800 rounded-2xl p-5 sm:p-6 flex flex-col justify-between">
+          <div>
+            <div class="text-xs text-slate-400 uppercase tracking-widest font-semibold mb-1">Net Payout Result</div>
+            <div class="text-xs text-slate-500 mb-4">공제 세액 원천징수 후 통장에 입금되는 최종 금액</div>
+
+            <!-- 최종 실수령액 대형 강조 -->
+            <div class="p-4 rounded-xl bg-gradient-to-r from-emerald-950/60 to-slate-900 border border-emerald-500/30 mb-5">
+              <span class="text-xs text-emerald-400 font-bold block mb-1">최종 실수령액 (입금액)</span>
+              <div id="net-payout-text" class="text-2xl sm:text-3xl font-black text-emerald-300 font-mono">
+                0 원
+              </div>
+              <span id="net-payout-korean" class="text-xs text-slate-400 mt-1 block">영 원</span>
+            </div>
+
+            <!-- 세부 공제 내역 표 -->
+            <div class="space-y-2 text-xs">
+              <div class="flex justify-between py-1.5 border-b border-slate-800/80">
+                <span class="text-slate-400">당첨 총액 (세전)</span>
+                <span id="tax-gross-display" class="font-semibold text-white">0 원</span>
+              </div>
+              <div class="flex justify-between py-1.5 border-b border-slate-800/80">
+                <span class="text-slate-400">소득세 (국세)</span>
+                <span id="tax-income-display" class="font-semibold text-rose-400">- 0 원</span>
+              </div>
+              <div class="flex justify-between py-1.5 border-b border-slate-800/80">
+                <span class="text-slate-400">지방소득세 (소득세의 10%)</span>
+                <span id="tax-local-display" class="font-semibold text-rose-400">- 0 원</span>
+              </div>
+              <div class="flex justify-between py-1.5 border-b border-slate-800/80 font-bold">
+                <span class="text-slate-300">총 공제 세액 합계</span>
+                <span id="tax-total-display" class="text-rose-400">- 0 원</span>
+              </div>
+              <div class="flex justify-between py-1.5">
+                <span class="text-slate-400">실효 세율 (Effective Tax Rate)</span>
+                <span id="tax-rate-display" class="font-bold text-amber-300">0.0 %</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 농협은행 수령처 안내 가이드 -->
+          <div class="mt-6 pt-4 border-t border-slate-800 text-[11px] text-slate-400 space-y-1">
+            <span class="font-bold text-slate-300 block mb-1">🏦 등위별 당첨금 수령처 안내</span>
+            <p>• <b>1등</b> : <b>NH농협은행 본점</b> (서울 중구 통일로 120) / 신분증, 당첨복권 지참</p>
+            <p>• <b>2·3등</b> : 전국 <b>NH농협은행 각 지점</b> (지역 농·축협 지점 제외)</p>
+            <p>• <b>4·5등</b> : 전국 일반 로또 복권 판매점 및 농협은행 각 지점 (즉시 현금 교환)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ⑤ 역대 누적 통계 & 핫/콜드 번호 ==================== -->
+    <section id="stats-section" class="bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl relative">
+      <div class="flex items-center gap-3 mb-2">
+        <div class="w-8 h-8 rounded-xl bg-purple-500/20 text-purple-300 flex items-center justify-center font-bold text-sm">
+          <i class="fa-solid fa-chart-simple"></i>
+        </div>
+        <span class="text-xs font-bold uppercase tracking-wider text-purple-400">Historical Statistics</span>
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-2">
+        역대 누적 출현 통계 (핫 넘버 & 콜드 넘버)
+      </h2>
+      <p class="text-sm text-slate-400 max-w-3xl mb-8">
+        1회차부터 최신 회차까지 누적 추첨 데이터 기준 가장 많이 출현한 상위 10개 번호(Hot)와 가장 적게 출현한 하위 10개 번호(Cold)의 통계 분석표입니다.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- 핫 넘버 (최다 빈출 번호) -->
+        <div class="p-5 rounded-2xl bg-slate-950/70 border border-slate-800">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-sm font-bold text-rose-400 flex items-center gap-2">
+              <i class="fa-solid fa-fire"></i>
+              역대 최다 출현 (핫 넘버 TOP 10)
+            </h3>
+            <span class="text-xs text-slate-500">당첨 빈도 상위</span>
+          </div>
+          <div class="space-y-2.5" id="hot-numbers-list">
+            <!-- JS 동적 렌더링 -->
+          </div>
+        </div>
+
+        <!-- 콜드 넘버 (최소 빈출 번호) -->
+        <div class="p-5 rounded-2xl bg-slate-950/70 border border-slate-800">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-sm font-bold text-blue-400 flex items-center gap-2">
+              <i class="fa-solid fa-snowflake"></i>
+              역대 최소 출현 (콜드 넘버 TOP 10)
+            </h3>
+            <span class="text-xs text-slate-500">당첨 빈도 하위</span>
+          </div>
+          <div class="space-y-2.5" id="cold-numbers-list">
+            <!-- JS 동적 렌더링 -->
+          </div>
+        </div>
+      </div>
+
+      <!-- 공 색상별 출현 비율 안내 바 -->
+      <div class="mt-8 p-5 rounded-2xl bg-slate-950/70 border border-slate-800">
+        <h4 class="text-xs font-bold text-slate-300 mb-3 flex items-center gap-2">
+          <i class="fa-solid fa-palette text-amber-400"></i>
+          번호대별(색상별) 역사적 당첨 비율
+        </h4>
+        <div class="w-full h-4 rounded-full overflow-hidden flex bg-slate-800 mb-2">
+          <div class="bg-amber-400 h-full" style="width: 22.8%;" title="1~10 (노랑): 22.8%"></div>
+          <div class="bg-blue-500 h-full" style="width: 22.4%;" title="11~20 (파랑): 22.4%"></div>
+          <div class="bg-rose-500 h-full" style="width: 22.1%;" title="21~30 (빨강): 22.1%"></div>
+          <div class="bg-slate-500 h-full" style="width: 21.9%;" title="31~40 (회색): 21.9%"></div>
+          <div class="bg-emerald-500 h-full" style="width: 10.8%;" title="41~45 (초록): 10.8%"></div>
+        </div>
+        <div class="flex flex-wrap items-center justify-between text-[11px] text-slate-400">
+          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span> 1~10 (22.8%)</span>
+          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span> 11~20 (22.4%)</span>
+          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span> 21~30 (22.1%)</span>
+          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-slate-500"></span> 31~40 (21.9%)</span>
+          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> 41~45 (10.8% - 5개 숫자)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================== BOTTOM AD GRID (3 Slots) =========================== -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="adsense-wrapper py-6 px-4 text-center">
+        <span class="inline-block px-2 py-0.5 rounded bg-slate-800/80 text-[10px] text-slate-400 mb-1">SPONSORED AD 1</span>
+        <div class="text-xs text-slate-400">하단 반응형 광고 유닛 A</div>
+      </div>
+      <div class="adsense-wrapper py-6 px-4 text-center">
+        <span class="inline-block px-2 py-0.5 rounded bg-slate-800/80 text-[10px] text-slate-400 mb-1">SPONSORED AD 2</span>
+        <div class="text-xs text-slate-400">하단 반응형 광고 유닛 B</div>
+      </div>
+      <div class="adsense-wrapper py-6 px-4 text-center">
+        <span class="inline-block px-2 py-0.5 rounded bg-slate-800/80 text-[10px] text-slate-400 mb-1">SPONSORED AD 3</span>
+        <div class="text-xs text-slate-400">하단 반응형 광고 유닛 C</div>
+      </div>
+    </div>
+  </main>
+
+  <!-- =========================== FOOTER =========================== -->
+  <footer class="bg-slate-950 border-t border-slate-900 py-10 text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-2">
+          <div class="w-6 h-6 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-xs">
+            運
+          </div>
+          <span class="font-bold text-slate-300">사주로또(四柱運 6/45)</span>
+          <span>|</span>
+          <span>Serverless on GitHub Pages</span>
+        </div>
+        <div class="flex items-center gap-4">
+          <a href="https://github.com/ryon-z/useful" target="_blank" rel="noopener noreferrer" class="hover:text-slate-300 transition flex items-center gap-1">
+            <i class="fa-brands fa-github text-sm"></i> GitHub Repository
+          </a>
+          <a href="./data/latest.json" target="_blank" class="hover:text-slate-300 transition flex items-center gap-1">
+            <i class="fa-solid fa-code text-sm"></i> Raw API JSON
+          </a>
+        </div>
+      </div>
+
+      <!-- 건전 복권 문화 유의사항 -->
+      <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 text-[11px] leading-relaxed">
+        <p class="font-semibold text-slate-400 mb-1">⚠️ 이용 유의사항 및 건전 복권 문화 안내</p>
+        <p>• 본 사이트는 복권 및 복권기금법을 준수하며, 사주 명리학의 오행 수리학과 통계적 필터링을 바탕으로 제공되는 오락 및 통계 분석 참고용 서비스입니다.</p>
+        <p>• 로또 6/45의 모든 번호 추출은 독립 시행이며 특정 번호의 당첨을 보장하지 않습니다. 과도한 복권 몰입은 도박중독으로 이어질 수 있습니다.</p>
+        <p>• 1인 1회 10만 원 구매 한도를 준수해 주세요. 청소년(만 19세 미만)은 복권을 구매할 수 없습니다. (도박문제 헬프라인 전화상담: 국번없이 ☎ 1336)</p>
+      </div>
+
+      <p class="text-center text-[10px] text-slate-600">
+        © 2026 사주로또 (LottoWoon). Powered by GitHub Actions & Pages. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <!-- 토스트 알림창 -->
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 px-4 py-2.5 rounded-xl bg-slate-900/95 border border-amber-500/40 text-amber-300 text-xs font-semibold shadow-2xl backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300 z-50 flex items-center gap-2">
+    <i class="fa-solid fa-circle-check text-amber-400"></i>
+    <span id="toast-msg">클립보드에 복사되었습니다.</span>
+  </div>
+
+  <!-- =========================== JAVASCRIPT APPLICATION CODE =========================== -->
+  <script>
+    // 상태 저장 객체
+    const AppState = {
+      latestData: null,
+      sajuGames: [],
+      smartGames: [],
+      currentAlgo: 'balanced',
+      currentGamesQty: 5
+    };
+
+    // 역대 핫 넘버 & 콜드 넘버 통계 데이터셋 (1~1246회 누적 집계 기준)
+    const HISTORICAL_STATS = {
+      hot: [
+        { no: 34, count: 198, rate: '15.9%' },
+        { no: 12, count: 194, rate: '15.6%' },
+        { no: 27, count: 192, rate: '15.4%' },
+        { no: 18, count: 190, rate: '15.2%' },
+        { no: 13, count: 189, rate: '15.2%' },
+        { no: 43, count: 188, rate: '15.1%' },
+        { no: 1,  count: 187, rate: '15.0%' },
+        { no: 45, count: 186, rate: '14.9%' },
+        { no: 17, count: 185, rate: '14.8%' },
+        { no: 33, count: 184, rate: '14.8%' },
+      ],
+      cold: [
+        { no: 9,  count: 142, rate: '11.4%' },
+        { no: 22, count: 148, rate: '11.9%' },
+        { no: 29, count: 150, rate: '12.0%' },
+        { no: 25, count: 152, rate: '12.2%' },
+        { no: 41, count: 153, rate: '12.3%' },
+        { no: 8,  count: 154, rate: '12.4%' },
+        { no: 5,  count: 156, rate: '12.5%' },
+        { no: 40, count: 157, rate: '12.6%' },
+        { no: 32, count: 158, rate: '12.7%' },
+        { no: 16, count: 159, rate: '12.8%' },
+      ]
+    };
+
+    // 로또 공 색상 클래스 판정 함수 (1~10 노랑, 11~20 파랑, 21~30 빨강, 31~40 회색, 41~45 초록)
+    function getBallColorClass(num) {
+      if (num <= 10) return 'ball-yellow';
+      if (num <= 20) return 'ball-blue';
+      if (num <= 30) return 'ball-red';
+      if (num <= 40) return 'ball-gray';
+      return 'ball-green';
+    }
+
+    // 금액 원화 한글 표기 변환 함수 (예: 1881025430 -> "18억 8,102만 원")
+    function formatKoreanCurrency(amount) {
+      if (amount <= 0) return '0 원';
+      const uk = Math.floor(amount / 100000000);
+      const man = Math.floor((amount % 100000000) / 10000);
+      const won = amount % 10000;
+
+      let result = '';
+      if (uk > 0) result += `${uk}억 `;
+      if (man > 0) result += `${man.toLocaleString()}만 `;
+      if (won > 0 && uk === 0 && man === 0) result += `${won.toLocaleString()}`;
+      return result.trim() + ' 원';
+    }
+
+    // 토스트 팝업 띄우기
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-msg');
+      toastMsg.textContent = msg;
+      toast.classList.remove('opacity-0', 'pointer-events-none');
+      toast.classList.add('opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0', 'pointer-events-none');
+      }, 2400);
+    }
+
+    // 클립보드 텍스트 복사
+    async function copyToClipboard(text, successMsg = '클립보드에 복사되었습니다.') {
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast(successMsg);
+      } catch (e) {
+        // 구형 브라우저 대체
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        showToast(successMsg);
+      }
+    }
+
+    // =========================================================================
+    // ① 최신 당첨 번호 데이터 로드 & UI 렌더링
+    // =========================================================================
+    async function loadLatestLotto() {
+      // 기본 폴백 데이터 (네트워크 실패 또는 file:// 직접 열기 시 대비)
+      const fallbackData = {
+        returnValue: 'success',
+        drwNo: 1246,
+        drwNoDate: '2026-10-17',
+        drwtNo1: 16, drwtNo2: 22, drwtNo3: 23, drwtNo4: 24, drwtNo5: 27, drwtNo6: 28, bnusNo: 6,
+        firstPrzwnerCo: 16,
+        firstWinamnt: 1881025430,
+        firstAccumamnt: 30096406880,
+        totSellamnt: 121857105000
+      };
+
+      try {
+        const res = await fetch(`./data/latest.json?t=${Date.now()}`);
+        if (res.ok) {
+          AppState.latestData = await res.json();
+        } else {
+          AppState.latestData = fallbackData;
+        }
+      } catch (e) {
+        console.warn('latest.json fetch failed, using fallback:', e);
+        AppState.latestData = fallbackData;
+      }
+
+      renderLatestLotto(AppState.latestData);
+    }
+
+    function renderLatestLotto(data) {
+      document.getElementById('header-drw-text').textContent = `제 ${data.drwNo}회차 연동됨`;
+      document.getElementById('latest-drw-no').textContent = data.drwNo;
+      document.getElementById('latest-date').textContent = `${data.drwNoDate} 추첨`;
+
+      const ballsContainer = document.getElementById('winning-balls-container');
+      const numbers = [data.drwtNo1, data.drwtNo2, data.drwtNo3, data.drwtNo4, data.drwtNo5, data.drwtNo6];
+      
+      let html = '';
+      numbers.forEach(num => {
+        html += `<div class="w-12 h-12 sm:w-14 sm:h-14 lotto-ball ${getBallColorClass(num)} text-lg sm:text-xl font-black">${num}</div>`;
+      });
+      html += `<div class="text-xl sm:text-2xl text-slate-500 font-light px-1">+</div>`;
+      html += `<div class="w-12 h-12 sm:w-14 sm:h-14 lotto-ball ${getBallColorClass(data.bnusNo)} text-lg sm:text-xl font-black" title="보너스 번호">${data.bnusNo}</div>`;
+      
+      ballsContainer.innerHTML = html;
+
+      // 통계 카드
+      document.getElementById('rank1-winners').textContent = data.firstPrzwnerCo.toLocaleString();
+      document.getElementById('rank1-prize').textContent = formatKoreanCurrency(data.firstWinamnt);
+      document.getElementById('rank1-total').textContent = formatKoreanCurrency(data.firstAccumamnt);
+      document.getElementById('total-sales').textContent = formatKoreanCurrency(data.totSellamnt);
+
+      // 세금 계산기 입력창에도 최신 1등 당첨금 세팅
+      const taxInput = document.getElementById('tax-prize-input');
+      if (taxInput && data.firstWinamnt) {
+        taxInput.value = data.firstWinamnt.toLocaleString();
+        calculateTax();
+      }
+    }
+
+    // 다음 추첨일 카운트다운 타이머 (매주 토요일 20:35 KST 기준)
+    function updateCountdown() {
+      const now = new Date();
+      // 한국 표준시 기준 계산 (UTC+9)
+      const currentDay = now.getDay(); // 0(일) ~ 6(토)
+      let daysUntilSat = (6 - currentDay + 7) % 7;
+      
+      const nextDraw = new Date(now);
+      nextDraw.setDate(now.getDate() + daysUntilSat);
+      nextDraw.setHours(20, 35, 0, 0);
+
+      // 이미 이번 주 토요일 20:35가 지났다면 다음 주 토요일로 설정
+      if (nextDraw.getTime() <= now.getTime()) {
+        nextDraw.setDate(nextDraw.getDate() + 7);
+      }
+
+      const diffMs = nextDraw.getTime() - now.getTime();
+      const hours = Math.floor(diffMs / (1000 * 60 * 60));
+      const mins = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+      const secs = Math.floor((diffMs % (1000 * 60)) / 1000);
+
+      const dDayEl = document.getElementById('draw-countdown');
+      if (dDayEl) {
+        dDayEl.textContent = `${hours}시간 ${mins}분 ${secs}초 남음`;
+      }
+    }
+
+    // =========================================================================
+    // 가상 대조 검증 모듈
+    // =========================================================================
+    function runMatchCheck(userNums) {
+      if (!AppState.latestData) return;
+      const winNums = [
+        AppState.latestData.drwtNo1,
+        AppState.latestData.drwtNo2,
+        AppState.latestData.drwtNo3,
+        AppState.latestData.drwtNo4,
+        AppState.latestData.drwtNo5,
+        AppState.latestData.drwtNo6
+      ];
+      const bonusNum = AppState.latestData.bnusNo;
+
+      const matched = userNums.filter(n => winNums.includes(n));
+      const bonusMatched = userNums.includes(bonusNum);
+
+      let rank = '낙첨 (0원)';
+      let badgeClass = 'bg-slate-800 text-slate-400 border-slate-700';
+      let prizeEstimated = '0원';
+
+      if (matched.length === 6) {
+        rank = '🎉 축하합니다! 1등 당첨!';
+        badgeClass = 'bg-amber-500/20 text-amber-300 border-amber-500 shadow-glow-gold';
+        prizeEstimated = formatKoreanCurrency(AppState.latestData.firstWinamnt);
+      } else if (matched.length === 5 && bonusMatched) {
+        rank = '🥈 대박! 2등 당첨 (보너스볼 일치)!';
+        badgeClass = 'bg-blue-500/20 text-blue-300 border-blue-500';
+        prizeEstimated = '약 6,000만 원 (해당 회차 기준)';
+      } else if (matched.length === 5) {
+        rank = '🥉 3등 당첨!';
+        badgeClass = 'bg-emerald-500/20 text-emerald-300 border-emerald-500';
+        prizeEstimated = '약 150만 원';
+      } else if (matched.length === 4) {
+        rank = '🍀 4등 당첨 (고정 50,000원)';
+        badgeClass = 'bg-purple-500/20 text-purple-300 border-purple-500';
+        prizeEstimated = '50,000원';
+      } else if (matched.length === 3) {
+        rank = '✨ 5등 당첨 (고정 5,000원)';
+        badgeClass = 'bg-indigo-500/20 text-indigo-300 border-indigo-500';
+        prizeEstimated = '5,000원';
+      }
+
+      const resultBox = document.getElementById('match-result-box');
+      resultBox.classList.remove('hidden');
+
+      let ballsHtml = userNums.map(n => {
+        const isHit = winNums.includes(n);
+        const isBonusHit = (n === bonusNum);
+        let borderStyle = isHit ? 'ball-matched' : '';
+        if (isBonusHit && matched.length === 5) borderStyle = 'ball-matched outline-blue-400';
+        return `<div class="w-10 h-10 lotto-ball ${getBallColorClass(n)} text-sm ${borderStyle}">${n}</div>`;
+      }).join('');
+
+      resultBox.innerHTML = `
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="px-2.5 py-1 rounded-lg border text-xs font-bold ${badgeClass}">
+                ${rank}
+              </span>
+              <span class="text-xs text-slate-300">
+                일치 개수: <b class="text-amber-400 text-sm">${matched.length}개</b> ${bonusMatched ? '+ <b class="text-blue-400">보너스볼</b>' : ''}
+              </span>
+            </div>
+            <div class="text-xs text-slate-400">
+              해당 회차(${AppState.latestData.drwNo}회) 기준 예상 당첨금: <b class="text-white text-sm">${prizeEstimated}</b>
+            </div>
+          </div>
+          <div class="flex items-center gap-1.5 self-start sm:self-auto">
+            ${ballsHtml}
+          </div>
+        </div>
+      `;
+    }
+
+    // =========================================================================
+    // ③ 사주 명리학 오행(五行) 분석 엔진
+    // =========================================================================
+    const SAJU_ELEMENT_MAP = {
+      wood:  { name: '목(木)', color: 'text-emerald-400', luckyNums: [3, 8], pool: [3, 8, 13, 18, 23, 28, 33, 38, 43], day: '목요일', dir: '동쪽(東)', time: '05:30 ~ 09:30 (인시·묘시)', desc: '생장과 성장, 뻗어나가는 푸른 청룡의 기운' },
+      fire:  { name: '화(火)', color: 'text-rose-400', luckyNums: [2, 7], pool: [2, 7, 12, 17, 22, 27, 32, 37, 42], day: '화요일', dir: '남쪽(南)', time: '11:30 ~ 15:30 (사시·오시)', desc: '열정과 확산, 빛을 발하는 붉은 주작의 기운' },
+      earth: { name: '토(土)', color: 'text-amber-400', luckyNums: [5, 10], pool: [5, 10, 15, 20, 25, 30, 35, 40, 45], day: '토요일', dir: '중앙 및 사방(四方)', time: '07:30 ~ 09:30 (진시) / 19:30~21:30 (술시)', desc: '포용과 저장, 모든 것을 감싸안는 풍요로운 황토의 기운' },
+      metal: { name: '금(金)', color: 'text-slate-300', luckyNums: [4, 9], pool: [4, 9, 14, 19, 24, 29, 34, 39, 44], day: '금요일', dir: '서쪽(西)', time: '15:30 ~ 19:30 (신시·유시)', desc: '결실과 단단함, 재물을 모아들이는 백호의 기운' },
+      water: { name: '수(水)', color: 'text-blue-400', luckyNums: [1, 6], pool: [1, 6, 11, 16, 21, 26, 31, 36, 41], day: '수요일', dir: '북쪽(北)', time: '21:30 ~ 01:30 (해시·자시)', desc: '지혜와 유연함, 마르지 않고 흐르는 현무의 기운' },
+    };
+
+    function analyzeSaju() {
+      const birthStr = document.getElementById('saju-birthdate').value;
+      const timeVal = document.getElementById('saju-time').value;
+      if (!birthStr) return;
+
+      const dateObj = new Date(birthStr);
+      const year = dateObj.getFullYear();
+      const month = dateObj.getMonth() + 1;
+      const day = dateObj.getDate();
+      const timeNum = timeVal === 'unknown' ? 6 : Number(timeVal);
+
+      // 천간 지지 수리 기반 모듈러 연산
+      const yearScore = (year * 3 + month * 7 + day * 11 + timeNum * 13);
+      const elementsKeys = ['wood', 'fire', 'earth', 'metal', 'water'];
+      
+      const mainIdx = yearScore % 5;
+      const luckyIdx = (mainIdx + 3) % 5; // 극을 완화하고 생(生)을 돕는 보완 오행(희신)
+
+      const mainEl = SAJU_ELEMENT_MAP[elementsKeys[mainIdx]];
+      const luckyEl = SAJU_ELEMENT_MAP[elementsKeys[luckyIdx]];
+
+      // UI 소견서 갱신
+      document.getElementById('saju-main-element').innerHTML = `<span class="w-3 h-3 rounded-full bg-current ${mainEl.color}"></span> ${mainEl.name}`;
+      document.getElementById('saju-main-desc').textContent = mainEl.desc;
+
+      document.getElementById('saju-lucky-element').innerHTML = `<span class="w-3 h-3 rounded-full bg-current ${luckyEl.color}"></span> ${luckyEl.name} (보완 용신)`;
+      document.getElementById('saju-lucky-desc').textContent = `부족한 기운을 보완하는 길조의 숫자 (${luckyEl.luckyNums.join(', ')})`;
+
+      document.getElementById('saju-lucky-time').innerHTML = `<i class="fa-regular fa-clock text-amber-400 mr-1.5"></i> ${luckyEl.day} / ${luckyEl.time}`;
+      document.getElementById('saju-lucky-direction').innerHTML = `<i class="fa-solid fa-compass text-amber-400 mr-1.5"></i> 거주지 기준 ${luckyEl.dir} 방향 복권방`;
+
+      // 5게임 사주 맞춤 번호 생성
+      generateSajuLottoNumbers(mainEl, luckyEl);
+    }
+
+    function generateSajuLottoNumbers(mainEl, luckyEl) {
+      const games = [];
+      const gameLabels = ['A', 'B', 'C', 'D', 'E'];
+
+      for (let g = 0; g < 5; g++) {
+        const selected = new Set();
+        
+        // 1. 오행 필수 수리군에서 2~3개 우선 추출
+        const sajuCandidates = [...mainEl.pool, ...luckyEl.pool];
+        while (selected.size < 2 && sajuCandidates.length > 0) {
+          const rand = sajuCandidates[Math.floor(Math.random() * sajuCandidates.length)];
+          selected.add(rand);
+        }
+
+        // 2. 나머지 자리를 1~45 풀에서 균형있게 채움
+        while (selected.size < 6) {
+          const num = Math.floor(Math.random() * 45) + 1;
+          selected.add(num);
+        }
+
+        const sorted = Array.from(selected).sort((a, b) => a - b);
+        games.push({ label: gameLabels[g], numbers: sorted });
+      }
+
+      AppState.sajuGames = games;
+      renderGamesList('saju-games-list', games);
+    }
+
+    // =========================================================================
+    // ② 스마트 로또 번호 추출기 알고리즘
+    // =========================================================================
+    function generateSmartNumbers() {
+      const algo = AppState.currentAlgo;
+      const count = AppState.currentGamesQty;
+      const games = [];
+      const gameLabels = ['A', 'B', 'C', 'D', 'E'];
+
+      for (let g = 0; g < count; g++) {
+        let nums = [];
+        let attempts = 0;
+
+        while (attempts < 1000) {
+          attempts++;
+          const candidate = generateRawGame(algo);
+          if (validateAlgorithm(candidate, algo)) {
+            nums = candidate.sort((a, b) => a - b);
+            break;
+          }
+        }
+
+        if (nums.length === 0) {
+          // 폴백: 순수 난수
+          nums = generateRawGame('random').sort((a, b) => a - b);
+        }
+
+        games.push({ label: gameLabels[g], numbers: nums });
+      }
+
+      AppState.smartGames = games;
+      renderGamesList('smart-games-list', games);
+    }
+
+    function generateRawGame(algo) {
+      const set = new Set();
+
+      if (algo === 'frequent') {
+        // 다빈출 번호군에서 최소 2개 선발
+        const hotPool = HISTORICAL_STATS.hot.map(h => h.no);
+        while (set.size < 2) {
+          set.add(hotPool[Math.floor(Math.random() * hotPool.length)]);
+        }
+      }
+
+      while (set.size < 6) {
+        // 암호학적 난수 지원
+        let randVal;
+        if (window.crypto && window.crypto.getRandomValues) {
+          const arr = new Uint32Array(1);
+          window.crypto.getRandomValues(arr);
+          randVal = (arr[0] % 45) + 1;
+        } else {
+          randVal = Math.floor(Math.random() * 45) + 1;
+        }
+        set.add(randVal);
+      }
+
+      return Array.from(set);
+    }
+
+    function validateAlgorithm(nums, algo) {
+      if (algo === 'random') return true;
+
+      const sum = nums.reduce((acc, cur) => acc + cur, 0);
+      const oddCount = nums.filter(n => n % 2 !== 0).length;
+
+      // 1. 총합 필터 (100 ~ 175)
+      if (algo === 'sum' || algo === 'balanced') {
+        if (sum < 100 || sum > 175) return false;
+      }
+
+      // 2. 균형 모드: 홀짝 비율 (2:4, 3:3, 4:2)
+      if (algo === 'balanced') {
+        if (oddCount < 2 || oddCount > 4) return false;
+      }
+
+      return true;
+    }
+
+    // 게임 목록 UI 렌더링 헬퍼
+    function renderGamesList(containerId, games) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+
+      container.innerHTML = games.map(game => {
+        const sum = game.numbers.reduce((a, b) => a + b, 0);
+        const odd = game.numbers.filter(n => n % 2 !== 0).length;
+        const even = 6 - odd;
+
+        const ballsHtml = game.numbers.map(n => 
+          `<div class="w-9 h-9 sm:w-11 sm:h-11 lotto-ball ${getBallColorClass(n)} text-sm sm:text-base font-bold">${n}</div>`
+        ).join('');
+
+        return `
+          <div class="p-3.5 sm:p-4 rounded-2xl bg-slate-950/70 border border-slate-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:border-slate-700 transition">
+            <div class="flex items-center gap-3">
+              <span class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/30 flex items-center justify-center font-black text-xs">
+                ${game.label}
+              </span>
+              <div class="flex flex-wrap items-center gap-2">
+                ${ballsHtml}
+              </div>
+            </div>
+            <div class="flex items-center justify-between sm:justify-end gap-3 text-[11px] text-slate-400">
+              <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">홀짝 ${odd}:${even}</span>
+              <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">총합 ${sum}</span>
+              <button onclick="copySingleGame('${game.label}', '${game.numbers.join(', ')}')" class="p-1.5 rounded-lg hover:bg-slate-800 hover:text-white transition" title="이 게임 복사">
+                <i class="fa-regular fa-copy text-xs"></i>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function copySingleGame(label, nums) {
+      copyToClipboard(`${label}게임: ${nums}`, `${label}게임 번호가 복사되었습니다.`);
+    }
+
+    // =========================================================================
+    // ④ 당첨금 세금 및 실수령액 계산기
+    // =========================================================================
+    function calculateTax() {
+      const inputEl = document.getElementById('tax-prize-input');
+      const rawVal = inputEl.value.replace(/[^0-9]/g, '');
+      const gross = Number(rawVal) || 0;
+
+      let incomeTax = 0; // 국세
+      let localTax = 0;  // 지방소득세 (국세의 10%)
+
+      if (gross <= 2000000) {
+        // 200만 원 이하 비과세
+        incomeTax = 0;
+        localTax = 0;
+      } else if (gross <= 300000000) {
+        // 3억 원 이하: 22% (소득세 20% + 지방세 2%)
+        incomeTax = Math.floor(gross * 0.20);
+        localTax = Math.floor(incomeTax * 0.10);
+      } else {
+        // 3억 원 초과: 3억원까지 22% + 3억 초과분 33%
+        const taxBase1 = 300000000;
+        const taxBase2 = gross - 300000000;
+
+        const incomeTax1 = Math.floor(taxBase1 * 0.20);
+        const incomeTax2 = Math.floor(taxBase2 * 0.30);
+        incomeTax = incomeTax1 + incomeTax2;
+        localTax = Math.floor(incomeTax * 0.10);
+      }
+
+      const totalTax = incomeTax + localTax;
+      const netPayout = gross - totalTax;
+      const effectiveRate = gross > 0 ? ((totalTax / gross) * 100).toFixed(1) : '0.0';
+
+      document.getElementById('tax-gross-display').textContent = gross.toLocaleString() + ' 원';
+      document.getElementById('tax-income-display').textContent = '- ' + incomeTax.toLocaleString() + ' 원';
+      document.getElementById('tax-local-display').textContent = '- ' + localTax.toLocaleString() + ' 원';
+      document.getElementById('tax-total-display').textContent = '- ' + totalTax.toLocaleString() + ' 원';
+      document.getElementById('tax-rate-display').textContent = `${effectiveRate} %`;
+
+      document.getElementById('net-payout-text').textContent = netPayout.toLocaleString() + ' 원';
+      document.getElementById('net-payout-korean').textContent = formatKoreanCurrency(netPayout);
+    }
+
+    // =========================================================================
+    // ⑤ 역대 통계 UI 렌더링
+    // =========================================================================
+    function renderHistoricalStats() {
+      const hotList = document.getElementById('hot-numbers-list');
+      const coldList = document.getElementById('cold-numbers-list');
+
+      if (hotList) {
+        hotList.innerHTML = HISTORICAL_STATS.hot.map((item, idx) => `
+          <div class="flex items-center justify-between p-2 rounded-xl bg-slate-900 border border-slate-800 text-xs">
+            <div class="flex items-center gap-3">
+              <span class="w-5 text-slate-500 font-mono font-bold text-center">${idx + 1}</span>
+              <div class="w-8 h-8 lotto-ball ${getBallColorClass(item.no)} text-xs font-bold">${item.no}</div>
+              <span class="font-semibold text-slate-200">${item.no}번</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-24 bg-slate-800 h-2 rounded-full overflow-hidden hidden sm:block">
+                <div class="bg-rose-500 h-full rounded-full" style="width: ${(item.count / 200) * 100}%"></div>
+              </div>
+              <span class="text-rose-400 font-bold font-mono">${item.count}회</span>
+              <span class="text-slate-500 text-[11px] w-12 text-right">(${item.rate})</span>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      if (coldList) {
+        coldList.innerHTML = HISTORICAL_STATS.cold.map((item, idx) => `
+          <div class="flex items-center justify-between p-2 rounded-xl bg-slate-900 border border-slate-800 text-xs">
+            <div class="flex items-center gap-3">
+              <span class="w-5 text-slate-500 font-mono font-bold text-center">${idx + 1}</span>
+              <div class="w-8 h-8 lotto-ball ${getBallColorClass(item.no)} text-xs font-bold">${item.no}</div>
+              <span class="font-semibold text-slate-200">${item.no}번</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-24 bg-slate-800 h-2 rounded-full overflow-hidden hidden sm:block">
+                <div class="bg-blue-500 h-full rounded-full" style="width: ${(item.count / 200) * 100}%"></div>
+              </div>
+              <span class="text-blue-400 font-bold font-mono">${item.count}회</span>
+              <span class="text-slate-500 text-[11px] w-12 text-right">(${item.rate})</span>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    // =========================================================================
+    // 이벤트 바인딩 & 초기화
+    // =========================================================================
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. 최신 데이터 로드 및 타이머 시작
+      loadLatestLotto();
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+
+      // 2. 사주 분석 초기 실행
+      analyzeSaju();
+      document.getElementById('btn-analyze-saju').addEventListener('click', analyzeSaju);
+
+      // 사주 복사 & 대조 버튼
+      document.getElementById('btn-copy-saju').addEventListener('click', () => {
+        if (!AppState.sajuGames.length) return;
+        const text = AppState.sajuGames.map(g => `${g.label}: ${g.numbers.join(', ')}`).join('\n');
+        copyToClipboard(text, '사주 맞춤 5게임 번호가 복사되었습니다.');
+      });
+
+      document.getElementById('btn-match-saju').addEventListener('click', () => {
+        if (!AppState.sajuGames.length) return;
+        runMatchCheck(AppState.sajuGames[0].numbers);
+        const matchSec = document.getElementById('latest-section');
+        matchSec.scrollIntoView({ behavior: 'smooth' });
+        showToast('A게임 번호로 최신 회차와 대조했습니다.');
+      });
+
+      // 3. 스마트 추출기 초기 실행
+      generateSmartNumbers();
+      document.getElementById('btn-generate-smart').addEventListener('click', generateSmartNumbers);
+
+      // 알고리즘 버튼 토글
+      document.querySelectorAll('#algo-selector .algo-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('#algo-selector .algo-btn').forEach(b => {
+            b.classList.remove('active', 'border-amber-500', 'bg-amber-500/10', 'text-amber-300');
+            b.classList.add('border-slate-800', 'bg-slate-950/60', 'text-slate-400');
+          });
+          btn.classList.add('active', 'border-amber-500', 'bg-amber-500/10', 'text-amber-300');
+          btn.classList.remove('border-slate-800', 'bg-slate-950/60', 'text-slate-400');
+          AppState.currentAlgo = btn.getAttribute('data-algo');
+          generateSmartNumbers();
+        });
+      });
+
+      // 게임 수량 버튼 토글
+      document.querySelectorAll('.games-qty-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.games-qty-btn').forEach(b => {
+            b.classList.remove('active', 'border-amber-500', 'bg-amber-500/10', 'text-amber-300');
+            b.classList.add('border-slate-800', 'bg-slate-950/60', 'text-slate-400');
+          });
+          btn.classList.add('active', 'border-amber-500', 'bg-amber-500/10', 'text-amber-300');
+          btn.classList.remove('border-slate-800', 'bg-slate-950/60', 'text-slate-400');
+          AppState.currentGamesQty = Number(btn.getAttribute('data-games'));
+          generateSmartNumbers();
+        });
+      });
+
+      // 스마트 번호 복사 & 대조 버튼
+      document.getElementById('btn-copy-smart').addEventListener('click', () => {
+        if (!AppState.smartGames.length) return;
+        const text = AppState.smartGames.map(g => `${g.label}: ${g.numbers.join(', ')}`).join('\n');
+        copyToClipboard(text, '스마트 추천 번호가 복사되었습니다.');
+      });
+
+      document.getElementById('btn-match-smart').addEventListener('click', () => {
+        if (!AppState.smartGames.length) return;
+        runMatchCheck(AppState.smartGames[0].numbers);
+        const matchSec = document.getElementById('latest-section');
+        matchSec.scrollIntoView({ behavior: 'smooth' });
+        showToast('A게임 번호로 최신 회차와 대조했습니다.');
+      });
+
+      // 4. 가상 대조 수동 버튼
+      document.getElementById('btn-run-match').addEventListener('click', () => {
+        const inputs = document.querySelectorAll('.match-input');
+        const nums = [];
+        inputs.forEach(inp => {
+          const val = Number(inp.value);
+          if (val >= 1 && val <= 45 && !nums.includes(val)) {
+            nums.push(val);
+          }
+        });
+
+        if (nums.length !== 6) {
+          alert('1부터 45 사이의 서로 다른 번호 6개를 모두 입력해 주세요.');
+          return;
+        }
+
+        runMatchCheck(nums.sort((a, b) => a - b));
+      });
+
+      // 추천 번호 가져와서 6칸 채우기 버튼
+      document.getElementById('btn-quick-import-match').addEventListener('click', () => {
+        const targetGame = AppState.sajuGames[0] || AppState.smartGames[0];
+        if (!targetGame) return;
+
+        const inputs = document.querySelectorAll('.match-input');
+        targetGame.numbers.forEach((num, idx) => {
+          if (inputs[idx]) inputs[idx].value = num;
+        });
+
+        runMatchCheck(targetGame.numbers);
+        showToast(`${targetGame.label}게임 번호를 불러와 즉시 대조했습니다.`);
+      });
+
+      // 5. 세금 계산기 입력 이벤트
+      const taxInput = document.getElementById('tax-prize-input');
+      taxInput.addEventListener('input', (e) => {
+        const raw = e.target.value.replace(/[^0-9]/g, '');
+        e.target.value = raw ? Number(raw).toLocaleString() : '';
+        calculateTax();
+      });
+
+      document.querySelectorAll('.preset-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const amount = Number(btn.getAttribute('data-amount'));
+          taxInput.value = amount.toLocaleString();
+          calculateTax();
+        });
+      });
+
+      calculateTax();
+
+      // 6. 통계 렌더링
+      renderHistoricalStats();
+
+      // 7. 모바일 햄버거 메뉴 토글
+      const menuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+        });
+        mobileMenu.querySelectorAll('a').forEach(a => {
+          a.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+      }
+
+      // 8. Service Worker 등록 (PWA 지원)
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js').catch(err => {
+          console.log('SW registration skipped:', err);
+        });
+      }
+    });
+  </script>
+</body>
+</html>

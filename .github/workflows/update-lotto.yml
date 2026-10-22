@@ -1,0 +1,38 @@
+name: Update Lotto Latest Data
+
+on:
+  schedule:
+    # 매주 토요일 21:15 KST, 21:45 KST (UTC 기준 12:15, 12:45)
+    - cron: '15,45 12 * * 6'
+  workflow_dispatch: # GitHub 콘솔에서 수동 즉시 실행 가능
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-and-update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch Latest Lotto Data
+        run: node scripts/fetch-lotto.js
+
+      - name: Commit and Push if Changed
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/latest.json
+          if git diff --staged --quiet; then
+            echo "No changes in data/latest.json"
+          else
+            git commit -m "chore: auto-update lotto latest winning data [skip ci]"
+            git push
+          fi
