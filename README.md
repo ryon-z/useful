@@ -1,87 +1,66 @@
-# 🔮 사주로또(四柱運 6/45)
+# 🧰 USEFUL (유용한 생활 도구 모음)
 
-> **사주 명리학 오행 분석 & 통계 필터링 기반 스마트 로또 추천 및 실시간 분석 웹 애플리케이션**  
+> **일상에 꼭 필요한 라이프 유틸리티 & 웹 도구 포털**  
 > GitHub Pages(정적 호스팅)와 GitHub Actions(Serverless Cron 파이프라인)를 통해 서버 비용 **0원**으로 운영되는 웹 플랫폼입니다.
 
 ---
 
-## 🌟 주요 기능 (Core Modules)
+## 🌐 서비스 바로가기
 
-1. **최신 당첨 번호 실시간 브리핑**
-   - GitHub Actions가 매주 토요일 동행복권 최신 회차 데이터를 자동 수집(`data/latest.json`).
-   - 공식 5대 색상 규격 로또 볼 렌더링, 1등 당첨 인원, 1인당 당첨 수령액, 총 판매액 브리핑.
-
-2. **사주 명리학 오행(五行) 분석 엔진**
-   - 생년월일시의 간지(干支) 수리를 환산하여 본명 오행(木·火·土·金·水)과 보완 용신(희신) 도출.
-   - 전통 하도·낙서 오행 상응 수리를 번호 풀에 우선 배정하여 5게임(1세트) 맞춤 생성.
-   - 행운의 구매 요일, 명당 복권방 길방위(동/서/남/북/중앙), 행운의 길시(시간대) 가이드 제공.
-
-3. **스마트 로또 번호 추출기**
-   - **균형 분포 모드**: 홀짝 비율(2:4, 3:3, 4:2) + 총합 구간(100~175) 통계 필터링.
-   - **총합 필터 모드**: 역대 최다 빈출 구간인 총합 100~175 필터.
-   - **다빈출 가중치 모드**: 역대 1,200회+ 누적 핫 넘버 2개 이상 필수 배합.
-   - **완전 무작위 난수 모드**: Web Crypto API 기반 암호학적 난수 생성.
-   - 1게임(1,000원) / 5게임(5,000원) 선택 및 클립보드 원클릭 복사.
-
-4. **당첨금 세금 및 실수령액 계산기**
-   - 대한민국 소득세법(소득세 + 지방소득세 10%) 기준 완벽 준수:
-     - 200만 원 이하: 비과세 (원천징수 0원)
-     - 200만 원 초과 ~ 3억 원 이하: 22%
-     - 3억 원 초과: 3억까지 22% + 초과분 33% 누진 과세
-   - 실효세율 및 실수령액 실시간 계산, 농협은행 등위별 수령 가이드 수록.
-
-5. **역대 누적 통계 & 핫/콜드 넘버**
-   - 누적 출현 빈도 TOP 10 핫 넘버 및 최소 출현 10개 콜드 넘버 현황.
-   - 번호대(색상대)별 누적 출현 비율 바 그래프 제공.
-
-6. **수익화 & PWA & SEO**
-   - Google AdSense 광고 영역 배치 (상단 리더보드, 인피드, 하단 3개 유닛).
-   - 시맨틱 HTML5 및 OpenGraph / Twitter SNS 공유 카드.
-   - PWA (`manifest.json`, `sw.js`) 지원으로 모바일 웹앱 설치 가능.
+- **통합 포털 홈**: [https://ryon-z.github.io/useful/](https://ryon-z.github.io/useful/)
+- **🍀 사주 로또 6/45 명당 & 실시간 분석기**: [https://ryon-z.github.io/useful/lottery/](https://ryon-z.github.io/useful/lottery/)
 
 ---
 
-## 📂 프로젝트 구조 (Repository Tree)
+## 🛠️ 제공 및 개발 예정 도구 목록
+
+| 도구명 | 디렉터리 | 상태 | 주요 기능 |
+| :--- | :--- | :---: | :--- |
+| **사주 로또 명당 & 실시간 분석기** | [`/lottery/`](./lottery/) | **운영 중** | 1·2등 실시간 당첨금, 사주 오행 5게임 추천, 통계 필터 번호 생성기, 실수령액 세금 계산기 (50대 시니어 가독성 최적화) |
+| **만 나이 & 띠·천간지지 계산기** | `/age/` (예정) | 준비 중 | 개정 법적 만 나이, 연 나이, 세는 나이 및 12간지 띠·육십갑자 계산 |
+| **예·적금 만기 이자 계산기** | `/interest/` (예정) | 준비 중 | 예금·적금 단리/복리 계산, 15.4% 이자과세 공제 후 실수령액 계산 |
+| **D-Day & 음력·양력 변환기** | `/dday/` (예정) | 준비 중 | 음력/양력 기념일 및 제사일 변환, D-Day 카운트다운 |
+
+---
+
+## 📂 저장소 전체 구조 (Repository Tree)
 
 ```text
-.
-├── .github/
-│   └── workflows/
-│       └── update-lotto.yml    # 매주 토요일 21:15, 21:45 KST 자동 크론잡
-├── data/
-│   └── latest.json             # 최신 회차 당첨 데이터 (JSON)
+useful/
+├── index.html                   # USEFUL 통합 도구 모음 포털 메인 페이지
+├── ads.txt                      # Google AdSense 루트 인증 파일
+├── README.md                    # 본 문서 (전체 저장소 가이드)
+│
+├── lottery/                     # [도구 1] 사주 로또 6/45 분석기
+│   ├── index.html               # 50대 최적화 로또 웹 애플리케이션
+│   ├── manifest.json            # PWA 웹 앱 매니페스트
+│   ├── sw.js                    # 오프라인 캐싱 서비스 워커
+│   ├── data/
+│   │   └── latest.json          # 최신 회차 당첨 데이터 (JSON)
+│   └── README.md                # 로또 도구 전용 상세 사양서
+│
 ├── scripts/
-│   └── fetch-lotto.js          # 동행복권 API 호출 및 data/latest.json 생성기
-├── ads.txt                     # Google AdSense 사이트 인증 파일
-├── index.html                  # 단일 페이지 반응형 웹 애플리케이션
-├── manifest.json               # PWA 웹 앱 매니페스트
-├── sw.js                       # Service Worker (오프라인 캐싱)
-└── README.md
+│   └── fetch-lotto.js           # 동행복권 API 호출 및 lottery/data 갱신 크롤러
+│
+└── .github/workflows/
+    └── update-lotto.yml         # 매주 토요일 21:15, 21:45 KST 자동 크론잡
 ```
 
 ---
 
-## 🚀 GitHub Pages 배포 방법
+## 🚀 배포 및 자동화
 
-1. 본 저장소의 **Settings** > **Pages** 메뉴로 이동합니다.
-2. **Build and deployment** 항목의 **Source**를 `Deploy from a branch`로 선택합니다.
-3. **Branch**를 `main` / `/(root)`로 설정하고 **Save**를 클릭합니다.
-4. 약 1~2분 후 `https://<github-username>.github.io/<repo-name>/` 주소로 즉시 서비스됩니다.
-
----
-
-## ⏰ 백그라운드 데이터 수집 (GitHub Actions)
-
-- `.github/workflows/update-lotto.yml`을 통해 매주 토요일 21:15, 21:45 KST에 자동 실행됩니다.
-- 로컬 또는 GitHub Actions 콘솔의 `Actions` 탭에서 **Run workflow**를 눌러 수동으로 즉시 최신 회차를 갱신할 수도 있습니다.
-- 로컬 직접 실행 명령어:
-  ```bash
-  node scripts/fetch-lotto.js
-  ```
+1. **GitHub Pages 배포**:
+   - `Settings` > `Pages` > `Source: Deploy from a branch` (`main` / `root`)
+2. **백그라운드 데이터 수집 (GitHub Actions)**:
+   - 매주 토요일 저녁 21:15, 21:45 KST에 `.github/workflows/update-lotto.yml`이 자동 실행되어 동행복권 공식 API 데이터를 `lottery/data/latest.json`에 최신으로 반영합니다.
+   - 로컬 테스트 명령어:
+     ```bash
+     node scripts/fetch-lotto.js
+     ```
 
 ---
 
 ## 📜 라이선스 및 유의사항
-
-- 본 프로젝트는 교육 및 연구, 건전한 오락 목적의 오픈소스 프로젝트입니다.
-- 복권 및 복권기금법을 준수하며 과도한 복권 몰입을 지양합니다. (도박문제 헬프라인: 국번없이 1336)
+- 본 프로젝트는 일상 편의를 위한 무료 오픈소스 웹 유틸리티 모음입니다.
+- 복권 관련 콘텐츠는 건전한 오락 목적의 참고용 서비스입니다.
