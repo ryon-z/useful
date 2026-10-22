@@ -55,14 +55,26 @@
           <span class="text-xl sm:text-2xl font-black tracking-tight text-white">USEFUL <span class="text-amber-400">도구모음</span></span>
         </div>
       </div>
-      <nav class="flex items-center gap-2.5 sm:gap-4 text-xs sm:text-base font-bold text-slate-300">
-        <a href="./lottery/" class="text-amber-300 hover:text-amber-200 transition flex items-center gap-1.5 bg-amber-500/10 border border-amber-500/30 px-3 py-1.5 rounded-xl">
+      <nav class="flex items-center gap-2 sm:gap-3 text-xs sm:text-base font-bold text-slate-300">
+        <a href="./lottery/" class="text-amber-300 hover:text-amber-200 transition flex items-center gap-1.5 bg-amber-500/10 border border-amber-500/30 px-2.5 py-1.5 rounded-xl">
           <i class="fa-solid fa-clover text-amber-400"></i>
-          <span>로또 명당</span>
+          <span class="hidden sm:inline">로또 명당</span>
+          <span class="sm:hidden">로또</span>
         </a>
-        <a href="./age/" class="text-sky-300 hover:text-sky-200 transition flex items-center gap-1.5 bg-sky-500/10 border border-sky-500/30 px-3 py-1.5 rounded-xl">
+        <a href="./age/" class="text-sky-300 hover:text-sky-200 transition flex items-center gap-1.5 bg-sky-500/10 border border-sky-500/30 px-2.5 py-1.5 rounded-xl">
           <i class="fa-solid fa-calendar-days text-sky-400"></i>
-          <span>만 나이 계산기</span>
+          <span class="hidden sm:inline">만 나이</span>
+          <span class="sm:hidden">나이</span>
+        </a>
+        <a href="./interest/" class="text-emerald-300 hover:text-emerald-200 transition flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/30 px-2.5 py-1.5 rounded-xl">
+          <i class="fa-solid fa-coins text-emerald-400"></i>
+          <span class="hidden sm:inline">이자 계산</span>
+          <span class="sm:hidden">이자</span>
+        </a>
+        <a href="./dday/" class="text-rose-300 hover:text-rose-200 transition flex items-center gap-1.5 bg-rose-500/10 border border-rose-500/30 px-2.5 py-1.5 rounded-xl">
+          <i class="fa-regular fa-calendar-check text-rose-400"></i>
+          <span class="hidden sm:inline">D-Day·음력</span>
+          <span class="sm:hidden">D-Day</span>
         </a>
       </nav>
     </div>
@@ -186,66 +198,74 @@
           </a>
         </div>
 
-        <!-- 3. 예·적금 만기 이자 & 비과세 계산기 (준비 중) -->
-        <div class="bg-slate-900/60 border border-slate-800 rounded-3xl p-6 sm:p-7 shadow-lg flex flex-col justify-between opacity-85">
+        <!-- 3. 예·적금 만기 이자 & 비과세 계산기 (운영 중) -->
+        <div class="bg-slate-900 border-2 border-emerald-500/50 hover:border-emerald-400 rounded-3xl p-6 sm:p-7 shadow-xl transition-all flex flex-col justify-between group relative overflow-hidden">
+          <div class="absolute -top-10 -right-10 w-36 h-36 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
           <div>
             <div class="flex items-center justify-between gap-3 mb-4">
-              <div class="w-12 h-12 rounded-2xl bg-slate-800 text-yellow-400 border border-slate-700 flex items-center justify-center text-2xl">
+              <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center text-2xl shadow-sm">
                 <i class="fa-solid fa-coins"></i>
               </div>
-              <span class="px-3 py-1 rounded-full bg-slate-800 text-slate-400 border border-slate-700 text-xs sm:text-sm font-bold">
-                오픈 준비 중
+              <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs sm:text-sm font-bold flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> 운영 중
               </span>
             </div>
 
-            <h3 class="text-xl sm:text-2xl font-black text-slate-200 mb-2">
+            <h3 class="text-xl sm:text-2xl font-black text-white mb-2 group-hover:text-emerald-300 transition">
               예·적금 만기 이자 & 세후 실수령 계산기
             </h3>
-            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed mb-4">
-              정기적금(단리/복리)과 정기예금의 원금과 이율을 기반으로, 15.4% 이자소득세(일반/세금우대/비과세) 공제 후 실제 통장에 입금되는 수령액을 계산합니다.
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
+              정기적금(단리/복리)과 정기예금의 원금과 이율을 기반으로, 15.4% 일반과세, 세금우대, 비과세 공제 후 실제 통장에 입금되는 세후 실수령액과 월별 적립 스케줄을 계산합니다.
             </p>
 
             <div class="flex flex-wrap gap-1.5 mb-6">
-              <span class="text-xs font-medium px-2.5 py-1 rounded-lg bg-slate-950 text-slate-500 border border-slate-800">예금·적금 단리/복리</span>
-              <span class="text-xs font-medium px-2.5 py-1 rounded-lg bg-slate-950 text-slate-500 border border-slate-800">15.4% 이자과세</span>
-              <span class="text-xs font-medium px-2.5 py-1 rounded-lg bg-slate-950 text-slate-500 border border-slate-800">실수령 이자</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">예금·적금 단리/복리</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">15.4% 이자과세</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">비과세 절세 비교</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">월별 납입 내역</span>
             </div>
           </div>
 
-          <button disabled class="w-full bg-slate-800 text-slate-500 font-bold py-3.5 px-5 rounded-xl cursor-not-allowed text-center text-sm sm:text-base">
-            곧 공개 예정입니다
-          </button>
+          <a href="./interest/" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black py-3.5 px-5 rounded-xl transition text-center text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 active:scale-95">
+            <span>이자 계산하기</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
         </div>
 
-        <!-- 4. D-Day 및 음력·양력 변환기 (준비 중) -->
-        <div class="bg-slate-900/60 border border-slate-800 rounded-3xl p-6 sm:p-7 shadow-lg flex flex-col justify-between opacity-85">
+        <!-- 4. D-Day 및 음력·양력 변환기 (운영 중) -->
+        <div class="bg-slate-900 border-2 border-rose-500/50 hover:border-rose-400 rounded-3xl p-6 sm:p-7 shadow-xl transition-all flex flex-col justify-between group relative overflow-hidden">
+          <div class="absolute -top-10 -right-10 w-36 h-36 bg-rose-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
           <div>
             <div class="flex items-center justify-between gap-3 mb-4">
-              <div class="w-12 h-12 rounded-2xl bg-slate-800 text-rose-400 border border-slate-700 flex items-center justify-center text-2xl">
-                <i class="fa-regular fa-hourglass-half"></i>
+              <div class="w-12 h-12 rounded-2xl bg-rose-500/20 text-rose-400 border border-rose-500/40 flex items-center justify-center text-2xl shadow-sm">
+                <i class="fa-regular fa-calendar-check"></i>
               </div>
-              <span class="px-3 py-1 rounded-full bg-slate-800 text-slate-400 border border-slate-700 text-xs sm:text-sm font-bold">
-                오픈 준비 중
+              <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs sm:text-sm font-bold flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> 운영 중
               </span>
             </div>
 
-            <h3 class="text-xl sm:text-2xl font-black text-slate-200 mb-2">
+            <h3 class="text-xl sm:text-2xl font-black text-white mb-2 group-hover:text-rose-300 transition">
               D-Day 및 음력·양력 기념일 변환기
             </h3>
-            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed mb-4">
-              음력 생일과 제사, 명절 날짜를 양력으로 상호 변환하고 목표 날짜까지 남은 일수와 경과 일수를 정확하게 산출합니다.
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
+              한국천문연구원 기준 음력 ↔ 양력 정밀 변환, 부모님 음력 생신 및 제사일의 올해/내년 양력 날짜 자동 조회, 환갑·칠순·팔순 전통 수연 나이와 D-Day를 확인합니다.
             </p>
 
             <div class="flex flex-wrap gap-1.5 mb-6">
-              <span class="text-xs font-medium px-2.5 py-1 rounded-lg bg-slate-950 text-slate-500 border border-slate-800">음력/양력 상호 변환</span>
-              <span class="text-xs font-medium px-2.5 py-1 rounded-lg bg-slate-950 text-slate-500 border border-slate-800">D-Day 카운트</span>
-              <span class="text-xs font-medium px-2.5 py-1 rounded-lg bg-slate-950 text-slate-500 border border-slate-800">기념일 알림</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">음력 ↔ 양력 변환</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">음력 생신·제사일</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">환갑·칠순·팔순</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">D-Day 카운트</span>
             </div>
           </div>
 
-          <button disabled class="w-full bg-slate-800 text-slate-500 font-bold py-3.5 px-5 rounded-xl cursor-not-allowed text-center text-sm sm:text-base">
-            곧 공개 예정입니다
-          </button>
+          <a href="./dday/" class="w-full bg-rose-500 hover:bg-rose-400 text-slate-950 font-black py-3.5 px-5 rounded-xl transition text-center text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-rose-500/20 active:scale-95">
+            <span>기념일 & D-Day 확인하기</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
         </div>
 
       </div>

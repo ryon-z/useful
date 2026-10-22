@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO 최적화 메타태그 -->
+  <title>D-Day 및 음력·양력 변환기 - 음력 생신·제사일 양력 찾기 & 칠순·팔순 계산</title>
+  <meta name="description" content="음력 양력 상호 정밀 변환, 부모님 음력 생신 및 제사일의 올해/내년 양력 날짜 자동 계산, 목표일 D-Day 카운트, 환갑·칠순·팔순 전통 수연 나이 계산을 제공합니다.">
+  <meta name="keywords" content="음력양력변환기, 음력생일계산기, 제사일계산기, Dday계산기, 환갑계산, 칠순계산기, 팔순나이, 음력달력, 2026음력">
+  <meta property="og:title" content="D-Day 및 음력·양력 기념일 변환기">
+  <meta property="og:description" content="음력 ↔ 양력 변환, 부모님 음력 생신 양력 찾기, 환갑·칠순·팔순 날짜를 즉시 확인하세요.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://ryon-z.github.io/useful/dday/">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23f43f5e'/><text x='50' y='67' font-size='44' font-family='sans-serif' font-weight='bold' text-anchor='middle' fill='%231e111a'>陰</text></svg>">
+
+  <!-- Tailwind CSS CDN & Font -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+    
+    /* 50대 타겟 기본 폰트 사이즈 상향 */
+    html {
+      font-size: 17px;
+      -webkit-text-size-adjust: 100%;
+    }
+    @media (min-width: 640px) {
+      html {
+        font-size: 17.5px;
+      }
+    }
+    body {
+      font-family: 'Pretendard', sans-serif;
+      letter-spacing: -0.015em;
+    }
+
+    .shadow-glow-rose {
+      box-shadow: 0 0 22px rgba(244, 63, 94, 0.35);
+    }
+  </style>
+
+  <!-- 한국천문연구원 음양력 엔진 (로컬 오프라인 지원) -->
+  <script src="./korean-lunar-calendar.min.js"></script>
+
+  <!-- 구글 애드센스 스크립트 슬롯 (승인 후 ca-pub 번호 입력) -->
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-rose-500 selection:text-slate-950">
+
+  <!-- 헤더 네비게이션 -->
+  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto px-4 h-16 sm:h-20 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a href="../" class="text-slate-400 hover:text-rose-400 transition p-2 rounded-xl hover:bg-slate-800 flex items-center gap-1.5 text-xs sm:text-sm font-bold border border-transparent hover:border-slate-700" title="전체 도구 목록으로 이동">
+          <i class="fa-solid fa-arrow-left text-xs sm:text-sm"></i>
+          <span class="hidden sm:inline">도구 모음</span>
+        </a>
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-rose-500 to-pink-500 text-slate-950 flex items-center justify-center font-black text-base shadow-sm">
+            <i class="fa-regular fa-calendar-check"></i>
+          </div>
+          <span class="text-xl sm:text-2xl font-black tracking-tight text-white">D-Day & 음력·양력 <span class="text-rose-400">변환기</span></span>
+        </div>
+      </div>
+      <nav class="flex items-center gap-2 sm:gap-3 text-xs sm:text-base font-bold text-slate-300">
+        <a href="../lottery/" class="text-amber-300 hover:text-amber-200 transition flex items-center gap-1 bg-amber-500/10 border border-amber-500/30 px-2.5 py-1.5 rounded-xl">
+          <i class="fa-solid fa-clover text-amber-400"></i>
+          <span class="hidden sm:inline">로또</span>
+        </a>
+        <a href="../age/" class="text-sky-300 hover:text-sky-200 transition flex items-center gap-1 bg-sky-500/10 border border-sky-500/30 px-2.5 py-1.5 rounded-xl">
+          <i class="fa-solid fa-calendar-days text-sky-400"></i>
+          <span class="hidden sm:inline">만 나이</span>
+        </a>
+        <a href="../interest/" class="text-emerald-300 hover:text-emerald-200 transition flex items-center gap-1 bg-emerald-500/10 border border-emerald-500/30 px-2.5 py-1.5 rounded-xl">
+          <i class="fa-solid fa-coins text-emerald-400"></i>
+          <span class="hidden sm:inline">이자 계산</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- [구글 애드센스 상단 광고 슬롯] -->
+  <div class="max-w-5xl mx-auto px-4 w-full pt-4">
+    <div class="w-full bg-slate-900/50 border border-dashed border-slate-800 rounded-xl p-3 flex flex-col items-center justify-center min-h-[90px] text-xs sm:text-sm text-slate-400">
+      <span class="text-slate-400 mb-1 font-bold uppercase tracking-wider text-xs">Google AdSense Slot</span>
+      <div class="text-center text-slate-400">애드센스 승인 후 여기에 상단 디스플레이 광고 단위 코드를 삽입하세요.</div>
+    </div>
+  </div>
+
+  <main class="max-w-5xl mx-auto px-4 py-6 space-y-7 flex-1 w-full">
+
+    <!-- 대메뉴 탭 네비게이션 (1. 음력/양력 변환 | 2. D-Day 계산기 | 3. 부모님 음력 생신·제사 | 4. 환갑·칠순 수연) -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-2 bg-slate-900 p-2 rounded-2xl border border-slate-800">
+      <button type="button" id="main-tab-lunar" onclick="switchMainTab('lunar')" class="py-3 px-3 rounded-xl font-black text-xs sm:text-sm transition flex items-center justify-center gap-2 bg-gradient-to-r from-rose-500 to-pink-500 text-slate-950 shadow-md">
+        <i class="fa-solid fa-moon"></i>
+        <span>음력 ↔ 양력 변환</span>
+      </button>
+      <button type="button" id="main-tab-dday" onclick="switchMainTab('dday')" class="py-3 px-3 rounded-xl font-bold text-xs sm:text-sm transition flex items-center justify-center gap-2 text-slate-300 hover:text-white">
+        <i class="fa-solid fa-hourglass-half text-rose-400"></i>
+        <span>D-Day 카운터</span>
+      </button>
+      <button type="button" id="main-tab-parents" onclick="switchMainTab('parents')" class="py-3 px-3 rounded-xl font-bold text-xs sm:text-sm transition flex items-center justify-center gap-2 text-slate-300 hover:text-white">
+        <i class="fa-solid fa-cake-candles text-amber-400"></i>
+        <span>음력 생신·제사 찾기</span>
+      </button>
+      <button type="button" id="main-tab-suyeon" onclick="switchMainTab('suyeon')" class="py-3 px-3 rounded-xl font-bold text-xs sm:text-sm transition flex items-center justify-center gap-2 text-slate-300 hover:text-white">
+        <i class="fa-solid fa-crown text-sky-400"></i>
+        <span>환갑·칠순·팔순 계산</span>
+      </button>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- 1. 음력 ↔ 양력 변환 탭 -->
+    <!-- ========================================================================= -->
+    <section id="section-lunar" class="space-y-6">
+      <div class="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-7 shadow-xl relative">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-yin-yang text-rose-400 text-xl sm:text-2xl"></i>
+            <h1 class="text-2xl sm:text-3xl font-black text-white">음력 ↔ 양력 정밀 변환</h1>
+          </div>
+          <span class="text-xs text-rose-400 font-bold bg-rose-500/10 px-3 py-1 rounded-full border border-rose-500/30">
+            한국천문연구원 기준
+          </span>
+        </div>
+
+        <!-- 변환 모드 탭 (양력 ➔ 음력 vs 음력 ➔ 양력) -->
+        <div class="grid grid-cols-2 gap-2 bg-slate-950 p-1.5 rounded-2xl border border-slate-800 mb-5">
+          <button type="button" id="conv-solar2lunar-btn" onclick="setConversionDirection('solar2lunar')" class="py-2.5 px-3 rounded-xl font-black text-xs sm:text-sm transition flex items-center justify-center gap-1.5 bg-rose-500 text-slate-950 shadow">
+            <span>양력 ➔ 음력 변환</span>
+          </button>
+          <button type="button" id="conv-lunar2solar-btn" onclick="setConversionDirection('lunar2solar')" class="py-2.5 px-3 rounded-xl font-bold text-xs sm:text-sm transition flex items-center justify-center gap-1.5 text-slate-400 hover:text-white">
+            <span>음력 ➔ 양력 변환</span>
+          </button>
+        </div>
+
+        <!-- 날짜 입력 그리드 -->
+        <div class="bg-slate-950/60 p-4 sm:p-5 rounded-2xl border border-slate-800 mb-5 space-y-4">
+          <div class="flex items-center justify-between">
+            <span id="conv-input-label" class="text-sm sm:text-base font-bold text-slate-200">변환할 양력 날짜 선택:</span>
+            <button type="button" onclick="setConvDateToday()" class="text-xs text-rose-400 hover:underline font-bold">
+              오늘 날짜로 설정
+            </button>
+          </div>
+
+          <div class="grid grid-cols-3 gap-2 sm:gap-3">
+            <!-- 연도 선택 -->
+            <div>
+              <label for="conv-year" class="block text-xs text-slate-400 font-bold mb-1">연도</label>
+              <select id="conv-year" onchange="convertDate()" class="w-full h-[48px] bg-slate-900 border border-slate-700 rounded-xl px-2 sm:px-3 text-sm sm:text-base font-bold text-white focus:outline-none focus:border-rose-400 cursor-pointer"></select>
+            </div>
+            <!-- 월 선택 -->
+            <div>
+              <label for="conv-month" class="block text-xs text-slate-400 font-bold mb-1">월</label>
+              <select id="conv-month" onchange="convertDate()" class="w-full h-[48px] bg-slate-900 border border-slate-700 rounded-xl px-2 sm:px-3 text-sm sm:text-base font-bold text-white focus:outline-none focus:border-rose-400 cursor-pointer"></select>
+            </div>
+            <!-- 일 선택 -->
+            <div>
+              <label for="conv-day" class="block text-xs text-slate-400 font-bold mb-1">일</label>
+              <select id="conv-day" onchange="convertDate()" class="w-full h-[48px] bg-slate-900 border border-slate-700 rounded-xl px-2 sm:px-3 text-sm sm:text-base font-bold text-white focus:outline-none focus:border-rose-400 cursor-pointer"></select>
+            </div>
+          </div>
+
+          <!-- 음력 ➔ 양력 모드일 때만 보이는 윤달 체크박스 -->
+          <div id="conv-leap-wrapper" class="hidden flex items-center gap-2 pt-1">
+            <input type="checkbox" id="conv-is-leap" onchange="convertDate()" class="w-4 h-4 rounded text-rose-500 focus:ring-rose-400 bg-slate-900 border-slate-700 cursor-pointer">
+            <label for="conv-is-leap" class="text-xs sm:text-sm font-bold text-slate-300 cursor-pointer select-none">
+              윤달(閏月) 여부 체크 (음력 윤달인 경우 체크)
+            </label>
+          </div>
+        </div>
+
+        <!-- 변환 결과 메인 카드 -->
+        <div class="bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 border-2 border-rose-400/60 p-5 sm:p-7 rounded-3xl shadow-xl relative overflow-hidden">
+          <div class="absolute -top-10 -right-10 w-36 h-36 bg-rose-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
+          <div class="flex items-center justify-between pb-3 border-b border-slate-800 mb-3">
+            <span id="conv-res-badge" class="px-3 py-1 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/40 text-xs sm:text-sm font-black">
+              음력 변환 결과
+            </span>
+            <span id="conv-res-dayofweek" class="text-xs sm:text-sm font-bold text-slate-300">
+              목요일
+            </span>
+          </div>
+
+          <!-- 메인 날짜 -->
+          <div class="my-3">
+            <div id="conv-res-title" class="text-xs sm:text-sm text-slate-400 font-semibold mb-1">변환된 날짜</div>
+            <div id="conv-res-main" class="text-2xl sm:text-4xl font-black text-rose-400 tracking-tight leading-tight">
+              음력 2026년 09월 12일 (평달)
+            </div>
+          </div>
+
+          <!-- 사주 일진 및 간지 정보 그리드 -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 border-t border-slate-800">
+            <div class="bg-slate-950/70 p-3 rounded-xl border border-slate-800">
+              <div class="text-xs text-slate-400 font-bold mb-1">천간지지 (세차·월건·일진)</div>
+              <div id="conv-res-gapja" class="text-sm sm:text-base font-black text-white">병오년 무술월 기사일</div>
+            </div>
+            <div class="bg-slate-950/70 p-3 rounded-xl border border-slate-800">
+              <div class="text-xs text-slate-400 font-bold mb-1">출생 띠 (십이지)</div>
+              <div id="conv-res-zodiac" class="text-sm sm:text-base font-black text-amber-300">말띠 (붉은 말의 해)</div>
+            </div>
+            <div class="bg-slate-950/70 p-3 rounded-xl border border-slate-800">
+              <div class="text-xs text-slate-400 font-bold mb-1">오늘과의 간격 (D-Day)</div>
+              <div id="conv-res-dday" class="text-sm sm:text-base font-black text-rose-300">오늘 (D-Day)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 2. D-Day 계산기 탭 -->
+    <!-- ========================================================================= -->
+    <section id="section-dday" class="hidden space-y-6">
+      <div class="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-7 shadow-xl">
+        <div class="flex items-center gap-2 mb-4">
+          <i class="fa-solid fa-hourglass-start text-rose-400 text-xl sm:text-2xl"></i>
+          <h2 class="text-2xl sm:text-3xl font-black text-white">D-Day 날짜 간격 & 특정 날짜 계산</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <!-- 1) 목표일 D-Day 계산기 -->
+          <div class="bg-slate-950/60 p-5 rounded-2xl border border-slate-800 space-y-4">
+            <div class="flex items-center gap-2 text-rose-400 font-black text-base sm:text-lg">
+              <i class="fa-solid fa-flag-checkered"></i>
+              <span>목표일 D-Day 계산</span>
+            </div>
+            <div>
+              <label for="dday-target-date" class="block text-xs sm:text-sm font-bold text-slate-300 mb-1">목표 날짜</label>
+              <input type="date" id="dday-target-date" onchange="calculateDDayTarget()" class="w-full h-[48px] bg-slate-900 border border-slate-700 rounded-xl px-4 text-white font-bold text-base focus:outline-none focus:border-rose-400 cursor-pointer">
+            </div>
+
+            <!-- D-Day 결과 박스 -->
+            <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 text-center">
+              <div class="text-xs text-slate-400 font-bold mb-1">목표일까지 남은 일수</div>
+              <div id="dday-res-count" class="text-3xl sm:text-4xl font-black text-rose-400 my-1">D-Day</div>
+              <div id="dday-res-desc" class="text-xs sm:text-sm text-slate-300 font-medium">오늘입니다.</div>
+            </div>
+          </div>
+
+          <!-- 2) N일 후 / N일 전 날짜 찾기 -->
+          <div class="bg-slate-950/60 p-5 rounded-2xl border border-slate-800 space-y-4">
+            <div class="flex items-center gap-2 text-pink-400 font-black text-base sm:text-lg">
+              <i class="fa-solid fa-forward"></i>
+              <span>기준일로부터 N일 후 / 전 찾기</span>
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label for="dday-plus-base" class="block text-xs text-slate-300 font-bold mb-1">기준일</label>
+                <input type="date" id="dday-plus-base" onchange="calculatePlusMinusDays()" class="w-full h-[44px] bg-slate-900 border border-slate-700 rounded-xl px-3 text-white font-bold text-sm focus:outline-none focus:border-rose-400 cursor-pointer">
+              </div>
+              <div>
+                <label for="dday-plus-count" class="block text-xs text-slate-300 font-bold mb-1">더할 일수 (N일)</label>
+                <input type="number" id="dday-plus-count" value="100" oninput="calculatePlusMinusDays()" class="w-full h-[44px] bg-slate-900 border border-slate-700 rounded-xl px-3 text-white font-black text-base focus:outline-none focus:border-rose-400">
+              </div>
+            </div>
+
+            <!-- 빠른 일수 증감 버튼 -->
+            <div class="flex flex-wrap items-center gap-1.5 pt-1">
+              <button type="button" onclick="setPlusCount(50)" class="px-2.5 py-1 rounded-lg bg-slate-800 text-xs font-bold text-slate-200 hover:text-rose-300 border border-slate-700">50일</button>
+              <button type="button" onclick="setPlusCount(100)" class="px-2.5 py-1 rounded-lg bg-slate-800 text-xs font-bold text-slate-200 hover:text-rose-300 border border-slate-700">100일</button>
+              <button type="button" onclick="setPlusCount(200)" class="px-2.5 py-1 rounded-lg bg-slate-800 text-xs font-bold text-slate-200 hover:text-rose-300 border border-slate-700">200일</button>
+              <button type="button" onclick="setPlusCount(365)" class="px-2.5 py-1 rounded-lg bg-slate-800 text-xs font-bold text-slate-200 hover:text-rose-300 border border-slate-700">1년 (365일)</button>
+              <button type="button" onclick="setPlusCount(1000)" class="px-2.5 py-1 rounded-lg bg-slate-800 text-xs font-bold text-slate-200 hover:text-rose-300 border border-slate-700">1,000일</button>
+            </div>
+
+            <!-- N일 후 결과 박스 -->
+            <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 text-center">
+              <div class="text-xs text-slate-400 font-bold mb-1">계산된 날짜</div>
+              <div id="dday-plus-result" class="text-xl sm:text-2xl font-black text-pink-400 my-1">-</div>
+              <div id="dday-plus-korean" class="text-xs sm:text-sm text-slate-300 font-medium">-</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 3. 부모님 음력 생신 & 제사(기일) 양력 찾기 탭 -->
+    <!-- ========================================================================= -->
+    <section id="section-parents" class="hidden space-y-6">
+      <div class="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-7 shadow-xl">
+        <div class="flex items-center gap-2 mb-2">
+          <i class="fa-solid fa-cake-candles text-amber-400 text-xl sm:text-2xl"></i>
+          <h2 class="text-2xl sm:text-3xl font-black text-white">부모님 음력 생신 & 제사일(기일) 양력 찾기</h2>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-300 mb-5">
+          매년 양력 날짜가 바뀌어 헷갈리는 부모님 음력 생신과 기일(제사일)의 <strong>올해(2026년)와 내년(2027년) 양력 날짜 및 요일</strong>을 즉시 산출합니다.
+        </p>
+
+        <!-- 음력 월/일 입력 박스 -->
+        <div class="bg-slate-950/60 p-4 sm:p-5 rounded-2xl border border-slate-800 mb-6">
+          <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+            <span class="text-sm sm:text-base font-bold text-slate-200 flex items-center gap-1.5">
+              <i class="fa-solid fa-calendar-day text-amber-400"></i>
+              <span>기념하고자 하는 음력 날짜 입력</span>
+            </span>
+            <div class="flex items-center gap-3 text-xs sm:text-sm font-bold">
+              <label class="flex items-center gap-1.5 cursor-pointer">
+                <input type="radio" name="parents-event-type" value="birthday" checked onchange="calculateParentsSchedule()" class="text-amber-500">
+                <span>생신 (생일)</span>
+              </label>
+              <label class="flex items-center gap-1.5 cursor-pointer">
+                <input type="radio" name="parents-event-type" value="memorial" onchange="calculateParentsSchedule()" class="text-amber-500">
+                <span>기일 (제사)</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 max-w-md">
+            <div>
+              <label for="parents-lunar-month" class="block text-xs text-slate-400 font-bold mb-1">음력 월</label>
+              <select id="parents-lunar-month" onchange="calculateParentsSchedule()" class="w-full h-[48px] bg-slate-900 border border-slate-700 rounded-xl px-3 text-sm sm:text-base font-bold text-white focus:outline-none focus:border-amber-400 cursor-pointer"></select>
+            </div>
+            <div>
+              <label for="parents-lunar-day" class="block text-xs text-slate-400 font-bold mb-1">음력 일</label>
+              <select id="parents-lunar-day" onchange="calculateParentsSchedule()" class="w-full h-[48px] bg-slate-900 border border-slate-700 rounded-xl px-3 text-sm sm:text-base font-bold text-white focus:outline-none focus:border-amber-400 cursor-pointer"></select>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3개년 양력 날짜 비교 카드 그리드 (올해, 내년, 후년) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <!-- 올해 카드 -->
+          <div id="card-year-2026" class="bg-gradient-to-b from-slate-900 to-slate-950 border-2 border-amber-500/60 p-5 rounded-2xl shadow-lg relative">
+            <span class="px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40 text-xs font-black">
+              2026년 (올해)
+            </span>
+            <div id="parents-2026-date" class="text-2xl sm:text-3xl font-black text-amber-400 my-3">
+              -
+            </div>
+            <div id="parents-2026-dow" class="text-xs sm:text-sm text-slate-300 font-bold mb-1">-</div>
+            <div id="parents-2026-dday" class="text-xs sm:text-sm font-black text-amber-300 bg-slate-950 p-2 rounded-xl border border-slate-800">
+              D-Day 계산 중
+            </div>
+          </div>
+
+          <!-- 내년 카드 -->
+          <div id="card-year-2027" class="bg-slate-900 border border-slate-800 p-5 rounded-2xl shadow-lg">
+            <span class="px-2.5 py-0.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700 text-xs font-bold">
+              2027년 (내년)
+            </span>
+            <div id="parents-2027-date" class="text-2xl sm:text-3xl font-black text-white my-3">
+              -
+            </div>
+            <div id="parents-2027-dow" class="text-xs sm:text-sm text-slate-300 font-bold mb-1">-</div>
+            <div id="parents-2027-dday" class="text-xs sm:text-sm font-bold text-slate-300 bg-slate-950 p-2 rounded-xl border border-slate-800">
+              -
+            </div>
+          </div>
+
+          <!-- 후년 카드 -->
+          <div id="card-year-2028" class="bg-slate-900 border border-slate-800 p-5 rounded-2xl shadow-lg">
+            <span class="px-2.5 py-0.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700 text-xs font-bold">
+              2028년 (후년)
+            </span>
+            <div id="parents-2028-date" class="text-2xl sm:text-3xl font-black text-white my-3">
+              -
+            </div>
+            <div id="parents-2028-dow" class="text-xs sm:text-sm text-slate-300 font-bold mb-1">-</div>
+            <div id="parents-2028-dday" class="text-xs sm:text-sm font-bold text-slate-300 bg-slate-950 p-2 rounded-xl border border-slate-800">
+              -
+            </div>
+          </div>
+        </div>
+
+        <div id="memorial-guide" class="hidden mt-4 p-3.5 bg-amber-500/10 border border-amber-500/30 rounded-2xl text-xs sm:text-sm text-slate-300 leading-relaxed">
+          <i class="fa-solid fa-circle-info text-amber-400 mr-1.5"></i>
+          <strong>제사 모시는 날 안내:</strong> 전통 예법상 기제사(忌祭祀)는 돌아가신 날(기일)의 첫 시작인 <strong>기일 전날 밤(밤 11시~자정)</strong> 또는 <strong>기일 당일 저녁</strong>에 지냅니다. 위 표시된 양력 날짜가 기일 당일이므로, 전날 밤에 제사를 모시는 집안은 하루 전날 저녁 준비를 시작하시면 됩니다.
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 4. 환갑·칠순·팔순 수연(壽宴) 나이 & 날짜 계산기 탭 -->
+    <!-- ========================================================================= -->
+    <section id="section-suyeon" class="hidden space-y-6">
+      <div class="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-7 shadow-xl">
+        <div class="flex items-center gap-2 mb-2">
+          <i class="fa-solid fa-crown text-sky-400 text-xl sm:text-2xl"></i>
+          <h2 class="text-2xl sm:text-3xl font-black text-white">전통 수연(壽宴) 나이 & 축하 날짜 계산</h2>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-300 mb-5">
+          출생 연도와 생일을 입력하면 <strong>환갑(61세), 칠순(70세), 팔순(80세)</strong> 등 한국 전통 장수 축하연의 정확한 연도와 날짜, D-Day를 한눈에 산출합니다.
+        </p>
+
+        <!-- 출생연도 입력 및 생일 선택 -->
+        <div class="bg-slate-950/60 p-4 sm:p-5 rounded-2xl border border-slate-800 mb-6">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div>
+              <label for="suyeon-birth-year" class="block text-xs sm:text-sm font-bold text-slate-300 mb-1">출생 연도</label>
+              <select id="suyeon-birth-year" onchange="calculateSuyeonDates()" class="w-full h-[48px] bg-slate-900 border border-slate-700 rounded-xl px-3 text-sm sm:text-base font-bold text-sky-400 focus:outline-none focus:border-sky-400 cursor-pointer"></select>
+            </div>
+            <div>
+              <label for="suyeon-birth-month" class="block text-xs sm:text-sm font-bold text-slate-300 mb-1">생월</label>
+              <select id="suyeon-birth-month" onchange="calculateSuyeonDates()" class="w-full h-[48px] bg-slate-900 border border-slate-700 rounded-xl px-3 text-sm sm:text-base font-bold text-white focus:outline-none focus:border-sky-400 cursor-pointer"></select>
+            </div>
+            <div>
+              <label for="suyeon-birth-day" class="block text-xs sm:text-sm font-bold text-slate-300 mb-1">생일</label>
+              <select id="suyeon-birth-day" onchange="calculateSuyeonDates()" class="w-full h-[48px] bg-slate-900 border border-slate-700 rounded-xl px-3 text-sm sm:text-base font-bold text-white focus:outline-none focus:border-sky-400 cursor-pointer"></select>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8대 전통 수연 축하 카드 그리드 -->
+        <div id="suyeon-cards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3.5">
+          <!-- 동적 주입 -->
+        </div>
+      </div>
+    </section>
+
+    <!-- [구글 애드센스 본문 중간 광고 슬롯] -->
+    <div class="w-full bg-slate-900/50 border border-dashed border-slate-800 rounded-xl p-3 flex flex-col items-center justify-center min-h-[100px] text-xs sm:text-sm text-slate-400">
+      <span class="text-slate-400 mb-1 font-bold uppercase tracking-wider text-xs">Google AdSense In-Article Slot</span>
+      <div class="text-center text-slate-400">컨텐츠 사이 인피드/본문 배너 광고 코드를 삽입하세요.</div>
+    </div>
+
+    <!-- 5. 2026/2027 전통 명절 및 주요 24절기 D-Day 브리핑 -->
+    <section class="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-7 shadow-xl space-y-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-calendar-star text-rose-400 text-xl"></i>
+          <h2 class="text-xl sm:text-2xl font-black text-white">주요 전통 명절 D-Day</h2>
+        </div>
+        <span class="text-xs text-slate-400 font-bold">국경일 및 전통 절기</span>
+      </div>
+
+      <div id="holidays-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
+        <!-- 동적 렌더링 -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- [구글 애드센스 하단 광고 슬롯] -->
+  <div class="max-w-5xl mx-auto px-4 w-full pb-4">
+    <div class="w-full bg-slate-900/50 border border-dashed border-slate-800 rounded-xl p-3 flex flex-col items-center justify-center min-h-[90px] text-xs sm:text-sm text-slate-400">
+      <span class="text-slate-400 mb-1 font-bold uppercase tracking-wider text-xs">Google AdSense Bottom Slot</span>
+      <div class="text-center text-slate-400">하단 와이드 광고 배너 단위를 삽입하세요.</div>
+    </div>
+  </div>
+
+  <!-- 푸터 -->
+  <footer class="border-t border-slate-800 bg-slate-950 text-slate-400 py-8 text-xs sm:text-sm text-center">
+    <div class="max-w-5xl mx-auto px-4 space-y-2">
+      <p>본 변환기는 한국천문연구원(KASI) 음양력 역법 및 천문 계산 기준을 준수합니다.</p>
+      <p>© 2026 USEFUL - 생활 유틸리티 도구 모음. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- 자바스크립트 전체 비즈니스 로직 -->
+  <script>
+    // 캘린더 엔진 인스턴스
+    let LunarCal = null;
+
+    // 요일 이름 매핑
+    const DAYS_KR = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
+
+    // 12간지 동물 매핑
+    const ZODIAC_ANIMALS = [
+      '원숭이띠', '닭띠', '개띠', '돼지띠', '쥐띠', '소띠',
+      '호랑이띠', '토끼띠', '용띠', '뱀띠', '말띠', '양띠'
+    ];
+    const CHEONGAN_COLORS = {
+      '갑': '청색', '을': '청색',
+      '병': '적색', '정': '적색',
+      '무': '황색', '기': '황색',
+      '경': '백색', '신': '백색',
+      '임': '흑색', '계': '흑색'
+    };
+
+    // 상태 관리
+    const DDayState = {
+      activeTab: 'lunar',
+      convDirection: 'solar2lunar' // 'solar2lunar' | 'lunar2solar'
+    };
+
+    // 대메뉴 탭 전환
+    function switchMainTab(tab) {
+      DDayState.activeTab = tab;
+      const tabs = ['lunar', 'dday', 'parents', 'suyeon'];
+      tabs.forEach(t => {
+        const btn = document.getElementById(`main-tab-${t}`);
+        const sec = document.getElementById(`section-${t}`);
+        if (t === tab) {
+          btn.className = 'py-3 px-3 rounded-xl font-black text-xs sm:text-sm transition flex items-center justify-center gap-2 bg-gradient-to-r from-rose-500 to-pink-500 text-slate-950 shadow-md';
+          sec.classList.remove('hidden');
+        } else {
+          btn.className = 'py-3 px-3 rounded-xl font-bold text-xs sm:text-sm transition flex items-center justify-center gap-2 text-slate-300 hover:text-white';
+          sec.classList.add('hidden');
+        }
+      });
+    }
+
+    // 변환 방향 전환 (양력➔음력 vs 음력➔양력)
+    function setConversionDirection(dir) {
+      DDayState.convDirection = dir;
+      const btnS2L = document.getElementById('conv-solar2lunar-btn');
+      const btnL2S = document.getElementById('conv-lunar2solar-btn');
+      const label = document.getElementById('conv-input-label');
+      const leapWrap = document.getElementById('conv-leap-wrapper');
+      const resBadge = document.getElementById('conv-res-badge');
+
+      if (dir === 'solar2lunar') {
+        btnS2L.className = 'py-2.5 px-3 rounded-xl font-black text-xs sm:text-sm transition flex items-center justify-center gap-1.5 bg-rose-500 text-slate-950 shadow';
+        btnL2S.className = 'py-2.5 px-3 rounded-xl font-bold text-xs sm:text-sm transition flex items-center justify-center gap-1.5 text-slate-400 hover:text-white';
+        label.textContent = '변환할 양력 날짜 선택:';
+        leapWrap.classList.add('hidden');
+        resBadge.textContent = '음력 변환 결과';
+      } else {
+        btnL2S.className = 'py-2.5 px-3 rounded-xl font-black text-xs sm:text-sm transition flex items-center justify-center gap-1.5 bg-rose-500 text-slate-950 shadow';
+        btnS2L.className = 'py-2.5 px-3 rounded-xl font-bold text-xs sm:text-sm transition flex items-center justify-center gap-1.5 text-slate-400 hover:text-white';
+        label.textContent = '변환할 음력 날짜 선택:';
+        leapWrap.classList.remove('hidden');
+        resBadge.textContent = '양력 변환 결과';
+      }
+
+      convertDate();
+    }
+
+    // 날짜 셀렉트 옵션 채우기 유틸리티
+    function populateDateSelects(yId, mId, dId, startY = 1930, endY = 2050, defY = 2026, defM = 10, defD = 22) {
+      const ySel = document.getElementById(yId);
+      const mSel = document.getElementById(mId);
+      const dSel = document.getElementById(dId);
+
+      let yHtml = '';
+      for (let y = endY; y >= startY; y--) {
+        yHtml += `<option value="${y}" ${y === defY ? 'selected' : ''}>${y}년</option>`;
+      }
+      ySel.innerHTML = yHtml;
+
+      let mHtml = '';
+      for (let m = 1; m <= 12; m++) {
+        mHtml += `<option value="${m}" ${m === defM ? 'selected' : ''}>${m}월</option>`;
+      }
+      mSel.innerHTML = mHtml;
+
+      updateDayOptions(yId, mId, dId, defD);
+      ySel.addEventListener('change', () => updateDayOptions(yId, mId, dId));
+      mSel.addEventListener('change', () => updateDayOptions(yId, mId, dId));
+    }
+
+    function updateDayOptions(yId, mId, dId, forceDay = null) {
+      const ySel = document.getElementById(yId);
+      const mSel = document.getElementById(mId);
+      const dSel = document.getElementById(dId);
+
+      const y = parseInt(ySel.value, 10);
+      const m = parseInt(mSel.value, 10);
+      const lastDay = new Date(y, m, 0).getDate();
+
+      const curDay = forceDay || parseInt(dSel.value, 10) || 1;
+      let dHtml = '';
+      for (let d = 1; d <= lastDay; d++) {
+        dHtml += `<option value="${d}" ${d === Math.min(curDay, lastDay) ? 'selected' : ''}>${d}일</option>`;
+      }
+      dSel.innerHTML = dHtml;
+    }
+
+    function setConvDateToday() {
+      const now = new Date();
+      document.getElementById('conv-year').value = now.getFullYear();
+      document.getElementById('conv-month').value = now.getMonth() + 1;
+      updateDayOptions('conv-year', 'conv-month', 'conv-day', now.getDate());
+      convertDate();
+    }
+
+    // 1. 음력 ↔ 양력 변환 실행
+    function convertDate() {
+      if (!LunarCal) return;
+
+      const y = parseInt(document.getElementById('conv-year').value, 10);
+      const m = parseInt(document.getElementById('conv-month').value, 10);
+      const d = parseInt(document.getElementById('conv-day').value, 10);
+
+      const resMain = document.getElementById('conv-res-main');
+      const resDow = document.getElementById('conv-res-dayofweek');
+      const resGapja = document.getElementById('conv-res-gapja');
+      const resZodiac = document.getElementById('conv-res-zodiac');
+      const resDDay = document.getElementById('conv-res-dday');
+
+      if (DDayState.convDirection === 'solar2lunar') {
+        // 양력 ➔ 음력
+        const ok = LunarCal.setSolarDate(y, m, d);
+        if (!ok) {
+          resMain.textContent = '지원 범위를 벗어난 날짜입니다 (1900~2050년 가능)';
+          return;
+        }
+
+        const lDate = LunarCal.getLunarCalendar();
+        const gapja = LunarCal.getKoreanGapja();
+        const dow = DAYS_KR[new Date(y, m - 1, d).getDay()];
+        const leapText = lDate.intercalation ? '윤달' : '평달';
+
+        resMain.textContent = `음력 ${lDate.year}년 ${String(lDate.month).padStart(2, '0')}월 ${String(lDate.day).padStart(2, '0')}일 (${leapText})`;
+        resDow.textContent = `양력 기준: ${y}년 ${m}월 ${d}일 (${dow})`;
+        resGapja.textContent = `${gapja.year} ${gapja.month} ${gapja.day}`;
+
+        // 띠 분석
+        const animal = ZODIAC_ANIMALS[lDate.year % 12];
+        const stemChar = gapja.year ? gapja.year.charAt(0) : '';
+        const color = CHEONGAN_COLORS[stemChar] || '';
+        resZodiac.textContent = `${animal} (${color ? color + ' ' : ''}${animal.replace('띠', '')}의 해)`;
+
+        // D-Day
+        resDDay.textContent = formatDDayCount(new Date(y, m - 1, d));
+      } else {
+        // 음력 ➔ 양력
+        const isLeap = document.getElementById('conv-is-leap').checked;
+        const ok = LunarCal.setLunarDate(y, m, d, isLeap);
+        if (!ok) {
+          resMain.textContent = '해당 음력 날짜가 존재하지 않거나 지원 범위를 벗어났습니다.';
+          return;
+        }
+
+        const sDate = LunarCal.getSolarCalendar();
+        const gapja = LunarCal.getKoreanGapja();
+        const dow = DAYS_KR[new Date(sDate.year, sDate.month - 1, sDate.day).getDay()];
+
+        resMain.textContent = `양력 ${sDate.year}년 ${String(sDate.month).padStart(2, '0')}월 ${String(sDate.day).padStart(2, '0')}일 (${dow})`;
+        resDow.textContent = `음력 기준: ${y}년 ${m}월 ${d}일 (${isLeap ? '윤달' : '평달'})`;
+        resGapja.textContent = `${gapja.year} ${gapja.month} ${gapja.day}`;
+
+        const animal = ZODIAC_ANIMALS[y % 12];
+        const stemChar = gapja.year ? gapja.year.charAt(0) : '';
+        const color = CHEONGAN_COLORS[stemChar] || '';
+        resZodiac.textContent = `${animal} (${color ? color + ' ' : ''}${animal.replace('띠', '')}의 해)`;
+
+        resDDay.textContent = formatDDayCount(new Date(sDate.year, sDate.month - 1, sDate.day));
+      }
+    }
+
+    // D-Day 포맷팅 함수 (D-Day, D-5, D+12)
+    function formatDDayCount(targetDate) {
+      const today = new Date();
+      const t0 = new Date(today.getFullYear(), today.getMonth(), today.getDate()).getTime();
+      const t1 = new Date(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate()).getTime();
+      const diffDays = Math.round((t1 - t0) / (1000 * 60 * 60 * 24));
+
+      if (diffDays === 0) return '오늘 (D-Day)';
+      if (diffDays > 0) return `D-${diffDays} (${diffDays}일 남음)`;
+      return `D+${Math.abs(diffDays)} (${Math.abs(diffDays)}일 지남)`;
+    }
+
+    // 2. D-Day 목표일 계산
+    function calculateDDayTarget() {
+      const raw = document.getElementById('dday-target-date').value;
+      if (!raw) return;
+      const parts = raw.split('-');
+      const target = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
+
+      const today = new Date();
+      const t0 = new Date(today.getFullYear(), today.getMonth(), today.getDate()).getTime();
+      const t1 = target.getTime();
+      const diffDays = Math.round((t1 - t0) / (1000 * 60 * 60 * 24));
+
+      const cntEl = document.getElementById('dday-res-count');
+      const descEl = document.getElementById('dday-res-desc');
+
+      if (diffDays === 0) {
+        cntEl.textContent = 'D-Day';
+        descEl.textContent = '오늘이 바로 그 날입니다!';
+      } else if (diffDays > 0) {
+        cntEl.textContent = `D-${diffDays}`;
+        const mos = Math.floor(diffDays / 30);
+        const rem = diffDays % 30;
+        let txt = `${diffDays}일 남았습니다.`;
+        if (mos > 0) txt += ` (약 ${mos}개월 ${rem}일)`;
+        descEl.textContent = txt;
+      } else {
+        const abs = Math.abs(diffDays);
+        cntEl.textContent = `D+${abs}`;
+        descEl.textContent = `${abs}일 지났습니다.`;
+      }
+    }
+
+    // N일 후 / N일 전 계산
+    function calculatePlusMinusDays() {
+      const baseRaw = document.getElementById('dday-plus-base').value;
+      const daysCount = parseInt(document.getElementById('dday-plus-count').value, 10) || 0;
+      if (!baseRaw) return;
+
+      const parts = baseRaw.split('-');
+      const base = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
+      
+      const resDate = new Date(base.getTime() + daysCount * 24 * 60 * 60 * 1000);
+      const y = resDate.getFullYear();
+      const m = resDate.getMonth() + 1;
+      const d = resDate.getDate();
+      const dow = DAYS_KR[resDate.getDay()];
+
+      document.getElementById('dday-plus-result').textContent = `${y}년 ${String(m).padStart(2, '0')}월 ${String(d).padStart(2, '0')}일 (${dow})`;
+      document.getElementById('dday-plus-korean').textContent = formatDDayCount(resDate);
+    }
+
+    function setPlusCount(n) {
+      document.getElementById('dday-plus-count').value = n;
+      calculatePlusMinusDays();
+    }
+
+    // 3. 부모님 음력 생신 & 제사 양력 찾기
+    function calculateParentsSchedule() {
+      if (!LunarCal) return;
+      const m = parseInt(document.getElementById('parents-lunar-month').value, 10);
+      const d = parseInt(document.getElementById('parents-lunar-day').value, 10);
+      const isMemorial = document.querySelector('input[name="parents-event-type"]:checked').value === 'memorial';
+      const guide = document.getElementById('memorial-guide');
+
+      if (isMemorial) guide.classList.remove('hidden');
+      else guide.classList.add('hidden');
+
+      const years = [2026, 2027, 2028];
+      years.forEach(yr => {
+        const ok = LunarCal.setLunarDate(yr, m, d, false);
+        const cardDate = document.getElementById(`parents-${yr}-date`);
+        const cardDow = document.getElementById(`parents-${yr}-dow`);
+        const cardDDay = document.getElementById(`parents-${yr}-dday`);
+
+        if (ok) {
+          const s = LunarCal.getSolarCalendar();
+          const target = new Date(s.year, s.month - 1, s.day);
+          const dow = DAYS_KR[target.getDay()];
+
+          cardDate.textContent = `${s.month}월 ${s.day}일`;
+          cardDow.textContent = `양력 ${s.year}년 ${s.month}월 ${s.day}일 (${dow})`;
+          cardDDay.textContent = formatDDayCount(target);
+        } else {
+          cardDate.textContent = '날짜 없음';
+          cardDow.textContent = '-';
+          cardDDay.textContent = '-';
+        }
+      });
+    }
+
+    // 4. 전통 수연(壽宴) 나이 & 날짜 계산
+    function calculateSuyeonDates() {
+      const birthYear = parseInt(document.getElementById('suyeon-birth-year').value, 10);
+      const birthMonth = parseInt(document.getElementById('suyeon-birth-month').value, 10);
+      const birthDay = parseInt(document.getElementById('suyeon-birth-day').value, 10);
+
+      // 한국 전통 수연 기념일 목록 (세는 나이 기준)
+      const milestones = [
+        { name: '환갑·회갑 (還甲)', koreanAge: 61, manAge: 60, desc: '육십갑자가 다시 돌아오는 첫 해' },
+        { name: '진갑 (陳甲)', koreanAge: 62, manAge: 61, desc: '환갑 이듬해 맞이하는 생신' },
+        { name: '고희·칠순 (古稀)', koreanAge: 70, manAge: 69, desc: '뜻을 세우고 도를 행하는 70세 잔치' },
+        { name: '희수 (喜壽)', koreanAge: 77, manAge: 76, desc: '초서체 喜(기쁠 희)자 형상 77세' },
+        { name: '산수·팔순 (傘壽)', koreanAge: 80, manAge: 79, desc: '우산 傘자의 팔십 형상 80세 잔치' },
+        { name: '미수 (米壽)', koreanAge: 88, manAge: 87, desc: '쌀 米자를 파자하면 八十八인 88세' },
+        { name: '졸수·구순 (卒壽)', koreanAge: 90, manAge: 89, desc: '아흔 번째 생신을 기리는 90세 잔치' },
+        { name: '백수 (白壽)', koreanAge: 99, manAge: 98, desc: '百(일백 백)에서 一을 뺀 99세' }
+      ];
+
+      const container = document.getElementById('suyeon-cards-grid');
+      container.innerHTML = milestones.map(m => {
+        const eventYear = birthYear + m.manAge;
+        const eventDate = new Date(eventYear, birthMonth - 1, birthDay);
+        const dow = DAYS_KR[eventDate.getDay()];
+        const ddayText = formatDDayCount(eventDate);
+        const isPast = (new Date().getFullYear() > eventYear) || (new Date().getFullYear() === eventYear && new Date() > eventDate);
+
+        return `
+          <div class="bg-slate-950 p-4 rounded-2xl border ${isPast ? 'border-slate-800 opacity-75' : 'border-sky-500/50 bg-sky-950/20 shadow-md'} flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-black px-2 py-0.5 rounded-lg ${isPast ? 'bg-slate-800 text-slate-400' : 'bg-sky-500/20 text-sky-300 border border-sky-500/30'}">
+                  ${m.koreanAge}세 (만 ${m.manAge}세)
+                </span>
+                <span class="text-xs font-bold ${isPast ? 'text-slate-500' : 'text-sky-400'}">${eventYear}년</span>
+              </div>
+              <h3 class="text-base sm:text-lg font-black text-white mb-1">${m.name}</h3>
+              <p class="text-xs text-slate-400 mb-3">${m.desc}</p>
+            </div>
+            <div class="pt-2 border-t border-slate-800/80">
+              <div class="text-xs text-slate-300 font-bold mb-1">${eventYear}년 ${birthMonth}월 ${birthDay}일 (${dow})</div>
+              <div class="text-xs font-black ${isPast ? 'text-slate-500' : 'text-sky-300'}">${ddayText}</div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // 5. 주요 전통 명절 D-Day 브리핑 렌더링
+    function renderHolidaysBriefing() {
+      if (!LunarCal) return;
+
+      const holidays = [
+        { name: '설날 (구정)', lunarM: 1, lunarD: 1, icon: 'fa-sun' },
+        { name: '정월대보름', lunarM: 1, lunarD: 15, icon: 'fa-moon' },
+        { name: '단오', lunarM: 5, lunarD: 5, icon: 'fa-seedling' },
+        { name: '칠석', lunarM: 7, lunarD: 7, icon: 'fa-bridge' },
+        { name: '추석 (한가위)', lunarM: 8, lunarD: 15, icon: 'fa-wheat-awn' },
+        { name: '동지 (양력12월)', isSolar: true, solarM: 12, solarD: 22, icon: 'fa-snowflake' }
+      ];
+
+      const curYear = new Date().getFullYear();
+      const container = document.getElementById('holidays-grid');
+
+      container.innerHTML = holidays.map(h => {
+        let targetDate = null;
+        if (h.isSolar) {
+          targetDate = new Date(curYear, h.solarM - 1, h.solarD);
+          if (new Date() > targetDate) {
+            targetDate = new Date(curYear + 1, h.solarM - 1, h.solarD);
+          }
+        } else {
+          // 음력 기준
+          LunarCal.setLunarDate(curYear, h.lunarM, h.lunarD, false);
+          let s = LunarCal.getSolarCalendar();
+          targetDate = new Date(s.year, s.month - 1, s.day);
+          if (new Date() > targetDate) {
+            LunarCal.setLunarDate(curYear + 1, h.lunarM, h.lunarD, false);
+            s = LunarCal.getSolarCalendar();
+            targetDate = new Date(s.year, s.month - 1, s.day);
+          }
+        }
+
+        const ddayText = formatDDayCount(targetDate);
+        const m = targetDate.getMonth() + 1;
+        const d = targetDate.getDate();
+
+        return `
+          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-center flex flex-col justify-between">
+            <div class="text-xs text-rose-400 font-bold mb-1 flex items-center justify-center gap-1">
+              <i class="fa-solid ${h.icon}"></i> ${h.name}
+            </div>
+            <div class="text-sm sm:text-base font-black text-white my-1">${m}/${d}</div>
+            <div class="text-[11px] font-bold text-slate-300 bg-slate-900 py-1 rounded-lg border border-slate-800">${ddayText}</div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // 초기화
+    window.addEventListener('DOMContentLoaded', () => {
+      // 한국천문연구원 음력 캘린더 엔진 로드
+      if (typeof KoreanLunarCalendar !== 'undefined') {
+        LunarCal = new KoreanLunarCalendar();
+      }
+
+      // 1. 변환 탭 셀렉트 초기화
+      const now = new Date();
+      populateDateSelects('conv-year', 'conv-month', 'conv-day', 1930, 2050, now.getFullYear(), now.getMonth() + 1, now.getDate());
+
+      // 2. D-Day 탭 초기화
+      const todayIso = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+      document.getElementById('dday-target-date').value = todayIso;
+      document.getElementById('dday-plus-base').value = todayIso;
+      calculateDDayTarget();
+      calculatePlusMinusDays();
+
+      // 3. 부모님 탭 셀렉트 초기화 (기본: 음력 5월 15일)
+      const pMSel = document.getElementById('parents-lunar-month');
+      let pMHtml = '';
+      for (let m = 1; m <= 12; m++) pMHtml += `<option value="${m}" ${m === 5 ? 'selected' : ''}>음력 ${m}월</option>`;
+      pMSel.innerHTML = pMHtml;
+
+      const pDSel = document.getElementById('parents-lunar-day');
+      let pDHtml = '';
+      for (let d = 1; d <= 30; d++) pDHtml += `<option value="${d}" ${d === 15 ? 'selected' : ''}>${d}일</option>`;
+      pDSel.innerHTML = pDHtml;
+      calculateParentsSchedule();
+
+      // 4. 수연 탭 셀렉트 초기화 (기본: 1956년 6월 15일생, 환갑/칠순 세대)
+      const sySel = document.getElementById('suyeon-birth-year');
+      let syHtml = '';
+      for (let y = now.getFullYear(); y >= 1920; y--) syHtml += `<option value="${y}" ${y === 1956 ? 'selected' : ''}>${y}년생</option>`;
+      sySel.innerHTML = syHtml;
+
+      const smSel = document.getElementById('suyeon-birth-month');
+      let smHtml = '';
+      for (let m = 1; m <= 12; m++) smHtml += `<option value="${m}" ${m === 6 ? 'selected' : ''}>${m}월</option>`;
+      smSel.innerHTML = smHtml;
+
+      const sdSel = document.getElementById('suyeon-birth-day');
+      let sdHtml = '';
+      for (let d = 1; d <= 31; d++) sdHtml += `<option value="${d}" ${d === 15 ? 'selected' : ''}>${d}일</option>`;
+      sdSel.innerHTML = sdHtml;
+      calculateSuyeonDates();
+
+      // 5. 변환 및 명절 렌더링 실행
+      convertDate();
+      renderHolidaysBriefing();
+
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js').catch(() => {});
+      }
+    });
+  </script>
+</body>
+</html>

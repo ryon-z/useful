@@ -1,0 +1,15 @@
+{
+  "name": "예·적금 만기 이자 & 실수령액 계산기",
+  "short_name": "이자 계산기",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#022c22",
+  "theme_color": "#10b981",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%2310b981'/><text x='50' y='67' font-size='44' font-family='sans-serif' font-weight='bold' text-anchor='middle' fill='%23022c22'>利</text></svg>",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}

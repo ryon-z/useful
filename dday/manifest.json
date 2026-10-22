@@ -1,0 +1,15 @@
+{
+  "name": "D-Day 및 음력·양력 기념일 변환기",
+  "short_name": "D-Day 변환기",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#1e111a",
+  "theme_color": "#f43f5e",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23f43f5e'/><text x='50' y='67' font-size='44' font-family='sans-serif' font-weight='bold' text-anchor='middle' fill='%231e111a'>陰</text></svg>",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
