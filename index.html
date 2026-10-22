@@ -75,7 +75,7 @@
 
   <main class="max-w-5xl mx-auto px-4 py-6 space-y-8 flex-1 w-full">
 
-    <!-- 1. [신규 추가] 최신 당첨 번호 실시간 브리핑 & 내 번호 맞추기 카드 -->
+    <!-- 1. 최신 당첨 번호 실시간 브리핑 카드 -->
     <section id="latest-section" class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl relative overflow-hidden">
       <div class="absolute -top-12 -right-12 w-48 h-48 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
       
@@ -110,7 +110,7 @@
       </div>
 
       <!-- 1등 당첨 통계 요약 그리드 -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
         <div class="bg-slate-800/60 p-3 rounded-xl border border-slate-800">
           <div class="text-xs text-slate-400 mb-0.5">1등 당첨자 수</div>
           <div id="winner-count" class="text-lg font-bold text-white">- 명</div>
@@ -123,18 +123,7 @@
           <div class="text-xs text-slate-400 mb-0.5">총 판매 금액</div>
           <div id="total-sell" class="text-lg font-bold text-slate-200">- 원</div>
         </div>
-        <div class="bg-slate-800/60 p-3 rounded-xl border border-slate-800 flex flex-col justify-center">
-          <div class="text-xs text-slate-400 mb-0.5">내 추천번호 일치 검사</div>
-          <div id="compare-btn-area">
-            <button onclick="compareWithLatest()" class="text-xs bg-slate-700 hover:bg-slate-600 text-amber-300 font-bold py-1 px-2.5 rounded transition">
-              대조하기
-            </button>
-          </div>
-        </div>
       </div>
-
-      <!-- 대조 결과 알림 바 -->
-      <div id="compare-result" class="hidden mt-4 p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl text-xs text-center text-amber-300 font-medium"></div>
     </section>
 
     <!-- 2. 스마트 로또 번호 추출기 (1게임/5게임, 4가지 통계 필터) -->
@@ -553,45 +542,7 @@
       });
     }
 
-    // 4. 최신 당첨 번호와 비교 검사 함수
-    function compareWithLatest() {
-      const compBox = document.getElementById('compare-result');
-      if (!latestLotto || !latestLotto.numbers) {
-        alert('최신 당첨 번호 데이터를 아직 불러오지 못했습니다.');
-        return;
-      }
-      if (!lastGeneratedSets.length) {
-        alert('먼저 황금 번호 조합을 생성해 주세요.');
-        return;
-      }
-
-      compBox.classList.remove('hidden');
-      const winSet = latestLotto.numbers;
-      const bonus = latestLotto.bonusNo;
-
-      let highestRank = '낙첨';
-      let maxMatch = 0;
-
-      lastGeneratedSets.forEach((picks, i) => {
-        const matchCount = picks.filter(n => winSet.includes(n)).length;
-        const bonusMatch = picks.includes(bonus);
-
-        if (matchCount > maxMatch) maxMatch = matchCount;
-
-        if (matchCount === 6) highestRank = '1등 일치 (6개 일치)';
-        else if (matchCount === 5 && bonusMatch && highestRank !== '1등') highestRank = '2등 일치 (5개 + 보너스)';
-        else if (matchCount === 5 && !highestRank.includes('등')) highestRank = '3등 일치 (5개)';
-        else if (matchCount === 4 && !highestRank.includes('등')) highestRank = '4등 일치 (50,000원)';
-        else if (matchCount === 3 && !highestRank.includes('등')) highestRank = '5등 일치 (5,000원)';
-      });
-
-      compBox.innerHTML = `
-        <div class="font-bold text-sm">제 ${latestLotto.drwNo}회차 가상 대조 결과</div>
-        <div class="mt-1 text-slate-300">생성된 조합 중 최대 <strong>${maxMatch}개 일치</strong> (${highestRank})</div>
-      `;
-    }
-
-    // 5. 사주 명리학 오행 분석 엔진
+    // 4. 사주 명리학 오행 분석 엔진
     function calculateSajuFortune() {
       const birth = document.getElementById('saju-birth').value;
       const timeVal = parseInt(document.getElementById('saju-time').value, 10);
