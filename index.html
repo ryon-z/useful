@@ -55,10 +55,14 @@
           <span class="text-xl sm:text-2xl font-black tracking-tight text-white">USEFUL <span class="text-amber-400">도구모음</span></span>
         </div>
       </div>
-      <nav class="flex items-center gap-3 sm:gap-5 text-sm sm:text-base font-bold text-slate-300">
+      <nav class="flex items-center gap-2.5 sm:gap-4 text-xs sm:text-base font-bold text-slate-300">
         <a href="./lottery/" class="text-amber-300 hover:text-amber-200 transition flex items-center gap-1.5 bg-amber-500/10 border border-amber-500/30 px-3 py-1.5 rounded-xl">
           <i class="fa-solid fa-clover text-amber-400"></i>
           <span>로또 명당</span>
+        </a>
+        <a href="./age/" class="text-sky-300 hover:text-sky-200 transition flex items-center gap-1.5 bg-sky-500/10 border border-sky-500/30 px-3 py-1.5 rounded-xl">
+          <i class="fa-solid fa-calendar-days text-sky-400"></i>
+          <span>만 나이 계산기</span>
         </a>
       </nav>
     </div>
@@ -147,35 +151,39 @@
           </a>
         </div>
 
-        <!-- 2. 만 나이 & 띠·사주 간지 간편 계산기 (준비 중) -->
-        <div class="bg-slate-900/60 border border-slate-800 rounded-3xl p-6 sm:p-7 shadow-lg flex flex-col justify-between opacity-85">
+        <!-- 2. 만 나이 & 띠·사주 간지 간편 계산기 (운영 중) -->
+        <div class="bg-slate-900 border-2 border-sky-500/50 hover:border-sky-400 rounded-3xl p-6 sm:p-7 shadow-xl transition-all flex flex-col justify-between group relative overflow-hidden">
+          <div class="absolute -top-10 -right-10 w-36 h-36 bg-sky-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
           <div>
             <div class="flex items-center justify-between gap-3 mb-4">
-              <div class="w-12 h-12 rounded-2xl bg-slate-800 text-sky-400 border border-slate-700 flex items-center justify-center text-2xl">
+              <div class="w-12 h-12 rounded-2xl bg-sky-500/20 text-sky-400 border border-sky-500/40 flex items-center justify-center text-2xl shadow-sm">
                 <i class="fa-regular fa-calendar-check"></i>
               </div>
-              <span class="px-3 py-1 rounded-full bg-slate-800 text-slate-400 border border-slate-700 text-xs sm:text-sm font-bold">
-                오픈 준비 중
+              <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs sm:text-sm font-bold flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> 운영 중
               </span>
             </div>
 
-            <h3 class="text-xl sm:text-2xl font-black text-slate-200 mb-2">
+            <h3 class="text-xl sm:text-2xl font-black text-white mb-2 group-hover:text-sky-300 transition">
               만 나이 & 띠·천간지지 간편 계산기
             </h3>
-            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed mb-4">
-              개정된 대한민국 법적 만(滿) 나이, 연 나이, 세는 나이를 기준일자에 맞춰 즉시 판별하고 출생 연도의 십이지 띠와 천간지지(육십갑자)를 확인합니다.
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
+              개정된 대한민국 법적 만(滿) 나이, 연 나이, 세는 나이를 기준일자에 맞춰 즉시 판별하고 출생 연도의 십이지 띠와 천간지지(육십갑자), 연령별 복지 혜택을 확인합니다.
             </p>
 
             <div class="flex flex-wrap gap-1.5 mb-6">
-              <span class="text-xs font-medium px-2.5 py-1 rounded-lg bg-slate-950 text-slate-500 border border-slate-800">법적 만 나이</span>
-              <span class="text-xs font-medium px-2.5 py-1 rounded-lg bg-slate-950 text-slate-500 border border-slate-800">12간지 띠 계산</span>
-              <span class="text-xs font-medium px-2.5 py-1 rounded-lg bg-slate-950 text-slate-500 border border-slate-800">생일 D-Day</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">법적 만 나이</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">12간지 띠·색상</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">천간지지(육십갑자)</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">생애 복지 혜택</span>
             </div>
           </div>
 
-          <button disabled class="w-full bg-slate-800 text-slate-500 font-bold py-3.5 px-5 rounded-xl cursor-not-allowed text-center text-sm sm:text-base">
-            곧 공개 예정입니다
-          </button>
+          <a href="./age/" class="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-black py-3.5 px-5 rounded-xl transition text-center text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-sky-500/20 active:scale-95">
+            <span>나이 & 띠 계산하기</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
         </div>
 
         <!-- 3. 예·적금 만기 이자 & 비과세 계산기 (준비 중) -->

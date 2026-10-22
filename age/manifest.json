@@ -1,0 +1,16 @@
+{
+  "name": "만 나이 & 띠 계산기 - 대한민국 공식 나이 및 천간지지 계산",
+  "short_name": "만나이계산기",
+  "description": "대한민국 개정 민법 공식 만 나이, 연 나이, 세는 나이 및 12간지 띠와 천간지지, 생애주기별 복지 혜택 안내 계산기",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%2338bdf8'/><text x='50' y='67' font-size='44' font-family='sans-serif' font-weight='bold' text-anchor='middle' fill='%230f172a'>歲</text></svg>",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
