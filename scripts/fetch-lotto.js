@@ -47,29 +47,42 @@ async function fetchDrawFromApi(drwNo) {
     ? `${rawDate.slice(0, 4)}-${rawDate.slice(4, 6)}-${rawDate.slice(6, 8)}`
     : rawDate;
 
+  const numbers = [
+    Number(item.tm1WnNo),
+    Number(item.tm2WnNo),
+    Number(item.tm3WnNo),
+    Number(item.tm4WnNo),
+    Number(item.tm5WnNo),
+    Number(item.tm6WnNo)
+  ].sort((a, b) => a - b);
+
+  const bonusNo = Number(item.bnsWnNo);
+  const firstWinnerCount = Number(item.rnk1WnNope || 0);
+  const firstWinAmount = Number(item.rnk1WnAmt || 0);
+  const totalSellAmount = Number(item.wholEpsdSumNtslAmt || 0);
+
   return {
     returnValue: 'success',
     drwNo: Number(item.ltEpsd),
     drwNoDate: formattedDate,
-    drwtNo1: Number(item.tm1WnNo),
-    drwtNo2: Number(item.tm2WnNo),
-    drwtNo3: Number(item.tm3WnNo),
-    drwtNo4: Number(item.tm4WnNo),
-    drwtNo5: Number(item.tm5WnNo),
-    drwtNo6: Number(item.tm6WnNo),
-    bnusNo: Number(item.bnsWnNo),
-    firstPrzwnerCo: Number(item.rnk1WnNope || 0),
-    firstWinamnt: Number(item.rnk1WnAmt || 0),
+    // gemini-code UI 직접 바인딩용 필드
+    numbers: numbers,
+    bonusNo: bonusNo,
+    firstWinnerCount: firstWinnerCount,
+    firstWinAmount: firstWinAmount,
+    totalSellAmount: totalSellAmount,
+    // 동행복권 표준 API 호환 필드
+    drwtNo1: numbers[0],
+    drwtNo2: numbers[1],
+    drwtNo3: numbers[2],
+    drwtNo4: numbers[3],
+    drwtNo5: numbers[4],
+    drwtNo6: numbers[5],
+    bnusNo: bonusNo,
+    firstPrzwnerCo: firstWinnerCount,
+    firstWinamnt: firstWinAmount,
     firstAccumamnt: Number(item.rnk1SumWnAmt || 0),
-    totSellamnt: Number(item.wholEpsdSumNtslAmt || 0),
-    // 등위별 상세 정보 보존
-    ranks: [
-      { rank: 1, winners: Number(item.rnk1WnNope || 0), prizePerPerson: Number(item.rnk1WnAmt || 0), totalPrize: Number(item.rnk1SumWnAmt || 0) },
-      { rank: 2, winners: Number(item.rnk2WnNope || 0), prizePerPerson: Number(item.rnk2WnAmt || 0), totalPrize: Number(item.rnk2SumWnAmt || 0) },
-      { rank: 3, winners: Number(item.rnk3WnNope || 0), prizePerPerson: Number(item.rnk3WnAmt || 0), totalPrize: Number(item.rnk3SumWnAmt || 0) },
-      { rank: 4, winners: Number(item.rnk4WnNope || 0), prizePerPerson: Number(item.rnk4WnAmt || 0), totalPrize: Number(item.rnk4SumWnAmt || 0) },
-      { rank: 5, winners: Number(item.rnk5WnNope || 0), prizePerPerson: Number(item.rnk5WnAmt || 0), totalPrize: Number(item.rnk5SumWnAmt || 0) }
-    ],
+    totSellamnt: totalSellAmount,
     updatedAt: new Date().toISOString()
   };
 }
@@ -80,7 +93,6 @@ async function main() {
 
   let finalData = null;
 
-  // 최신 회차가 아직 미추첨/미공개일 수 있으므로 이전 3회차까지 순차 탐색
   for (let drw = estimatedDraw; drw >= Math.max(1, estimatedDraw - 3); drw--) {
     try {
       console.log(`[FETCH] ${drw}회차 조회 시도 중...`);
