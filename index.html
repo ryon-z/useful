@@ -19,12 +19,6 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Flatpickr (모던 캘린더 라이브러리 & 한국어 & 다크 테마) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/dark.css">
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
-
   <style>
     @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
     body { font-family: 'Pretendard', sans-serif; }
@@ -48,62 +42,9 @@
     .ball-red    { background: radial-gradient(circle at 35% 35%, #fca5a5, #b91c1c); }
     .ball-gray   { background: radial-gradient(circle at 35% 35%, #d1d5db, #4b5563); }
     .ball-green  { background: radial-gradient(circle at 35% 35%, #86efac, #15803d); }
-
-    /* Flatpickr 캘린더 다크 테마 커스텀 */
-    .flatpickr-calendar {
-      background: #0f172a !important;
-      border: 1px solid #334155 !important;
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.7), 0 0 20px rgba(245, 158, 11, 0.25) !important;
-      border-radius: 1rem !important;
-      font-family: inherit !important;
-      padding: 0.5rem !important;
-    }
-    .flatpickr-calendar .flatpickr-month {
-      color: #f1f5f9 !important;
-      fill: #f1f5f9 !important;
-    }
-    .flatpickr-current-month {
-      font-size: 0.95rem !important;
-      padding: 0.5rem 0 !important;
-    }
-    .flatpickr-current-month .flatpickr-monthDropdown-months {
-      background: #1e293b !important;
-      color: #f8fafc !important;
-      border-radius: 0.5rem !important;
-      font-weight: 700 !important;
-    }
-    .flatpickr-current-month input.cur-year {
-      font-weight: 800 !important;
-      color: #f59e0b !important;
-    }
-    span.flatpickr-weekday {
-      color: #94a3b8 !important;
-      font-weight: 700 !important;
-    }
-    .flatpickr-day {
-      color: #e2e8f0 !important;
-      border-radius: 0.5rem !important;
-      font-weight: 600 !important;
-    }
-    .flatpickr-day:hover {
-      background: #334155 !important;
-    }
-    .flatpickr-day.today {
-      border-color: #f59e0b !important;
-      color: #f59e0b !important;
-    }
-    .flatpickr-day.selected, .flatpickr-day.selected:hover {
-      background: #f59e0b !important;
-      border-color: #f59e0b !important;
-      color: #0f172a !important;
-      font-weight: 900 !important;
-    }
-    .flatpickr-calendar .flatpickr-prev-month, .flatpickr-calendar .flatpickr-next-month {
-      color: #f59e0b !important;
-      fill: #f59e0b !important;
-    }
-    .flatpickr-calendar .flatpickr-prev-month:hover svg, .flatpickr-calendar .flatpickr-next-month:hover svg {
-      fill: #fbbf24 !important;
+    
+    .shadow-glow-gold {
+      box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
     }
   </style>
 
@@ -260,33 +201,91 @@
       </p>
 
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 bg-slate-950/60 p-4 rounded-xl border border-slate-800 mb-5">
-        <div>
+        <!-- 생년월일 (모던 커스텀 다크 캘린더) -->
+        <div class="relative" id="saju-calendar-root">
           <div class="flex items-center justify-between mb-1.5">
-            <label for="saju-birth" class="text-xs font-semibold text-slate-300 flex items-center gap-1.5 cursor-pointer">
+            <label class="text-xs font-semibold text-slate-300 flex items-center gap-1.5 cursor-pointer" onclick="toggleCustomCalendar()">
               <i class="fa-regular fa-calendar-days text-amber-400"></i>
               <span>생년월일 (캘린더 선택)</span>
             </label>
             <span class="text-[10px] text-amber-400/80 font-medium">양력 기준</span>
           </div>
-          <div class="relative flex items-center">
-            <input type="text" id="saju-birth" value="1990-05-15" placeholder="YYYY-MM-DD" readonly
-              class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2.5 pl-3 pr-10 text-xs text-white font-semibold focus:outline-none focus:border-amber-400 cursor-pointer shadow-inner">
-            <button type="button" id="btn-open-calendar" class="absolute right-2.5 p-1 text-slate-400 hover:text-amber-400 transition" title="달력 열기">
-              <i class="fa-regular fa-calendar text-sm"></i>
-            </button>
+
+          <!-- 캘린더 열기 트리거 카드 (일체형 모던 인풋) -->
+          <div id="saju-birth-trigger" onclick="toggleCustomCalendar()" class="w-full h-[42px] bg-slate-900 hover:bg-slate-800/80 border border-slate-700 hover:border-amber-400/70 rounded-xl px-3 flex items-center justify-between cursor-pointer transition shadow-inner group select-none">
+            <div class="flex items-center gap-2">
+              <i class="fa-regular fa-calendar text-amber-400 text-sm group-hover:scale-110 transition-transform"></i>
+              <span id="saju-birth-display" class="text-xs text-white font-bold tracking-wide">1990년 05월 15일</span>
+            </div>
+            <i id="saju-chevron" class="fa-solid fa-chevron-down text-slate-400 text-xs transition-transform duration-200"></i>
           </div>
-          <!-- 빠른 연대 선택 버튼 -->
-          <div class="flex items-center gap-1 mt-1.5 text-[10px] text-slate-400">
-            <span class="text-slate-500">빠른 이동:</span>
-            <button type="button" class="quick-year-btn px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 hover:border-amber-500/50 hover:text-amber-300 transition" data-year="1970">70년대</button>
-            <button type="button" class="quick-year-btn px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 hover:border-amber-500/50 hover:text-amber-300 transition" data-year="1980">80년대</button>
-            <button type="button" class="quick-year-btn px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 hover:border-amber-500/50 hover:text-amber-300 transition" data-year="1990">90년대</button>
-            <button type="button" class="quick-year-btn px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 hover:border-amber-500/50 hover:text-amber-300 transition" data-year="2000">00년대</button>
+
+          <!-- 실제 값 저장용 hidden input -->
+          <input type="hidden" id="saju-birth" value="1990-05-15">
+
+          <!-- 모던 커스텀 다크 캘린더 팝업 드롭다운 -->
+          <div id="custom-calendar-popup" class="hidden absolute top-full left-0 mt-2 w-[310px] sm:w-[330px] bg-slate-900/98 backdrop-blur-xl border border-slate-700 rounded-2xl p-4 shadow-2xl shadow-black/90 z-50 transition-all select-none">
+            
+            <!-- 1. 헤더: 이전/다음 버튼 & 년/월 드롭다운 -->
+            <div class="flex items-center justify-between gap-1 pb-2.5 border-b border-slate-800">
+              <button type="button" id="cal-prev-month" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 hover:text-amber-300 text-slate-300 flex items-center justify-center transition text-xs active:scale-95" title="이전 달">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+
+              <div class="flex items-center gap-1.5">
+                <select id="cal-year-select" class="bg-slate-800 text-amber-400 font-bold text-xs rounded-lg px-2.5 py-1.5 border border-slate-700 focus:outline-none focus:border-amber-400 cursor-pointer">
+                  <!-- 동적 주입 -->
+                </select>
+                <select id="cal-month-select" class="bg-slate-800 text-white font-bold text-xs rounded-lg px-2.5 py-1.5 border border-slate-700 focus:outline-none focus:border-amber-400 cursor-pointer">
+                  <!-- 동적 주입 -->
+                </select>
+              </div>
+
+              <button type="button" id="cal-next-month" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 hover:text-amber-300 text-slate-300 flex items-center justify-center transition text-xs active:scale-95" title="다음 달">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
+
+            <!-- 2. 빠른 연대 점프 뱃지 -->
+            <div class="flex items-center justify-between gap-1 py-2 text-[10px] text-slate-400 border-b border-slate-800/60">
+              <span class="text-slate-500 font-medium pl-0.5">연대 이동:</span>
+              <button type="button" class="cal-quick-decade px-1.5 py-0.5 rounded bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-amber-300 transition" data-decade="1960">60년대</button>
+              <button type="button" class="cal-quick-decade px-1.5 py-0.5 rounded bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-amber-300 transition" data-decade="1970">70년대</button>
+              <button type="button" class="cal-quick-decade px-1.5 py-0.5 rounded bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-amber-300 transition" data-decade="1980">80년대</button>
+              <button type="button" class="cal-quick-decade px-1.5 py-0.5 rounded bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-amber-300 transition" data-decade="1990">90년대</button>
+              <button type="button" class="cal-quick-decade px-1.5 py-0.5 rounded bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-amber-300 transition" data-decade="2000">00년대</button>
+            </div>
+
+            <!-- 3. 요일 헤더 -->
+            <div class="grid grid-cols-7 text-center pt-2.5 pb-1.5 text-[11px] font-bold">
+              <span class="text-rose-400">일</span>
+              <span class="text-slate-400">월</span>
+              <span class="text-slate-400">화</span>
+              <span class="text-slate-400">수</span>
+              <span class="text-slate-400">목</span>
+              <span class="text-slate-400">금</span>
+              <span class="text-sky-400">토</span>
+            </div>
+
+            <!-- 4. 날짜 7열 그리드 -->
+            <div id="cal-days-grid" class="grid grid-cols-7 gap-1 text-center">
+              <!-- JS 동적 렌더링 -->
+            </div>
+
+            <!-- 5. 푸터: 오늘 / 선택 완료 -->
+            <div class="flex items-center justify-between pt-2.5 mt-2 border-t border-slate-800 text-xs">
+              <button type="button" id="cal-btn-today" class="text-slate-400 hover:text-amber-300 transition flex items-center gap-1 text-[11px]">
+                <i class="fa-solid fa-rotate-left text-[10px]"></i> 오늘 날짜
+              </button>
+              <button type="button" id="cal-btn-close" class="px-3 py-1 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs shadow transition active:scale-95">
+                선택 완료
+              </button>
+            </div>
           </div>
         </div>
         <div>
           <label class="block text-xs font-semibold text-slate-300 mb-1.5">태어난 시간 (12시진)</label>
-          <select id="saju-time" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-amber-400">
+          <select id="saju-time" class="w-full h-[42px] bg-slate-900 border border-slate-700 rounded-xl px-3 text-xs text-white focus:outline-none focus:border-amber-400 cursor-pointer shadow-inner">
             <option value="0">자시 (子時) 23:30 ~ 01:29</option>
             <option value="1">축시 (丑時) 01:30 ~ 03:29</option>
             <option value="2">인시 (寅時) 03:30 ~ 05:29</option>
@@ -302,7 +301,11 @@
           </select>
         </div>
         <div class="flex items-end">
-          <button onclick="calculateSajuFortune()" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-2.5 px-4 rounded-lg transition text-xs shadow-md">
+          <button onclick="calculateSajuFortune()" class="w-full h-[42px] bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 font-black rounded-xl transition text-xs shadow-md shadow-amber-500/20 active:scale-95 flex items-center justify-center gap-1.5">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>명리학 수리 번호 도출</span>
+          </button>
+        </div>
             명리학 수리 번호 도출
           </button>
         </div>
@@ -721,50 +724,245 @@
       document.getElementById('tax-net-amount').textContent = formatKRW(Math.floor(netAmount));
     }
 
+    // =========================================================================
+    // 커스텀 다크 캘린더 엔진
+    // =========================================================================
+    const SajuCalendar = {
+      selectedYear: 1990,
+      selectedMonth: 5,  // 1 ~ 12
+      selectedDay: 15,
+      viewYear: 1990,
+      viewMonth: 5,
+
+      init() {
+        const yearSelect = document.getElementById('cal-year-select');
+        const monthSelect = document.getElementById('cal-month-select');
+        const currentYear = new Date().getFullYear();
+
+        // 1930 ~ 현재 연도 동적 채우기
+        yearSelect.innerHTML = '';
+        for (let y = currentYear; y >= 1930; y--) {
+          const opt = document.createElement('option');
+          opt.value = y;
+          opt.textContent = `${y}년`;
+          yearSelect.appendChild(opt);
+        }
+
+        monthSelect.innerHTML = '';
+        for (let m = 1; m <= 12; m++) {
+          const opt = document.createElement('option');
+          opt.value = m;
+          opt.textContent = `${m}월`;
+          monthSelect.appendChild(opt);
+        }
+
+        yearSelect.value = this.viewYear;
+        monthSelect.value = this.viewMonth;
+
+        yearSelect.addEventListener('change', (e) => {
+          this.viewYear = Number(e.target.value);
+          this.render();
+        });
+
+        monthSelect.addEventListener('change', (e) => {
+          this.viewMonth = Number(e.target.value);
+          this.render();
+        });
+
+        document.getElementById('cal-prev-month').addEventListener('click', () => {
+          this.prevMonth();
+        });
+
+        document.getElementById('cal-next-month').addEventListener('click', () => {
+          this.nextMonth();
+        });
+
+        document.getElementById('cal-btn-today').addEventListener('click', () => {
+          const now = new Date();
+          this.setDate(now.getFullYear(), now.getMonth() + 1, now.getDate());
+        });
+
+        document.getElementById('cal-btn-close').addEventListener('click', () => {
+          this.close();
+        });
+
+        document.querySelectorAll('.cal-quick-decade').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const dec = Number(btn.getAttribute('data-decade'));
+            this.viewYear = dec + 5; // e.g. 1980년대 -> 1985년
+            yearSelect.value = this.viewYear;
+            this.render();
+          });
+        });
+
+        // 팝업 외부 클릭 시 닫기
+        document.addEventListener('click', (e) => {
+          const root = document.getElementById('saju-calendar-root');
+          if (root && !root.contains(e.target)) {
+            this.close();
+          }
+        });
+
+        this.updateDisplay();
+        this.render();
+      },
+
+      prevMonth() {
+        this.viewMonth--;
+        if (this.viewMonth < 1) {
+          this.viewMonth = 12;
+          this.viewYear--;
+        }
+        document.getElementById('cal-year-select').value = this.viewYear;
+        document.getElementById('cal-month-select').value = this.viewMonth;
+        this.render();
+      },
+
+      nextMonth() {
+        this.viewMonth++;
+        if (this.viewMonth > 12) {
+          this.viewMonth = 1;
+          this.viewYear++;
+        }
+        document.getElementById('cal-year-select').value = this.viewYear;
+        document.getElementById('cal-month-select').value = this.viewMonth;
+        this.render();
+      },
+
+      setDate(year, month, day) {
+        this.selectedYear = year;
+        this.selectedMonth = month;
+        this.selectedDay = day;
+        this.viewYear = year;
+        this.viewMonth = month;
+        document.getElementById('cal-year-select').value = year;
+        document.getElementById('cal-month-select').value = month;
+        this.updateDisplay();
+        this.render();
+        this.close();
+      },
+
+      updateDisplay() {
+        const yStr = String(this.selectedYear);
+        const mStr = String(this.selectedMonth).padStart(2, '0');
+        const dStr = String(this.selectedDay).padStart(2, '0');
+
+        document.getElementById('saju-birth-display').textContent = `${yStr}년 ${mStr}월 ${dStr}일`;
+        document.getElementById('saju-birth').value = `${yStr}-${mStr}-${dStr}`;
+      },
+
+      toggle() {
+        const popup = document.getElementById('custom-calendar-popup');
+        const chevron = document.getElementById('saju-chevron');
+        if (popup.classList.contains('hidden')) {
+          popup.classList.remove('hidden');
+          chevron.classList.add('rotate-180');
+          this.viewYear = this.selectedYear;
+          this.viewMonth = this.selectedMonth;
+          document.getElementById('cal-year-select').value = this.viewYear;
+          document.getElementById('cal-month-select').value = this.viewMonth;
+          this.render();
+        } else {
+          this.close();
+        }
+      },
+
+      close() {
+        const popup = document.getElementById('custom-calendar-popup');
+        const chevron = document.getElementById('saju-chevron');
+        if (popup) popup.classList.add('hidden');
+        if (chevron) chevron.classList.remove('rotate-180');
+      },
+
+      render() {
+        const grid = document.getElementById('cal-days-grid');
+        grid.innerHTML = '';
+
+        const year = this.viewYear;
+        const month = this.viewMonth;
+
+        const firstDayIndex = new Date(year, month - 1, 1).getDay();
+        const lastDate = new Date(year, month, 0).getDate();
+        const prevLastDate = new Date(year, month - 1, 0).getDate();
+
+        const today = new Date();
+        const isCurrentMonthToday = today.getFullYear() === year && (today.getMonth() + 1) === month;
+
+        // 1. 이전 달 날짜 채우기 (연한 회색, 40% 투명도)
+        for (let i = firstDayIndex - 1; i >= 0; i--) {
+          const d = prevLastDate - i;
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'w-8 h-8 sm:w-9 sm:h-9 mx-auto flex items-center justify-center rounded-xl text-xs text-slate-500 opacity-35 hover:opacity-75 transition';
+          btn.textContent = d;
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.prevMonth();
+          });
+          grid.appendChild(btn);
+        }
+
+        // 2. 이번 달 날짜 채우기
+        for (let d = 1; d <= lastDate; d++) {
+          const dayOfWeek = (firstDayIndex + d - 1) % 7;
+          const isSelected = (this.selectedYear === year && this.selectedMonth === month && this.selectedDay === d);
+          const isToday = isCurrentMonthToday && today.getDate() === d;
+
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.textContent = d;
+
+          let cls = 'w-8 h-8 sm:w-9 sm:h-9 mx-auto flex items-center justify-center rounded-xl text-xs font-semibold transition active:scale-95 ';
+
+          if (isSelected) {
+            cls += 'bg-gradient-to-tr from-amber-500 to-yellow-400 text-slate-950 font-black shadow-glow-gold scale-105';
+          } else if (isToday) {
+            cls += 'ring-1 ring-amber-400 text-amber-300 font-bold hover:bg-slate-800';
+          } else {
+            if (dayOfWeek === 0) {
+              cls += 'text-rose-400 hover:bg-slate-800 hover:text-rose-300';
+            } else if (dayOfWeek === 6) {
+              cls += 'text-sky-400 hover:bg-slate-800 hover:text-sky-300';
+            } else {
+              cls += 'text-slate-100 hover:bg-slate-800 hover:text-amber-300';
+            }
+          }
+
+          btn.className = cls;
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.setDate(year, month, d);
+          });
+
+          grid.appendChild(btn);
+        }
+
+        // 3. 다음 달 날짜 채우기 (연한 회색, 40% 투명도)
+        const totalCells = firstDayIndex + lastDate;
+        const nextDays = (totalCells <= 35 ? 35 : 42) - totalCells;
+        for (let d = 1; d <= nextDays; d++) {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'w-8 h-8 sm:w-9 sm:h-9 mx-auto flex items-center justify-center rounded-xl text-xs text-slate-500 opacity-35 hover:opacity-75 transition';
+          btn.textContent = d;
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.nextMonth();
+          });
+          grid.appendChild(btn);
+        }
+      }
+    };
+
+    function toggleCustomCalendar() {
+      SajuCalendar.toggle();
+    }
+
     // 초기화
     window.addEventListener('DOMContentLoaded', () => {
       loadLatestLotto();
       calculateTax(); // 기본 20억 세금 계산 1회 수행
-
-      // Flatpickr 캘린더 초기화 (한국어, 다크 모드, 드롭다운 지원)
-      let sajuCalendar = null;
-      if (typeof flatpickr !== 'undefined') {
-        sajuCalendar = flatpickr('#saju-birth', {
-          locale: 'ko',
-          dateFormat: 'Y-m-d',
-          defaultDate: '1990-05-15',
-          maxDate: 'today',
-          minDate: '1920-01-01',
-          monthSelectorType: 'dropdown',
-          disableMobile: true, // 일관된 커스텀 다크 캘린더 UI 표시
-        });
-
-        const openBtn = document.getElementById('btn-open-calendar');
-        if (openBtn) {
-          openBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (sajuCalendar) sajuCalendar.open();
-          });
-        }
-
-        // 빠른 연대 선택 버튼 (70년대~00년대)
-        document.querySelectorAll('.quick-year-btn').forEach(btn => {
-          btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetYear = btn.getAttribute('data-year');
-            const curVal = document.getElementById('saju-birth').value || '1990-05-15';
-            const parts = curVal.split('-');
-            const newDateStr = `${targetYear}-${parts[1] || '05'}-${parts[2] || '15'}`;
-            if (sajuCalendar) {
-              sajuCalendar.setDate(newDateStr, true);
-              sajuCalendar.jumpToDate(newDateStr);
-              sajuCalendar.open();
-            } else {
-              document.getElementById('saju-birth').value = newDateStr;
-            }
-          });
-        });
-      }
+      SajuCalendar.init(); // 커스텀 캘린더 초기화
 
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('./sw.js').catch(() => {});
