@@ -59,6 +59,8 @@ async function fetchDrawFromApi(drwNo) {
   const bonusNo = Number(item.bnsWnNo);
   const firstWinnerCount = Number(item.rnk1WnNope || 0);
   const firstWinAmount = Number(item.rnk1WnAmt || 0);
+  const secondWinnerCount = Number(item.rnk2WnNope || 0);
+  const secondWinAmount = Number(item.rnk2WnAmt || 0);
   const totalSellAmount = Number(item.wholEpsdSumNtslAmt || 0);
 
   return {
@@ -70,6 +72,8 @@ async function fetchDrawFromApi(drwNo) {
     bonusNo: bonusNo,
     firstWinnerCount: firstWinnerCount,
     firstWinAmount: firstWinAmount,
+    secondWinnerCount: secondWinnerCount,
+    secondWinAmount: secondWinAmount,
     totalSellAmount: totalSellAmount,
     // 동행복권 표준 API 호환 필드
     drwtNo1: numbers[0],
@@ -82,6 +86,9 @@ async function fetchDrawFromApi(drwNo) {
     firstPrzwnerCo: firstWinnerCount,
     firstWinamnt: firstWinAmount,
     firstAccumamnt: Number(item.rnk1SumWnAmt || 0),
+    secondPrzwnerCo: secondWinnerCount,
+    secondWinamnt: secondWinAmount,
+    secondAccumamnt: Number(item.rnk2SumWnAmt || 0),
     totSellamnt: totalSellAmount,
     updatedAt: new Date().toISOString()
   };

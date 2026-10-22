@@ -113,16 +113,22 @@
         </div>
       </div>
 
-      <!-- 1등 당첨 통계 요약 그리드 -->
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
-        <div class="bg-slate-800/60 p-3 rounded-xl border border-slate-800">
-          <div class="text-xs text-slate-400 mb-0.5">1등 당첨자 수</div>
-          <div id="winner-count" class="text-lg font-bold text-white">- 명</div>
-        </div>
+      <!-- 당첨 통계 요약 그리드 (1등/2등 당첨금 및 통계) -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 text-center">
         <div class="bg-slate-800/60 p-3 rounded-xl border border-slate-800 flex flex-col justify-center">
           <div class="text-xs text-slate-400 mb-0.5">1인당 1등 수령액</div>
           <div id="winner-amount" class="text-lg sm:text-xl font-black text-amber-400 leading-tight">-</div>
           <div id="winner-amount-detail" class="text-[11px] text-slate-400 font-mono mt-0.5">-</div>
+        </div>
+        <div class="bg-slate-800/60 p-3 rounded-xl border border-slate-800 flex flex-col justify-center">
+          <div class="text-xs text-slate-400 mb-0.5">1인당 2등 수령액</div>
+          <div id="second-winner-amount" class="text-lg sm:text-xl font-black text-sky-400 leading-tight">-</div>
+          <div id="second-winner-amount-detail" class="text-[11px] text-slate-400 font-mono mt-0.5">-</div>
+        </div>
+        <div class="bg-slate-800/60 p-3 rounded-xl border border-slate-800 flex flex-col justify-center">
+          <div class="text-xs text-slate-400 mb-0.5">1등 당첨자 수</div>
+          <div id="winner-count" class="text-lg sm:text-xl font-bold text-white leading-tight">- 명</div>
+          <div id="second-winner-count" class="text-[11px] text-slate-400 mt-0.5">2등 당첨: -명</div>
         </div>
         <div class="bg-slate-800/60 p-3 rounded-xl border border-slate-800 flex flex-col justify-center">
           <div class="text-xs text-slate-400 mb-0.5">총 판매 금액</div>
@@ -458,10 +464,25 @@
             <input type="number" id="tax-input" value="1881025430" step="10000" oninput="calculateTax()" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-sm font-semibold text-white focus:outline-none focus:border-amber-400 pr-10">
             <span class="absolute right-3 top-2.5 text-xs text-slate-400">원</span>
           </div>
+          <!-- 빠른 금액 선택 프리셋 -->
+          <div class="flex flex-wrap gap-1.5 mt-2">
+            <button type="button" onclick="setTaxPreset('1st')" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-[11px] text-amber-300 border border-slate-700 font-medium transition flex items-center gap-1">
+              <i class="fa-solid fa-crown text-[10px]"></i> 1등 당첨금
+            </button>
+            <button type="button" onclick="setTaxPreset('2nd')" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-[11px] text-sky-300 border border-slate-700 font-medium transition flex items-center gap-1">
+              <i class="fa-solid fa-medal text-[10px]"></i> 2등 당첨금
+            </button>
+            <button type="button" onclick="setTaxPreset(1000000000)" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-[11px] text-slate-300 border border-slate-700 font-medium transition">
+              10억원
+            </button>
+            <button type="button" onclick="setTaxPreset(2000000000)" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-[11px] text-slate-300 border border-slate-700 font-medium transition">
+              20억원
+            </button>
+          </div>
         </div>
-        <div class="flex items-end">
-          <button onclick="calculateTax()" class="w-full bg-slate-800 hover:bg-slate-700 border border-slate-700 text-amber-300 font-bold py-2.5 px-4 rounded-lg transition text-xs">
-            실수령액 계산하기
+        <div class="flex items-start sm:items-center pt-1 sm:pt-0">
+          <button onclick="calculateTax()" class="w-full bg-slate-800 hover:bg-slate-700 border border-slate-700 text-amber-300 font-bold py-2.5 px-4 rounded-lg transition text-xs flex items-center justify-center gap-1.5">
+            <i class="fa-solid fa-calculator"></i> 실수령액 계산하기
           </button>
         </div>
       </div>
@@ -548,7 +569,7 @@
       return Number(val).toLocaleString('ko-KR') + '원';
     }
 
-    // 한글 요약 강조 표기 ("18억 8천만원" 형식)
+    // 한글 요약 강조 표기 ("18억 8천만원", "7천 8백만원" 형식)
     function formatKoreanHeadline(val) {
       val = Math.floor(Number(val) || 0);
       if (val <= 0) return '0원';
@@ -569,11 +590,11 @@
       const totalMan = Math.floor(val / 10000);
       if (totalMan >= 1000) {
         const cheon = Math.floor(totalMan / 1000);
-        const remBaek = totalMan % 1000;
-        if (remBaek === 0) {
-          return `${cheon}천만원`;
+        const baek = Math.floor((totalMan % 1000) / 100);
+        if (baek > 0) {
+          return `${cheon}천 ${baek}백만원`;
         } else {
-          return `${totalMan.toLocaleString()}만원`;
+          return `${cheon}천만원`;
         }
       } else if (totalMan > 0) {
         return `${totalMan.toLocaleString()}만원`;
@@ -598,6 +619,8 @@
           bonusNo: 6,
           firstWinAmount: 1881025430,
           firstWinnerCount: 16,
+          secondWinAmount: 78376060,
+          secondWinnerCount: 64,
           totalSellAmount: 121857105000,
           updatedAt: "2026-10-17T21:15:00.000Z"
         };
@@ -619,6 +642,12 @@
         if (latestLotto.firstWinAmount === undefined && latestLotto.firstWinamnt !== undefined) {
           latestLotto.firstWinAmount = latestLotto.firstWinamnt;
         }
+        if (latestLotto.secondWinnerCount === undefined && latestLotto.secondPrzwnerCo !== undefined) {
+          latestLotto.secondWinnerCount = latestLotto.secondPrzwnerCo;
+        }
+        if (latestLotto.secondWinAmount === undefined && latestLotto.secondWinamnt !== undefined) {
+          latestLotto.secondWinAmount = latestLotto.secondWinamnt;
+        }
         if (latestLotto.totalSellAmount === undefined && latestLotto.totSellamnt !== undefined) {
           latestLotto.totalSellAmount = latestLotto.totSellamnt;
         }
@@ -634,20 +663,48 @@
 
       document.getElementById('winning-balls').innerHTML = latestLotto.numbers.map(n => renderBall(n)).join('');
       document.getElementById('bonus-ball').innerHTML = renderBall(latestLotto.bonusNo);
-      document.getElementById('winner-count').textContent = `${latestLotto.firstWinnerCount} 명`;
+
+      // 1등 당첨금 & 당첨자
       document.getElementById('winner-amount').textContent = formatKoreanHeadline(latestLotto.firstWinAmount);
       document.getElementById('winner-amount-detail').textContent = `(${formatKRW(latestLotto.firstWinAmount)})`;
+      document.getElementById('winner-count').textContent = `${latestLotto.firstWinnerCount} 명`;
+
+      // 2등 당첨금 & 당첨자
+      const secondWinAmt = latestLotto.secondWinAmount || 0;
+      const secondCount = latestLotto.secondWinnerCount || 0;
+      const secondAmtEl = document.getElementById('second-winner-amount');
+      const secondAmtDetailEl = document.getElementById('second-winner-amount-detail');
+      const secondCountEl = document.getElementById('second-winner-count');
+      if (secondAmtEl) secondAmtEl.textContent = formatKoreanHeadline(secondWinAmt);
+      if (secondAmtDetailEl) secondAmtDetailEl.textContent = `(${formatKRW(secondWinAmt)})`;
+      if (secondCountEl) secondCountEl.textContent = `2등 당첨: ${secondCount.toLocaleString()}명`;
+
+      // 총 판매금액
       document.getElementById('total-sell').textContent = formatKoreanHeadline(latestLotto.totalSellAmount);
       document.getElementById('total-sell-detail').textContent = `(${formatKRW(latestLotto.totalSellAmount)})`;
 
       // 세금 계산기 기본 입력값을 최근 1인당 당첨금으로 자동 세팅 & 계산
       if (latestLotto.firstWinAmount) {
         const taxInput = document.getElementById('tax-input');
-        if (taxInput) {
+        if (taxInput && !taxInput.dataset.userEdited) {
           taxInput.value = latestLotto.firstWinAmount;
           calculateTax();
         }
       }
+    }
+
+    function setTaxPreset(preset) {
+      const taxInput = document.getElementById('tax-input');
+      if (!taxInput) return;
+      taxInput.dataset.userEdited = 'true';
+      if (preset === '1st') {
+        taxInput.value = latestLotto?.firstWinAmount || 1881025430;
+      } else if (preset === '2nd') {
+        taxInput.value = latestLotto?.secondWinAmount || 78376060;
+      } else if (typeof preset === 'number') {
+        taxInput.value = preset;
+      }
+      calculateTax();
     }
 
     // 3. 번호 생성기 로직
@@ -1069,11 +1126,15 @@
 
     // 6. 세금 계산기 로직
     function calculateTax() {
-      const input = document.getElementById('tax-input').value;
+      const input = document.getElementById('tax-input')?.value;
       const amount = Number(input);
 
       if (isNaN(amount) || amount <= 0) {
-        alert('올바른 당첨 금액을 입력해주세요.');
+        document.getElementById('tax-deduction').textContent = '- 0원';
+        document.getElementById('tax-deduction-detail').textContent = '(0원)';
+        document.getElementById('tax-rate-desc').textContent = '실효세율 0%';
+        document.getElementById('tax-net-amount').textContent = '0원';
+        document.getElementById('tax-net-detail').textContent = '(0원)';
         return;
       }
 

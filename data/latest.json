@@ -13,6 +13,8 @@
   "bonusNo": 6,
   "firstWinnerCount": 16,
   "firstWinAmount": 1881025430,
+  "secondWinnerCount": 64,
+  "secondWinAmount": 78376060,
   "totalSellAmount": 121857105000,
   "drwtNo1": 16,
   "drwtNo2": 22,
@@ -24,6 +26,9 @@
   "firstPrzwnerCo": 16,
   "firstWinamnt": 1881025430,
   "firstAccumamnt": 30096406880,
+  "secondPrzwnerCo": 64,
+  "secondWinamnt": 78376060,
+  "secondAccumamnt": 5016067840,
   "totSellamnt": 121857105000,
-  "updatedAt": "2026-10-22T08:36:02.184Z"
+  "updatedAt": "2026-10-22T08:59:25.771Z"
 }
