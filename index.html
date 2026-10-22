@@ -314,9 +314,15 @@
             <span>명리학 수리 번호 도출</span>
           </button>
         </div>
-            명리학 수리 번호 도출
-          </button>
+      </div>
+
+      <!-- 초기 안내 가이드 (결과 도출 전 기본 노출) -->
+      <div id="saju-empty-state" class="mt-5 p-8 rounded-2xl bg-slate-950/40 border border-dashed border-slate-800 text-center">
+        <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center mx-auto mb-3 text-lg">
+          <i class="fa-solid fa-yin-yang"></i>
         </div>
+        <p class="text-xs font-semibold text-slate-300 mb-1">생년월일과 태어난 시간을 설정한 후 번호를 도출해보세요</p>
+        <p class="text-[11px] text-slate-500">본인의 타고난 오행(五行) 에너지와 길방위, 행운의 요일, 5게임 맞춤 번호가 정밀 분석됩니다.</p>
       </div>
 
       <!-- 사주 결과 영역 (고도화 버전) -->
@@ -1103,6 +1109,8 @@
       }).join('');
 
       // 결과 박스 보이기 및 스크롤
+      const emptyState = document.getElementById('saju-empty-state');
+      if (emptyState) emptyState.classList.add('hidden');
       const resBox = document.getElementById('saju-result-box');
       resBox.classList.remove('hidden');
       if (shouldScroll) {
@@ -1405,7 +1413,7 @@
       loadLatestLotto();
       calculateTax(); // 세금 계산 1회 수행
       SajuCalendar.init(); // 커스텀 캘린더 초기화
-      calculateSajuFortune(false); // 사주 결과 초기 1회 사전 렌더링 (스크롤 이동 없음)
+      // 사주 맞춤 추천 결과는 사용자가 직접 생년월일 설정 후 버튼을 누를 때 도출
 
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('./sw.js').catch(() => {});
