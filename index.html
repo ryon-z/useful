@@ -119,13 +119,15 @@
           <div class="text-xs text-slate-400 mb-0.5">1등 당첨자 수</div>
           <div id="winner-count" class="text-lg font-bold text-white">- 명</div>
         </div>
-        <div class="bg-slate-800/60 p-3 rounded-xl border border-slate-800">
+        <div class="bg-slate-800/60 p-3 rounded-xl border border-slate-800 flex flex-col justify-center">
           <div class="text-xs text-slate-400 mb-0.5">1인당 1등 수령액</div>
-          <div id="winner-amount" class="text-lg font-bold text-amber-400">- 원</div>
+          <div id="winner-amount" class="text-lg sm:text-xl font-black text-amber-400 leading-tight">-</div>
+          <div id="winner-amount-detail" class="text-[11px] text-slate-400 font-mono mt-0.5">-</div>
         </div>
-        <div class="bg-slate-800/60 p-3 rounded-xl border border-slate-800">
+        <div class="bg-slate-800/60 p-3 rounded-xl border border-slate-800 flex flex-col justify-center">
           <div class="text-xs text-slate-400 mb-0.5">총 판매 금액</div>
-          <div id="total-sell" class="text-lg font-bold text-slate-200">- 원</div>
+          <div id="total-sell" class="text-lg sm:text-xl font-black text-slate-200 leading-tight">-</div>
+          <div id="total-sell-detail" class="text-[11px] text-slate-400 font-mono mt-0.5">-</div>
         </div>
       </div>
     </section>
@@ -465,14 +467,16 @@
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center bg-slate-950/60 p-4 rounded-xl border border-slate-800">
-        <div>
-          <div class="text-[11px] text-slate-400">공제 세금 총액</div>
-          <div id="tax-deduction" class="text-sm font-bold text-red-400 mt-1">- 원</div>
-          <div id="tax-rate-desc" class="text-[10px] text-slate-400 mt-0.5">실효세율 -%</div>
+        <div class="flex flex-col justify-center">
+          <div class="text-[11px] text-slate-400 mb-0.5">공제 세금 총액</div>
+          <div id="tax-deduction" class="text-base sm:text-lg font-bold text-red-400 leading-tight">-</div>
+          <div id="tax-deduction-detail" class="text-[11px] text-slate-400 font-mono mt-0.5">-</div>
+          <div id="tax-rate-desc" class="text-[10px] text-slate-500 mt-1">실효세율 -%</div>
         </div>
-        <div class="sm:col-span-2 bg-slate-900/90 p-3 rounded-lg border border-amber-500/20">
-          <div class="text-[11px] text-amber-400 font-semibold">최종 예상 실수령액</div>
-          <div id="tax-net-amount" class="text-xl font-black text-amber-400 mt-0.5">- 원</div>
+        <div class="sm:col-span-2 bg-slate-900/90 p-3.5 rounded-lg border border-amber-500/30 shadow-sm flex flex-col justify-center">
+          <div class="text-[11px] text-amber-400 font-semibold mb-0.5">최종 예상 실수령액</div>
+          <div id="tax-net-amount" class="text-2xl sm:text-3xl font-black text-amber-400 leading-tight">-</div>
+          <div id="tax-net-detail" class="text-xs text-slate-400 font-mono mt-0.5">-</div>
         </div>
       </div>
     </section>
@@ -544,6 +548,40 @@
       return Number(val).toLocaleString('ko-KR') + '원';
     }
 
+    // 한글 요약 강조 표기 ("18억 8천만원" 형식)
+    function formatKoreanHeadline(val) {
+      val = Math.floor(Number(val) || 0);
+      if (val <= 0) return '0원';
+
+      const uk = Math.floor(val / 100000000);
+      const remUk = val % 100000000;
+
+      if (uk > 0) {
+        const cheonman = Math.floor(remUk / 10000000);
+        if (cheonman > 0) {
+          return `${uk.toLocaleString()}억 ${cheonman}천만원`;
+        } else {
+          return `${uk.toLocaleString()}억원`;
+        }
+      }
+
+      // 1억 미만
+      const totalMan = Math.floor(val / 10000);
+      if (totalMan >= 1000) {
+        const cheon = Math.floor(totalMan / 1000);
+        const remBaek = totalMan % 1000;
+        if (remBaek === 0) {
+          return `${cheon}천만원`;
+        } else {
+          return `${totalMan.toLocaleString()}만원`;
+        }
+      } else if (totalMan > 0) {
+        return `${totalMan.toLocaleString()}만원`;
+      }
+
+      return `${val.toLocaleString()}원`;
+    }
+
     // 2. 최신 회차 데이터 로드 (data/latest.json 연동 + 폴백)
     async function loadLatestLotto() {
       try {
@@ -597,8 +635,10 @@
       document.getElementById('winning-balls').innerHTML = latestLotto.numbers.map(n => renderBall(n)).join('');
       document.getElementById('bonus-ball').innerHTML = renderBall(latestLotto.bonusNo);
       document.getElementById('winner-count').textContent = `${latestLotto.firstWinnerCount} 명`;
-      document.getElementById('winner-amount').textContent = formatKRW(latestLotto.firstWinAmount);
-      document.getElementById('total-sell').textContent = formatKRW(latestLotto.totalSellAmount);
+      document.getElementById('winner-amount').textContent = formatKoreanHeadline(latestLotto.firstWinAmount);
+      document.getElementById('winner-amount-detail').textContent = `(${formatKRW(latestLotto.firstWinAmount)})`;
+      document.getElementById('total-sell').textContent = formatKoreanHeadline(latestLotto.totalSellAmount);
+      document.getElementById('total-sell-detail').textContent = `(${formatKRW(latestLotto.totalSellAmount)})`;
 
       // 세금 계산기 기본 입력값을 최근 1인당 당첨금으로 자동 세팅 & 계산
       if (latestLotto.firstWinAmount) {
@@ -1054,9 +1094,15 @@
       const netAmount = amount - tax;
       const effectiveRate = ((tax / amount) * 100).toFixed(1);
 
-      document.getElementById('tax-deduction').textContent = `- ${formatKRW(Math.floor(tax))}`;
+      const floorTax = Math.floor(tax);
+      const floorNet = Math.floor(netAmount);
+
+      document.getElementById('tax-deduction').textContent = `- ${formatKoreanHeadline(floorTax)}`;
+      document.getElementById('tax-deduction-detail').textContent = `(${formatKRW(floorTax)})`;
       document.getElementById('tax-rate-desc').textContent = `실효세율 약 ${effectiveRate}%`;
-      document.getElementById('tax-net-amount').textContent = formatKRW(Math.floor(netAmount));
+
+      document.getElementById('tax-net-amount').textContent = formatKoreanHeadline(floorNet);
+      document.getElementById('tax-net-detail').textContent = `(${formatKRW(floorNet)})`;
     }
 
     // =========================================================================
