@@ -1,34 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://www.gomodo.cloud/</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.gomodo.cloud/og-image.png</image:loc>
+      <image:title>GoModo (고모도) 생활 웹 도구 모음 포털</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://www.gomodo.cloud/lottery/</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.gomodo.cloud/og-image.png</image:loc>
+      <image:title>로또 명당 - 사주 명리학 번호 추천 및 실시간 로또 분석기</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://www.gomodo.cloud/age/</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.gomodo.cloud/og-image.png</image:loc>
+      <image:title>만 나이 &amp; 띠·천간지지 간편 계산기</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://www.gomodo.cloud/interest/</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.gomodo.cloud/og-image.png</image:loc>
+      <image:title>예·적금 만기 이자 &amp; 세후 실수령액 계산기</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://www.gomodo.cloud/dday/</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.gomodo.cloud/og-image.png</image:loc>
+      <image:title>D-Day 및 음력·양력 변환기</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://www.gomodo.cloud/about/</loc>

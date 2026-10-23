@@ -1,10 +1,10 @@
 // Minimal Service Worker for PWA installability & offline fallback
-const CACHE_NAME = 'saju-lotto-v1';
+const CACHE_NAME = 'gomodo-portal-v2';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
   './manifest.json',
-  './data/latest.json'
+  './og-image.png'
 ];
 
 self.addEventListener('install', (event) => {

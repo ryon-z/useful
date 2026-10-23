@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)" />
+
+  <!-- Outer Border & Accent Top -->
+  <rect x="24" y="24" width="1152" height="582" rx="16" fill="none" stroke="#f59e0b" stroke-width="3" stroke-opacity="0.6" />
+  <rect x="24" y="24" width="1152" height="8" rx="4" fill="url(#accentGrad)" />
+
+  <!-- Brand Logo Circle -->
+  <circle cx="118" cy="108" r="44" fill="url(#accentGrad)" />
+  <text x="118" y="125" font-family="'Segoe UI', Roboto, sans-serif" font-size="52" font-weight="900" fill="#0f172a" text-anchor="middle">G</text>
+
+  <!-- Title & Domain Pill -->
+  <text x="184" y="112" font-family="'Segoe UI', Roboto, sans-serif" font-size="52" font-weight="800" fill="#ffffff" letter-spacing="-1">GoModo</text>
+  
+  <rect x="420" y="80" width="180" height="38" rx="19" fill="#1e293b" stroke="#475569" stroke-width="1.5" />
+  <text x="510" y="105" font-family="'Segoe UI', sans-serif" font-size="16" font-weight="700" fill="#f59e0b" text-anchor="middle">gomodo.cloud</text>
+
+  <!-- Tagline -->
+  <text x="75" y="195" font-family="'Pretendard', 'Malgun Gothic', -apple-system, sans-serif" font-size="22" font-weight="600" fill="#cbd5e1">일상의 편리함을 더하는 생활 밀착형 웹 도구 모음 포털</text>
+
+  <!-- 4 Feature Cards (2x2 Grid) -->
+  <!-- Card 1: Lotto -->
+  <g transform="translate(75, 235)" filter="url(#shadow)">
+    <rect width="505" height="120" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+    <rect width="6" height="120" rx="3" fill="#f59e0b" />
+    <text x="24" y="44" font-family="'Pretendard', 'Malgun Gothic', sans-serif" font-size="19" font-weight="700" fill="#ffffff">🎱 로또 6/45 번호 추첨 &amp; 통계 분석</text>
+    <text x="24" y="82" font-family="'Pretendard', 'Malgun Gothic', sans-serif" font-size="14" font-weight="400" fill="#94a3b8">동행복권 최신 회차 데이터 · 홀짝/고저 통계 · 추천 번호 생성</text>
+  </g>
+
+  <!-- Card 2: Age -->
+  <g transform="translate(620, 235)" filter="url(#shadow)">
+    <rect width="505" height="120" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+    <rect width="6" height="120" rx="3" fill="#f59e0b" />
+    <text x="24" y="44" font-family="'Pretendard', 'Malgun Gothic', sans-serif" font-size="19" font-weight="700" fill="#ffffff">🎂 만 나이 &amp; 띠·천간지지 계산기</text>
+    <text x="24" y="82" font-family="'Pretendard', 'Malgun Gothic', sans-serif" font-size="14" font-weight="400" fill="#94a3b8">만 나이 통일법 완벽 적용 · 연 나이 · 60갑자 띠 간편 계산</text>
+  </g>
+
+  <!-- Card 3: Interest -->
+  <g transform="translate(75, 380)" filter="url(#shadow)">
+    <rect width="505" height="120" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+    <rect width="6" height="120" rx="3" fill="#f59e0b" />
+    <text x="24" y="44" font-family="'Pretendard', 'Malgun Gothic', sans-serif" font-size="19" font-weight="700" fill="#ffffff">💰 예적금 &amp; 복리 이자 계산기</text>
+    <text x="24" y="82" font-family="'Pretendard', 'Malgun Gothic', sans-serif" font-size="14" font-weight="400" fill="#94a3b8">정기예금 · 적금 단리/복리 · 일반과세/비과세 실수령액 비교</text>
+  </g>
+
+  <!-- Card 4: D-Day -->
+  <g transform="translate(620, 380)" filter="url(#shadow)">
+    <rect width="505" height="120" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+    <rect width="6" height="120" rx="3" fill="#f59e0b" />
+    <text x="24" y="44" font-family="'Pretendard', 'Malgun Gothic', sans-serif" font-size="19" font-weight="700" fill="#ffffff">📅 D-Day &amp; 음력 변환 기념일 계산기</text>
+    <text x="24" y="82" font-family="'Pretendard', 'Malgun Gothic', sans-serif" font-size="14" font-weight="400" fill="#94a3b8">생일·결혼·시험 디데이 카운터 · 양력/음력 상호 변환 지원</text>
+  </g>
+
+  <!-- Footer Guarantees -->
+  <text x="600" y="565" font-family="'Pretendard', 'Malgun Gothic', sans-serif" font-size="15" font-weight="500" fill="#94a3b8" text-anchor="middle">
+    🔒 100% 브라우저 로컬 안전 연산   ·   ⚡ 완전 무료 &amp; 무설치 웹앱   ·   📱 모바일 / PC 반응형 최적화
+  </text>
+</svg>
