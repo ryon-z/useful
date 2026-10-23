@@ -167,25 +167,26 @@
 
   <!-- 헤더 네비게이션 -->
   <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
-    <div class="max-w-5xl mx-auto px-4 h-16 sm:h-20 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <a href="../" class="text-slate-400 hover:text-sky-400 transition p-2 rounded-xl hover:bg-slate-800 flex items-center gap-1.5 text-xs sm:text-sm font-bold border border-transparent hover:border-slate-700" title="전체 도구 목록으로 이동">
+    <div class="max-w-5xl mx-auto px-4 h-14 sm:h-16 flex items-center justify-between gap-2 sm:gap-3">
+      <div class="flex items-center gap-2 sm:gap-2.5 flex-shrink-0 min-w-0">
+        <a href="../" class="text-slate-400 hover:text-sky-400 transition p-1.5 sm:p-2 rounded-xl hover:bg-slate-800 flex items-center gap-1 text-xs sm:text-sm font-bold border border-transparent hover:border-slate-700 flex-shrink-0" title="전체 도구 목록으로 이동">
           <i class="fa-solid fa-arrow-left text-xs sm:text-sm"></i>
-          <span class="hidden sm:inline">도구 모음</span>
+          <span class="hidden sm:inline">도구모음</span>
         </a>
-        <div class="flex items-center gap-2">
-          <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-sky-500 to-cyan-400 text-slate-950 flex items-center justify-center font-black text-base shadow-sm">
+        <div class="flex items-center gap-2 flex-shrink-0">
+          <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-sky-500 to-cyan-400 text-slate-950 flex items-center justify-center font-black text-sm sm:text-base shadow-sm flex-shrink-0">
             <i class="fa-solid fa-calendar-days"></i>
           </div>
-          <span class="text-xl sm:text-2xl font-black tracking-tight text-white">만 나이 & 띠 <span class="text-sky-400">계산기</span></span>
+          <span class="text-base sm:text-xl font-black tracking-tight text-white whitespace-nowrap">만 나이 & 띠 <span class="text-sky-400">계산기</span></span>
         </div>
       </div>
-      <nav class="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm font-bold text-slate-300">
+      <nav class="flex items-center gap-1.5 sm:gap-2.5 text-xs sm:text-sm font-bold text-slate-300 flex-shrink-0 whitespace-nowrap">
         <!-- 전체 도구 드롭다운 메뉴 (도구가 추가되어도 레이아웃 깨짐 원천 방지) -->
         <div class="relative" id="tool-dropdown-container">
-          <button type="button" onclick="toggleToolDropdown(event)" id="tool-dropdown-btn" class="flex items-center gap-1.5 bg-slate-800/90 hover:bg-slate-700 text-slate-200 hover:text-white px-3 py-2 rounded-xl border border-slate-700/80 transition active:scale-95 shadow-sm" aria-expanded="false" aria-label="도구 목록 메뉴">
-            <i class="fa-solid fa-shapes text-sky-400"></i>
-            <span>도구 목록</span>
+          <button type="button" onclick="toggleToolDropdown(event)" id="tool-dropdown-btn" class="flex items-center gap-1.5 bg-slate-800/90 hover:bg-slate-700 text-slate-200 hover:text-white px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl border border-slate-700/80 transition active:scale-95 shadow-sm whitespace-nowrap flex-shrink-0" aria-expanded="false" aria-label="도구 목록 메뉴">
+            <i class="fa-solid fa-shapes text-sky-400 text-xs sm:text-sm"></i>
+            <span class="hidden sm:inline font-bold">도구 목록</span>
+            <span class="sm:hidden font-bold">도구</span>
             <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition-transform duration-200" id="tool-dropdown-arrow"></i>
           </button>
 
@@ -256,14 +257,13 @@
           </div>
         </div>
 
-        <button type="button" onclick="openShareModal({ title: '🎂 GoModo 만 나이 & 띠·천간지지 간편 계산기', text: '대한민국 법정 만 나이, 연 나이, 60갑자 띠 및 생애 복지 혜택 조회', url: 'https://www.gomodo.cloud/age/' })" class="text-sky-400 hover:text-sky-300 transition flex items-center gap-1.5 bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/30 px-2.5 py-2 rounded-xl active:scale-95" title="공유하기">
-          <i class="fa-solid fa-share-nodes text-sky-400"></i>
-          <span class="hidden sm:inline">공유</span>
+        <button type="button" onclick="openShareModal({ title: '🎂 GoModo 만 나이 & 띠·천간지지 간편 계산기', text: '대한민국 법정 만 나이, 연 나이, 60갑자 띠 및 생애 복지 혜택 조회', url: 'https://www.gomodo.cloud/age/' })" class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-sky-400 border border-slate-700/80 flex items-center justify-center transition active:scale-95 shadow-sm flex-shrink-0" title="공유하기" aria-label="공유하기">
+          <i class="fa-solid fa-share-nodes text-xs sm:text-sm"></i>
         </button>
 
-        <button type="button" onclick="toggleTheme()" class="theme-toggle-btn w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-sky-400 border border-slate-700/80 flex items-center justify-center transition active:scale-95 shadow-sm" title="테마 전환 (다크/라이트)">
-          <i class="fa-solid fa-sun text-sm sm:text-base theme-icon-sun hidden"></i>
-          <i class="fa-solid fa-moon text-sm sm:text-base theme-icon-moon"></i>
+        <button type="button" onclick="toggleTheme()" class="theme-toggle-btn w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-sky-400 border border-slate-700/80 flex items-center justify-center transition active:scale-95 shadow-sm flex-shrink-0" title="테마 전환 (다크/라이트)" aria-label="테마 전환">
+          <i class="fa-solid fa-sun text-xs sm:text-sm theme-icon-sun hidden"></i>
+          <i class="fa-solid fa-moon text-xs sm:text-sm theme-icon-moon"></i>
         </button>
       </nav>
     </div>
