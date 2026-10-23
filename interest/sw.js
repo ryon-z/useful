@@ -1,4 +1,4 @@
-const CACHE_NAME = 'useful-interest-v1';
+const CACHE_NAME = 'gomodo-interest-v1';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',

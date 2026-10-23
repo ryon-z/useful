@@ -1,4 +1,4 @@
-const CACHE_NAME = 'useful-dday-v1';
+const CACHE_NAME = 'gomodo-dday-v1';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
