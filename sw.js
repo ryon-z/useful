@@ -1,10 +1,11 @@
 // Minimal Service Worker for PWA installability & offline fallback
-const CACHE_NAME = 'gomodo-portal-v2';
+const CACHE_NAME = 'gomodo-portal-v3';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
   './manifest.json',
-  './og-image.png'
+  './og-image.png',
+  './share.js'
 ];
 
 self.addEventListener('install', (event) => {

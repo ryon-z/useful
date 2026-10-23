@@ -337,11 +337,15 @@
         </div>
       </div>
 
-      <!-- 복사 버튼 (생성 후 노출) -->
-      <div id="copy-action-bar" class="hidden mt-4 flex justify-end">
-        <button onclick="copyAllPicks()" class="text-sm sm:text-base bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 hover:text-white font-bold py-2.5 px-4 rounded-xl flex items-center gap-2 transition">
-          <i class="fa-regular fa-copy text-base"></i>
-          <span>전체 번호 텍스트 복사</span>
+      <!-- 복사 & 카톡 공유 버튼 (생성 후 노출) -->
+      <div id="copy-action-bar" class="hidden mt-4 flex flex-wrap items-center justify-end gap-2.5">
+        <button type="button" onclick="shareGeneratedPicks()" class="text-xs sm:text-sm bg-[#fee500] hover:bg-[#fedd00] text-slate-950 font-black py-2.5 px-4 rounded-xl flex items-center gap-2 transition active:scale-95 shadow">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="#3A1D1D"><path d="M12 3c-5.52 0-10 3.58-10 8 0 2.87 1.88 5.39 4.73 6.78-.21.77-.76 2.81-.88 3.25-.14.54.2.53.42.38.17-.11 2.37-1.6 3.32-2.25.79.11 1.6.17 2.41.17 5.52 0 10-3.58 10-8s-4.48-8-10-8z"/></svg>
+          <span>카톡/SNS 공유</span>
+        </button>
+        <button type="button" onclick="copyAllPicks()" class="text-xs sm:text-sm bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 hover:text-white font-bold py-2.5 px-4 rounded-xl flex items-center gap-2 transition active:scale-95 shadow">
+          <i class="fa-regular fa-copy text-sm"></i>
+          <span>번호 복사</span>
         </button>
       </div>
     </section>
@@ -592,10 +596,16 @@
                 오행 상응 비전 수리(木:3·8, 火:2·7, 土:5·10, 金:4·9, 水:1·6)와 각 번호의 오행 기운을 배합했습니다.
               </p>
             </div>
-            <button type="button" onclick="copySajuGames()" class="text-xs sm:text-sm bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 hover:text-white font-bold py-2.5 px-4 rounded-xl flex items-center gap-2 transition self-start sm:self-auto">
-              <i class="fa-regular fa-copy text-sm"></i>
-              <span>5게임 전체 복사</span>
-            </button>
+            <div class="flex items-center gap-2 self-start sm:self-auto">
+              <button type="button" onclick="shareSajuGames()" class="text-xs sm:text-sm bg-[#fee500] hover:bg-[#fedd00] text-slate-950 font-black py-2.5 px-3.5 rounded-xl flex items-center gap-1.5 transition active:scale-95 shadow">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="#3A1D1D"><path d="M12 3c-5.52 0-10 3.58-10 8 0 2.87 1.88 5.39 4.73 6.78-.21.77-.76 2.81-.88 3.25-.14.54.2.53.42.38.17-.11 2.37-1.6 3.32-2.25.79.11 1.6.17 2.41.17 5.52 0 10-3.58 10-8s-4.48-8-10-8z"/></svg>
+                <span>카톡 공유</span>
+              </button>
+              <button type="button" onclick="copySajuGames()" class="text-xs sm:text-sm bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 hover:text-white font-bold py-2.5 px-3.5 rounded-xl flex items-center gap-1.5 transition active:scale-95 shadow">
+                <i class="fa-regular fa-copy text-sm"></i>
+                <span>5게임 복사</span>
+              </button>
+            </div>
           </div>
 
           <!-- 5게임 번호 리스트 컨테이너 -->
@@ -1099,8 +1109,22 @@
       const labels = ['A', 'B', 'C', 'D', 'E'];
       const text = lastGeneratedSets.map((s, idx) => `[${labels[idx]}] ${s.join(', ')}`).join('\n');
       navigator.clipboard.writeText(text).then(() => {
-        alert('추천 번호가 클립보드에 복사되었습니다.');
+        if (window.showToast) window.showToast('추천 번호가 클립보드에 복사되었습니다! 🎉');
+        else alert('추천 번호가 클립보드에 복사되었습니다.');
       });
+    }
+
+    function shareGeneratedPicks() {
+      if (!lastGeneratedSets.length) return;
+      const labels = ['A', 'B', 'C', 'D', 'E'];
+      const text = lastGeneratedSets.map((s, idx) => `[${labels[idx]}] ${s.join(', ')}`).join('\n');
+      if (window.openShareModal) {
+        window.openShareModal({
+          title: '🎱 GoModo 로또 6/45 추천 번호',
+          text: `[이번 주 행운의 추천 번호]\n${text}`,
+          url: 'https://www.gomodo.cloud/lottery/'
+        });
+      }
     }
 
     // 4. 사주 명리학 오행 분석 엔진 (고도화 버전)
@@ -1404,13 +1428,27 @@
       if (!currentSajuGames.length) return;
       const text = `[사주로또 명리학 5게임 추천 조합]\n` + currentSajuGames.map(g => `[${g.label}] ${g.numbers.join(', ')} (${g.theme})`).join('\n');
       navigator.clipboard.writeText(text).then(() => {
-        alert('사주 맞춤 5게임 번호 조합이 클립보드에 복사되었습니다.');
+        if (window.showToast) window.showToast('사주 5게임 번호가 복사되었습니다! 🎉');
+        else alert('사주 맞춤 5게임 번호 조합이 클립보드에 복사되었습니다.');
       });
+    }
+
+    function shareSajuGames() {
+      if (!currentSajuGames.length) return;
+      const text = currentSajuGames.map(g => `[${g.label}] ${g.numbers.join(', ')} (${g.theme})`).join('\n');
+      if (window.openShareModal) {
+        window.openShareModal({
+          title: '🔮 GoModo 사주 맞춤 로또 5게임 추천',
+          text: `[사주 오행 맞춤 5게임 번호]\n${text}`,
+          url: 'https://www.gomodo.cloud/lottery/'
+        });
+      }
     }
 
     function copySingleSajuGame(label, nums) {
       navigator.clipboard.writeText(`[${label}게임] ${nums}`).then(() => {
-        alert(`[${label}게임] 번호(${nums})가 클립보드에 복사되었습니다.`);
+        if (window.showToast) window.showToast(`[${label}게임] 번호가 복사되었습니다!`);
+        else alert(`[${label}게임] 번호(${nums})가 클립보드에 복사되었습니다.`);
       });
     }
 
@@ -1702,5 +1740,7 @@
       }
     });
   </script>
+  <!-- 공통 소셜 공유 모듈 -->
+  <script src="../share.js"></script>
 </body>
 </html>

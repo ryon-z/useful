@@ -531,11 +531,15 @@
         </div>
       </div>
 
-      <!-- 클립보드 공유 버튼 -->
-      <div class="flex justify-center pt-2">
-        <button onclick="copyAgeSummary()" class="px-6 py-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 hover:text-white font-bold transition flex items-center gap-2 text-sm sm:text-base shadow">
+      <!-- 공유 & 복사 액션 버튼 -->
+      <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+        <button type="button" onclick="shareAgeResult()" class="px-5 py-3.5 rounded-2xl bg-[#fee500] hover:bg-[#fedd00] text-slate-950 font-black transition flex items-center gap-2 text-sm sm:text-base shadow-lg active:scale-95">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="#3A1D1D"><path d="M12 3c-5.52 0-10 3.58-10 8 0 2.87 1.88 5.39 4.73 6.78-.21.77-.76 2.81-.88 3.25-.14.54.2.53.42.38.17-.11 2.37-1.6 3.32-2.25.79.11 1.6.17 2.41.17 5.52 0 10-3.58 10-8s-4.48-8-10-8z"/></svg>
+          <span>나이 &amp; 띠 카톡 공유</span>
+        </button>
+        <button type="button" onclick="copyAgeSummary()" class="px-5 py-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 hover:text-white font-bold transition flex items-center gap-2 text-sm sm:text-base shadow active:scale-95">
           <i class="fa-regular fa-copy text-base"></i>
-          <span>나이 & 띠 분석 결과 텍스트 복사</span>
+          <span>분석 텍스트 복사</span>
         </button>
       </div>
 
@@ -1196,8 +1200,8 @@
       `;
     }
 
-    // 5. 클립보드 공유 함수
-    function copyAgeSummary() {
+    // 5. 공유 및 클립보드 복사 함수
+    function getAgeSummaryText() {
       const birth = document.getElementById('birth-input').value;
       const man = document.getElementById('res-man-age').textContent;
       const year = document.getElementById('res-year-age').textContent;
@@ -1206,17 +1210,31 @@
       const ganji = document.getElementById('res-ganji-year').textContent;
       const dday = document.getElementById('res-birthday-dday').textContent;
 
-      const text = `[GoModo 나이 & 띠 계산 결과]\n` +
+      return `[GoModo 나이 & 띠 계산 결과]\n` +
         `• 생년월일: ${birth} (${ganji})\n` +
-        `• 만 나이(법적 나이): ${man}\n` +
+        `• 만 나이(법정 나이): ${man}\n` +
         `• 연 나이: ${year} / 세는 나이: ${korean}\n` +
         `• 12간지 띠: ${zodiac}\n` +
-        `• 다음 생일: ${dday}\n\n` +
-        `확인하기: https://www.gomodo.cloud/age/`;
+        `• 다음 생일: ${dday}`;
+    }
 
+    function copyAgeSummary() {
+      const text = getAgeSummaryText() + `\n\n확인하기: https://www.gomodo.cloud/age/`;
       navigator.clipboard.writeText(text).then(() => {
-        alert('나이 & 띠 계산 결과가 클립보드에 복사되었습니다.\n카카오톡이나 문자메시지에 붙여넣기 하실 수 있습니다.');
+        if (window.showToast) window.showToast('나이 & 띠 분석 결과가 복사되었습니다! 🎉');
+        else alert('나이 & 띠 계산 결과가 클립보드에 복사되었습니다.');
       });
+    }
+
+    function shareAgeResult() {
+      const text = getAgeSummaryText();
+      if (window.openShareModal) {
+        window.openShareModal({
+          title: '🎂 GoModo 만 나이 & 띠 분석 결과',
+          text: text,
+          url: 'https://www.gomodo.cloud/age/'
+        });
+      }
     }
 
     // 6. 페이지 초기화
@@ -1239,5 +1257,7 @@
       }
     });
   </script>
+  <!-- 공통 소셜 공유 모듈 -->
+  <script src="../share.js"></script>
 </body>
 </html>

@@ -484,6 +484,18 @@
           <i class="fa-solid fa-circle-info text-amber-400 mr-1.5"></i>
           <strong>제사 모시는 날 안내:</strong> 전통 예법상 기제사(忌祭祀)는 돌아가신 날(기일)의 첫 시작인 <strong>기일 전날 밤(밤 11시~자정)</strong> 또는 <strong>기일 당일 저녁</strong>에 지냅니다. 위 표시된 양력 날짜가 기일 당일이므로, 전날 밤에 제사를 모시는 집안은 하루 전날 저녁 준비를 시작하시면 됩니다.
         </div>
+
+        <!-- 부모님 생신/제사일 카톡 공유 & 복사 액션 버튼 -->
+        <div class="flex flex-wrap items-center justify-center gap-3 pt-5">
+          <button type="button" onclick="shareParentsSchedule()" class="px-5 py-3.5 rounded-2xl bg-[#fee500] hover:bg-[#fedd00] text-slate-950 font-black transition flex items-center gap-2 text-sm sm:text-base shadow-lg active:scale-95">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="#3A1D1D"><path d="M12 3c-5.52 0-10 3.58-10 8 0 2.87 1.88 5.39 4.73 6.78-.21.77-.76 2.81-.88 3.25-.14.54.2.53.42.38.17-.11 2.37-1.6 3.32-2.25.79.11 1.6.17 2.41.17 5.52 0 10-3.58 10-8s-4.48-8-10-8z"/></svg>
+            <span>가족 단톡방에 일정 공유하기</span>
+          </button>
+          <button type="button" onclick="copyParentsSchedule()" class="px-5 py-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 hover:text-white font-bold transition flex items-center gap-2 text-sm sm:text-base shadow active:scale-95">
+            <i class="fa-regular fa-copy text-base"></i>
+            <span>일정 텍스트 복사</span>
+          </button>
+        </div>
       </div>
     </section>
 
@@ -521,6 +533,18 @@
         <!-- 8대 전통 수연 축하 카드 그리드 -->
         <div id="suyeon-cards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3.5">
           <!-- 동적 주입 -->
+        </div>
+
+        <!-- 수연 나이 카톡 공유 버튼 -->
+        <div class="flex flex-wrap items-center justify-center gap-3 pt-5">
+          <button type="button" onclick="shareSuyeonResult()" class="px-5 py-3.5 rounded-2xl bg-[#fee500] hover:bg-[#fedd00] text-slate-950 font-black transition flex items-center gap-2 text-sm sm:text-base shadow-lg active:scale-95">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="#3A1D1D"><path d="M12 3c-5.52 0-10 3.58-10 8 0 2.87 1.88 5.39 4.73 6.78-.21.77-.76 2.81-.88 3.25-.14.54.2.53.42.38.17-.11 2.37-1.6 3.32-2.25.79.11 1.6.17 2.41.17 5.52 0 10-3.58 10-8s-4.48-8-10-8z"/></svg>
+            <span>환갑·칠순·팔순 일정 카톡 공유</span>
+          </button>
+          <button type="button" onclick="copySuyeonResult()" class="px-5 py-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 hover:text-white font-bold transition flex items-center gap-2 text-sm sm:text-base shadow active:scale-95">
+            <i class="fa-regular fa-copy text-base"></i>
+            <span>축하 일정 복사</span>
+          </button>
         </div>
       </div>
     </section>
@@ -1095,6 +1119,70 @@
       }).join('');
     }
 
+    // 공유 및 복사 함수
+    function getParentsScheduleText() {
+      const type = document.querySelector('input[name="parents-event-type"]:checked').value === 'birthday' ? '생신' : '기일(제사)';
+      const m = document.getElementById('parents-lunar-month').value;
+      const d = document.getElementById('parents-lunar-day').value;
+      const d2026 = document.getElementById('parents-2026-date').textContent;
+      const dow2026 = document.getElementById('parents-2026-dow').textContent;
+      const dday2026 = document.getElementById('parents-2026-dday').textContent;
+      const d2027 = document.getElementById('parents-2027-date').textContent;
+      const dow2027 = document.getElementById('parents-2027-dow').textContent;
+
+      return `[GoModo 부모님 음력 ${type} 일정 안내]\n` +
+        `• 음력 날짜: ${m}월 ${d}일\n` +
+        `• 2026년(올해): ${d2026} (${dow2026}) [${dday2026}]\n` +
+        `• 2027년(내년): ${d2027} (${dow2027})`;
+    }
+
+    function copyParentsSchedule() {
+      const text = getParentsScheduleText() + `\n\n조회하기: https://www.gomodo.cloud/dday/`;
+      navigator.clipboard.writeText(text).then(() => {
+        if (window.showToast) window.showToast('일정 안내가 복사되었습니다! 🎉');
+        else alert('일정이 복사되었습니다.');
+      });
+    }
+
+    function shareParentsSchedule() {
+      const text = getParentsScheduleText();
+      if (window.openShareModal) {
+        window.openShareModal({
+          title: '📅 부모님 음력 기념일 일정 안내',
+          text: text,
+          url: 'https://www.gomodo.cloud/dday/'
+        });
+      }
+    }
+
+    function getSuyeonText() {
+      const y = parseInt(document.getElementById('suyeon-birth-year').value, 10);
+      return `[GoModo 전통 수연(壽宴) 축하 연도 안내]\n` +
+        `• 출생연도: ${y}년생\n` +
+        `• 환갑(61세): ${y+60}년\n` +
+        `• 칠순/고희(70세): ${y+69}년\n` +
+        `• 팔순/산수(80세): ${y+79}년`;
+    }
+
+    function copySuyeonResult() {
+      const text = getSuyeonText() + `\n\n조회하기: https://www.gomodo.cloud/dday/`;
+      navigator.clipboard.writeText(text).then(() => {
+        if (window.showToast) window.showToast('수연 일정이 복사되었습니다! 🎉');
+        else alert('일정이 복사되었습니다.');
+      });
+    }
+
+    function shareSuyeonResult() {
+      const text = getSuyeonText();
+      if (window.openShareModal) {
+        window.openShareModal({
+          title: '👑 부모님 환갑·칠순·팔순 축하 연도',
+          text: text,
+          url: 'https://www.gomodo.cloud/dday/'
+        });
+      }
+    }
+
     // 초기화
     window.addEventListener('DOMContentLoaded', () => {
       // 한국천문연구원 음력 캘린더 엔진 로드
@@ -1151,5 +1239,7 @@
       }
     });
   </script>
+  <!-- 공통 소셜 공유 모듈 -->
+  <script src="../share.js"></script>
 </body>
 </html>

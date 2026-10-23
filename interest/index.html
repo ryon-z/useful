@@ -417,6 +417,18 @@
               +296,100원
             </div>
           </div>
+
+          <!-- 공유 & 복사 액션 버튼 -->
+          <div class="flex flex-wrap items-center justify-center gap-3 pt-4 border-t border-slate-800/80">
+            <button type="button" onclick="shareInterestResult()" class="px-5 py-3 rounded-2xl bg-[#fee500] hover:bg-[#fedd00] text-slate-950 font-black transition flex items-center gap-2 text-xs sm:text-sm shadow-lg active:scale-95">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="#3A1D1D"><path d="M12 3c-5.52 0-10 3.58-10 8 0 2.87 1.88 5.39 4.73 6.78-.21.77-.76 2.81-.88 3.25-.14.54.2.53.42.38.17-.11 2.37-1.6 3.32-2.25.79.11 1.6.17 2.41.17 5.52 0 10-3.58 10-8s-4.48-8-10-8z"/></svg>
+              <span>이자 계산 결과 카톡 공유</span>
+            </button>
+            <button type="button" onclick="copyInterestSummary()" class="px-5 py-3 rounded-2xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 hover:text-white font-bold transition flex items-center gap-2 text-xs sm:text-sm shadow active:scale-95">
+              <i class="fa-regular fa-copy text-sm"></i>
+              <span>계산 결과 복사</span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -1059,6 +1071,40 @@
       }
     }
 
+    // 공유 및 클립보드 복사 함수
+    function getInterestSummaryText() {
+      const prod = State.prodType === 'deposit' ? '정기예금' : '정기적금';
+      const method = State.calcMethod === 'simple' ? '단리' : '월복리';
+      const tax = taxNames[State.taxType];
+      const total = document.getElementById('res-total-exact').textContent;
+      const posttax = document.getElementById('res-posttax-interest').textContent;
+
+      return `[GoModo 예·적금 만기 이자 계산 결과]\n` +
+        `• 상품: ${prod} (${method} / ${State.periodMonths}개월 / 연 ${State.ratePercent}%)\n` +
+        `• 과세 구분: ${tax}\n` +
+        `• 세후 이자: ${posttax}\n` +
+        `• 만기 총 수령액: ${total}`;
+    }
+
+    function copyInterestSummary() {
+      const text = getInterestSummaryText() + `\n\n계산해보기: https://www.gomodo.cloud/interest/`;
+      navigator.clipboard.writeText(text).then(() => {
+        if (window.showToast) window.showToast('이자 계산 결과가 복사되었습니다! 🎉');
+        else alert('이자 계산 결과가 복사되었습니다.');
+      });
+    }
+
+    function shareInterestResult() {
+      const text = getInterestSummaryText();
+      if (window.openShareModal) {
+        window.openShareModal({
+          title: '💰 GoModo 예·적금 만기 이자 계산 결과',
+          text: text,
+          url: 'https://www.gomodo.cloud/interest/'
+        });
+      }
+    }
+
     // 초기화
     window.addEventListener('DOMContentLoaded', () => {
       renderQuickButtons();
@@ -1069,5 +1115,7 @@
       }
     });
   </script>
+  <!-- 공통 소셜 공유 모듈 -->
+  <script src="../share.js"></script>
 </body>
 </html>
