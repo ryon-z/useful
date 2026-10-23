@@ -135,6 +135,12 @@ html.light .from-rose-400.to-pink-300 {
   -webkit-text-fill-color: #e11d48 !important;
 }
 
+html.light .from-indigo-400.to-blue-400,
+html.light .from-indigo-500.to-blue-600 {
+  color: #4f46e5 !important; /* indigo-600 */
+  -webkit-text-fill-color: #4f46e5 !important;
+}
+
 /* 그라디언트 배경 히어로 섹션 */
 html.light .from-slate-900.via-slate-900.to-slate-950 {
   background-image: linear-gradient(to bottom right, #ffffff, #f8fafc, #f1f5f9) !important;
