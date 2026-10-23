@@ -296,4 +296,38 @@ const KAKAO_JAVASCRIPT_KEY = '';
     }
     document.body.removeChild(tempInput);
   }
+
+  // 6. 공통 도구 드롭다운 토글 및 바깥 클릭 감지
+  window.toggleToolDropdown = function(event) {
+    if (event) event.stopPropagation();
+    const menu = document.getElementById('tool-dropdown-menu');
+    const arrow = document.getElementById('tool-dropdown-arrow');
+    const btn = document.getElementById('tool-dropdown-btn');
+    if (!menu) return;
+    const isExpanded = !menu.classList.contains('hidden');
+    if (isExpanded) {
+      menu.classList.add('hidden');
+      if (arrow) arrow.style.transform = 'rotate(0deg)';
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+    } else {
+      menu.classList.remove('hidden');
+      if (arrow) arrow.style.transform = 'rotate(180deg)';
+      if (btn) btn.setAttribute('aria-expanded', 'true');
+    }
+  };
+
+  // 바깥 클릭 시 드롭다운 닫기
+  document.addEventListener('click', (e) => {
+    const container = document.getElementById('tool-dropdown-container');
+    const menu = document.getElementById('tool-dropdown-menu');
+    const arrow = document.getElementById('tool-dropdown-arrow');
+    const btn = document.getElementById('tool-dropdown-btn');
+    if (menu && !menu.classList.contains('hidden')) {
+      if (container && !container.contains(e.target)) {
+        menu.classList.add('hidden');
+        if (arrow) arrow.style.transform = 'rotate(0deg)';
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      }
+    }
+  });
 })();

@@ -1,5 +1,5 @@
 // Minimal Service Worker for PWA installability & offline fallback
-const CACHE_NAME = 'gomodo-portal-v5';
+const CACHE_NAME = 'gomodo-portal-v6';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',

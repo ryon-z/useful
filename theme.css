@@ -174,6 +174,21 @@ html.light #custom-calendar-popup button.text-slate-100:hover {
   background-color: #f1f5f9 !important;
 }
 
+/* 도구 드롭다운 메뉴 */
+html.light #tool-dropdown-menu {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.08) !important;
+}
+
+html.light #tool-dropdown-menu .border-slate-800 {
+  border-color: #f1f5f9 !important;
+}
+
+html.light #tool-dropdown-menu a:hover {
+  background-color: #f1f5f9 !important;
+}
+
 /* 푸터 */
 html.light footer {
   background-color: #f1f5f9 !important;
