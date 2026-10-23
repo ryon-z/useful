@@ -194,6 +194,10 @@
     }
   </style>
 
+  <!-- 테마 시스템 (다크/라이트) -->
+  <link rel="stylesheet" href="../theme.css">
+  <script src="../theme.js"></script>
+
   <!-- 구글 애드센스 스크립트 슬롯 (승인 후 ca-pub 번호 입력) -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4528673716962845" crossorigin="anonymous"></script>
 </head>
@@ -212,11 +216,18 @@
           <span class="text-xl sm:text-2xl font-black tracking-tight text-white">LOTTO <span class="text-amber-400">명당</span></span>
         </div>
       </div>
-      <nav class="flex gap-4 sm:gap-6 text-sm sm:text-base font-bold text-slate-300">
-        <a href="#latest-section" class="hover:text-amber-400 transition">최신결과</a>
+      <nav class="flex items-center gap-3 sm:gap-5 text-sm sm:text-base font-bold text-slate-300">
+        <a href="#latest-section" class="hover:text-amber-400 transition hidden md:inline">최신결과</a>
         <a href="#generator-section" class="hover:text-amber-400 transition">번호생성</a>
         <a href="#saju-section" class="hover:text-amber-400 transition">사주명리</a>
-        <a href="#tax-section" class="hover:text-amber-400 transition">세금계산기</a>
+        <a href="#tax-section" class="hover:text-amber-400 transition hidden sm:inline">세금계산</a>
+        <button type="button" onclick="openShareModal({ title: '🎱 GoModo 로또 명당 - 사주 맞춤 번호 & 실시간 분석기', text: '동행복권 실시간 당첨 정보, 사주 오행 맞춤 5게임 번호 추천 및 세금 계산기', url: 'https://www.gomodo.cloud/lottery/' })" class="text-amber-400 hover:text-amber-300 transition p-1.5 rounded-xl hover:bg-slate-800" title="공유하기">
+          <i class="fa-solid fa-share-nodes text-base"></i>
+        </button>
+        <button type="button" onclick="toggleTheme()" class="theme-toggle-btn w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-amber-400 border border-slate-700/80 flex items-center justify-center transition active:scale-95 shadow-sm" title="테마 전환 (다크/라이트)">
+          <i class="fa-solid fa-sun text-sm sm:text-base theme-icon-sun hidden"></i>
+          <i class="fa-solid fa-moon text-sm sm:text-base theme-icon-moon"></i>
+        </button>
       </nav>
     </div>
   </header>

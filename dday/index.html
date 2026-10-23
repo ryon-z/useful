@@ -156,6 +156,10 @@
   <!-- 한국천문연구원 음양력 엔진 (로컬 오프라인 지원) -->
   <script src="./korean-lunar-calendar.min.js"></script>
 
+  <!-- 다크/라이트 테마 스타일 및 스크립트 -->
+  <link rel="stylesheet" href="../theme.css">
+  <script src="../theme.js"></script>
+
   <!-- 구글 애드센스 스크립트 슬롯 (승인 후 ca-pub 번호 입력) -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4528673716962845" crossorigin="anonymous"></script>
 </head>
@@ -189,6 +193,14 @@
           <i class="fa-solid fa-coins text-emerald-400"></i>
           <span class="hidden sm:inline">이자 계산</span>
         </a>
+        <button type="button" onclick="openShareModal({ title: '📅 GoModo D-Day 및 음력·양력 변환기', text: '부모님 음력 생신·제사일 양력 찾기, 환갑·칠순·팔순 수연 나이 및 D-Day 계산기', url: 'https://www.gomodo.cloud/dday/' })" class="text-rose-400 hover:text-rose-300 transition flex items-center gap-1.5 bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 px-2.5 py-1.5 rounded-xl active:scale-95" title="공유하기">
+          <i class="fa-solid fa-share-nodes text-rose-400"></i>
+          <span class="hidden sm:inline">공유</span>
+        </button>
+        <button type="button" onclick="toggleTheme()" class="theme-toggle-btn w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-rose-400 border border-slate-700/80 flex items-center justify-center transition active:scale-95 shadow-sm ml-1" title="화면 모드 전환 (다크/라이트)" aria-label="테마 전환">
+          <i class="fa-solid fa-sun text-sm sm:text-base theme-icon-sun hidden"></i>
+          <i class="fa-solid fa-moon text-sm sm:text-base theme-icon-moon"></i>
+        </button>
       </nav>
     </div>
   </header>

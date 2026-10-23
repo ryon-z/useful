@@ -89,6 +89,10 @@
     html { font-size: 16.5px; }
     body { font-family: 'Pretendard', sans-serif; letter-spacing: -0.015em; }
   </style>
+  <!-- 다크/라이트 테마 스타일 및 스크립트 -->
+  <link rel="stylesheet" href="../theme.css">
+  <script src="../theme.js"></script>
+
   <!-- 구글 애드센스 스크립트 -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4528673716962845" crossorigin="anonymous"></script>
 </head>
@@ -107,6 +111,11 @@
       <nav class="flex items-center gap-3 text-xs sm:text-sm font-bold text-slate-300">
         <a href="../privacy/" class="hover:text-amber-400 transition">개인정보처리방침</a>
         <a href="../about/" class="hover:text-amber-400 transition">사이트 소개</a>
+        <!-- 테마 토글 버튼 -->
+        <button type="button" onclick="toggleTheme()" class="theme-toggle-btn w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-400 hover:text-amber-300 border border-slate-700 flex items-center justify-center transition shadow-sm ml-1" title="화면 모드 전환 (다크/라이트)" aria-label="테마 전환">
+          <i class="fa-solid fa-sun theme-icon-sun hidden text-sm sm:text-base"></i>
+          <i class="fa-solid fa-moon theme-icon-moon text-sm sm:text-base"></i>
+        </button>
       </nav>
     </div>
   </header>

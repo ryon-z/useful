@@ -160,6 +160,10 @@
     }
   </style>
 
+  <!-- 테마 시스템 (다크/라이트) -->
+  <link rel="stylesheet" href="./theme.css">
+  <script src="./theme.js"></script>
+
   <!-- 구글 애드센스 스크립트 슬롯 (승인 후 ca-pub 번호 입력) -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4528673716962845" crossorigin="anonymous"></script>
 </head>
@@ -200,6 +204,10 @@
         <button type="button" onclick="openShareModal({ title: 'GoModo (고모도) - 일상 생활 유틸리티 포털', text: '사주 로또 추천, 만 나이 계산, 예적금 이자 계산, D-Day & 음력 변환기 무료 웹앱', url: 'https://www.gomodo.cloud/' })" class="text-amber-400 hover:text-amber-300 transition flex items-center gap-1.5 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 px-2.5 py-1.5 rounded-xl active:scale-95" title="사이트 공유하기">
           <i class="fa-solid fa-share-nodes text-amber-400"></i>
           <span class="hidden sm:inline">공유</span>
+        </button>
+        <button type="button" onclick="toggleTheme()" class="theme-toggle-btn w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-amber-400 border border-slate-700/80 flex items-center justify-center transition active:scale-95 shadow-sm" title="테마 전환 (다크/라이트)">
+          <i class="fa-solid fa-sun text-sm sm:text-base theme-icon-sun hidden"></i>
+          <i class="fa-solid fa-moon text-sm sm:text-base theme-icon-moon"></i>
         </button>
       </nav>
     </div>
