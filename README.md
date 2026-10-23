@@ -7,9 +7,9 @@
 
 ## 🌐 서비스 바로가기
 
-- **통합 포털 홈**: [https://ryon-z.github.io/useful/](https://ryon-z.github.io/useful/)
-- **🍀 사주 로또 6/45 명당 & 실시간 분석기**: [https://ryon-z.github.io/useful/lottery/](https://ryon-z.github.io/useful/lottery/)
-- **📅 만 나이 & 띠·천간지지 계산기**: [https://ryon-z.github.io/useful/age/](https://ryon-z.github.io/useful/age/)
+- **통합 포털 홈**: [https://www.gomodo.cloud/](https://www.gomodo.cloud/)
+- **🍀 사주 로또 6/45 명당 & 실시간 분석기**: [https://www.gomodo.cloud/lottery/](https://www.gomodo.cloud/lottery/)
+- **📅 만 나이 & 띠·천간지지 계산기**: [https://www.gomodo.cloud/age/](https://www.gomodo.cloud/age/)
 
 ---
 
