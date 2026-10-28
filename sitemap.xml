@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <!-- 메인 포털 (한국어) -->
   <url>
     <loc>https://www.gomodo.cloud/</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -11,9 +12,59 @@
       <image:title>GoModo (고모도) 생활 웹 도구 모음 포털</image:title>
     </image:image>
   </url>
+
+  <!-- 일본어 포털 허브 -->
+  <url>
+    <loc>https://www.gomodo.cloud/ja/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.gomodo.cloud/og-image.png</image:loc>
+      <image:title>GoModo (ゴモド) 日本語便利ツール工房</image:title>
+    </image:image>
+  </url>
+
+  <!-- 2026 연봉 실수령액 계산기 -->
+  <url>
+    <loc>https://www.gomodo.cloud/salary/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.gomodo.cloud/og-image.png</image:loc>
+      <image:title>2026 연봉·월급 실수령액 계산기 및 4대보험 조견표</image:title>
+    </image:image>
+  </url>
+
+  <!-- 일본 서력 ↔ 와레키 & 이력서 계산기 -->
+  <url>
+    <loc>https://www.gomodo.cloud/ja/age/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.gomodo.cloud/og-image.png</image:loc>
+      <image:title>2026年（令和8年）西暦・和暦・年齢早見表 &amp; 履歴書計算機</image:title>
+    </image:image>
+  </url>
+
+  <!-- 일본 로또6·7 & 복권 길일 캘린더 -->
+  <url>
+    <loc>https://www.gomodo.cloud/ja/lottery/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.gomodo.cloud/og-image.png</image:loc>
+      <image:title>ロト6・ロト7 幸運予想番号 &amp; 宝くじ吉日カレンダー</image:title>
+    </image:image>
+  </url>
+
+  <!-- 한국어 개별 도구 -->
   <url>
     <loc>https://www.gomodo.cloud/lottery/</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -23,7 +74,7 @@
   </url>
   <url>
     <loc>https://www.gomodo.cloud/age/</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -33,7 +84,7 @@
   </url>
   <url>
     <loc>https://www.gomodo.cloud/interest/</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -43,7 +94,7 @@
   </url>
   <url>
     <loc>https://www.gomodo.cloud/dday/</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -53,7 +104,7 @@
   </url>
   <url>
     <loc>https://www.gomodo.cloud/real-estate/</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -61,21 +112,23 @@
       <image:title>부동산 중개보수(복비) &amp; 취득세 간편 계산기</image:title>
     </image:image>
   </url>
+
+  <!-- 정보 및 정책 페이지 -->
   <url>
     <loc>https://www.gomodo.cloud/about/</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.gomodo.cloud/terms/</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.gomodo.cloud/privacy/</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
