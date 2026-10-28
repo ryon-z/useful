@@ -222,6 +222,49 @@
       </p>
     </section>
 
+    <!-- Live Winning Numbers Feed (From NY State Open Data) -->
+    <section id="live-lottery-bar" class="bg-slate-900/90 border border-slate-800 rounded-3xl p-4 sm:p-5 shadow-lg space-y-3">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2.5 border-b border-slate-800/80">
+        <div class="flex items-center gap-2">
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Live Winning Numbers
+          </span>
+          <span class="text-xs text-slate-400 font-medium hidden sm:inline">NY State Official Open Data</span>
+        </div>
+        <span id="live-lottery-updated" class="text-[11px] text-slate-500 font-medium">Auto-updated via GitHub Actions</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 text-xs sm:text-sm">
+        <!-- Powerball Latest Draw Card -->
+        <div class="bg-slate-950/70 border border-slate-800/90 rounded-2xl p-3.5 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="font-black text-white flex items-center gap-1.5">
+              <span class="w-5 h-5 rounded-full bg-red-600 text-white flex items-center justify-center text-[10px] font-black shadow-sm">P</span>
+              Powerball Latest
+            </span>
+            <span id="pb-draw-date" class="text-slate-400 text-xs font-semibold">Loading...</span>
+          </div>
+          <div class="flex items-center gap-1.5 sm:gap-2 flex-wrap" id="pb-balls-container">
+            <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-slate-800 text-slate-400 font-bold flex items-center justify-center text-xs">--</span>
+          </div>
+        </div>
+
+        <!-- Mega Millions Latest Draw Card -->
+        <div class="bg-slate-950/70 border border-slate-800/90 rounded-2xl p-3.5 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="font-black text-white flex items-center gap-1.5">
+              <span class="w-5 h-5 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center text-[10px] font-black shadow-sm">M</span>
+              Mega Millions Latest
+            </span>
+            <span id="mm-draw-date" class="text-slate-400 text-xs font-semibold">Loading...</span>
+          </div>
+          <div class="flex items-center gap-1.5 sm:gap-2 flex-wrap" id="mm-balls-container">
+            <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-slate-800 text-slate-400 font-bold flex items-center justify-center text-xs">--</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Calculator Interactive App Card -->
     <div class="bg-slate-900 border-2 border-slate-800 rounded-3xl p-5 sm:p-8 shadow-2xl space-y-8 accent-glow-emerald">
 
@@ -1114,11 +1157,63 @@ Calculated via GoModo US: https://www.gomodo.cloud/en/lottery/`;
       document.querySelectorAll('.theme-icon-moon').forEach(el => el.classList.toggle('hidden', isLight));
     }
 
+    // Load Live Winning Numbers Feed from data/us-lottery.json
+    async function loadLiveWinningNumbers() {
+      try {
+        const res = await fetch('../../data/us-lottery.json', { cache: 'no-cache' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const data = await res.json();
+        
+        if (data.updatedAt) {
+          const dateObj = new Date(data.updatedAt);
+          const updatedEl = document.getElementById('live-lottery-updated');
+          if (updatedEl) {
+            updatedEl.textContent = 'Last synced: ' + dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+          }
+        }
+
+        // Render Powerball
+        if (data.powerball && data.powerball.length > 0) {
+          const latest = data.powerball[0];
+          const dateEl = document.getElementById('pb-draw-date');
+          if (dateEl) dateEl.textContent = 'Draw: ' + latest.drawDate;
+          const container = document.getElementById('pb-balls-container');
+          if (container) {
+            container.innerHTML = latest.winningNumbers.map(n => 
+              `<span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-slate-100 text-slate-950 font-black flex items-center justify-center text-xs shadow-sm">${String(n).padStart(2, '0')}</span>`
+            ).join('') + 
+            `<span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-red-600 text-white font-black flex items-center justify-center text-xs shadow-md shadow-red-600/30" title="Powerball">${String(latest.powerball).padStart(2, '0')}</span>` +
+            `<span class="px-2 py-1 rounded-md bg-slate-800 text-slate-300 text-[10px] font-bold self-center border border-slate-700">Power Play ${latest.multiplier}x</span>`;
+          }
+        }
+
+        // Render Mega Millions
+        if (data.megaMillions && data.megaMillions.length > 0) {
+          const latest = data.megaMillions[0];
+          const dateEl = document.getElementById('mm-draw-date');
+          if (dateEl) dateEl.textContent = 'Draw: ' + latest.drawDate;
+          const container = document.getElementById('mm-balls-container');
+          if (container) {
+            container.innerHTML = latest.winningNumbers.map(n => 
+              `<span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-slate-100 text-slate-950 font-black flex items-center justify-center text-xs shadow-sm">${String(n).padStart(2, '0')}</span>`
+            ).join('') + 
+            `<span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-amber-500 text-slate-950 font-black flex items-center justify-center text-xs shadow-md shadow-amber-500/30" title="Mega Ball">${String(latest.megaBall).padStart(2, '0')}</span>` +
+            `<span class="px-2 py-1 rounded-md bg-slate-800 text-slate-300 text-[10px] font-bold self-center border border-slate-700">Megaplier ${latest.multiplier}x</span>`;
+          }
+        }
+      } catch (e) {
+        console.warn('Could not load live US lottery feed:', e.message);
+        const widget = document.getElementById('live-lottery-bar');
+        if (widget) widget.classList.add('hidden');
+      }
+    }
+
     // Initialize on Page Load
     document.addEventListener('DOMContentLoaded', () => {
       initStates();
       updateThemeIcons();
       calculatePayout();
+      loadLiveWinningNumbers();
     });
   </script>
 </body>

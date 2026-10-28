@@ -1,6 +1,30 @@
 {
-  "updatedAt": "2026-10-23T05:24:03.238Z",
+  "updatedAt": "2026-10-28T09:31:38.348Z",
   "powerball": [
+    {
+      "drawDate": "2026-10-26",
+      "winningNumbers": [
+        18,
+        26,
+        49,
+        50,
+        54
+      ],
+      "powerball": 1,
+      "multiplier": "3"
+    },
+    {
+      "drawDate": "2026-10-24",
+      "winningNumbers": [
+        4,
+        5,
+        15,
+        19,
+        55
+      ],
+      "powerball": 19,
+      "multiplier": "2"
+    },
     {
       "drawDate": "2026-10-21",
       "winningNumbers": [
@@ -96,33 +120,33 @@
       ],
       "powerball": 9,
       "multiplier": "2"
-    },
-    {
-      "drawDate": "2026-10-03",
-      "winningNumbers": [
-        4,
-        42,
-        44,
-        55,
-        59
-      ],
-      "powerball": 14,
-      "multiplier": "2"
-    },
-    {
-      "drawDate": "2026-09-30",
-      "winningNumbers": [
-        4,
-        6,
-        23,
-        33,
-        44
-      ],
-      "powerball": 13,
-      "multiplier": "4"
     }
   ],
   "megaMillions": [
+    {
+      "drawDate": "2026-10-27",
+      "winningNumbers": [
+        14,
+        19,
+        21,
+        45,
+        67
+      ],
+      "megaBall": 3,
+      "multiplier": "1"
+    },
+    {
+      "drawDate": "2026-10-23",
+      "winningNumbers": [
+        3,
+        7,
+        46,
+        49,
+        51
+      ],
+      "megaBall": 5,
+      "multiplier": "1"
+    },
     {
       "drawDate": "2026-10-20",
       "winningNumbers": [
@@ -217,30 +241,6 @@
         68
       ],
       "megaBall": 16,
-      "multiplier": "1"
-    },
-    {
-      "drawDate": "2026-09-22",
-      "winningNumbers": [
-        7,
-        13,
-        26,
-        37,
-        68
-      ],
-      "megaBall": 8,
-      "multiplier": "1"
-    },
-    {
-      "drawDate": "2026-09-18",
-      "winningNumbers": [
-        4,
-        9,
-        24,
-        56,
-        68
-      ],
-      "megaBall": 1,
       "multiplier": "1"
     }
   ]
