@@ -1,0 +1,9 @@
+# Private documentation & agent rules
+useful-docs/
+AGENTS.md
+
+# System & Temp files
+.DS_Store
+Thumbs.db
+*.log
+scratch/

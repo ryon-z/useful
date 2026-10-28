@@ -193,11 +193,24 @@
           <!-- 드롭다운 팝업 레이어 -->
           <div id="tool-dropdown-menu" class="hidden absolute right-0 mt-2 w-64 sm:w-72 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl p-2 z-50 divide-y divide-slate-800">
             <div class="px-3 py-2 text-[11px] font-bold text-slate-400 flex items-center justify-between">
-              <span>GoModo 전체 도구 (5)</span>
+              <span>GoModo 전체 도구 (6)</span>
               <span class="text-[10px] text-emerald-400 font-semibold">바로가기</span>
             </div>
             
             <div class="pt-1 space-y-1">
+              <a href="../salary/" class="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-800 transition group">
+                <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-sm border border-emerald-500/30 flex-shrink-0 group-hover:scale-105 transition-transform">
+                  <i class="fa-solid fa-wallet"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs sm:text-sm font-bold text-white group-hover:text-emerald-300 transition truncate flex items-center gap-1.5">
+                    <span>연봉 실수령액 계산기</span>
+                    <span class="px-1.5 py-0.2 rounded text-[10px] bg-emerald-500/30 text-emerald-300 font-bold">신규</span>
+                  </div>
+                  <div class="text-[11px] text-slate-400 truncate">2026 4대보험 &amp; 조견표</div>
+                </div>
+              </a>
+
               <a href="../lottery/" class="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-800 transition group">
                 <div class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm border border-amber-500/30 flex-shrink-0 group-hover:scale-105 transition-transform">
                   <i class="fa-solid fa-clover"></i>
@@ -1116,6 +1129,18 @@
       // 3) 스케줄 테이블 렌더링
       renderScheduleTable(schedule);
 
+      // 4) URL 쿼리 파라미터 실시간 동기화 (Omni 바이럴 상태 보존)
+      if (window.updateUrlParams) {
+        window.updateUrlParams({
+          type: State.productType,
+          amount: State.amount,
+          period: State.period,
+          rate: State.rate,
+          method: State.calcMethod,
+          tax: State.taxType
+        });
+      }
+
       if (scroll) {
         document.getElementById('result-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
@@ -1167,7 +1192,7 @@
     }
 
     function copyInterestSummary() {
-      const text = getInterestSummaryText() + `\n\n계산해보기: https://www.gomodo.cloud/interest/`;
+      const text = getInterestSummaryText() + `\n\n계산해보기: ${window.location.href}`;
       navigator.clipboard.writeText(text).then(() => {
         if (window.showToast) window.showToast('이자 계산 결과가 복사되었습니다! 🎉');
         else alert('이자 계산 결과가 복사되었습니다.');
@@ -1180,14 +1205,51 @@
         window.openShareModal({
           title: '💰 GoModo 예·적금 만기 이자 계산 결과',
           text: text,
-          url: 'https://www.gomodo.cloud/interest/'
+          url: window.location.href
         });
+      }
+    }
+
+    // URL 파라미터 기반 상태 복원 (Omni식 공유 링크 지원)
+    function initFromUrlParams() {
+      if (!window.getUrlParams) return;
+      const params = window.getUrlParams();
+      if (params.type && (params.type === 'deposit' || params.type === 'savings')) {
+        setProductType(params.type);
+      }
+      if (params.amount) {
+        const amt = parseInt(params.amount, 10);
+        if (!isNaN(amt) && amt > 0) {
+          State.amount = amt;
+          document.getElementById('amount-input').value = amt.toLocaleString();
+        }
+      }
+      if (params.period) {
+        const p = parseInt(params.period, 10);
+        if (!isNaN(p) && p > 0) {
+          State.period = p;
+          document.getElementById('period-input').value = p;
+        }
+      }
+      if (params.rate) {
+        const r = parseFloat(params.rate);
+        if (!isNaN(r) && r > 0) {
+          State.rate = r;
+          document.getElementById('rate-input').value = r.toFixed(2);
+        }
+      }
+      if (params.method && (params.method === 'simple' || params.method === 'compound')) {
+        setCalcMethod(params.method);
+      }
+      if (params.tax && ['normal', 'prefer', 'free'].includes(params.tax)) {
+        setTaxType(params.tax);
       }
     }
 
     // 초기화
     window.addEventListener('DOMContentLoaded', () => {
       renderQuickButtons();
+      initFromUrlParams();
       calculateInterest();
 
       if ('serviceWorker' in navigator) {

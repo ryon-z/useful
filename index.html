@@ -105,6 +105,12 @@
             "position": 5,
             "name": "부동산 중개보수(복비) & 취득세 간편 계산기",
             "url": "https://www.gomodo.cloud/real-estate/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "name": "2026 연봉·월급 실수령액 계산기 & 4대보험 조견표",
+            "url": "https://www.gomodo.cloud/salary/"
           }
         ]
       },
@@ -203,11 +209,24 @@
           <!-- 드롭다운 팝업 레이어 -->
           <div id="tool-dropdown-menu" class="hidden absolute right-0 mt-2 w-64 sm:w-72 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl p-2 z-50 divide-y divide-slate-800">
             <div class="px-3 py-2 text-[11px] font-bold text-slate-400 flex items-center justify-between">
-              <span>GoModo 전체 도구 (5)</span>
+              <span>GoModo 전체 도구 (6)</span>
               <span class="text-[10px] text-amber-400 font-semibold">바로가기</span>
             </div>
             
             <div class="pt-1 space-y-1">
+              <a href="./salary/" class="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-800 transition group">
+                <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-sm border border-emerald-500/30 flex-shrink-0 group-hover:scale-105 transition-transform">
+                  <i class="fa-solid fa-wallet"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs sm:text-sm font-bold text-white group-hover:text-emerald-300 transition truncate flex items-center gap-1.5">
+                    <span>연봉 실수령액 계산기</span>
+                    <span class="px-1.5 py-0.2 rounded text-[10px] bg-emerald-500/30 text-emerald-300 font-bold">신규</span>
+                  </div>
+                  <div class="text-[11px] text-slate-400 truncate">2026 4대보험 &amp; 조견표</div>
+                </div>
+              </a>
+
               <a href="./lottery/" class="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-800 transition group">
                 <div class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm border border-amber-500/30 flex-shrink-0 group-hover:scale-105 transition-transform">
                   <i class="fa-solid fa-clover"></i>
@@ -474,8 +493,8 @@
           </a>
         </div>
 
-        <!-- 5. 부동산 중개보수(복비) & 취득세 계산기 (신규 출시) -->
-        <div class="bg-slate-900 border-2 border-indigo-500/50 hover:border-indigo-400 rounded-3xl p-6 sm:p-7 shadow-xl transition-all flex flex-col justify-between group relative overflow-hidden md:col-span-2">
+        <!-- 5. 부동산 중개보수(복비) & 취득세 계산기 -->
+        <div class="bg-slate-900 border-2 border-indigo-500/50 hover:border-indigo-400 rounded-3xl p-6 sm:p-7 shadow-xl transition-all flex flex-col justify-between group relative overflow-hidden">
           <div class="absolute -top-10 -right-10 w-48 h-48 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none"></div>
 
           <div>
@@ -485,7 +504,7 @@
               </div>
               <div class="flex items-center gap-2">
                 <span class="px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-xs sm:text-sm font-bold">
-                  ✨ 신규 오픈
+                  부동산·세금
                 </span>
                 <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs sm:text-sm font-bold flex items-center gap-1.5">
                   <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> 운영 중
@@ -509,8 +528,49 @@
             </div>
           </div>
 
-          <a href="./real-estate/" class="w-full bg-gradient-to-r from-indigo-500 to-blue-600 hover:from-indigo-400 hover:to-blue-500 text-white font-black py-3.5 px-5 rounded-xl transition text-center text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-indigo-500/25 active:scale-95">
+          <a href="./real-estate/" class="w-full bg-indigo-500 hover:bg-indigo-400 text-slate-950 font-black py-3.5 px-5 rounded-xl transition text-center text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-indigo-500/20 active:scale-95">
             <span>부동산 복비 &amp; 취득세 계산하기</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- 6. 2026 연봉/월급 실수령액 계산기 (신규 출시) -->
+        <div class="bg-slate-900 border-2 border-emerald-500/50 hover:border-emerald-400 rounded-3xl p-6 sm:p-7 shadow-xl transition-all flex flex-col justify-between group relative overflow-hidden">
+          <div class="absolute -top-10 -right-10 w-48 h-48 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
+          <div>
+            <div class="flex items-center justify-between gap-3 mb-4">
+              <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center text-2xl shadow-sm">
+                <i class="fa-solid fa-wallet"></i>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs sm:text-sm font-bold">
+                  ✨ 신규 오픈
+                </span>
+                <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs sm:text-sm font-bold flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> 2026 최신
+                </span>
+              </div>
+            </div>
+
+            <h3 class="text-xl sm:text-2xl font-black text-white mb-2 group-hover:text-emerald-300 transition">
+              2026 연봉·월급 실수령액 간편 계산기
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
+              2026년 국민연금 기준소득월액 상한(617만원), 건강보험·고용보험 개정 요율 및 국세청 근로소득 간이세액표를 100% 반영! 비과세 식대, 부양가족, 퇴직금 옵션에 따른 내 진짜 통장 입금액을 즉시 계산합니다.
+            </p>
+
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">2026 4대보험 개정</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">근로소득세·지방소득세</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">비과세 식대 20만원</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">부양가족 공제</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">연봉별 실수령액 표</span>
+            </div>
+          </div>
+
+          <a href="./salary/" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black py-3.5 px-5 rounded-xl transition text-center text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/25 active:scale-95">
+            <span>실수령액 바로 계산하기</span>
             <i class="fa-solid fa-arrow-right"></i>
           </a>
         </div>
