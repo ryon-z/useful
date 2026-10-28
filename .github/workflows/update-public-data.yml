@@ -1,0 +1,41 @@
+name: Update Public Data Feeds
+
+on:
+  schedule:
+    # 매일 한국 시간 새벽 3시 (UTC 18:00) 자동 정기 실행
+    - cron: '0 18 * * *'
+  workflow_dispatch: # GitHub 웹 콘솔에서 수동 즉시 실행 지원
+
+permissions:
+  contents: write
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run Public Data Fetch Pipeline
+        env:
+          FSS_API_KEY: ${{ secrets.FSS_API_KEY }}
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+        run: node scripts/fetch-public-data.js
+
+      - name: Commit and Push if Changed
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/
+          if git diff --staged --quiet; then
+            echo "No data changes to commit."
+          else
+            git commit -m "chore: auto-update public data feeds [skip ci]"
+            git push
+          fi

@@ -1,0 +1,42 @@
+{
+  "updatedAt": "2026-10-23T05:24:03.273Z",
+  "status": "sample_template",
+  "note": "GitHub Secrets에 FSS_API_KEY 등록 시 실시간 은행 공시 금리로 자동 갱신됩니다.",
+  "topDeposits": [
+    {
+      "bankName": "케이뱅크",
+      "productName": "코드K 정기예금",
+      "termMonths": 12,
+      "baseRate": 3.55,
+      "maxRate": 3.55
+    },
+    {
+      "bankName": "카카오뱅크",
+      "productName": "카카오뱅크 정기예금",
+      "termMonths": 12,
+      "baseRate": 3.5,
+      "maxRate": 3.5
+    },
+    {
+      "bankName": "토스뱅크",
+      "productName": "토스뱅크 먼저 이자 받는 예금",
+      "termMonths": 12,
+      "baseRate": 3.4,
+      "maxRate": 3.4
+    },
+    {
+      "bankName": "SH수협은행",
+      "productName": "Sh첫만남우대예금",
+      "termMonths": 12,
+      "baseRate": 3.1,
+      "maxRate": 4.15
+    },
+    {
+      "bankName": "IBK기업은행",
+      "productName": "1석7조통장(정기예금)",
+      "termMonths": 12,
+      "baseRate": 3.35,
+      "maxRate": 3.85
+    }
+  ]
+}
