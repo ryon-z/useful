@@ -92,6 +92,12 @@
           {
             "@type": "ListItem",
             "position": 3,
+            "name": "US Tip & Split Bill Calculator",
+            "url": "https://www.gomodo.cloud/en/tip/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
             "name": "2026 South Korea Salary & Take-Home Pay Calculator",
             "url": "https://www.gomodo.cloud/salary/"
           },
@@ -386,8 +392,8 @@
           </a>
         </div>
 
-        <!-- 3. Dining Tip & Fair Bill Splitter (Coming Soon) -->
-        <div class="bg-slate-900 border border-slate-800 hover:border-sky-500/40 rounded-3xl p-6 sm:p-7 shadow-xl transition-all flex flex-col justify-between group relative overflow-hidden">
+        <!-- 3. Dining Tip & Fair Bill Splitter (Active) -->
+        <div class="bg-slate-900 border-2 border-sky-500/50 hover:border-sky-400 rounded-3xl p-6 sm:p-7 shadow-xl transition-all flex flex-col justify-between group relative overflow-hidden">
           <div class="absolute -top-10 -right-10 w-36 h-36 bg-sky-500/10 rounded-full blur-2xl pointer-events-none"></div>
 
           <div>
@@ -399,8 +405,8 @@
                 <span class="px-3 py-1 rounded-full bg-sky-500/20 text-sky-300 border border-sky-500/30 text-xs font-bold">
                   🇺🇸 Dining &amp; Travel
                 </span>
-                <span class="px-3 py-1 rounded-full bg-slate-800 text-slate-400 border border-slate-700 text-xs font-bold">
-                  Coming Soon
+                <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Active
                 </span>
               </div>
             </div>
@@ -420,10 +426,10 @@
             </div>
           </div>
 
-          <button type="button" disabled class="w-full bg-slate-800 text-slate-500 font-bold py-3.5 px-5 rounded-xl text-center text-sm sm:text-base flex items-center justify-center gap-2 cursor-not-allowed">
-            <span>In Development (Launching Soon)</span>
-            <i class="fa-solid fa-clock"></i>
-          </button>
+          <a href="./tip/" class="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-black py-3.5 px-5 rounded-xl transition text-center text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-sky-500/20 active:scale-95">
+            <span>Calculate Dining Tips</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
         </div>
 
         <!-- 4. South Korea Salary & Net Pay Calculator (Global) -->
