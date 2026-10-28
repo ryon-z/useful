@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-47W29ZQ6ZH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-47W29ZQ6ZH');
+  </script>
+  
+  <!-- SEO 最適化メタタグ -->
+  <title>飲み会・食事会 割り勘計算機（傾斜配分・端数調整・LINE精算文作成） | GoModo</title>
+  <meta name="description" content="飲み会や食事会の幹事必見！上司・先輩の傾斜配分（1.5倍・2倍）、飲まない人割引、100円・500円単位の端数調整に対応したスマートな無料割り勘計算機。LINE精算文をワンクリック作成・登録不要。">
+  <meta name="keywords" content="割り勘計算機, ワリカン, 傾斜配分, 飲み会割り勘, 合コン割り勘, 端数計算, 上司多め, 幹事便利ツール, LINE割り勘, PayPay割り勘, GoModo">
+  <meta name="author" content="GoModo">
+  <link rel="canonical" href="https://www.gomodo.cloud/ja/warikan/">
+
+  <!-- 多言語 hreflang 設定 -->
+  <link rel="alternate" hreflang="ja" href="https://www.gomodo.cloud/ja/warikan/">
+  <link rel="alternate" hreflang="x-default" href="https://www.gomodo.cloud/ja/warikan/">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23f43f5e'/><text x='50' y='68' font-size='44' font-family='sans-serif' font-weight='900' text-anchor='middle' fill='%23ffffff'>割</text></svg>">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GoModo (便利Webツール工房)">
+  <meta property="og:title" content="飲み会・食事会 割り勘計算機（傾斜配分 & LINE精算文作成） | GoModo">
+  <meta property="og:description" content="上司多め・飲まない人割引・端数丸めに対応！LINEでそのまま送れる精算文を瞬時に作成。">
+  <meta property="og:url" content="https://www.gomodo.cloud/ja/warikan/">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:image" content="https://www.gomodo.cloud/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="飲み会 傾斜配分ワリカン計算機 | GoModo">
+  <meta name="twitter:description" content="上司1.5倍・飲まない人割引・端数調整・LINE精算文作成に対応した無料割り勘ツール">
+  <meta name="twitter:image" content="https://www.gomodo.cloud/og-image.png">
+
+  <!-- 検索エンジンクロール指示 -->
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-video-preview:-1">
+
+  <!-- JSON-LD 構造化データ (Schema.org) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://www.gomodo.cloud/ja/warikan/#webapp",
+        "url": "https://www.gomodo.cloud/ja/warikan/",
+        "name": "飲み会・食事会 傾斜配分ワリカン計算機",
+        "description": "飲み会・食事会・合コンにおける上司・先輩の傾斜配分（多め払い）、非飲酒者割引、端数丸め調整、LINE送信用精算メッセージ作成を行うWeb計算ツール",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "All",
+        "inLanguage": "ja-JP",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "JPY"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "GoModo ホーム",
+            "item": "https://www.gomodo.cloud/ja/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "傾斜配分 割り勘計算機",
+            "item": "https://www.gomodo.cloud/ja/warikan/"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "飲み会の割り勘で上司や先輩にはどれくらい多く払ってもらうのが一般的ですか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "一般的には一般社員・後輩の「1.5倍〜2.0倍」程度、または端数の数千円をまとめて負担してもらうのがスマートとされています。例として後輩が4,000円の場合、先輩は6,000円（1.5倍）、部長などの役職者は8,000円〜10,000円程度を負担する傾斜配分が多く用いられます。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "お酒を飲まない人や途中参加の人の割り勘の相場は？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "飲み放題付きのコースであれば、アルコール飲み放題とソフトドリンクの差額（おおむね1,000円〜1,500円引き）を引くのが親切です。遅れて参加した人の場合は、滞在時間に応じて半額（50%）または一律2,000円〜3,000円程度に設定するとトラブルを防げます。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "割り勘の端数はどのように処理するのが好まれますか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "小銭のやり取りを避けるため、「500円単位」または「1,000円単位」で丸めるのが現代のスタンダードです。切り上げで集めて余った端数はお釣りや二次会の費用、タクシー代に充てるか、切り捨てて幹事が端数を負担するかを事前に決めておくのがおすすめです。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "集金時にPayPayやLINE Payを使うメリットは何ですか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "キャッシュレス送金を利用すれば、1円・10円単位の端数も正確に送金でき、小銭の準備やお釣りの受け渡しが一切不要になります。当ツールのLINE送信テキストにはPayPay IDや送金用リンクを記載できるため、集金の手間を大幅に削減できます。"
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Tailwind CSS & FontAwesome -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
+    
+    html {
+      font-size: 16px;
+      -webkit-text-size-adjust: 100%;
+    }
+    @media (min-width: 640px) {
+      html {
+        font-size: 16.5px;
+      }
+    }
+    body {
+      font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+      letter-spacing: -0.01em;
+    }
+    .shadow-glow-rose {
+      box-shadow: 0 0 20px rgba(244, 63, 94, 0.25);
+    }
+  </style>
+
+  <!-- テーマシステム (ダーク/ライト) -->
+  <link rel="stylesheet" href="../../theme.css?v=2">
+  <script src="../../theme.js"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-rose-500 selection:text-white">
+
+  <!-- ヘッダーナビゲーション -->
+  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto px-4 h-14 sm:h-16 flex items-center justify-between gap-2 sm:gap-3">
+      
+      <!-- ロゴ -->
+      <div class="flex items-center gap-2 sm:gap-2.5 flex-shrink-0 min-w-0">
+        <a href="../" class="text-slate-400 hover:text-rose-400 transition p-1.5 sm:p-2 rounded-xl hover:bg-slate-800 flex items-center gap-1 text-xs sm:text-sm font-bold border border-transparent hover:border-slate-700 flex-shrink-0" title="日本版ポータルへ">
+          <i class="fa-solid fa-house text-xs sm:text-sm"></i>
+          <span class="hidden sm:inline">ホーム</span>
+        </a>
+        <div class="flex items-center gap-2 flex-shrink-0">
+          <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-rose-500 to-pink-500 text-white flex items-center justify-center font-black text-sm sm:text-base shadow-sm flex-shrink-0">
+            割
+          </div>
+          <span class="text-base sm:text-lg font-black tracking-tight text-white whitespace-nowrap">
+            ワリカン <span class="text-rose-400">計算機</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- 右側ツール & 言語切替 & 共有 -->
+      <nav class="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-bold text-slate-300 flex-shrink-0 whitespace-nowrap">
+        
+        <!-- 言語切替ピル -->
+        <div class="flex items-center bg-slate-800/90 border border-slate-700/80 rounded-xl p-0.5 text-xs">
+          <span class="px-2 py-1 rounded-lg bg-rose-500 text-white font-bold">JA</span>
+          <a href="../../" class="px-2 py-1 text-slate-400 hover:text-white transition" title="韓国語版に切り替え">KO</a>
+        </div>
+
+        <!-- ツール一覧 ドロップダウン -->
+        <div class="relative" id="tool-dropdown-container">
+          <button type="button" onclick="toggleToolDropdown(event)" id="tool-dropdown-btn" class="flex items-center gap-1.5 bg-slate-800/90 hover:bg-slate-700 text-slate-200 hover:text-white px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl border border-slate-700/80 transition active:scale-95 shadow-sm whitespace-nowrap flex-shrink-0" aria-expanded="false" aria-label="ツール一覧メニュー">
+            <i class="fa-solid fa-shapes text-rose-400 text-xs sm:text-sm"></i>
+            <span class="hidden sm:inline font-bold">ツール一覧</span>
+            <span class="sm:hidden font-bold">メニュー</span>
+            <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition-transform duration-200" id="tool-dropdown-arrow"></i>
+          </button>
+
+          <!-- ドロップダウンメニュー -->
+          <div id="tool-dropdown-menu" class="hidden absolute right-0 mt-2 w-64 sm:w-72 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl p-2 z-50 divide-y divide-slate-800">
+            <div class="px-3 py-2 text-[11px] font-bold text-slate-400 flex items-center justify-between">
+              <span>GoModo ツール</span>
+              <span class="text-[10px] text-rose-400 font-semibold">一覧</span>
+            </div>
+            
+            <div class="pt-1 space-y-1">
+              <a href="./" class="flex items-center gap-2.5 p-2 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-300">
+                <div class="w-7 h-7 rounded-lg bg-rose-500 text-white flex items-center justify-center text-xs font-black">割</div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white truncate">傾斜配分 ワリカン計算機</div>
+                  <div class="text-[10px] text-rose-400/80 truncate">上司多め・LINE精算文作成</div>
+                </div>
+              </a>
+
+              <a href="../lottery/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-xs font-black">7</div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-amber-300 transition truncate">ロト6・7予想 & 吉日</div>
+                  <div class="text-[10px] text-slate-400 truncate">2026年 開運日カレンダー</div>
+                </div>
+              </a>
+
+              <a href="../age/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center text-xs font-black">和</div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-sky-300 transition truncate">和暦・年齢早見表 & 履歴書</div>
+                  <div class="text-[10px] text-slate-400 truncate">令和8年最新・学歴早見表</div>
+                </div>
+              </a>
+
+              <a href="../" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-slate-800 text-slate-300 flex items-center justify-center text-xs">
+                  <i class="fa-solid fa-house"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-amber-300 transition truncate">日本版 GoModo ホーム</div>
+                  <div class="text-[10px] text-slate-400 truncate">便利ツール一覧</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 共有ボタン -->
+        <button type="button" onclick="openShareModal({ title: '飲み会・食事会 割り勘計算機（傾斜配分・LINE精算文作成） | GoModo', text: '上司・先輩の傾斜配分、飲まない人割引、端数丸めに対応した便利な割り勘ツール', url: window.location.href })" class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-rose-400 border border-slate-700/80 flex items-center justify-center transition active:scale-95 shadow-sm flex-shrink-0" title="ツールを共有する" aria-label="共有">
+          <i class="fa-solid fa-share-nodes text-xs sm:text-sm"></i>
+        </button>
+
+        <!-- テーマ切替ボタン -->
+        <button type="button" onclick="toggleTheme()" class="theme-toggle-btn w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-rose-400 border border-slate-700/80 flex items-center justify-center transition active:scale-95 shadow-sm flex-shrink-0" title="テーマ切り替え (ダーク/ライト)" aria-label="テーマ切替">
+          <i class="fa-solid fa-sun text-xs sm:text-sm theme-icon-sun hidden"></i>
+          <i class="fa-solid fa-moon text-xs sm:text-sm theme-icon-moon"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- メインコンテンツ -->
+  <main class="max-w-5xl mx-auto px-4 py-6 sm:py-8 space-y-8 flex-1 w-full">
+
+    <!-- ヒーローヘッダー -->
+    <div class="text-center space-y-2.5">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs font-bold">
+        <i class="fa-solid fa-champagne-glasses"></i>
+        <span>飲み会・食事会・合コン幹事の決定版ツール</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-black text-white tracking-tight">
+        飲み会・食事会 <span class="bg-gradient-to-r from-rose-400 via-pink-400 to-amber-300 bg-clip-text text-transparent">傾斜配分ワリカン計算機</span>
+      </h1>
+      <p class="text-xs sm:text-sm text-slate-300 max-w-2xl mx-auto leading-relaxed">
+        上司・先輩の多め負担（1.5倍・2倍）、お酒を飲まない人の割引、端数（100円・500円）の丸めを瞬時に計算。そのままLINEで送れる精算テキストを自動生成します。
+      </p>
+    </div>
+
+    <!-- 計算フォーム & 結果ダッシュボード -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+
+      <!-- [左側: 入力パネル] (lg:col-span-5) -->
+      <section class="lg:col-span-5 bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-6 shadow-xl space-y-5">
+        
+        <!-- モード切替タブ -->
+        <div class="grid grid-cols-2 gap-2 p-1 bg-slate-950 rounded-2xl border border-slate-800 text-xs sm:text-sm font-bold">
+          <button type="button" onclick="setMode('keisha')" id="tab-keisha" class="py-2.5 px-3 rounded-xl transition flex items-center justify-center gap-1.5 bg-gradient-to-r from-rose-500 to-pink-500 text-white shadow-md">
+            <i class="fa-solid fa-scale-unbalanced"></i>
+            <span>傾斜配分（上司多め）</span>
+          </button>
+          <button type="button" onclick="setMode('equal')" id="tab-equal" class="py-2.5 px-3 rounded-xl transition flex items-center justify-center gap-1.5 text-slate-400 hover:text-white">
+            <i class="fa-solid fa-equals"></i>
+            <span>均等割り勘（1/n）</span>
+          </button>
+        </div>
+
+        <!-- プリセットクイックボタン (傾斜モード時) -->
+        <div id="presets-container" class="space-y-1.5">
+          <label class="block text-[11px] font-bold text-slate-400">よくある設定パターン</label>
+          <div class="grid grid-cols-2 gap-1.5 text-xs">
+            <button type="button" onclick="applyPreset('senpai')" class="py-1.5 px-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 font-bold transition text-[11px] truncate">
+              先輩1.5倍・後輩1.0倍
+            </button>
+            <button type="button" onclick="applyPreset('joushi')" class="py-1.5 px-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 font-bold transition text-[11px] truncate">
+              上司2.0倍・部下1.0倍
+            </button>
+            <button type="button" onclick="applyPreset('goukon')" class="py-1.5 px-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 font-bold transition text-[11px] truncate">
+              合コン（男性2倍）
+            </button>
+            <button type="button" onclick="applyPreset('drinker')" class="py-1.5 px-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 font-bold transition text-[11px] truncate">
+              飲まない人 -1,000円
+            </button>
+          </div>
+        </div>
+
+        <!-- 1. 会計総額 (円) -->
+        <div class="space-y-1.5">
+          <div class="flex items-center justify-between">
+            <label class="text-xs font-bold text-slate-300" for="bill-total">お会計の総額 (税込)</label>
+            <span class="text-[11px] text-rose-400 font-bold" id="bill-display">¥35,000</span>
+          </div>
+          <div class="relative">
+            <span class="absolute left-3.5 top-2.5 text-slate-400 font-bold">¥</span>
+            <input type="number" id="bill-total" value="35000" min="100" step="100" oninput="onInputChange()" class="w-full bg-slate-950 border border-slate-700 rounded-xl pl-8 pr-3 py-2.5 text-base font-black text-white font-mono focus:outline-none focus:border-rose-500 transition" />
+          </div>
+        </div>
+
+        <!-- 2. グループ人数 & 配分設定 (傾斜配分モード) -->
+        <div id="panel-keisha" class="space-y-3.5 pt-2 border-t border-slate-800">
+          
+          <!-- グループ1: 上司・先輩・多め -->
+          <div class="p-3 bg-slate-950/80 rounded-2xl border border-rose-500/30 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-black text-rose-400 flex items-center gap-1.5">
+                <i class="fa-solid fa-user-tie"></i>
+                <span>上司・先輩（多め負担）</span>
+              </span>
+              <span class="text-[10px] text-slate-400">グループ①</span>
+            </div>
+            <div class="grid grid-cols-2 gap-2 text-xs">
+              <div>
+                <label class="block text-[11px] text-slate-400 mb-1">人数</label>
+                <div class="flex items-center">
+                  <input type="number" id="g1-count" value="2" min="1" max="50" oninput="onInputChange()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1.5 font-bold text-white font-mono focus:outline-none focus:border-rose-500" />
+                  <span class="ml-1 text-slate-400">人</span>
+                </div>
+              </div>
+              <div>
+                <label class="block text-[11px] text-slate-400 mb-1">負担比率</label>
+                <select id="g1-weight" onchange="onInputChange()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-2 py-1.5 font-bold text-white focus:outline-none focus:border-rose-500">
+                  <option value="1.2">1.2倍</option>
+                  <option value="1.3">1.3倍</option>
+                  <option value="1.5" selected>1.5倍（標準）</option>
+                  <option value="1.8">1.8倍</option>
+                  <option value="2.0">2.0倍（倍額）</option>
+                  <option value="2.5">2.5倍</option>
+                  <option value="3.0">3.0倍</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- グループ2: 一般・後輩 (基準) -->
+          <div class="p-3 bg-slate-950/80 rounded-2xl border border-slate-800 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-slate-200 flex items-center gap-1.5">
+                <i class="fa-solid fa-users"></i>
+                <span>一般・後輩（基準額）</span>
+              </span>
+              <span class="text-[10px] text-slate-400">グループ② (1.0倍)</span>
+            </div>
+            <div class="flex items-center">
+              <input type="number" id="g2-count" value="4" min="0" max="50" oninput="onInputChange()" class="w-24 bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1.5 font-bold text-white font-mono focus:outline-none focus:border-rose-500 text-xs" />
+              <span class="ml-1 text-xs text-slate-400">人（基準 1.0倍で計算）</span>
+            </div>
+          </div>
+
+          <!-- グループ3: お酒を飲まない人・遅刻参加 (割引) -->
+          <div class="p-3 bg-slate-950/80 rounded-2xl border border-slate-800 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+                <i class="fa-solid fa-mug-saucer text-amber-400"></i>
+                <span>飲まない人・途中参加（割引）</span>
+              </span>
+              <span class="text-[10px] text-slate-400">グループ③ (任意)</span>
+            </div>
+            <div class="grid grid-cols-2 gap-2 text-xs">
+              <div>
+                <label class="block text-[11px] text-slate-400 mb-1">人数</label>
+                <div class="flex items-center">
+                  <input type="number" id="g3-count" value="1" min="0" max="50" oninput="onInputChange()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1.5 font-bold text-white font-mono focus:outline-none focus:border-rose-500" />
+                  <span class="ml-1 text-slate-400">人</span>
+                </div>
+              </div>
+              <div>
+                <label class="block text-[11px] text-slate-400 mb-1">割引設定</label>
+                <select id="g3-discount" onchange="onInputChange()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-2 py-1.5 font-bold text-white focus:outline-none focus:border-rose-500">
+                  <option value="500">500円引き</option>
+                  <option value="1000" selected>1,000円引き</option>
+                  <option value="1500">1,500円引き</option>
+                  <option value="2000">2,000円引き</option>
+                  <option value="half">半額 (50%)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- [均等割り勘用 人数入力] (均等モード時のみ表示) -->
+        <div id="panel-equal" class="hidden space-y-2 pt-2 border-t border-slate-800">
+          <label class="block text-xs font-bold text-slate-300">参加人数 (全員)</label>
+          <div class="flex items-center">
+            <input type="number" id="equal-count" value="6" min="1" max="100" oninput="onInputChange()" class="w-28 bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 font-bold text-white font-mono focus:outline-none focus:border-rose-500 text-sm" />
+            <span class="ml-2 text-xs text-slate-400">人（均等に1/n分割）</span>
+          </div>
+        </div>
+
+        <!-- 3. 端数処理（丸め単位 & 幹事負担） -->
+        <div class="pt-3 border-t border-slate-800 space-y-3">
+          <div class="flex items-center justify-between">
+            <label class="text-xs font-bold text-slate-300">端数の丸め設定</label>
+            <span class="text-[10px] text-slate-400">小銭が出ないよう調整</span>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2 text-xs">
+            <div>
+              <label class="block text-[11px] text-slate-400 mb-1">丸め単位</label>
+              <select id="round-unit" onchange="onInputChange()" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-2.5 py-2 font-bold text-white focus:outline-none focus:border-rose-500">
+                <option value="100">100円単位</option>
+                <option value="500" selected>500円単位（推奨）</option>
+                <option value="1000">1,000円単位</option>
+                <option value="1">1円単位 (きっちり)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-400 mb-1">端数の扱い</label>
+              <select id="round-type" onchange="onInputChange()" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-2.5 py-2 font-bold text-white focus:outline-none focus:border-rose-500">
+                <option value="ceil" selected>切り上げ（端数を回収）</option>
+                <option value="floor">切り捨て（幹事が負担）</option>
+                <option value="round">四捨五入</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. 精算先メモ（PayPayや口座番号） -->
+        <div class="pt-2 border-t border-slate-800 space-y-1.5">
+          <label class="block text-[11px] font-bold text-slate-400" for="pay-memo">LINEテキストに含める精算先（任意）</label>
+          <input type="text" id="pay-memo" placeholder="例: PayPay ID: gomodo_pay / LINE Pay" oninput="updateLinePreview()" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-rose-500" />
+        </div>
+
+      </section>
+
+      <!-- [右側: 計算結果ダッシュボード] (lg:col-span-7) -->
+      <section class="lg:col-span-7 space-y-6">
+
+        <!-- 1. メイン集金サマリーカード -->
+        <div class="bg-gradient-to-br from-slate-900 to-slate-950 border-2 border-rose-500/40 rounded-3xl p-6 sm:p-7 shadow-2xl relative overflow-hidden space-y-5">
+          <div class="absolute -top-12 -right-12 w-48 h-48 bg-rose-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+          <!-- ヘッダー -->
+          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800/80 pb-4">
+            <div>
+              <span class="text-xs text-slate-400 font-bold">お会計総額</span>
+              <div class="text-2xl sm:text-3xl font-black text-white mt-0.5 font-mono">
+                <span id="res-total-bill">¥35,000</span>
+                <span class="text-xs font-normal text-slate-400 ml-2" id="res-total-people">（計7名）</span>
+              </div>
+            </div>
+            
+            <div id="res-diff-badge" class="px-3 py-1.5 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30 flex items-center gap-1.5">
+              <span>集金差額: +¥500 (端数余り)</span>
+            </div>
+          </div>
+
+          <!-- 各グループの支払金額カード (動的更新) -->
+          <div id="res-cards-container" class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <!-- JSで動的レンダリング -->
+          </div>
+
+          <!-- 集金総額 vs お会計のバランスバー -->
+          <div class="p-3.5 bg-slate-950/70 border border-slate-800 rounded-2xl flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
+            <div class="text-slate-300">
+              集金予定総額: <strong class="text-white text-sm" id="res-collected-total">¥35,500</strong>
+            </div>
+            <div class="text-slate-400" id="res-balance-note">
+              ※ 端数の余り（¥500）は次回お茶代または幹事お礼に充当できます。
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 2. LINE送信用 メッセージ生成 & コピー (キラー機能) -->
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-6 shadow-xl space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-3">
+            <div class="flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-xl bg-[#06C755]/20 text-[#06C755] flex items-center justify-center text-base font-black">
+                <i class="fa-brands fa-line"></i>
+              </div>
+              <div>
+                <h3 class="text-base sm:text-lg font-black text-white">LINE送信用 精算メッセージ</h3>
+                <p class="text-[11px] text-slate-400">そのままグループLINEに貼り付けて請求できます</p>
+              </div>
+            </div>
+
+            <!-- アクションボタン -->
+            <div class="flex items-center gap-2">
+              <button type="button" onclick="copyLineMessage()" class="px-3.5 py-1.5 rounded-xl bg-rose-500 hover:bg-rose-400 text-white font-bold text-xs flex items-center gap-1.5 transition active:scale-95 shadow">
+                <i class="fa-regular fa-copy"></i>
+                <span>テキストをコピー</span>
+              </button>
+              <button type="button" onclick="shareToLineDirect()" class="px-3.5 py-1.5 rounded-xl bg-[#06C755] hover:bg-[#05b34c] text-white font-bold text-xs flex items-center gap-1.5 transition active:scale-95 shadow">
+                <i class="fa-brands fa-line"></i>
+                <span class="hidden sm:inline">LINEで送る</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- LINEプレビューボックス -->
+          <div class="relative">
+            <textarea id="line-preview-text" readonly rows="7" class="w-full bg-slate-950 border border-slate-800 rounded-2xl p-3.5 text-xs text-slate-200 font-mono leading-relaxed focus:outline-none resize-none selection:bg-rose-500"></textarea>
+          </div>
+
+          <div class="flex items-center justify-between text-[11px] text-slate-400">
+            <span>※ PayPayや銀行振込など、お好みの集金方法を書き添えてお使いください。</span>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+
+    <!-- 3. 3段 SEO ガイド & コンテンツ (スマートな割り勘マナー + FAQ) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <!-- ① 幹事が知っておくべき傾斜配分の相場 -->
+      <article class="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-6 space-y-4">
+        <div class="flex items-center gap-2 text-rose-400 font-bold text-sm">
+          <i class="fa-solid fa-scale-balanced"></i>
+          <span>スマートな傾斜配分（上司・先輩多め）の相場</span>
+        </div>
+        <h3 class="text-base sm:text-lg font-black text-white">揉めない飲み会会計の黄金比率</h3>
+        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+          職場の飲み会や歓送迎会では、完全な均等割り勘よりも役職や年次に応じた「傾斜配分」を行うことで全員が気持ちよく解散できます。
+        </p>
+
+        <div class="space-y-2 text-xs">
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-1">
+            <div class="flex items-center justify-between font-bold">
+              <span class="text-rose-400">部長・役員クラス</span>
+              <span class="text-slate-300">2.0倍〜3.0倍（または端数全負担）</span>
+            </div>
+            <p class="text-slate-400 text-[11px]">
+              若手が3,000円なら6,000円〜10,000円程度を負担してもらうのが一般的です。
+            </p>
+          </div>
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-1">
+            <div class="flex items-center justify-between font-bold">
+              <span class="text-rose-400">先輩・リーダー層</span>
+              <span class="text-slate-300">1.3倍〜1.5倍</span>
+            </div>
+            <p class="text-slate-400 text-[11px]">
+              後輩に財布の負担を感じさせず、かつ先輩側にも無理のない最もポピュラーな比率です。
+            </p>
+          </div>
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-1">
+            <div class="flex items-center justify-between font-bold">
+              <span class="text-rose-400">お酒を飲まない人</span>
+              <span class="text-slate-300">-1,000円〜-1,500円割引</span>
+            </div>
+            <p class="text-slate-400 text-[11px]">
+              アルコールを嗜まない人への気配りとして、コース飲み放題の差額分を割り引くと喜ばれます。
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ② 端数処理とキャッシュレス集金のコツ -->
+      <article class="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-6 space-y-4">
+        <div class="flex items-center gap-2 text-amber-400 font-bold text-sm">
+          <i class="fa-solid fa-coins"></i>
+          <span>端数の扱いとLINE・PayPay集金のコツ</span>
+        </div>
+        <h3 class="text-base sm:text-lg font-black text-white">会計時にもたつかない幹事のテクニック</h3>
+        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+          現金の集金は1円や10円単位の小銭が発生するとお釣りの対応で時間がかかります。スマートに会計を済ませるためのポイントです。
+        </p>
+
+        <div class="space-y-2 text-xs">
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-1">
+            <div class="font-bold text-amber-300">1. 500円または1,000円単位で丸める</div>
+            <p class="text-slate-400 text-[11px]">
+              ワンコイン（500円玉）や千円札で支払える金額に設定するのがスムーズです。
+            </p>
+          </div>
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-1">
+            <div class="font-bold text-amber-300">2. 余った端数の扱いをアナウンスする</div>
+            <p class="text-slate-400 text-[11px]">
+              切り上げで余った数百円は「二次会のお菓子代」や「幹事のお釣り・チップ」として透明性を保ちましょう。
+            </p>
+          </div>
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-1">
+            <div class="font-bold text-amber-300">3. 翌日までにLINEで精算通知を送る</div>
+            <p class="text-slate-400 text-[11px]">
+              宴会終了直後または翌朝に金額と振込先（PayPay ID等）を連絡すると未回収を防げます。
+            </p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- よくある質問 (FAQ Accordion with Schema.org) -->
+    <section class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-5">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center font-bold text-sm">
+          <i class="fa-solid fa-circle-question"></i>
+        </div>
+        <h2 class="text-xl sm:text-2xl font-black text-white">よくある質問 (FAQ)</h2>
+      </div>
+
+      <div class="space-y-3">
+        <details class="group bg-slate-950/60 border border-slate-800/80 rounded-2xl p-4 sm:p-5 transition hover:border-slate-700" open>
+          <summary class="font-bold text-white cursor-pointer flex items-center justify-between gap-4 list-none text-sm sm:text-base">
+            <span class="flex items-center gap-2 text-slate-100">
+              <span class="text-rose-400 font-black">Q.</span> 傾斜配分とは何ですか？
+            </span>
+            <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <div class="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed pl-5 border-l-2 border-rose-500/30">
+            傾斜配分とは、参加者全員で均等に割り勘にするのではなく、職位（上司・先輩・部下）や飲酒量（飲める人・飲まない人）、滞在時間に応じて支払う金額に重み付け（傾斜）をつける計算方法です。
+          </div>
+        </details>
+
+        <details class="group bg-slate-950/60 border border-slate-800/80 rounded-2xl p-4 sm:p-5 transition hover:border-slate-700">
+          <summary class="font-bold text-white cursor-pointer flex items-center justify-between gap-4 list-none text-sm sm:text-base">
+            <span class="flex items-center gap-2 text-slate-100">
+              <span class="text-rose-400 font-black">Q.</span> 端数で出たプラスやマイナスの差額はどう調整すればいいですか？
+            </span>
+            <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <div class="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed pl-5 border-l-2 border-rose-500/30">
+            当ツールでは「切り上げ（端数を回収）」と「切り捨て（幹事が端数負担）」をお選びいただけます。切り上げで集めた場合の余剰分（数百円〜千円程度）は、幹事の手間賃とするか、二次会の会計に繰り越すのが一般的なマナーです。
+          </div>
+        </details>
+
+        <details class="group bg-slate-950/60 border border-slate-800/80 rounded-2xl p-4 sm:p-5 transition hover:border-slate-700">
+          <summary class="font-bold text-white cursor-pointer flex items-center justify-between gap-4 list-none text-sm sm:text-base">
+            <span class="flex items-center gap-2 text-slate-100">
+              <span class="text-rose-400 font-black">Q.</span> LINE送信用メッセージは編集できますか？
+            </span>
+            <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <div class="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed pl-5 border-l-2 border-rose-500/30">
+            はい。生成されたテキストをクリップボードにコピーした後、LINEアプリのトーク画面上でメッセージを自由に加筆・修正して送信いただけます。
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- フッター (Yahoo! JAPAN / Google ガイドライン準拠) -->
+  <footer class="border-t border-slate-800 bg-slate-950 text-slate-400 py-8 text-xs text-center">
+    <div class="max-w-5xl mx-auto px-4 space-y-4">
+      <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-semibold text-slate-400">
+        <a href="../../about/" class="hover:text-rose-400 transition">運営者情報 (About)</a>
+        <span>•</span>
+        <a href="../../terms/" class="hover:text-rose-400 transition">利用規約</a>
+        <span>•</span>
+        <a href="../../privacy/" class="hover:text-rose-400 transition">プライバシーポリシー</a>
+        <span>•</span>
+        <a href="../" class="hover:text-rose-400 transition">日本版 GoModo ホーム</a>
+      </div>
+
+      <div class="max-w-3xl mx-auto text-[11px] text-slate-500 leading-relaxed border-t border-slate-900 pt-3">
+        【免責事項】当ツールで算出される計算結果および端数配分は目安です。実際の支払いおよび金銭授受の最終確認は幹事様および参加者各自の合意のもとで行ってください。<br>
+        【最終更新日】2026年10月28日
+      </div>
+
+      <p class="text-[11px] text-slate-500">
+        © 2026 GoModo. All rights reserved. Powered by GitHub Pages.
+      </p>
+    </div>
+  </footer>
+
+  <!-- 共通共有モジュール (share.js) -->
+  <script src="../../share.js"></script>
+
+  <!-- 割り勘・傾斜配分 計算エンジン -->
+  <script>
+    let curMode = 'keisha'; // 'keisha' or 'equal'
+
+    function setMode(mode) {
+      curMode = mode;
+      const tabK = document.getElementById('tab-keisha');
+      const tabE = document.getElementById('tab-equal');
+      const panelK = document.getElementById('panel-keisha');
+      const panelE = document.getElementById('panel-equal');
+      const presets = document.getElementById('presets-container');
+
+      if (mode === 'keisha') {
+        tabK.className = 'py-2.5 px-3 rounded-xl transition flex items-center justify-center gap-1.5 bg-gradient-to-r from-rose-500 to-pink-500 text-white shadow-md font-bold';
+        tabE.className = 'py-2.5 px-3 rounded-xl transition flex items-center justify-center gap-1.5 text-slate-400 hover:text-white font-bold';
+        panelK.classList.remove('hidden');
+        panelE.classList.add('hidden');
+        presets.classList.remove('hidden');
+      } else {
+        tabE.className = 'py-2.5 px-3 rounded-xl transition flex items-center justify-center gap-1.5 bg-gradient-to-r from-rose-500 to-pink-500 text-white shadow-md font-bold';
+        tabK.className = 'py-2.5 px-3 rounded-xl transition flex items-center justify-center gap-1.5 text-slate-400 hover:text-white font-bold';
+        panelE.classList.remove('hidden');
+        panelK.classList.add('hidden');
+        presets.classList.add('hidden');
+      }
+      calculateWarikan();
+    }
+
+    function applyPreset(type) {
+      if (type === 'senpai') {
+        document.getElementById('g1-weight').value = '1.5';
+        document.getElementById('g3-count').value = '0';
+      } else if (type === 'joushi') {
+        document.getElementById('g1-weight').value = '2.0';
+        document.getElementById('g3-count').value = '0';
+      } else if (type === 'goukon') {
+        document.getElementById('g1-weight').value = '2.0';
+        document.getElementById('g3-count').value = '0';
+      } else if (type === 'drinker') {
+        document.getElementById('g3-count').value = '1';
+        document.getElementById('g3-discount').value = '1000';
+      }
+      calculateWarikan();
+    }
+
+    function onInputChange() {
+      const bill = parseInt(document.getElementById('bill-total').value) || 0;
+      document.getElementById('bill-display').textContent = `¥${bill.toLocaleString()}`;
+      calculateWarikan();
+    }
+
+    function calculateWarikan() {
+      const total = parseInt(document.getElementById('bill-total').value) || 0;
+      const unit = parseInt(document.getElementById('round-unit').value) || 100;
+      const roundType = document.getElementById('round-type').value;
+
+      document.getElementById('res-total-bill').textContent = `¥${total.toLocaleString()}`;
+
+      if (curMode === 'equal') {
+        calculateEqualMode(total, unit, roundType);
+      } else {
+        calculateKeishaMode(total, unit, roundType);
+      }
+    }
+
+    function roundValue(val, unit, type) {
+      if (unit === 1) {
+        if (type === 'ceil') return Math.ceil(val);
+        if (type === 'floor') return Math.floor(val);
+        return Math.round(val);
+      }
+      if (type === 'ceil') return Math.ceil(val / unit) * unit;
+      if (type === 'floor') return Math.floor(val / unit) * unit;
+      return Math.round(val / unit) * unit;
+    }
+
+    // 均等割り勘モード
+    function calculateEqualMode(total, unit, roundType) {
+      const count = parseInt(document.getElementById('equal-count').value) || 1;
+      document.getElementById('res-total-people').textContent = `（計${count}名）`;
+
+      const rawPerPerson = total / count;
+      const perPerson = roundValue(rawPerPerson, unit, roundType);
+      const totalCollected = perPerson * count;
+      const diff = totalCollected - total;
+
+      const container = document.getElementById('res-cards-container');
+      container.innerHTML = `
+        <div class="sm:col-span-3 p-4 bg-slate-950/80 border border-rose-500/40 rounded-2xl text-center space-y-1">
+          <span class="text-xs text-rose-300 font-bold">1人あたりの支払額（全員均等）</span>
+          <div class="text-3xl sm:text-4xl font-black text-white font-mono mt-1">
+            ¥${perPerson.toLocaleString()}
+          </div>
+          <div class="text-xs text-slate-400">× ${count}名 ＝ ¥${totalCollected.toLocaleString()}</div>
+        </div>
+      `;
+
+      updateBalanceSummary(total, totalCollected, diff);
+      updateLineMessage({
+        mode: 'equal',
+        total,
+        count,
+        perPerson,
+        diff
+      });
+    }
+
+    // 傾斜配分モード
+    function calculateKeishaMode(total, unit, roundType) {
+      const g1Count = parseInt(document.getElementById('g1-count').value) || 0;
+      const g1Weight = parseFloat(document.getElementById('g1-weight').value) || 1.5;
+
+      const g2Count = parseInt(document.getElementById('g2-count').value) || 0;
+      const g2Weight = 1.0;
+
+      const g3Count = parseInt(document.getElementById('g3-count').value) || 0;
+      const g3DiscountOpt = document.getElementById('g3-discount').value;
+
+      const totalPeople = g1Count + g2Count + g3Count;
+      document.getElementById('res-total-people').textContent = `（計${totalPeople}名）`;
+
+      if (totalPeople <= 0) return;
+
+      // 基準額の算出
+      let base = 0;
+      let g1Amount = 0;
+      let g2Amount = 0;
+      let g3Amount = 0;
+
+      if (g3DiscountOpt === 'half') {
+        // g3はbase * 0.5
+        const totalW = (g1Count * g1Weight) + (g2Count * g2Weight) + (g3Count * 0.5);
+        base = totalW > 0 ? total / totalW : 0;
+        g1Amount = roundValue(base * g1Weight, unit, roundType);
+        g2Amount = roundValue(base * g2Weight, unit, roundType);
+        g3Amount = roundValue(base * 0.5, unit, roundType);
+      } else {
+        const discountVal = parseInt(g3DiscountOpt) || 0;
+        const totalW = (g1Count * g1Weight) + (g2Count * g2Weight) + (g3Count * g2Weight);
+        const adjustedTotal = total + (g3Count * discountVal);
+        base = totalW > 0 ? adjustedTotal / totalW : 0;
+        g1Amount = roundValue(base * g1Weight, unit, roundType);
+        g2Amount = roundValue(base * g2Weight, unit, roundType);
+        g3Amount = Math.max(0, roundValue(g2Amount - discountVal, unit, roundType));
+      }
+
+      const totalCollected = (g1Amount * g1Count) + (g2Amount * g2Count) + (g3Amount * g3Count);
+      const diff = totalCollected - total;
+
+      const container = document.getElementById('res-cards-container');
+      container.innerHTML = `
+        <!-- グループ1 -->
+        <div class="p-3.5 bg-slate-950/80 border border-rose-500/40 rounded-2xl text-center space-y-1">
+          <div class="text-[11px] font-bold text-rose-400">上司・先輩（${g1Weight}倍）</div>
+          <div class="text-2xl font-black text-white font-mono mt-0.5">
+            ¥${g1Amount.toLocaleString()}
+          </div>
+          <div class="text-[11px] text-slate-400 font-mono">× ${g1Count}名</div>
+        </div>
+
+        <!-- グループ2 -->
+        <div class="p-3.5 bg-slate-950/80 border border-slate-800 rounded-2xl text-center space-y-1">
+          <div class="text-[11px] font-bold text-slate-300">一般・後輩（基準）</div>
+          <div class="text-2xl font-black text-white font-mono mt-0.5">
+            ¥${g2Amount.toLocaleString()}
+          </div>
+          <div class="text-[11px] text-slate-400 font-mono">× ${g2Count}名</div>
+        </div>
+
+        <!-- グループ3 -->
+        <div class="p-3.5 bg-slate-950/80 border ${g3Count > 0 ? 'border-amber-500/40' : 'border-slate-800 opacity-60'} rounded-2xl text-center space-y-1">
+          <div class="text-[11px] font-bold ${g3Count > 0 ? 'text-amber-400' : 'text-slate-500'}">飲まない人（割引）</div>
+          <div class="text-2xl font-black text-white font-mono mt-0.5">
+            ¥${g3Count > 0 ? g3Amount.toLocaleString() : '0'}
+          </div>
+          <div class="text-[11px] text-slate-400 font-mono">× ${g3Count}名</div>
+        </div>
+      `;
+
+      updateBalanceSummary(total, totalCollected, diff);
+      updateLineMessage({
+        mode: 'keisha',
+        total,
+        g1Count,
+        g1Amount,
+        g2Count,
+        g2Amount,
+        g3Count,
+        g3Amount,
+        diff
+      });
+    }
+
+    function updateBalanceSummary(total, collected, diff) {
+      document.getElementById('res-collected-total').textContent = `¥${collected.toLocaleString()}`;
+      const badge = document.getElementById('res-diff-badge');
+      const note = document.getElementById('res-balance-note');
+
+      if (diff > 0) {
+        badge.className = 'px-3 py-1.5 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30';
+        badge.textContent = `集金差額: +¥${diff.toLocaleString()} (余剰)`;
+        note.textContent = `※ 端数の余り（+¥${diff.toLocaleString()}）はお釣り、二次会代、または幹事様への還元に充てられます。`;
+      } else if (diff < 0) {
+        badge.className = 'px-3 py-1.5 rounded-full text-xs font-bold bg-rose-500/20 text-rose-300 border border-rose-500/30';
+        badge.textContent = `集金差額: -¥${Math.abs(diff).toLocaleString()} (幹事負担)`;
+        note.textContent = `※ 切り捨てにより生じた不足分（¥${Math.abs(diff).toLocaleString()}）は幹事様のご負担となります。`;
+      } else {
+        badge.className = 'px-3 py-1.5 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30';
+        badge.textContent = 'ピッタリ精算 (差額 ¥0)';
+        note.textContent = '※ 集金総額とお会計が過不足なく1円単位で完全に一致しています。';
+      }
+    }
+
+    function updateLineMessage(data) {
+      window.cachedWarikanData = data;
+      const memo = document.getElementById('pay-memo').value.trim();
+      let lines = [
+        '【本日の飲み会・お会計精算のご案内】',
+        `お会計総額: ¥${data.total.toLocaleString()}`,
+        ''
+      ];
+
+      if (data.mode === 'equal') {
+        lines.push(`お1人様: ¥${data.perPerson.toLocaleString()}（計${data.count}名）`);
+      } else {
+        lines.push('【お支払い金額】');
+        if (data.g1Count > 0) lines.push(`・上司・先輩: ¥${data.g1Amount.toLocaleString()} (${data.g1Count}名)`);
+        if (data.g2Count > 0) lines.push(`・一般・後輩: ¥${data.g2Amount.toLocaleString()} (${data.g2Count}名)`);
+        if (data.g3Count > 0) lines.push(`・お酒なし等: ¥${data.g3Amount.toLocaleString()} (${data.g3Count}名)`);
+      }
+
+      if (memo) {
+        lines.push('');
+        lines.push(`【集金方法】\n${memo}`);
+      } else {
+        lines.push('');
+        lines.push('【集金方法】\nPayPayまたは現金にて幹事までお願いいたします！');
+      }
+
+      lines.push('');
+      lines.push('本日はありがとうございました✨');
+      lines.push('https://www.gomodo.cloud/ja/warikan/');
+
+      const text = lines.join('\n');
+      document.getElementById('line-preview-text').value = text;
+    }
+
+    function updateLinePreview() {
+      if (window.cachedWarikanData) {
+        updateLineMessage(window.cachedWarikanData);
+      }
+    }
+
+    function copyLineMessage() {
+      const textarea = document.getElementById('line-preview-text');
+      navigator.clipboard.writeText(textarea.value).then(() => {
+        if (window.showToast) {
+          window.showToast('LINE用精算メッセージをコピーしました！📋');
+        } else {
+          alert('コピーしました！');
+        }
+      });
+    }
+
+    function shareToLineDirect() {
+      const textarea = document.getElementById('line-preview-text');
+      const url = `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent('https://www.gomodo.cloud/ja/warikan/')}&text=${encodeURIComponent(textarea.value)}`;
+      window.open(url, '_blank', 'width=500,height=550');
+    }
+
+    // 初期化
+    window.addEventListener('DOMContentLoaded', () => {
+      calculateWarikan();
+    });
+  </script>
+</body>
+</html>
