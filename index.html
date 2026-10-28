@@ -1,6 +1,36 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+  <!-- Client-Side Browser Language Auto-Detection & Redirection -->
+  <script>
+    (function() {
+      var ua = navigator.userAgent || '';
+      var isBot = /bot|googlebot|crawler|spider|robot|crawling|yeti|bingbot|yahoo|baiduspider|duckduck|twitterbot|facebookexternalhit/i.test(ua);
+      if (isBot) return;
+
+      var params = new URLSearchParams(window.location.search);
+      if (params.get('stay') || params.get('lang') === 'ko') {
+        try { localStorage.setItem('gomodo_lang_choice', 'ko'); } catch(e) {}
+        return;
+      }
+      try {
+        if (localStorage.getItem('gomodo_lang_choice') === 'ko') return;
+      } catch(e) {}
+
+      try {
+        if (sessionStorage.getItem('gomodo_auto_redirected')) return;
+      } catch(e) {}
+
+      var lang = (navigator.language || (navigator.languages && navigator.languages[0]) || '').toLowerCase();
+      try { sessionStorage.setItem('gomodo_auto_redirected', 'true'); } catch(e) {}
+
+      if (lang.indexOf('ja') === 0) {
+        window.location.replace('./ja/');
+      } else if (lang.indexOf('en') === 0) {
+        window.location.replace('./en/');
+      }
+    })();
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -201,12 +231,6 @@
 
       <!-- 우측 네비게이션 액션바 -->
       <nav class="flex items-center gap-1.5 sm:gap-2.5 text-xs sm:text-sm font-bold text-slate-300 flex-shrink-0 whitespace-nowrap">
-        <!-- 언어 선택 피벗 (한국어 / 영어 / 일본어) -->
-        <div class="flex items-center bg-slate-800/90 border border-slate-700/80 rounded-xl p-0.5 text-xs">
-          <span class="px-2 py-1 rounded-lg bg-amber-500 text-slate-950 font-bold">KO</span>
-          <a href="./en/" class="px-2 py-1 text-slate-400 hover:text-white transition" title="English US">EN</a>
-          <a href="./ja/" class="px-2 py-1 text-slate-400 hover:text-white transition" title="일본어판 GoModo로 전환">JA</a>
-        </div>
         <!-- 전체 도구 드롭다운 메뉴 (도구가 추가되어도 레이아웃 깨짐 원천 방지) -->
         <div class="relative" id="tool-dropdown-container">
           <button type="button" onclick="toggleToolDropdown(event)" id="tool-dropdown-btn" class="flex items-center gap-1.5 bg-slate-800/90 hover:bg-slate-700 text-slate-200 hover:text-white px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl border border-slate-700/80 transition active:scale-95 shadow-sm whitespace-nowrap flex-shrink-0" aria-expanded="false" aria-label="도구 목록 메뉴">

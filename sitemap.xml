@@ -49,6 +49,18 @@
     </image:image>
   </url>
 
+  <!-- 미국 실생활 단위 변환기 (야드파운드 ↔ 미터법) -->
+  <url>
+    <loc>https://www.gomodo.cloud/en/converter/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.gomodo.cloud/og-image.png</image:loc>
+      <image:title>US Everyday Unit Converter - Imperial to Metric</image:title>
+    </image:image>
+  </url>
+
   <!-- 2026 연봉 실수령액 계산기 -->
   <url>
     <loc>https://www.gomodo.cloud/salary/</loc>
