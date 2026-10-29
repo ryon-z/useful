@@ -153,8 +153,9 @@
       document.documentElement.classList.add('light-mode');
     }
   </script>
-  <!-- 구글 애드센스 (Google AdSense) -->
+  <!-- SHARED:ADSENSE -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4528673716962845" crossorigin="anonymous"></script>
+  <!-- /SHARED:ADSENSE -->
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-amber-500 selection:text-slate-950">
 
@@ -180,15 +181,16 @@
         
 
         <!-- All Tools Dropdown -->
+        <!-- SHARED:TOOL_DROPDOWN -->
         <div class="relative" id="tool-dropdown-container">
-          <button type="button" onclick="toggleToolDropdown(event)" id="tool-dropdown-btn" class="flex items-center gap-1.5 bg-slate-800/90 hover:bg-slate-700 text-slate-200 hover:text-white px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl border border-slate-700/80 transition active:scale-95 shadow-sm whitespace-nowrap flex-shrink-0" aria-expanded="false" aria-label="Tool list menu">
+          <button type="button" onclick="toggleToolDropdown(event)" id="tool-dropdown-btn" class="flex items-center gap-1.5 bg-slate-800/90 hover:bg-slate-700 text-slate-200 hover:text-white px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl border border-slate-700/80 transition active:scale-95 shadow-sm whitespace-nowrap flex-shrink-0" aria-expanded="false" aria-label="All Tools">
             <i class="fa-solid fa-shapes text-emerald-400 text-xs sm:text-sm"></i>
             <span class="hidden sm:inline font-bold">All Tools</span>
             <span class="sm:hidden font-bold">Tools</span>
             <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition-transform duration-200" id="tool-dropdown-arrow"></i>
           </button>
 
-          <!-- Dropdown Menu (US 3 Tools Only) -->
+          <!-- 드롭다운 메뉴 (United States 특화 도구 3개) -->
           <div id="tool-dropdown-menu" class="hidden absolute right-0 mt-2 w-64 sm:w-72 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl p-2 z-50 divide-y divide-slate-800">
             <div class="px-3 py-2 text-[11px] font-bold text-slate-400 flex items-center justify-between">
               <span>GoModo US Tools (3)</span>
@@ -202,7 +204,7 @@
                 </div>
                 <div class="min-w-0 flex-1">
                   <div class="text-xs font-bold text-white group-hover:text-emerald-300 transition truncate">Powerball Tax Calculator</div>
-                  <div class="text-[10px] text-slate-400 truncate">50-State Payout &amp; 30-Yr Annuity</div>
+                  <div class="text-[10px] text-slate-400 truncate">50-State Payout & 30-Yr Annuity</div>
                 </div>
               </a>
 
@@ -221,13 +223,14 @@
                   <i class="fa-solid fa-receipt"></i>
                 </div>
                 <div class="min-w-0 flex-1">
-                  <div class="text-xs font-bold text-white group-hover:text-amber-300 transition truncate">Restaurant Tip &amp; Split Bill</div>
-                  <div class="text-[10px] text-slate-400 truncate">Pre-tax tipping &amp; Venmo copy</div>
+                  <div class="text-xs font-bold text-white group-hover:text-amber-300 transition truncate">Restaurant Tip & Split Bill</div>
+                  <div class="text-[10px] text-slate-400 truncate">Pre-tax tipping & Venmo copy</div>
                 </div>
               </a>
             </div>
           </div>
         </div>
+        <!-- /SHARED:TOOL_DROPDOWN -->
 
         <a href="./about/" class="text-slate-400 hover:text-amber-400 transition hidden md:inline px-2 py-1">About</a>
 

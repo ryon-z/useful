@@ -159,9 +159,9 @@
   <!-- 다크/라이트 테마 스타일 및 스크립트 -->
   <link rel="stylesheet" href="../theme.css?v=2">
   <script src="../theme.js"></script>
-
-  <!-- 구글 애드센스 스크립트 슬롯 (승인 후 ca-pub 번호 입력) -->
+  <!-- SHARED:ADSENSE -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4528673716962845" crossorigin="anonymous"></script>
+  <!-- /SHARED:ADSENSE -->
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-rose-500 selection:text-slate-950">
 
@@ -181,16 +181,16 @@
         </div>
       </div>
       <nav class="flex items-center gap-1.5 sm:gap-2.5 text-xs sm:text-sm font-bold text-slate-300 flex-shrink-0 whitespace-nowrap">
-        <!-- 전체 도구 드롭다운 메뉴 (도구가 추가되어도 레이아웃 깨짐 원천 방지) -->
+        <!-- SHARED:TOOL_DROPDOWN -->
         <div class="relative" id="tool-dropdown-container">
-          <button type="button" onclick="toggleToolDropdown(event)" id="tool-dropdown-btn" class="flex items-center gap-1.5 bg-slate-800/90 hover:bg-slate-700 text-slate-200 hover:text-white px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl border border-slate-700/80 transition active:scale-95 shadow-sm whitespace-nowrap flex-shrink-0" aria-expanded="false" aria-label="도구 목록 메뉴">
+          <button type="button" onclick="toggleToolDropdown(event)" id="tool-dropdown-btn" class="flex items-center gap-1.5 bg-slate-800/90 hover:bg-slate-700 text-slate-200 hover:text-white px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl border border-slate-700/80 transition active:scale-95 shadow-sm whitespace-nowrap flex-shrink-0" aria-expanded="false" aria-label="도구 목록">
             <i class="fa-solid fa-shapes text-amber-400 text-xs sm:text-sm"></i>
             <span class="hidden sm:inline font-bold">도구 목록</span>
             <span class="sm:hidden font-bold">도구</span>
             <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition-transform duration-200" id="tool-dropdown-arrow"></i>
           </button>
 
-          <!-- 드롭다운 메뉴 (한국 6대 도구만 표시) -->
+          <!-- 드롭다운 메뉴 (대한민국 특화 도구 6개) -->
           <div id="tool-dropdown-menu" class="hidden absolute right-0 mt-2 w-64 sm:w-72 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl p-2 z-50 divide-y divide-slate-800">
             <div class="px-3 py-2 text-[11px] font-bold text-slate-400 flex items-center justify-between">
               <span>GoModo 제공 도구 (6)</span>
@@ -204,7 +204,7 @@
                 </div>
                 <div class="min-w-0 flex-1">
                   <div class="text-xs font-bold text-white group-hover:text-emerald-300 transition truncate">연봉 실수령액 계산기</div>
-                  <div class="text-[10px] text-slate-400 truncate">2026 4대보험 &amp; 비과세</div>
+                  <div class="text-[10px] text-slate-400 truncate">2026 4대보험 & 비과세</div>
                 </div>
               </a>
 
@@ -214,7 +214,7 @@
                 </div>
                 <div class="min-w-0 flex-1">
                   <div class="text-xs font-bold text-white group-hover:text-amber-300 transition truncate">예·적금 만기 이자 계산기</div>
-                  <div class="text-[10px] text-slate-400 truncate">단리/복리 &amp; 시중 최고금리</div>
+                  <div class="text-[10px] text-slate-400 truncate">단리/복리 & 시중 최고금리</div>
                 </div>
               </a>
 
@@ -223,7 +223,7 @@
                   <i class="fa-solid fa-house-chimney"></i>
                 </div>
                 <div class="min-w-0 flex-1">
-                  <div class="text-xs font-bold text-white group-hover:text-indigo-300 transition truncate">부동산 복비 &amp; 취득세</div>
+                  <div class="text-xs font-bold text-white group-hover:text-indigo-300 transition truncate">부동산 복비 & 취득세</div>
                   <div class="text-[10px] text-slate-400 truncate">중개보수 상한 요율</div>
                 </div>
               </a>
@@ -234,7 +234,7 @@
                 </div>
                 <div class="min-w-0 flex-1">
                   <div class="text-xs font-bold text-white group-hover:text-emerald-300 transition truncate">로또 1등 명당 번호 생성기</div>
-                  <div class="text-[10px] text-slate-400 truncate">사주 명리학 &amp; 역대 통계</div>
+                  <div class="text-[10px] text-slate-400 truncate">사주 명리학 & 역대 통계</div>
                 </div>
               </a>
 
@@ -243,23 +243,24 @@
                   <i class="fa-solid fa-cake-candles"></i>
                 </div>
                 <div class="min-w-0 flex-1">
-                  <div class="text-xs font-bold text-white group-hover:text-sky-300 transition truncate">만 나이 &amp; 띠 계산기</div>
-                  <div class="text-[10px] text-slate-400 truncate">연금 수령 &amp; 정년 나이</div>
+                  <div class="text-xs font-bold text-white group-hover:text-sky-300 transition truncate">만 나이 & 띠 계산기</div>
+                  <div class="text-[10px] text-slate-400 truncate">연금 수령 & 정년 나이</div>
                 </div>
               </a>
 
-              <a href="../dday/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+              <a href="./" class="flex items-center gap-2.5 p-2 rounded-xl bg-slate-800/80 text-rose-400 transition group">
                 <div class="w-7 h-7 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center text-xs font-black">
                   <i class="fa-solid fa-calendar-check"></i>
                 </div>
                 <div class="min-w-0 flex-1">
-                  <div class="text-xs font-bold text-white group-hover:text-rose-300 transition truncate">D-Day &amp; 음력 변환기</div>
+                  <div class="text-xs font-bold text-white group-hover:text-rose-300 transition truncate">D-Day & 음력 변환기</div>
                   <div class="text-[10px] text-slate-400 truncate">기념일 주차별 역산</div>
                 </div>
               </a>
             </div>
           </div>
         </div>
+        <!-- /SHARED:TOOL_DROPDOWN -->
 
         <button type="button" onclick="openShareModal({ title: '📅 GoModo D-Day 및 음력·양력 변환기', text: '부모님 음력 생신·제사일 양력 찾기, 환갑·칠순·팔순 수연 나이 및 D-Day 계산기', url: 'https://www.gomodo.cloud/dday/' })" class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-rose-400 border border-slate-700/80 flex items-center justify-center transition active:scale-95 shadow-sm flex-shrink-0" title="공유하기" aria-label="공유하기">
           <i class="fa-solid fa-share-nodes text-xs sm:text-sm"></i>

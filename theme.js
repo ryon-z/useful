@@ -51,13 +51,38 @@
     });
   }
 
-  // 4. DOMContentLoaded 시 아이콘 상태 동기화
+  // 5. 도구 드롭다운 메뉴 토글 & 바깥 영역 클릭 시 닫기 (공용)
+  window.toggleToolDropdown = function(e) {
+    if (e) e.stopPropagation();
+    const menu = document.getElementById('tool-dropdown-menu');
+    const arrow = document.getElementById('tool-dropdown-arrow');
+    const btn = document.getElementById('tool-dropdown-btn');
+    if (!menu) return;
+    const isHidden = menu.classList.contains('hidden');
+    menu.classList.toggle('hidden', !isHidden);
+    if (arrow) arrow.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+    if (btn) btn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+  };
+
+  document.addEventListener('click', function(e) {
+    const container = document.getElementById('tool-dropdown-container');
+    const menu = document.getElementById('tool-dropdown-menu');
+    const arrow = document.getElementById('tool-dropdown-arrow');
+    const btn = document.getElementById('tool-dropdown-btn');
+    if (container && !container.contains(e.target) && menu && !menu.classList.contains('hidden')) {
+      menu.classList.add('hidden');
+      if (arrow) arrow.style.transform = 'rotate(0deg)';
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // 6. DOMContentLoaded 시 아이콘 상태 동기화
   window.addEventListener('DOMContentLoaded', () => {
     const isLight = document.documentElement.classList.contains('light');
     updateThemeIcons(isLight);
   });
 
-  // 5. 타 탭 간 테마 동기화
+  // 7. 타 탭 간 테마 동기화
   window.addEventListener('storage', (e) => {
     if (e.key === 'gomodo-theme') {
       const isLight = e.newValue === 'light';

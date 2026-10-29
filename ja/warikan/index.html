@@ -154,8 +154,9 @@
   <!-- テーマシステム (ダーク/ライト) -->
   <link rel="stylesheet" href="../../theme.css?v=2">
   <script src="../../theme.js"></script>
-  <!-- 구글 애드센스 (Google AdSense) -->
+  <!-- SHARED:ADSENSE -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4528673716962845" crossorigin="anonymous"></script>
+  <!-- /SHARED:ADSENSE -->
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-rose-500 selection:text-white">
 
@@ -184,19 +185,20 @@
         
 
         <!-- ツール一覧 ドロップダウン -->
+        <!-- SHARED:TOOL_DROPDOWN -->
         <div class="relative" id="tool-dropdown-container">
-          <button type="button" onclick="toggleToolDropdown(event)" id="tool-dropdown-btn" class="flex items-center gap-1.5 bg-slate-800/90 hover:bg-slate-700 text-slate-200 hover:text-white px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl border border-slate-700/80 transition active:scale-95 shadow-sm whitespace-nowrap flex-shrink-0" aria-expanded="false" aria-label="ツール一覧メニュー">
-            <i class="fa-solid fa-shapes text-rose-400 text-xs sm:text-sm"></i>
+          <button type="button" onclick="toggleToolDropdown(event)" id="tool-dropdown-btn" class="flex items-center gap-1.5 bg-slate-800/90 hover:bg-slate-700 text-slate-200 hover:text-white px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl border border-slate-700/80 transition active:scale-95 shadow-sm whitespace-nowrap flex-shrink-0" aria-expanded="false" aria-label="ツール一覧">
+            <i class="fa-solid fa-shapes text-sky-400 text-xs sm:text-sm"></i>
             <span class="hidden sm:inline font-bold">ツール一覧</span>
             <span class="sm:hidden font-bold">ツール</span>
             <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition-transform duration-200" id="tool-dropdown-arrow"></i>
           </button>
 
-          <!-- ドロップダウンメニュー (日本専用3大ツールのみ) -->
+          <!-- 드롭다운 메뉴 (日本 특화 도구 3개) -->
           <div id="tool-dropdown-menu" class="hidden absolute right-0 mt-2 w-64 sm:w-72 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl p-2 z-50 divide-y divide-slate-800">
             <div class="px-3 py-2 text-[11px] font-bold text-slate-400 flex items-center justify-between">
-              <span>GoModo 日本専用ツール (3)</span>
-              <a href="../" class="text-[10px] text-rose-400 font-semibold hover:underline">ホームへ</a>
+              <span>GoModo 日本版ツール (3)</span>
+              <a href="../" class="text-[10px] text-sky-400 font-semibold hover:underline">日本版ホーム</a>
             </div>
             
             <div class="pt-1 space-y-1">
@@ -205,8 +207,8 @@
                   <i class="fa-solid fa-calendar-days"></i>
                 </div>
                 <div class="min-w-0 flex-1">
-                  <div class="text-xs font-bold text-white group-hover:text-sky-300 transition truncate">西暦・和暦 ＆ 満年齢計算機</div>
-                  <div class="text-[10px] text-slate-400 truncate">令和8年最新・履歴書早見表</div>
+                  <div class="text-xs font-bold text-white group-hover:text-sky-300 transition truncate">和暦・西暦・満年齢計算機</div>
+                  <div class="text-[10px] text-slate-400 truncate">令和・平成・学歴履歴書早見</div>
                 </div>
               </a>
 
@@ -215,23 +217,24 @@
                   <i class="fa-solid fa-clover"></i>
                 </div>
                 <div class="min-w-0 flex-1">
-                  <div class="text-xs font-bold text-white group-hover:text-amber-300 transition truncate">ロト6・7 吉日カレンダー＆予想</div>
-                  <div class="text-[10px] text-slate-400 truncate">一粒万倍日・天赦日・大安</div>
+                  <div class="text-xs font-bold text-white group-hover:text-amber-300 transition truncate">ロト6・ロト7 吉日カレンダー</div>
+                  <div class="text-[10px] text-slate-400 truncate">2026年 宝くじ開運日 TOP3</div>
                 </div>
               </a>
 
-              <a href="../warikan/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+              <a href="./" class="flex items-center gap-2.5 p-2 rounded-xl bg-slate-800/80 text-rose-400 transition group">
                 <div class="w-7 h-7 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center text-xs font-black">
-                  <i class="fa-solid fa-calculator"></i>
+                  <i class="fa-solid fa-receipt"></i>
                 </div>
                 <div class="min-w-0 flex-1">
-                  <div class="text-xs font-bold text-white group-hover:text-rose-300 transition truncate">傾斜配分 割り勘計算機</div>
-                  <div class="text-[10px] text-slate-400 truncate">上司多め・LINE精算文作成</div>
+                  <div class="text-xs font-bold text-white group-hover:text-rose-300 transition truncate">飲み会・割り勘計算機</div>
+                  <div class="text-[10px] text-slate-400 truncate">上司傾斜・端数調整・LINE精算</div>
                 </div>
               </a>
             </div>
           </div>
         </div>
+        <!-- /SHARED:TOOL_DROPDOWN -->
 
         <!-- 共有ボタン -->
         <button type="button" onclick="openShareModal({ title: '飲み会・食事会 割り勘計算機（傾斜配分・LINE精算文作成） | GoModo', text: '上司・先輩の傾斜配分、飲まない人割引、端数丸めに対応した便利な割り勘ツール', url: window.location.href })" class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-rose-400 border border-slate-700/80 flex items-center justify-center transition active:scale-95 shadow-sm flex-shrink-0" title="ツールを共有する" aria-label="共有">

@@ -1,0 +1,153 @@
+{
+  "meta": {
+    "siteName": "GoModo",
+    "siteUrl": "https://www.gomodo.cloud",
+    "adsenseClientId": "ca-pub-4528673716962845"
+  },
+  "countries": {
+    "ko": {
+      "name": "대한민국",
+      "lang": "ko",
+      "hubPath": "/",
+      "title": "GoModo 한국",
+      "dropdown": {
+        "title": "GoModo 제공 도구",
+        "homeLabel": "홈으로",
+        "buttonText": "도구 목록",
+        "buttonTextMobile": "도구",
+        "iconColor": "text-amber-400",
+        "homeLinkColor": "text-amber-400"
+      },
+      "tools": [
+        {
+          "id": "salary",
+          "path": "salary/",
+          "name": "연봉 실수령액 계산기",
+          "desc": "2026 4대보험 & 비과세",
+          "icon": "fa-won-sign",
+          "color": "emerald"
+        },
+        {
+          "id": "interest",
+          "path": "interest/",
+          "name": "예·적금 만기 이자 계산기",
+          "desc": "단리/복리 & 시중 최고금리",
+          "icon": "fa-coins",
+          "color": "amber"
+        },
+        {
+          "id": "real-estate",
+          "path": "real-estate/",
+          "name": "부동산 복비 & 취득세",
+          "desc": "중개보수 상한 요율",
+          "icon": "fa-house-chimney",
+          "color": "indigo"
+        },
+        {
+          "id": "lottery",
+          "path": "lottery/",
+          "name": "로또 1등 명당 번호 생성기",
+          "desc": "사주 명리학 & 역대 통계",
+          "icon": "fa-clover",
+          "color": "emerald"
+        },
+        {
+          "id": "age",
+          "path": "age/",
+          "name": "만 나이 & 띠 계산기",
+          "desc": "연금 수령 & 정년 나이",
+          "icon": "fa-cake-candles",
+          "color": "sky"
+        },
+        {
+          "id": "dday",
+          "path": "dday/",
+          "name": "D-Day & 음력 변환기",
+          "desc": "기념일 주차별 역산",
+          "icon": "fa-calendar-check",
+          "color": "rose"
+        }
+      ]
+    },
+    "ja": {
+      "name": "日本",
+      "lang": "ja",
+      "hubPath": "ja/",
+      "title": "GoModo 日本版",
+      "dropdown": {
+        "title": "GoModo 日本版ツール",
+        "homeLabel": "日本版ホーム",
+        "buttonText": "ツール一覧",
+        "buttonTextMobile": "ツール",
+        "iconColor": "text-sky-400",
+        "homeLinkColor": "text-sky-400"
+      },
+      "tools": [
+        {
+          "id": "ja-age",
+          "path": "ja/age/",
+          "name": "和暦・西暦・満年齢計算機",
+          "desc": "令和・平成・学歴履歴書早見",
+          "icon": "fa-calendar-days",
+          "color": "sky"
+        },
+        {
+          "id": "ja-lottery",
+          "path": "ja/lottery/",
+          "name": "ロト6・ロト7 吉日カレンダー",
+          "desc": "2026年 宝くじ開運日 TOP3",
+          "icon": "fa-clover",
+          "color": "amber"
+        },
+        {
+          "id": "ja-warikan",
+          "path": "ja/warikan/",
+          "name": "飲み会・割り勘計算機",
+          "desc": "上司傾斜・端数調整・LINE精算",
+          "icon": "fa-receipt",
+          "color": "rose"
+        }
+      ]
+    },
+    "en": {
+      "name": "United States",
+      "lang": "en",
+      "hubPath": "en/",
+      "title": "GoModo US",
+      "dropdown": {
+        "title": "GoModo US Tools",
+        "homeLabel": "US Hub",
+        "buttonText": "All Tools",
+        "buttonTextMobile": "Tools",
+        "iconColor": "text-emerald-400",
+        "homeLinkColor": "text-emerald-400"
+      },
+      "tools": [
+        {
+          "id": "en-lottery",
+          "path": "en/lottery/",
+          "name": "Powerball Tax Calculator",
+          "desc": "50-State Payout & 30-Yr Annuity",
+          "icon": "fa-bolt",
+          "color": "emerald"
+        },
+        {
+          "id": "en-converter",
+          "path": "en/converter/",
+          "name": "Everyday Unit Converter",
+          "desc": "lbs, miles, °F, gal, cooking",
+          "icon": "fa-right-left",
+          "color": "sky"
+        },
+        {
+          "id": "en-tip",
+          "path": "en/tip/",
+          "name": "Restaurant Tip & Split Bill",
+          "desc": "Pre-tax tipping & Venmo copy",
+          "icon": "fa-receipt",
+          "color": "amber"
+        }
+      ]
+    }
+  }
+}
