@@ -1269,11 +1269,71 @@
       }
     }
 
+    // 금융감독원 공시 정기예금 최고 금리 로드
+    async function loadBankRates() {
+      try {
+        const res = await fetch('../data/korea-rates.json', { cache: 'no-cache' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const data = await res.json();
+        
+        const deposits = data?.topDeposits;
+        if (!deposits || deposits.length === 0) return;
+
+        if (data.updatedAt) {
+          const d = new Date(data.updatedAt);
+          const dateStr = d.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' });
+          const updatedEl = document.getElementById('bank-rates-updated');
+          if (updatedEl) updatedEl.textContent = `공시 기준: ${dateStr}`;
+        }
+
+        const grid = document.getElementById('bank-rates-grid');
+        if (!grid) return;
+
+        grid.innerHTML = deposits.slice(0, 6).map((item, idx) => {
+          const cleanName = (item.productName || '').replace(/\r?\n/g, ' ').trim();
+          return `
+            <div class="bg-slate-950/80 border border-slate-800 hover:border-emerald-500/40 rounded-2xl p-3.5 space-y-2 transition">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-slate-300 flex items-center gap-1.5 truncate">
+                  <span class="w-4 h-4 rounded-full bg-slate-800 text-slate-400 text-[10px] font-black flex items-center justify-center">${idx + 1}</span>
+                  ${item.bankName}
+                </span>
+                <span class="text-xs font-black text-emerald-400">최고 ${item.maxRate.toFixed(2)}%</span>
+              </div>
+              <div class="text-[11px] text-slate-400 truncate" title="${cleanName}">${cleanName}</div>
+              <div class="flex items-center justify-between pt-1 border-t border-slate-800/80 text-[11px]">
+                <span class="text-slate-500">기본 ${item.baseRate.toFixed(2)}%</span>
+                <button type="button" onclick="applyBankRate(${item.maxRate})" class="px-2.5 py-1 rounded-lg bg-emerald-500/10 hover:bg-emerald-500 text-emerald-400 hover:text-slate-950 border border-emerald-500/30 text-[11px] font-bold transition">
+                  이 금리로 계산
+                </button>
+              </div>
+            </div>
+          `;
+        }).join('');
+      } catch (e) {
+        console.warn('Bank rates load skipped:', e.message);
+        const section = document.getElementById('bank-rates-section');
+        if (section) section.classList.add('hidden');
+      }
+    }
+
+    function applyBankRate(rate) {
+      State.rate = rate;
+      const input = document.getElementById('rate-input');
+      if (input) {
+        input.value = rate.toFixed(2);
+        calculateInterest(true);
+        input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        input.focus();
+      }
+    }
+
     // 초기화
     window.addEventListener('DOMContentLoaded', () => {
       renderQuickButtons();
       initFromUrlParams();
       calculateInterest();
+      loadBankRates();
 
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('./sw.js').catch(() => {});
