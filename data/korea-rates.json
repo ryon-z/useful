@@ -1,42 +1,86 @@
 {
-  "updatedAt": "2026-10-23T05:24:03.273Z",
-  "status": "sample_template",
-  "note": "GitHub Secrets에 FSS_API_KEY 등록 시 실시간 은행 공시 금리로 자동 갱신됩니다.",
+  "updatedAt": "2026-10-29T01:58:18.426Z",
+  "status": "live_fss_api",
   "topDeposits": [
     {
-      "bankName": "케이뱅크",
-      "productName": "코드K 정기예금",
-      "termMonths": 12,
-      "baseRate": 3.55,
-      "maxRate": 3.55
-    },
-    {
-      "bankName": "카카오뱅크",
-      "productName": "카카오뱅크 정기예금",
+      "bankName": "전북은행",
+      "productName": "JB 123 정기예금\n (만기일시지급식)",
       "termMonths": 12,
       "baseRate": 3.5,
-      "maxRate": 3.5
+      "maxRate": 4.1,
+      "joinWay": "인터넷,스마트폰"
     },
     {
-      "bankName": "토스뱅크",
-      "productName": "토스뱅크 먼저 이자 받는 예금",
+      "bankName": "경남은행",
+      "productName": "The든든예금(시즌2)",
       "termMonths": 12,
-      "baseRate": 3.4,
-      "maxRate": 3.4
+      "baseRate": 2.55,
+      "maxRate": 4.1,
+      "joinWay": "스마트폰"
     },
     {
-      "bankName": "SH수협은행",
+      "bankName": "한국스탠다드차타드은행",
+      "productName": "e-그린세이브예금",
+      "termMonths": 12,
+      "baseRate": 3.85,
+      "maxRate": 4.05,
+      "joinWay": "인터넷,스마트폰"
+    },
+    {
+      "bankName": "부산은행",
+      "productName": "더(The) 특판 정기예금",
+      "termMonths": 12,
+      "baseRate": 2.1,
+      "maxRate": 4.05,
+      "joinWay": "인터넷,스마트폰"
+    },
+    {
+      "bankName": "제주은행",
+      "productName": "J정기예금\n(만기지급식)",
+      "termMonths": 12,
+      "baseRate": 2,
+      "maxRate": 4.05,
+      "joinWay": "영업점,인터넷,스마트폰"
+    },
+    {
+      "bankName": "수협은행",
       "productName": "Sh첫만남우대예금",
       "termMonths": 12,
-      "baseRate": 3.1,
-      "maxRate": 4.15
+      "baseRate": 2.96,
+      "maxRate": 4.01,
+      "joinWay": "인터넷,스마트폰"
     },
     {
-      "bankName": "IBK기업은행",
-      "productName": "1석7조통장(정기예금)",
+      "bankName": "부산은행",
+      "productName": "더(The) 레벨업 정기예금",
       "termMonths": 12,
-      "baseRate": 3.35,
-      "maxRate": 3.85
+      "baseRate": 2.65,
+      "maxRate": 4,
+      "joinWay": "스마트폰"
+    },
+    {
+      "bankName": "경남은행",
+      "productName": "The파트너예금",
+      "termMonths": 12,
+      "baseRate": 3.6,
+      "maxRate": 4,
+      "joinWay": "스마트폰"
+    },
+    {
+      "bankName": "전북은행",
+      "productName": "JB 다이렉트예금통장\n(만기일시지급식)",
+      "termMonths": 12,
+      "baseRate": 3.98,
+      "maxRate": 3.98,
+      "joinWay": "인터넷,스마트폰"
+    },
+    {
+      "bankName": "전북은행",
+      "productName": "JB 다이렉트(자유만기) 예금",
+      "termMonths": 12,
+      "baseRate": 3.98,
+      "maxRate": 3.98,
+      "joinWay": "스마트폰"
     }
   ]
 }

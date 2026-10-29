@@ -1,7 +1,6 @@
 {
-  "updatedAt": "2026-10-23T05:24:03.273Z",
-  "status": "sample_template",
-  "note": "GitHub Secrets에 FRED_API_KEY 등록 시 실시간 미국 30년 모기지 금리로 자동 갱신됩니다.",
-  "mortgage30YearRate": 6.45,
-  "fedFundsRate": 5.33
+  "updatedAt": "2026-10-29T01:58:18.928Z",
+  "status": "live_fred_api",
+  "latestDate": "2026-10-22",
+  "mortgage30YearRate": 7.32
 }
