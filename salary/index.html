@@ -164,59 +164,77 @@
         <!-- 전체 도구 드롭다운 -->
         <div class="relative" id="tool-dropdown-container">
           <button type="button" onclick="toggleToolDropdown(event)" id="tool-dropdown-btn" class="flex items-center gap-1.5 bg-slate-800/90 hover:bg-slate-700 text-slate-200 hover:text-white px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl border border-slate-700/80 transition active:scale-95 shadow-sm whitespace-nowrap flex-shrink-0" aria-expanded="false" aria-label="도구 목록 메뉴">
-            <i class="fa-solid fa-shapes text-emerald-400 text-xs sm:text-sm"></i>
+            <i class="fa-solid fa-shapes text-amber-400 text-xs sm:text-sm"></i>
             <span class="hidden sm:inline font-bold">도구 목록</span>
             <span class="sm:hidden font-bold">도구</span>
             <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition-transform duration-200" id="tool-dropdown-arrow"></i>
           </button>
 
+          <!-- 드롭다운 메뉴 (한국 6대 도구만 표시) -->
           <div id="tool-dropdown-menu" class="hidden absolute right-0 mt-2 w-64 sm:w-72 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl p-2 z-50 divide-y divide-slate-800">
             <div class="px-3 py-2 text-[11px] font-bold text-slate-400 flex items-center justify-between">
-              <span>GoModo 전체 도구 (6)</span>
-              <span class="text-[10px] text-emerald-400 font-semibold">바로가기</span>
+              <span>GoModo 제공 도구 (6)</span>
+              <a href="../" class="text-[10px] text-amber-400 font-semibold hover:underline">홈으로</a>
             </div>
             
             <div class="pt-1 space-y-1">
-              <a href="../salary/" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 transition">
-                <div class="w-6 h-6 rounded-lg bg-emerald-500 text-slate-950 flex items-center justify-center text-xs font-black">給</div>
-                <div class="flex-1 min-w-0">
-                  <div class="text-white truncate">연봉 실수령액 계산기</div>
-                  <div class="text-[10px] text-emerald-400/80 font-normal">2026 4대보험 & 조견표</div>
+              <a href="../salary/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-won-sign"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-emerald-300 transition truncate">연봉 실수령액 계산기</div>
+                  <div class="text-[10px] text-slate-400 truncate">2026 4대보험 &amp; 비과세</div>
                 </div>
               </a>
-              <a href="../interest/" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:bg-slate-800 hover:text-emerald-400 transition">
-                <div class="w-6 h-6 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-black">利</div>
-                <div class="flex-1 min-w-0">
-                  <div class="text-white truncate">예·적금 만기 이자 계산기</div>
-                  <div class="text-[10px] text-slate-400 font-normal">단리/복리 세후 실수령액</div>
+
+              <a href="../interest/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-coins"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-amber-300 transition truncate">예·적금 만기 이자 계산기</div>
+                  <div class="text-[10px] text-slate-400 truncate">단리/복리 &amp; 시중 최고금리</div>
                 </div>
               </a>
-              <a href="../real-estate/" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:bg-slate-800 hover:text-indigo-400 transition">
-                <div class="w-6 h-6 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-xs font-black">房</div>
-                <div class="flex-1 min-w-0">
-                  <div class="text-white truncate">부동산 복비 & 취득세</div>
-                  <div class="text-[10px] text-slate-400 font-normal">중개수수료 상한 요율</div>
+
+              <a href="../real-estate/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-house-chimney"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-indigo-300 transition truncate">부동산 복비 &amp; 취득세</div>
+                  <div class="text-[10px] text-slate-400 truncate">중개보수 상한 요율</div>
                 </div>
               </a>
-              <a href="../lottery/" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:bg-slate-800 hover:text-amber-400 transition">
-                <div class="w-6 h-6 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-xs font-black">7</div>
-                <div class="flex-1 min-w-0">
-                  <div class="text-white truncate">로또 1등 명당 & 번호추천</div>
-                  <div class="text-[10px] text-slate-400 font-normal">1,160회 통계 분석</div>
+
+              <a href="../lottery/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-clover"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-emerald-300 transition truncate">로또 1등 명당 번호 생성기</div>
+                  <div class="text-[10px] text-slate-400 truncate">사주 명리학 &amp; 역대 통계</div>
                 </div>
               </a>
-              <a href="../age/" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:bg-slate-800 hover:text-sky-400 transition">
-                <div class="w-6 h-6 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center text-xs font-black">歲</div>
-                <div class="flex-1 min-w-0">
-                  <div class="text-white truncate">만 나이 & 띠 계산기</div>
-                  <div class="text-[10px] text-slate-400 font-normal">연금 개시 연령 안내</div>
+
+              <a href="../age/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-cake-candles"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-sky-300 transition truncate">만 나이 &amp; 띠 계산기</div>
+                  <div class="text-[10px] text-slate-400 truncate">연금 수령 &amp; 정년 나이</div>
                 </div>
               </a>
-              <a href="../dday/" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:bg-slate-800 hover:text-rose-400 transition">
-                <div class="w-6 h-6 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center text-xs font-black">D</div>
-                <div class="flex-1 min-w-0">
-                  <div class="text-white truncate">D-Day & 음력 변환기</div>
-                  <div class="text-[10px] text-slate-400 font-normal">기념일 주차별 역산</div>
+
+              <a href="../dday/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-calendar-check"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-rose-300 transition truncate">D-Day &amp; 음력 변환기</div>
+                  <div class="text-[10px] text-slate-400 truncate">기념일 주차별 역산</div>
                 </div>
               </a>
             </div>

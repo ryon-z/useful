@@ -94,24 +94,6 @@
             "position": 3,
             "name": "US Tip & Split Bill Calculator",
             "url": "https://www.gomodo.cloud/en/tip/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 4,
-            "name": "2026 South Korea Salary & Take-Home Pay Calculator",
-            "url": "https://www.gomodo.cloud/salary/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "Japanese Era, Age & Resume Table Calculator",
-            "url": "https://www.gomodo.cloud/ja/age/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 4,
-            "name": "Japanese Nomikai Warikan Bill Splitter",
-            "url": "https://www.gomodo.cloud/ja/warikan/"
           }
         ]
       },
@@ -198,63 +180,47 @@
         <!-- All Tools Dropdown -->
         <div class="relative" id="tool-dropdown-container">
           <button type="button" onclick="toggleToolDropdown(event)" id="tool-dropdown-btn" class="flex items-center gap-1.5 bg-slate-800/90 hover:bg-slate-700 text-slate-200 hover:text-white px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl border border-slate-700/80 transition active:scale-95 shadow-sm whitespace-nowrap flex-shrink-0" aria-expanded="false" aria-label="Tool list menu">
-            <i class="fa-solid fa-shapes text-amber-400 text-xs sm:text-sm"></i>
+            <i class="fa-solid fa-shapes text-emerald-400 text-xs sm:text-sm"></i>
             <span class="hidden sm:inline font-bold">All Tools</span>
             <span class="sm:hidden font-bold">Tools</span>
             <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition-transform duration-200" id="tool-dropdown-arrow"></i>
           </button>
 
-          <!-- Dropdown Menu -->
+          <!-- Dropdown Menu (US 3 Tools Only) -->
           <div id="tool-dropdown-menu" class="hidden absolute right-0 mt-2 w-64 sm:w-72 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl p-2 z-50 divide-y divide-slate-800">
             <div class="px-3 py-2 text-[11px] font-bold text-slate-400 flex items-center justify-between">
-              <span>GoModo Tools</span>
-              <span class="text-[10px] text-amber-400 font-semibold">Directory</span>
+              <span>GoModo US Tools (3)</span>
+              <a href="./" class="text-[10px] text-emerald-400 font-semibold hover:underline">US Hub</a>
             </div>
             
             <div class="pt-1 space-y-1">
               <a href="./lottery/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
                 <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-black">
-                  <i class="fa-solid fa-ticket"></i>
+                  <i class="fa-solid fa-bolt"></i>
                 </div>
                 <div class="min-w-0 flex-1">
                   <div class="text-xs font-bold text-white group-hover:text-emerald-300 transition truncate">Powerball Tax Calculator</div>
-                  <div class="text-[10px] text-slate-400 truncate">50-State Payout &amp; Annuity</div>
+                  <div class="text-[10px] text-slate-400 truncate">50-State Payout &amp; 30-Yr Annuity</div>
                 </div>
               </a>
 
-              <a href="../salary/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
-                <div class="w-7 h-7 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-xs font-black">
-                  <i class="fa-solid fa-calculator"></i>
+              <a href="./converter/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-right-left"></i>
                 </div>
                 <div class="min-w-0 flex-1">
-                  <div class="text-xs font-bold text-white group-hover:text-indigo-300 transition truncate">Korea Salary Calculator</div>
-                  <div class="text-[10px] text-slate-400 truncate">Take-home pay &amp; 4 insurances</div>
+                  <div class="text-xs font-bold text-white group-hover:text-sky-300 transition truncate">Everyday Unit Converter</div>
+                  <div class="text-[10px] text-slate-400 truncate">lbs, miles, °F, gal, cooking</div>
                 </div>
               </a>
 
-              <a href="../ja/age/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
-                <div class="w-7 h-7 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center text-xs font-black">和</div>
-                <div class="min-w-0 flex-1">
-                  <div class="text-xs font-bold text-white group-hover:text-sky-300 transition truncate">Japan Era &amp; Age Chart</div>
-                  <div class="text-[10px] text-slate-400 truncate">Reiwa calendar &amp; resume table</div>
-                </div>
-              </a>
-
-              <a href="../ja/warikan/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
-                <div class="w-7 h-7 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center text-xs font-black">割</div>
-                <div class="min-w-0 flex-1">
-                  <div class="text-xs font-bold text-white group-hover:text-rose-300 transition truncate">Japan Warikan Calculator</div>
-                  <div class="text-[10px] text-slate-400 truncate">Weighted split &amp; LINE sharing</div>
-                </div>
-              </a>
-
-              <a href="../" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
-                <div class="w-7 h-7 rounded-lg bg-slate-800 text-slate-300 flex items-center justify-center text-xs">
-                  <i class="fa-solid fa-globe"></i>
+              <a href="./tip/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-receipt"></i>
                 </div>
                 <div class="min-w-0 flex-1">
-                  <div class="text-xs font-bold text-white group-hover:text-amber-300 transition truncate">GoModo Korea Hub</div>
-                  <div class="text-[10px] text-slate-400 truncate">Lotto, Real Estate, Finance</div>
+                  <div class="text-xs font-bold text-white group-hover:text-amber-300 transition truncate">Restaurant Tip &amp; Split Bill</div>
+                  <div class="text-[10px] text-slate-400 truncate">Pre-tax tipping &amp; Venmo copy</div>
                 </div>
               </a>
             </div>
@@ -432,47 +398,7 @@
           </a>
         </div>
 
-        <!-- 4. South Korea Salary & Net Pay Calculator (Global) -->
-        <div class="bg-slate-900 border border-slate-800 hover:border-indigo-500/40 rounded-3xl p-6 sm:p-7 shadow-xl transition-all flex flex-col justify-between group relative overflow-hidden">
-          <div class="absolute -top-10 -right-10 w-36 h-36 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none"></div>
-
-          <div>
-            <div class="flex items-center justify-between gap-3 mb-4">
-              <div class="w-12 h-12 rounded-2xl bg-indigo-500/20 text-indigo-400 border border-indigo-500/40 flex items-center justify-center text-2xl shadow-sm">
-                <i class="fa-solid fa-wallet"></i>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="px-3 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700 text-xs font-bold">
-                  🌐 South Korea
-                </span>
-                <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold flex items-center gap-1.5">
-                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Active
-                </span>
-              </div>
-            </div>
-
-            <h3 class="text-xl sm:text-2xl font-black text-white mb-2 group-hover:text-indigo-300 transition">
-              2026 South Korea Salary &amp; Take-Home Calculator
-            </h3>
-            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
-              Calculates actual take-home salary after the 2026 Korean National Pension cap, Health/Employment Insurance revisions, and National Tax Service simplified payroll income tax tables.
-            </p>
-
-            <div class="flex flex-wrap gap-1.5 mb-6">
-              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">4 Major Social Insurances</span>
-              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">Income &amp; Local Tax</span>
-              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">Non-taxable Meal Allowance</span>
-              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">Annual Salary Table</span>
-            </div>
-          </div>
-
-          <a href="../salary/" class="w-full bg-indigo-500 hover:bg-indigo-400 text-slate-950 font-black py-3.5 px-5 rounded-xl transition text-center text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-indigo-500/20 active:scale-95">
-            <span>Calculate Korea Salary</span>
-            <i class="fa-solid fa-arrow-right"></i>
-          </a>
-        </div>
-
-      </div>
+</div>
     </section>
 
     <!-- Trust & Performance Pillars (E-E-A-T) -->
@@ -568,7 +494,7 @@
   <footer class="border-t border-slate-800 bg-slate-950 text-slate-400 py-8 text-xs text-center">
     <div class="max-w-5xl mx-auto px-4 space-y-4">
       <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-semibold text-slate-400">
-        <a href="../about/" class="hover:text-amber-400 transition">About Us</a>
+        <a href="./about/" class="hover:text-amber-400 transition">About Us</a>
         <span>•</span>
         <a href="./terms/" class="hover:text-amber-400 transition">Terms of Service</a>
         <span>•</span>

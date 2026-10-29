@@ -94,24 +94,6 @@
             "position": 3,
             "name": "飲み会・食事会 傾斜配分ワリカン計算機",
             "url": "https://www.gomodo.cloud/ja/warikan/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 4,
-            "name": "2026年 韓国給与・手取り額計算機",
-            "url": "https://www.gomodo.cloud/salary/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 5,
-            "name": "韓国 不動産仲介手数料 & 取得税計算機",
-            "url": "https://www.gomodo.cloud/real-estate/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 6,
-            "name": "韓国 預金・積立 利息計算機",
-            "url": "https://www.gomodo.cloud/interest/"
           }
         ]
       },
@@ -203,81 +185,47 @@
         <!-- 全ツール ドロップダウン -->
         <div class="relative" id="tool-dropdown-container">
           <button type="button" onclick="toggleToolDropdown(event)" id="tool-dropdown-btn" class="flex items-center gap-1.5 bg-slate-800/90 hover:bg-slate-700 text-slate-200 hover:text-white px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl border border-slate-700/80 transition active:scale-95 shadow-sm whitespace-nowrap flex-shrink-0" aria-expanded="false" aria-label="ツール一覧メニュー">
-            <i class="fa-solid fa-shapes text-amber-400 text-xs sm:text-sm"></i>
+            <i class="fa-solid fa-shapes text-rose-400 text-xs sm:text-sm"></i>
             <span class="hidden sm:inline font-bold">ツール一覧</span>
-            <span class="sm:hidden font-bold">メニュー</span>
+            <span class="sm:hidden font-bold">ツール</span>
             <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition-transform duration-200" id="tool-dropdown-arrow"></i>
           </button>
 
-          <!-- ドロップダウンメニュー -->
+          <!-- ドロップダウンメニュー (日本専用3大ツールのみ) -->
           <div id="tool-dropdown-menu" class="hidden absolute right-0 mt-2 w-64 sm:w-72 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl p-2 z-50 divide-y divide-slate-800">
             <div class="px-3 py-2 text-[11px] font-bold text-slate-400 flex items-center justify-between">
-              <span>GoModo ツール</span>
-              <span class="text-[10px] text-amber-400 font-semibold">一覧</span>
+              <span>GoModo 日本専用ツール (3)</span>
+              <a href="./" class="text-[10px] text-rose-400 font-semibold hover:underline">ホームへ</a>
             </div>
             
             <div class="pt-1 space-y-1">
-              <a href="./lottery/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
-                <div class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-xs font-black">7</div>
-                <div class="min-w-0 flex-1">
-                  <div class="text-xs font-bold text-white group-hover:text-amber-300 transition truncate">ロト6・7予想 & 吉日</div>
-                  <div class="text-[10px] text-slate-400 truncate">2026年 開運日カレンダー</div>
-                </div>
-              </a>
-
               <a href="./age/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
-                <div class="w-7 h-7 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center text-xs font-black">和</div>
+                <div class="w-7 h-7 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-calendar-days"></i>
+                </div>
                 <div class="min-w-0 flex-1">
-                  <div class="text-xs font-bold text-white group-hover:text-sky-300 transition truncate">和暦・年齢早見表 & 履歴書</div>
-                  <div class="text-[10px] text-slate-400 truncate">2026年（令和8年）最新</div>
+                  <div class="text-xs font-bold text-white group-hover:text-sky-300 transition truncate">西暦・和暦 ＆ 満年齢計算機</div>
+                  <div class="text-[10px] text-slate-400 truncate">令和8年最新・履歴書早見表</div>
                 </div>
               </a>
+
+              <a href="./lottery/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-clover"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-amber-300 transition truncate">ロト6・7 吉日カレンダー＆予想</div>
+                  <div class="text-[10px] text-slate-400 truncate">一粒万倍日・天赦日・大安</div>
+                </div>
+              </a>
+
               <a href="./warikan/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
-                <div class="w-7 h-7 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center text-xs font-black">割</div>
-                <div class="min-w-0 flex-1">
-                  <div class="text-xs font-bold text-white group-hover:text-rose-300 transition truncate">飲み会ワリカン計算機</div>
-                  <div class="text-[10px] text-slate-400 truncate">傾斜配分・LINE精算文</div>
-                </div>
-              </a>
-              <a href="../en/lottery/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
-                <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-black">米</div>
-                <div class="min-w-0 flex-1">
-                  <div class="text-xs font-bold text-white group-hover:text-emerald-300 transition truncate">パワーボール税金計算機 (米国)</div>
-                  <div class="text-[10px] text-slate-400 truncate">50州手取り・年金分割</div>
-                </div>
-              </a>
-
-              <a href="../salary/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
-                <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-black">給</div>
-                <div class="min-w-0 flex-1">
-                  <div class="text-xs font-bold text-white group-hover:text-emerald-300 transition truncate">給与手取り計算機 (韓国)</div>
-                  <div class="text-[10px] text-slate-400 truncate">2026年 4大保険控除</div>
-                </div>
-              </a>
-
-              <a href="../real-estate/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
-                <div class="w-7 h-7 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-xs font-black">房</div>
-                <div class="min-w-0 flex-1">
-                  <div class="text-xs font-bold text-white group-hover:text-indigo-300 transition truncate">不動産仲介手数料計算機</div>
-                  <div class="text-[10px] text-slate-400 truncate">売買・賃貸の仲介手数料</div>
-                </div>
-              </a>
-
-              <a href="../interest/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
-                <div class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-xs font-black">利</div>
-                <div class="min-w-0 flex-1">
-                  <div class="text-xs font-bold text-white group-hover:text-amber-300 transition truncate">預金・積立 利息計算機</div>
-                  <div class="text-[10px] text-slate-400 truncate">単利・複利の税引後手取り</div>
-                </div>
-              </a>
-
-              <a href="../" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
-                <div class="w-7 h-7 rounded-lg bg-slate-800 text-slate-300 flex items-center justify-center text-xs">
-                  <i class="fa-solid fa-globe"></i>
+                <div class="w-7 h-7 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-calculator"></i>
                 </div>
                 <div class="min-w-0 flex-1">
-                  <div class="text-xs font-bold text-white group-hover:text-amber-300 transition truncate">韓国版 GoModo ホーム</div>
-                  <div class="text-[10px] text-slate-400 truncate">ロト・D-Dayなど全6種</div>
+                  <div class="text-xs font-bold text-white group-hover:text-rose-300 transition truncate">傾斜配分 割り勘計算機</div>
+                  <div class="text-[10px] text-slate-400 truncate">上司多め・LINE精算文作成</div>
                 </div>
               </a>
             </div>
@@ -456,126 +404,6 @@
           </a>
         </div>
 
-        <!-- 4. 2026年 韓国 給与・手取り額計算機 (グローバル) -->
-        <div class="bg-slate-900 border border-slate-800 hover:border-emerald-500/40 rounded-3xl p-6 sm:p-7 shadow-xl transition-all flex flex-col justify-between group relative overflow-hidden">
-          <div class="absolute -top-10 -right-10 w-36 h-36 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
-
-          <div>
-            <div class="flex items-center justify-between gap-3 mb-4">
-              <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center text-2xl shadow-sm">
-                <i class="fa-solid fa-wallet"></i>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="px-3 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700 text-xs font-bold">
-                  🌐 韓国向け
-                </span>
-                <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold flex items-center gap-1.5">
-                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> 稼働中
-                </span>
-              </div>
-            </div>
-
-            <h3 class="text-xl sm:text-2xl font-black text-white mb-2 group-hover:text-emerald-300 transition">
-              2026年 韓国 給与・手取り額計算機
-            </h3>
-            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
-              2026年の韓国国民年金上限、健康保険・雇用保険の改定料率、および韓国国税庁の勤労所得簡易税額表を反映。年俸・月給から実際の口座振込手取り額を計算します。
-            </p>
-
-            <div class="flex flex-wrap gap-1.5 mb-6">
-              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">韓国4大保険改定</span>
-              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">所得税・住民税</span>
-              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">非課税食事手当</span>
-              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">年俸別手取り表</span>
-            </div>
-          </div>
-
-          <a href="../salary/" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black py-3.5 px-5 rounded-xl transition text-center text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 active:scale-95">
-            <span>韓国給与手取りを計算する</span>
-            <i class="fa-solid fa-arrow-right"></i>
-          </a>
-        </div>
-
-        <!-- 5. 韓国 不動産仲介手数料 & 取得税計算機 (グローバル) -->
-        <div class="bg-slate-900 border border-slate-800 hover:border-indigo-500/40 rounded-3xl p-6 sm:p-7 shadow-xl transition-all flex flex-col justify-between group relative overflow-hidden">
-          <div class="absolute -top-10 -right-10 w-36 h-36 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none"></div>
-
-          <div>
-            <div class="flex items-center justify-between gap-3 mb-4">
-              <div class="w-12 h-12 rounded-2xl bg-indigo-500/20 text-indigo-400 border border-indigo-500/40 flex items-center justify-center text-2xl shadow-sm">
-                <i class="fa-solid fa-building"></i>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="px-3 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700 text-xs font-bold">
-                  🌐 韓国向け
-                </span>
-                <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold flex items-center gap-1.5">
-                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> 稼働中
-                </span>
-              </div>
-            </div>
-
-            <h3 class="text-xl sm:text-2xl font-black text-white mb-2 group-hover:text-indigo-300 transition">
-              韓国 不動産仲介手数料 &amp; 取得税計算機
-            </h3>
-            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
-              韓国の公認仲介士法に基づくアパート・ビラ・オフィステルの売買・チョンセ・ウォルセ仲介手数料上限と付加価値税、住宅取得税累進税率を自動計算します。
-            </p>
-
-            <div class="flex flex-wrap gap-1.5 mb-6">
-              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">売買・チョンセ・月世</span>
-              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">オフィステル優遇料率</span>
-              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">住宅取得税</span>
-              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">生涯初購入減免</span>
-            </div>
-          </div>
-
-          <a href="../real-estate/" class="w-full bg-indigo-500 hover:bg-indigo-400 text-slate-950 font-black py-3.5 px-5 rounded-xl transition text-center text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-indigo-500/20 active:scale-95">
-            <span>韓国不動産手数料を計算する</span>
-            <i class="fa-solid fa-arrow-right"></i>
-          </a>
-        </div>
-
-        <!-- 6. 韓国 預金・積立 利息 & 税引後手取り計算機 (グローバル) -->
-        <div class="bg-slate-900 border border-slate-800 hover:border-amber-500/40 rounded-3xl p-6 sm:p-7 shadow-xl transition-all flex flex-col justify-between group relative overflow-hidden">
-          <div class="absolute -top-10 -right-10 w-36 h-36 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"></div>
-
-          <div>
-            <div class="flex items-center justify-between gap-3 mb-4">
-              <div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 border border-amber-500/40 flex items-center justify-center text-2xl shadow-sm">
-                <i class="fa-solid fa-coins"></i>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="px-3 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700 text-xs font-bold">
-                  🌐 韓国向け
-                </span>
-                <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold flex items-center gap-1.5">
-                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> 稼働中
-                </span>
-              </div>
-            </div>
-
-            <h3 class="text-xl sm:text-2xl font-black text-white mb-2 group-hover:text-amber-300 transition">
-              韓国 預金・積立 利息 &amp; 税引後手取り計算機
-            </h3>
-            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
-              韓国の定期預金・定期積金の単利/複利満期利息と15.4%利息所得税控除後の手取り額、非課税節税比較、月別積立スケジュールを算出します。
-            </p>
-
-            <div class="flex flex-wrap gap-1.5 mb-6">
-              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">預金・積金 単利/複利</span>
-              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">15.4%利息課税</span>
-              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">非課税比較</span>
-              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">月別返済スケジュール</span>
-            </div>
-          </div>
-
-          <a href="../interest/" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-black py-3.5 px-5 rounded-xl transition text-center text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20 active:scale-95">
-            <span>預金・積立利息を計算する</span>
-            <i class="fa-solid fa-arrow-right"></i>
-          </a>
-        </div>
-
       </div>
     </section>
 
@@ -672,7 +500,7 @@
   <footer class="border-t border-slate-800 bg-slate-950 text-slate-400 py-8 text-xs text-center">
     <div class="max-w-5xl mx-auto px-4 space-y-4">
       <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-semibold text-slate-400">
-        <a href="../about/" class="hover:text-amber-400 transition">運営者情報 (About)</a>
+        <a href="./about/" class="hover:text-amber-400 transition">運営者情報 (About)</a>
         <span>•</span>
         <a href="./terms/" class="hover:text-amber-400 transition">利用規約</a>
         <span>•</span>
