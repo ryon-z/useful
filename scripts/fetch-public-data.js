@@ -158,15 +158,19 @@ async function fetchKoreaDepositRates() {
       };
     }).filter(p => p.baseRate > 0).sort((a, b) => b.maxRate - a.maxRate).slice(0, 10);
 
-    const result = {
-      updatedAt: new Date().toISOString(),
-      status: 'live_fss_api',
-      topDeposits: products
-    };
+    if (products.length > 0) {
+      const result = {
+        updatedAt: new Date().toISOString(),
+        status: 'live_fss_api',
+        topDeposits: products
+      };
 
-    const filePath = path.join(DATA_DIR, 'korea-rates.json');
-    fs.writeFileSync(filePath, JSON.stringify(result, null, 2), 'utf-8');
-    console.log(`  ✅ Successfully updated ${products.length} live bank deposit rates from FSS!`);
+      const filePath = path.join(DATA_DIR, 'korea-rates.json');
+      fs.writeFileSync(filePath, JSON.stringify(result, null, 2), 'utf-8');
+      console.log(`  ✅ Successfully updated ${products.length} live bank deposit rates from FSS!`);
+    } else {
+      console.warn(`  ⚠️ FSS API returned 0 products or response issue:`, json?.result?.err_cd || json?.result?.err_msg || 'No matching items');
+    }
   } catch (err) {
     console.error('  ❌ Error querying FSS API:', err.message);
   }
@@ -205,16 +209,20 @@ async function fetchUSFredMortgage() {
     const json = await res.json();
     const latestObs = json?.observations?.[0];
 
-    const result = {
-      updatedAt: new Date().toISOString(),
-      status: 'live_fred_api',
-      latestDate: latestObs?.date,
-      mortgage30YearRate: latestObs ? Number(latestObs.value) : 6.5
-    };
+    if (latestObs && latestObs.value && latestObs.value !== '.') {
+      const result = {
+        updatedAt: new Date().toISOString(),
+        status: 'live_fred_api',
+        latestDate: latestObs.date,
+        mortgage30YearRate: Number(latestObs.value)
+      };
 
-    const filePath = path.join(DATA_DIR, 'us-economic.json');
-    fs.writeFileSync(filePath, JSON.stringify(result, null, 2), 'utf-8');
-    console.log(`  ✅ Successfully updated FRED 30-Yr Mortgage Rate: ${result.mortgage30YearRate}%`);
+      const filePath = path.join(DATA_DIR, 'us-economic.json');
+      fs.writeFileSync(filePath, JSON.stringify(result, null, 2), 'utf-8');
+      console.log(`  ✅ Successfully updated FRED 30-Yr Mortgage Rate: ${result.mortgage30YearRate}%`);
+    } else {
+      console.warn(`  ⚠️ FRED API observation not available:`, json?.error_message || 'Missing value');
+    }
   } catch (err) {
     console.error('  ❌ Error querying FRED API:', err.message);
   }
