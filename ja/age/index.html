@@ -762,31 +762,42 @@
   </main>
 
   <!-- 信頼性 (E-E-A-T) & 免責事項フッター (Yahoo! JAPAN / Google ガイドライン準拠) -->
-  <footer class="border-t border-slate-800 bg-slate-950 text-slate-400 py-8 text-xs text-center">
+  <!-- SHARED:FOOTER -->
+  <footer class="border-t border-slate-800 bg-slate-950 text-slate-400 py-8 text-xs text-center mt-auto">
     <div class="max-w-5xl mx-auto px-4 space-y-4">
-      
-      <!-- リンクナビゲーション -->
-      <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-semibold text-slate-400">
+      <!-- 1. 법적 고지 및 소개 링크 -->
+      <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-semibold text-slate-400">
         <a href="../about/" class="hover:text-sky-400 transition">運営者情報 (About)</a>
         <span>•</span>
-        <a href="../terms/" class="hover:text-sky-400 transition">利用規約</a>
+        <a href="../terms/" class="hover:text-sky-400 transition">利用規約・免責事項</a>
         <span>•</span>
         <a href="../privacy/" class="hover:text-sky-400 transition">プライバシーポリシー</a>
-        <span>•</span>
-        <a href="../../" class="hover:text-sky-400 transition">GoModo ホーム (韓国版)</a>
       </div>
 
-      <!-- 免責事項 -->
+      <!-- 2. 글로벌 포털 허브 바로가기 -->
+      <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[11px] font-medium text-slate-500">
+        <span class="text-slate-600">地域 / 言語:</span>
+        <a href="../../" class="hover:text-slate-300 transition">🇰🇷 한국어</a>
+        <span>|</span>
+        <a href="../" class="text-slate-300 font-bold">🇯🇵 日本語</a>
+        <span>|</span>
+        <a href="../../en/" class="hover:text-slate-300 transition">🇺🇸 English</a>
+      </div>
+
+      <!-- 3. 면책 조항 -->
       <div class="max-w-3xl mx-auto text-[11px] text-slate-500 leading-relaxed border-t border-slate-900 pt-3">
-        【免責事項】本サイトで提供する西暦・和暦変換、年齢計算、および履歴書用学歴早見表の算出結果については万全を期してアルゴリズムを設計しておりますが、法律・制度の改定や公的書類への記入に際して生じた不利益・損害等について、当サイトは一切の責任を負いかねます。重要な公的申請や提出書類においては、必ずご自身でも公的情報をご確認ください。<br>
-        【最終更新日】2026年10月28日
+        【免責事項】本サイトで提供する西暦・和暦変換、年齢計算、および履歴書用学歴早見表の算出結果については万全を期してアルゴリズムを設計しておりますが、法律・制度の改定や公的書類への記入に際して生じた不利益・損害等について、当サイトは一切の責任を負いかねます。重要な公的申請や提出書類においては、必ずご自身でも公的情報をご確認ください。
       </div>
 
-      <p class="text-[11px] text-slate-500">
-        © 2026 GoModo. All rights reserved.
-      </p>
+      <!-- 4. 저작권 & E-E-A-T 지원 이메일 -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-3 text-[11px] text-slate-500">
+        <span>© 2026 GoModo. All rights reserved.</span>
+        <span class="hidden sm:inline">•</span>
+        <span>Contact: <a href="mailto:support@gomodo.cloud" class="hover:text-slate-400 underline">support@gomodo.cloud</a></span>
+      </div>
     </div>
   </footer>
+  <!-- /SHARED:FOOTER -->
 
   <!-- 共通共有モジュール & ドロップダウン -->
   <script src="../../share.js"></script>

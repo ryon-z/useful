@@ -207,22 +207,42 @@
   </main>
 
   <!-- Footer -->
-  <footer class="border-t border-slate-800 bg-slate-950 text-slate-400 py-8 text-xs sm:text-sm text-center">
-    <div class="max-w-4xl mx-auto px-4 space-y-3">
-      <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-semibold text-slate-400">
-        <a href="../about/" class="hover:text-amber-400 transition">About Us</a>
+  <!-- SHARED:FOOTER -->
+  <footer class="border-t border-slate-800 bg-slate-950 text-slate-400 py-8 text-xs text-center mt-auto">
+    <div class="max-w-5xl mx-auto px-4 space-y-4">
+      <!-- 1. 법적 고지 및 소개 링크 -->
+      <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-semibold text-slate-400">
+        <a href="../about/" class="hover:text-emerald-400 transition">About Us</a>
         <span>•</span>
-        <a href="../terms/" class="hover:text-amber-400 transition">Terms of Service</a>
+        <a href="../terms/" class="hover:text-emerald-400 transition">Terms of Service</a>
         <span>•</span>
-        <a href="./" class="text-amber-400 font-bold">Privacy Policy</a>
-        <span>•</span>
-        <a href="../../?stay=ko" class="hover:text-amber-400 transition">GoModo Korea</a>
-        <span>•</span>
-        <a href="../../ja/" class="hover:text-amber-400 transition">GoModo Japan</a>
+        <a href="./" class="hover:text-emerald-400 transition">Privacy Policy</a>
       </div>
-      <p>© 2026 GoModo. All rights reserved.</p>
+
+      <!-- 2. 글로벌 포털 허브 바로가기 -->
+      <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[11px] font-medium text-slate-500">
+        <span class="text-slate-600">Region / Language:</span>
+        <a href="../../" class="hover:text-slate-300 transition">🇰🇷 한국어</a>
+        <span>|</span>
+        <a href="../../ja/" class="hover:text-slate-300 transition">🇯🇵 日本語</a>
+        <span>|</span>
+        <a href="../" class="text-slate-300 font-bold">🇺🇸 English</a>
+      </div>
+
+      <!-- 3. 면책 조항 -->
+      <div class="max-w-3xl mx-auto text-[11px] text-slate-500 leading-relaxed border-t border-slate-900 pt-3">
+        [Disclaimer] All calculations, estimations, and utility tools on GoModo are provided for informational and educational purposes only and do not constitute legal, financial, or tax advice. For formal filings or financial decisions, consult a certified public accountant (CPA) or licensed legal counsel.
+      </div>
+
+      <!-- 4. 저작권 & E-E-A-T 지원 이메일 -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-3 text-[11px] text-slate-500">
+        <span>© 2026 GoModo. All rights reserved.</span>
+        <span class="hidden sm:inline">•</span>
+        <span>Contact: <a href="mailto:support@gomodo.cloud" class="hover:text-slate-400 underline">support@gomodo.cloud</a></span>
+      </div>
     </div>
   </footer>
+  <!-- /SHARED:FOOTER -->
 
   <script>
     function toggleTheme() {

@@ -502,28 +502,42 @@
   </main>
 
   <!-- フッター (Yahoo! JAPAN / Google ガイドライン準拠) -->
-  <footer class="border-t border-slate-800 bg-slate-950 text-slate-400 py-8 text-xs text-center">
+  <!-- SHARED:FOOTER -->
+  <footer class="border-t border-slate-800 bg-slate-950 text-slate-400 py-8 text-xs text-center mt-auto">
     <div class="max-w-5xl mx-auto px-4 space-y-4">
-      <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-semibold text-slate-400">
-        <a href="./about/" class="hover:text-amber-400 transition">運営者情報 (About)</a>
+      <!-- 1. 법적 고지 및 소개 링크 -->
+      <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-semibold text-slate-400">
+        <a href="./about/" class="hover:text-sky-400 transition">運営者情報 (About)</a>
         <span>•</span>
-        <a href="./terms/" class="hover:text-amber-400 transition">利用規約</a>
+        <a href="./terms/" class="hover:text-sky-400 transition">利用規約・免責事項</a>
         <span>•</span>
-        <a href="./privacy/" class="hover:text-amber-400 transition">プライバシーポリシー</a>
-        <span>•</span>
-        <a href="../?stay=ko" class="hover:text-amber-400 transition">韓国版 GoModo ホーム</a>
+        <a href="./privacy/" class="hover:text-sky-400 transition">プライバシーポリシー</a>
       </div>
 
+      <!-- 2. 글로벌 포털 허브 바로가기 -->
+      <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[11px] font-medium text-slate-500">
+        <span class="text-slate-600">地域 / 言語:</span>
+        <a href="../" class="hover:text-slate-300 transition">🇰🇷 한국어</a>
+        <span>|</span>
+        <a href="./" class="text-slate-300 font-bold">🇯🇵 日本語</a>
+        <span>|</span>
+        <a href="../en/" class="hover:text-slate-300 transition">🇺🇸 English</a>
+      </div>
+
+      <!-- 3. 면책 조항 -->
       <div class="max-w-3xl mx-auto text-[11px] text-slate-500 leading-relaxed border-t border-slate-900 pt-3">
-        【免責事項】GoModoで提供する計算結果および各ツールで算出される数値は参考情報であり、法令や税制の改正等により異なる場合があります。公的書類の作成や法的手続きに際しては、関係各機関の公式情報をご確認ください。<br>
-        【最終更新日】2026年10月28日
+        【免責事項】当サイトで提供する計算結果や情報は参考用シミュレーションであり、法的・税務的な効力を有するものではありません。重要な公的書類の提出や契約に際しては、必ずご自身で公的機関または専門家にご確認ください。
       </div>
 
-      <p class="text-[11px] text-slate-500">
-        © 2026 GoModo. All rights reserved.
-      </p>
+      <!-- 4. 저작권 & E-E-A-T 지원 이메일 -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-3 text-[11px] text-slate-500">
+        <span>© 2026 GoModo. All rights reserved.</span>
+        <span class="hidden sm:inline">•</span>
+        <span>Contact: <a href="mailto:support@gomodo.cloud" class="hover:text-slate-400 underline">support@gomodo.cloud</a></span>
+      </div>
     </div>
   </footer>
+  <!-- /SHARED:FOOTER -->
 
   <!-- 共通共有モジュール (share.js) -->
   <script src="../share.js"></script>

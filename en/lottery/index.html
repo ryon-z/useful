@@ -816,32 +816,42 @@
   </main>
 
   <!-- Footer -->
-  <footer class="border-t border-slate-800 bg-slate-950 text-slate-400 py-8 text-xs text-center">
+  <!-- SHARED:FOOTER -->
+  <footer class="border-t border-slate-800 bg-slate-950 text-slate-400 py-8 text-xs text-center mt-auto">
     <div class="max-w-5xl mx-auto px-4 space-y-4">
-      <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-semibold text-slate-400">
+      <!-- 1. 법적 고지 및 소개 링크 -->
+      <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-semibold text-slate-400">
         <a href="../about/" class="hover:text-emerald-400 transition">About Us</a>
         <span>•</span>
         <a href="../terms/" class="hover:text-emerald-400 transition">Terms of Service</a>
         <span>•</span>
         <a href="../privacy/" class="hover:text-emerald-400 transition">Privacy Policy</a>
-        <span>•</span>
-        <a href="../" class="hover:text-emerald-400 transition">GoModo US Hub</a>
-        <span>•</span>
-        <a href="../../?stay=ko" class="hover:text-emerald-400 transition">GoModo Korea Hub</a>
-        <span>•</span>
-        <a href="../../ja/" class="hover:text-emerald-400 transition">GoModo Japan Hub</a>
       </div>
 
+      <!-- 2. 글로벌 포털 허브 바로가기 -->
+      <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[11px] font-medium text-slate-500">
+        <span class="text-slate-600">Region / Language:</span>
+        <a href="../../" class="hover:text-slate-300 transition">🇰🇷 한국어</a>
+        <span>|</span>
+        <a href="../../ja/" class="hover:text-slate-300 transition">🇯🇵 日本語</a>
+        <span>|</span>
+        <a href="../" class="text-slate-300 font-bold">🇺🇸 English</a>
+      </div>
+
+      <!-- 3. 면책 조항 -->
       <div class="max-w-3xl mx-auto text-[11px] text-slate-500 leading-relaxed border-t border-slate-900 pt-3">
-        [Disclaimer] GoModo Lottery Tax Calculator provides estimations for informational and educational purposes only. Tax regulations and withholding rates are subject to federal and state legislative updates. This tool does not constitute tax, legal, or investment advice. Consult a certified public accountant (CPA) and legal counsel upon claiming lottery prizes.<br>
-        [Last Updated] October 28, 2026
+        [Disclaimer] GoModo Lottery Tax Calculator provides estimations for informational and educational purposes only. Tax regulations and withholding rates are subject to federal and state legislative updates. This tool does not constitute tax, legal, or investment advice. Consult a certified public accountant (CPA) and legal counsel upon claiming lottery prizes.
       </div>
 
-      <p class="text-[11px] text-slate-500">
-        &copy; 2026 GoModo. All rights reserved.
-      </p>
+      <!-- 4. 저작권 & E-E-A-T 지원 이메일 -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-3 text-[11px] text-slate-500">
+        <span>© 2026 GoModo. All rights reserved.</span>
+        <span class="hidden sm:inline">•</span>
+        <span>Contact: <a href="mailto:support@gomodo.cloud" class="hover:text-slate-400 underline">support@gomodo.cloud</a></span>
+      </div>
     </div>
   </footer>
+  <!-- /SHARED:FOOTER -->
 
   <!-- Application Logic -->
   <script>

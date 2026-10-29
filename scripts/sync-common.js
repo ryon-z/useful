@@ -116,6 +116,66 @@ ${toolLinksHtml}
         <!-- /SHARED:TOOL_DROPDOWN -->`;
 }
 
+function generateFooterHtml(countryKey, currentRelDir) {
+  const country = toolsData.countries[countryKey];
+  if (!country) return '';
+
+  const meta = toolsData.meta;
+  const footerCfg = country.footer;
+  const tools = country.tools;
+
+  // Legal page links
+  const aboutLink = getRelativeLink(currentRelDir, footerCfg.aboutPath.replace(/\/$/, ''));
+  const termsLink = getRelativeLink(currentRelDir, footerCfg.termsPath.replace(/\/$/, ''));
+  const privacyLink = getRelativeLink(currentRelDir, footerCfg.privacyPath.replace(/\/$/, ''));
+
+  // Global hub links
+  const krHubLink = getRelativeLink(currentRelDir, '.');
+  const jaHubLink = getRelativeLink(currentRelDir, 'ja');
+  const enHubLink = getRelativeLink(currentRelDir, 'en');
+
+  // Determine disclaimer text (tool specific or default)
+  const currentTool = tools.find(t => t.path.replace(/\/$/, '') === currentRelDir);
+  const disclaimerText = (currentTool && currentTool.disclaimer) ? currentTool.disclaimer : footerCfg.defaultDisclaimer;
+
+  return `<!-- SHARED:FOOTER -->
+  <footer class="border-t border-slate-800 bg-slate-950 text-slate-400 py-8 text-xs text-center mt-auto">
+    <div class="max-w-5xl mx-auto px-4 space-y-4">
+      <!-- 1. 법적 고지 및 소개 링크 -->
+      <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-semibold text-slate-400">
+        <a href="${aboutLink}" class="hover:text-${footerCfg.accentColor}-400 transition">${footerCfg.aboutLabel}</a>
+        <span>•</span>
+        <a href="${termsLink}" class="hover:text-${footerCfg.accentColor}-400 transition">${footerCfg.termsLabel}</a>
+        <span>•</span>
+        <a href="${privacyLink}" class="hover:text-${footerCfg.accentColor}-400 transition">${footerCfg.privacyLabel}</a>
+      </div>
+
+      <!-- 2. 글로벌 포털 허브 바로가기 -->
+      <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[11px] font-medium text-slate-500">
+        <span class="text-slate-600">${footerCfg.globalLabel}:</span>
+        <a href="${krHubLink}" class="${countryKey === 'ko' ? 'text-slate-300 font-bold' : 'hover:text-slate-300 transition'}">🇰🇷 한국어</a>
+        <span>|</span>
+        <a href="${jaHubLink}" class="${countryKey === 'ja' ? 'text-slate-300 font-bold' : 'hover:text-slate-300 transition'}">🇯🇵 日本語</a>
+        <span>|</span>
+        <a href="${enHubLink}" class="${countryKey === 'en' ? 'text-slate-300 font-bold' : 'hover:text-slate-300 transition'}">🇺🇸 English</a>
+      </div>
+
+      <!-- 3. 면책 조항 -->
+      <div class="max-w-3xl mx-auto text-[11px] text-slate-500 leading-relaxed border-t border-slate-900 pt-3">
+        ${disclaimerText}
+      </div>
+
+      <!-- 4. 저작권 & E-E-A-T 지원 이메일 -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-3 text-[11px] text-slate-500">
+        <span>${meta.copyright}</span>
+        <span class="hidden sm:inline">•</span>
+        <span>Contact: <a href="mailto:${meta.supportEmail}" class="hover:text-slate-400 underline">${meta.supportEmail}</a></span>
+      </div>
+    </div>
+  </footer>
+  <!-- /SHARED:FOOTER -->`;
+}
+
 function syncFile(filePath) {
   const relPath = path.relative(rootDir, filePath).replace(/\\/g, '/');
   const relDir = path.dirname(relPath).replace(/\\/g, '/');
@@ -160,11 +220,26 @@ function syncFile(filePath) {
       modified = true;
     }
   } else if (content.includes('id="tool-dropdown-container"')) {
-    // Match the existing un-marked dropdown container and replace with marked version
-    // Regex matches from <!-- 전체 도구 드롭다운 --> (if present) or <div class="relative" id="tool-dropdown-container"> until the closing div of the dropdown
     const unMarkedRegex = /(<!--[^\n]*도구[^\n]*드롭다운[^\n]*-->\s*)?<div class="relative" id="tool-dropdown-container">[\s\S]*?<\/div>\s*<\/div>\s*<\/div>/;
     if (unMarkedRegex.test(content)) {
       content = content.replace(unMarkedRegex, newDropdown);
+      modified = true;
+    }
+  }
+
+  // 3. Footer Sync
+  const newFooter = generateFooterHtml(countryKey, relDir);
+  if (content.includes('<!-- SHARED:FOOTER -->')) {
+    const footerMarkerRegex = /<!-- SHARED:FOOTER -->[\s\S]*?<!-- \/SHARED:FOOTER -->/;
+    const updated = content.replace(footerMarkerRegex, newFooter);
+    if (updated !== content) {
+      content = updated;
+      modified = true;
+    }
+  } else if (content.includes('<footer')) {
+    const rawFooterRegex = /<footer[\s\S]*?<\/footer>/;
+    if (rawFooterRegex.test(content)) {
+      content = content.replace(rawFooterRegex, newFooter);
       modified = true;
     }
   }

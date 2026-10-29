@@ -782,19 +782,42 @@
   </div>
 
   <!-- 푸터 -->
-  <footer class="border-t border-slate-800 bg-slate-950 text-slate-400 py-8 text-xs sm:text-sm text-center">
-    <div class="max-w-5xl mx-auto px-4 space-y-3">
-      <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-semibold text-slate-400">
-        <a href="../about/" class="hover:text-sky-400 transition">서비스 소개</a>
+  <!-- SHARED:FOOTER -->
+  <footer class="border-t border-slate-800 bg-slate-950 text-slate-400 py-8 text-xs text-center mt-auto">
+    <div class="max-w-5xl mx-auto px-4 space-y-4">
+      <!-- 1. 법적 고지 및 소개 링크 -->
+      <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-semibold text-slate-400">
+        <a href="../about/" class="hover:text-emerald-400 transition">서비스 소개</a>
         <span>•</span>
-        <a href="../terms/" class="hover:text-sky-400 transition">이용약관 및 면책조항</a>
+        <a href="../terms/" class="hover:text-emerald-400 transition">이용약관 및 면책조항</a>
         <span>•</span>
-        <a href="../privacy/" class="hover:text-sky-400 transition">개인정보처리방침</a>
+        <a href="../privacy/" class="hover:text-emerald-400 transition">개인정보처리방침</a>
       </div>
-      <p>본 계산기는 대한민국 행정기본법 및 민법, 소득세법 및 복지제도 기준에 기초한 참고용 유틸리티입니다.</p>
-      <p>© 2026 GoModo. All rights reserved.</p>
+
+      <!-- 2. 글로벌 포털 허브 바로가기 -->
+      <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[11px] font-medium text-slate-500">
+        <span class="text-slate-600">지역 / 언어:</span>
+        <a href="../" class="text-slate-300 font-bold">🇰🇷 한국어</a>
+        <span>|</span>
+        <a href="../ja/" class="hover:text-slate-300 transition">🇯🇵 日本語</a>
+        <span>|</span>
+        <a href="../en/" class="hover:text-slate-300 transition">🇺🇸 English</a>
+      </div>
+
+      <!-- 3. 면책 조항 -->
+      <div class="max-w-3xl mx-auto text-[11px] text-slate-500 leading-relaxed border-t border-slate-900 pt-3">
+        본 계산기는 대한민국 행정기본법 및 민법, 소득세법 및 복지제도 기준에 기초한 참고용 유틸리티입니다. 개별 법령 및 기관에 따라 기준일 산정에 예외가 있을 수 있습니다.
+      </div>
+
+      <!-- 4. 저작권 & E-E-A-T 지원 이메일 -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-3 text-[11px] text-slate-500">
+        <span>© 2026 GoModo. All rights reserved.</span>
+        <span class="hidden sm:inline">•</span>
+        <span>Contact: <a href="mailto:support@gomodo.cloud" class="hover:text-slate-400 underline">support@gomodo.cloud</a></span>
+      </div>
     </div>
   </footer>
+  <!-- /SHARED:FOOTER -->
 
   <!-- 자바스크립트 전체 비즈니스 로직 -->
   <script>

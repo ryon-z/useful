@@ -254,18 +254,42 @@
   </main>
 
   <!-- 푸터 -->
-  <footer class="border-t border-slate-800 bg-slate-950 text-slate-400 py-8 text-xs sm:text-sm text-center">
-    <div class="max-w-4xl mx-auto px-4 space-y-3">
-      <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-semibold text-slate-400">
-        <a href="../about/" class="hover:text-amber-400 transition">서비스 소개</a>
+  <!-- SHARED:FOOTER -->
+  <footer class="border-t border-slate-800 bg-slate-950 text-slate-400 py-8 text-xs text-center mt-auto">
+    <div class="max-w-5xl mx-auto px-4 space-y-4">
+      <!-- 1. 법적 고지 및 소개 링크 -->
+      <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-semibold text-slate-400">
+        <a href="../about/" class="hover:text-emerald-400 transition">서비스 소개</a>
         <span>•</span>
-        <a href="../terms/" class="hover:text-amber-400 transition">이용약관 및 면책조항</a>
+        <a href="../terms/" class="hover:text-emerald-400 transition">이용약관 및 면책조항</a>
         <span>•</span>
-        <a href="./" class="text-amber-400 font-bold">개인정보처리방침</a>
+        <a href="./" class="hover:text-emerald-400 transition">개인정보처리방침</a>
       </div>
-      <p>© 2026 GoModo. All rights reserved.</p>
+
+      <!-- 2. 글로벌 포털 허브 바로가기 -->
+      <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[11px] font-medium text-slate-500">
+        <span class="text-slate-600">지역 / 언어:</span>
+        <a href="../" class="text-slate-300 font-bold">🇰🇷 한국어</a>
+        <span>|</span>
+        <a href="../ja/" class="hover:text-slate-300 transition">🇯🇵 日本語</a>
+        <span>|</span>
+        <a href="../en/" class="hover:text-slate-300 transition">🇺🇸 English</a>
+      </div>
+
+      <!-- 3. 면책 조항 -->
+      <div class="max-w-3xl mx-auto text-[11px] text-slate-500 leading-relaxed border-t border-slate-900 pt-3">
+        본 사이트에서 제공하는 모든 계산 및 변환 결과는 일상 편의를 위한 참고용 모의 시뮬레이션이며, 법적·세무적 효력을 갖지 않습니다. 중요한 법적 신고나 금융 계약 시에는 반드시 공인된 전문가(세무사, 변호사 등) 또는 공식 기관의 안내를 확인하시기 바랍니다.
+      </div>
+
+      <!-- 4. 저작권 & E-E-A-T 지원 이메일 -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-3 text-[11px] text-slate-500">
+        <span>© 2026 GoModo. All rights reserved.</span>
+        <span class="hidden sm:inline">•</span>
+        <span>Contact: <a href="mailto:support@gomodo.cloud" class="hover:text-slate-400 underline">support@gomodo.cloud</a></span>
+      </div>
     </div>
   </footer>
+  <!-- /SHARED:FOOTER -->
 
 </body>
 </html>
