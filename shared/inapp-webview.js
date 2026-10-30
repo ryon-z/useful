@@ -40,38 +40,42 @@
       '  -webkit-overflow-scrolling: touch;',
       '}',
       '#gomodo-inapp-banner {',
-      '  position: fixed;',
-      '  top: 0;',
-      '  left: 0;',
-      '  right: 0;',
-      '  z-index: 99999;',
-      '  background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);',
-      '  border-bottom: 1px solid rgba(99, 102, 241, 0.3);',
-      '  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);',
+      '  position: relative;',
+      '  width: 100%;',
+      '  z-index: 40;',
+      '  background: linear-gradient(90deg, #1e1b4b 0%, #0f172a 100%);',
+      '  border-bottom: 1px solid rgba(99, 102, 241, 0.25);',
       '  color: #f8fafc;',
       '  font-family: -apple-system, BlinkMacSystemFont, "Pretendard", Roboto, sans-serif;',
-      '  font-size: 13px;',
-      '  line-height: 1.4;',
-      '  animation: gomodoSlideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1);',
-      '}',
-      '@keyframes gomodoSlideDown {',
-      '  from { transform: translateY(-100%); }',
-      '  to { transform: translateY(0); }',
+      '  overflow: hidden;',
+      '  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);',
       '}',
       '#gomodo-inapp-tooltip {',
       '  position: fixed;',
-      '  top: 60px;',
-      '  right: 16px;',
+      '  top: 14px;',
+      '  right: 14px;',
       '  z-index: 100000;',
       '  background: #0f172a;',
       '  border: 1px solid #6366f1;',
       '  border-radius: 16px;',
       '  padding: 14px 16px;',
-      '  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);',
+      '  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.7);',
       '  color: #fff;',
-      '  max-width: 280px;',
+      '  max-width: 290px;',
       '  font-size: 12px;',
       '  animation: gomodoFadeIn 0.2s ease-out;',
+      '}',
+      '#gomodo-inapp-tooltip::before {',
+      '  content: "";',
+      '  position: absolute;',
+      '  top: -6px;',
+      '  right: 16px;',
+      '  width: 12px;',
+      '  height: 12px;',
+      '  background: #0f172a;',
+      '  border-left: 1px solid #6366f1;',
+      '  border-top: 1px solid #6366f1;',
+      '  transform: rotate(45deg);',
       '}',
       '@keyframes gomodoFadeIn {',
       '  from { opacity: 0; transform: scale(0.95); }',
@@ -319,46 +323,71 @@
     banner.id = 'gomodo-inapp-banner';
 
     var btnHtml = isAndroid
-      ? '<button type="button" id="gomodo-btn-open-ext" style="background:#4f46e5; hover:background:#4338ca; color:#fff; border:none; border-radius:8px; padding:5px 10px; font-weight:bold; font-size:11px; cursor:pointer; margin-left:8px; white-space:nowrap;">Chrome으로 열기</button>'
-      : '<button type="button" id="gomodo-btn-open-ext" style="background:#4f46e5; hover:background:#4338ca; color:#fff; border:none; border-radius:8px; padding:5px 10px; font-weight:bold; font-size:11px; cursor:pointer; margin-left:8px; white-space:nowrap;">Safari로 열기</button>';
+      ? '<button type="button" id="gomodo-btn-open-ext" style="background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%); color: #fff; border: 1px solid rgba(129, 140, 248, 0.4); border-radius: 8px; padding: 5px 11px; font-weight: 700; font-size: 11px; cursor: pointer; white-space: nowrap; box-shadow: 0 2px 6px rgba(79, 70, 229, 0.35);">Chrome으로 열기</button>'
+      : '<button type="button" id="gomodo-btn-open-ext" style="background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%); color: #fff; border: 1px solid rgba(129, 140, 248, 0.4); border-radius: 8px; padding: 5px 11px; font-weight: 700; font-size: 11px; cursor: pointer; white-space: nowrap; box-shadow: 0 2px 6px rgba(79, 70, 229, 0.35);">Safari로 열기</button>';
 
     banner.innerHTML = [
-      '<div style="max-w: 1200px; margin: 0 auto; padding: 8px 14px; display: flex; align-items: center; justify-content: space-between; gap: 8px;">',
-      '  <div style="display: flex; align-items: center; gap: 8px; min-width: 0;">',
-      '    <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#818cf8; flex-shrink:0;"></span>',
-      '    <span style="color:#e2e8f0; font-size:12px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">',
-      '      <b>' + appName + '</b> 웹뷰 환경입니다. 기본 브라우저에서 최적의 속도로 동작합니다.',
-      '    </span>',
+      '<div style="max-width: 1200px; margin: 0 auto; padding: 7px 12px; display: flex; align-items: center; justify-content: space-between; gap: 8px;">',
+      '  <div style="display: flex; align-items: center; gap: 8px; min-width: 0; flex: 1;">',
+      '    <div style="width: 24px; height: 24px; border-radius: 6px; background: rgba(99, 102, 241, 0.25); color: #818cf8; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0;">',
+      '      💬',
+      '    </div>',
+      '    <div style="min-width: 0; line-height: 1.25;">',
+      '      <div style="font-weight: 700; color: #f8fafc; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">',
+      '        ' + appName + ' 웹뷰 환경입니다',
+      '      </div>',
+      '      <div style="color: #94a3b8; font-size: 10.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">',
+      '        기본 브라우저에서 최상의 속도와 기능을 지원합니다',
+      '      </div>',
+      '    </div>',
       '  </div>',
-      '  <div style="display: flex; align-items: center; gap: 6px; flex-shrink: 0;">',
+      '  <div style="display: flex; align-items: center; gap: 4px; flex-shrink: 0;">',
       btnHtml,
-      '    <button type="button" id="gomodo-btn-close-banner" style="background:none; border:none; color:#94a3b8; font-size:16px; cursor:pointer; padding:2px 6px; line-height:1;" aria-label="닫기">&times;</button>',
+      '    <button type="button" id="gomodo-btn-close-banner" style="background: none; border: none; color: #94a3b8; font-size: 18px; cursor: pointer; padding: 2px 4px; line-height: 1;" aria-label="닫기">&times;</button>',
       '  </div>',
       '</div>'
     ].join('');
 
-    // Wait until body exists
+    // Attach above header in normal document flow
     function attachBanner() {
-      if (document.body) {
+      var header = document.querySelector('header');
+      if (header && header.parentNode) {
+        header.parentNode.insertBefore(banner, header);
+        bindBannerEvents();
+      } else if (document.body) {
         document.body.prepend(banner);
+        bindBannerEvents();
+      } else {
+        setTimeout(attachBanner, 40);
+      }
+    }
 
-        // Adjust body padding top so content is not hidden by fixed banner
-        var bannerHeight = banner.offsetHeight || 38;
-        document.body.style.paddingTop = bannerHeight + 'px';
-
-        document.getElementById('gomodo-btn-open-ext').onclick = function () {
+    function bindBannerEvents() {
+      var openBtn = document.getElementById('gomodo-btn-open-ext');
+      if (openBtn) {
+        openBtn.onclick = function () {
           openExternalBrowser();
         };
+      }
 
-        document.getElementById('gomodo-btn-close-banner').onclick = function () {
-          banner.remove();
-          document.body.style.paddingTop = '';
+      var closeBtn = document.getElementById('gomodo-btn-close-banner');
+      if (closeBtn) {
+        closeBtn.onclick = function () {
+          banner.style.maxHeight = banner.offsetHeight + 'px';
+          requestAnimationFrame(function () {
+            banner.style.transition = 'all 0.25s ease';
+            banner.style.maxHeight = '0px';
+            banner.style.opacity = '0';
+            banner.style.paddingTop = '0px';
+            banner.style.paddingBottom = '0px';
+            setTimeout(function () {
+              banner.remove();
+            }, 260);
+          });
           try {
             localStorage.setItem('gomodo_inapp_dismissed', todayKey);
           } catch (e) {}
         };
-      } else {
-        setTimeout(attachBanner, 50);
       }
     }
 
