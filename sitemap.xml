@@ -268,4 +268,15 @@
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+  <!-- 2026 퇴직금 & 실업급여 수급 자격 계산기 -->
+  <url>
+    <loc>https://www.gomodo.cloud/severance/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.gomodo.cloud/og-image.png</image:loc>
+      <image:title>2026 퇴직금 &amp; 실업급여 수급 자격 계산기</image:title>
+    </image:image>
+  </url>
 </urlset>
