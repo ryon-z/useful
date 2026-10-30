@@ -193,6 +193,15 @@
           "icon": "fa-receipt",
           "color": "amber",
           "disclaimer": "[Disclaimer] GoModo US Tip & Split Bill Calculator provides calculations based on standard American dining customs. Tipping practices vary by venue and service quality."
+        },
+        {
+          "id": "en-mortgage",
+          "path": "en/mortgage/",
+          "name": "Mortgage & PITI Calculator",
+          "desc": "Live FRED rate & 30-yr amortization",
+          "icon": "fa-house-chimney",
+          "color": "indigo",
+          "disclaimer": "[Disclaimer] GoModo US Mortgage Calculator provides estimations for informational and educational purposes only. Actual interest rates, closing costs, private mortgage insurance (PMI), and tax assessments vary by lender, credit score, and municipality. This does not constitute a commitment to lend or financial advice. Consult an authorized mortgage lender and financial advisor."
         }
       ]
     }

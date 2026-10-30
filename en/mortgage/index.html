@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>US Mortgage Calculator - 30-Yr &amp; 15-Yr Fixed Rate Loan Payment (PITI &amp; Amortization) | GoModo</title>
+  <meta name="description" content="Free online US mortgage calculator with live FRED rates. Calculate monthly payments (PITI: Principal, Interest, Taxes, Insurance, PMI) and complete 30-year amortization schedule.">
+  <meta name="keywords" content="mortgage calculator, us mortgage payment, 30 year fixed mortgage, live fred mortgage rate, PITI calculator, amortization schedule, down payment, pmi calculator">
+  <meta name="author" content="GoModo">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://www.gomodo.cloud/en/mortgage/">
+
+  <!-- Multilingual Hreflang -->
+  <link rel="alternate" hreflang="en" href="https://www.gomodo.cloud/en/mortgage/">
+  <link rel="alternate" hreflang="x-default" href="https://www.gomodo.cloud/en/mortgage/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GoModo US">
+  <meta property="og:title" content="US Mortgage Calculator - 30-Yr &amp; 15-Yr Fixed Rate Loan Payment (PITI &amp; Amortization)">
+  <meta property="og:description" content="Calculate your exact monthly mortgage payment (PITI), lifetime interest, and 30-year amortization schedule with live FRED benchmark interest rates.">
+  <meta property="og:url" content="https://www.gomodo.cloud/en/mortgage/">
+  <meta property="og:image" content="https://www.gomodo.cloud/og-image.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="US Mortgage Calculator - Live FRED Rates &amp; Amortization | GoModo">
+  <meta name="twitter:description" content="Calculate monthly PITI payments, down payment impact, PMI, and full 30-year loan amortization.">
+  <meta name="twitter:image" content="https://www.gomodo.cloud/og-image.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="apple-touch-icon" href="../../favicon.svg">
+
+  <!-- Tailwind CSS & FontAwesome -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Theme System -->
+  <link rel="stylesheet" href="../../theme.css?v=2">
+  <script src="../../theme.js"></script>
+
+  <!-- Google AdSense -->
+  
+  <!-- SHARED:ADSENSE -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4528673716962845" crossorigin="anonymous"></script>
+  <!-- /SHARED:ADSENSE -->
+
+  <!-- Structured Data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "GoModo US Mortgage & PITI Calculator",
+    "url": "https://www.gomodo.cloud/en/mortgage/",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All",
+    "description": "Calculate monthly US mortgage payments including principal, interest, property taxes, homeowners insurance, and PMI with full 30-year amortization tables.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Live FRED 30-year fixed benchmark mortgage rates",
+      "Complete PITI payment breakdown (Principal, Interest, Taxes, Insurance, PMI)",
+      "Down payment percentage and dollar synchronizer",
+      "30-Year, 20-Year, 15-Year, and 10-Year fixed terms",
+      "Interactive 30-year amortization schedule with expandable monthly breakdowns",
+      "Lifetime total cost and interest visualization bar",
+      "URL state synchronization and one-click summary sharing"
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "GoModo US",
+        "item": "https://www.gomodo.cloud/en/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Mortgage Calculator",
+        "item": "https://www.gomodo.cloud/en/mortgage/"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does PITI stand for in a US mortgage?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PITI stands for Principal, Interest, Taxes (property tax), and Insurance (homeowners insurance plus private mortgage insurance if down payment is under 20%). PITI represents the full monthly financial obligation required by mortgage lenders."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When is Private Mortgage Insurance (PMI) required and how can it be cancelled?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "On conventional loans, PMI is typically required when your down payment is less than 20% of the home purchase price. Under the federal Homeowners Protection Act, PMI can be cancelled upon your written request once your loan-to-value (LTV) ratio reaches 80%, and must be automatically cancelled by the lender when your LTV reaches 78% of the original purchase price."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between a 30-year fixed and 15-year fixed mortgage?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A 30-year fixed mortgage offers lower monthly payments by spreading the repayment over 360 months, making homeownership more accessible. A 15-year fixed mortgage features higher monthly payments but comes with a lower interest rate and dramatically reduces total lifetime interest paid, often saving over $100,000 to $200,000 on average American homes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does GoModo source the live benchmark mortgage rate?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "GoModo sources weekly 30-Year Fixed Rate Mortgage benchmark averages directly from the Federal Reserve Bank of St. Louis (FRED MORTGAGE30US series) via automated public data pipelines."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-indigo-500 selection:text-white">
+
+  <!-- Header Navigation -->
+  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto px-4 h-14 sm:h-16 flex items-center justify-between gap-2 sm:gap-3">
+      <!-- Logo & Title -->
+      <div class="flex items-center gap-2 sm:gap-2.5 flex-shrink-0 min-w-0">
+        <a href="../" class="text-slate-400 hover:text-indigo-400 transition p-1.5 sm:p-2 rounded-xl hover:bg-slate-800 flex items-center gap-1 text-xs sm:text-sm font-bold border border-transparent hover:border-slate-700 flex-shrink-0" title="Back to US Tools Hub">
+          <i class="fa-solid fa-arrow-left text-xs sm:text-sm"></i>
+          <span class="hidden sm:inline">US Hub</span>
+        </a>
+        <div class="flex items-center gap-2 flex-shrink-0">
+          <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-indigo-500 to-sky-400 text-slate-950 flex items-center justify-center font-black text-sm sm:text-base shadow-sm flex-shrink-0">
+            <i class="fa-solid fa-house-chimney text-white"></i>
+          </div>
+          <span class="text-base sm:text-xl font-black tracking-tight text-white whitespace-nowrap">US Mortgage <span class="text-indigo-400">Calculator</span></span>
+        </div>
+      </div>
+
+      <!-- Right Navigation Actions -->
+      <nav class="flex items-center gap-1.5 sm:gap-2.5 text-xs sm:text-sm font-bold text-slate-300 flex-shrink-0 whitespace-nowrap">
+        <!-- Tools Dropdown Placeholder (SSOT) -->
+        <!-- SHARED:TOOL_DROPDOWN -->
+        <div class="relative" id="tool-dropdown-container">
+          <button type="button" onclick="toggleToolDropdown(event)" id="tool-dropdown-btn" class="flex items-center gap-1.5 bg-slate-800/90 hover:bg-slate-700 text-slate-200 hover:text-white px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl border border-slate-700/80 transition active:scale-95 shadow-sm whitespace-nowrap flex-shrink-0" aria-expanded="false" aria-label="All Tools">
+            <i class="fa-solid fa-shapes text-emerald-400 text-xs sm:text-sm"></i>
+            <span class="hidden sm:inline font-bold">All Tools</span>
+            <span class="sm:hidden font-bold">Tools</span>
+            <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition-transform duration-200" id="tool-dropdown-arrow"></i>
+          </button>
+
+          <!-- 드롭다운 메뉴 (United States 특화 도구 4개) -->
+          <div id="tool-dropdown-menu" class="hidden absolute right-0 mt-2 w-64 sm:w-72 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl p-2 z-50 divide-y divide-slate-800">
+            <div class="px-3 py-2 text-[11px] font-bold text-slate-400 flex items-center justify-between">
+              <span>GoModo US Tools (4)</span>
+              <a href="../" class="text-[10px] text-emerald-400 font-semibold hover:underline">US Hub</a>
+            </div>
+            
+            <div class="pt-1 space-y-1">
+              <a href="../lottery/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-bolt"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-emerald-300 transition truncate">Powerball Tax Calculator</div>
+                  <div class="text-[10px] text-slate-400 truncate">50-State Payout & 30-Yr Annuity</div>
+                </div>
+              </a>
+
+              <a href="../converter/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-right-left"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-sky-300 transition truncate">Everyday Unit Converter</div>
+                  <div class="text-[10px] text-slate-400 truncate">lbs, miles, °F, gal, cooking</div>
+                </div>
+              </a>
+
+              <a href="../tip/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-receipt"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-amber-300 transition truncate">Restaurant Tip & Split Bill</div>
+                  <div class="text-[10px] text-slate-400 truncate">Pre-tax tipping & Venmo copy</div>
+                </div>
+              </a>
+
+              <a href="./" class="flex items-center gap-2.5 p-2 rounded-xl bg-slate-800/80 text-indigo-400 transition group">
+                <div class="w-7 h-7 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-house-chimney"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-indigo-300 transition truncate">Mortgage & PITI Calculator</div>
+                  <div class="text-[10px] text-slate-400 truncate">Live FRED rate & 30-yr amortization</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- /SHARED:TOOL_DROPDOWN -->
+          <div class="flex items-center gap-1.5 pt-1 text-xs">
+            <button type="button" onclick="setDownPaymentPct(3.5)" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition text-[11px] font-semibold">3.5% (FHA)</button>
+            <button type="button" onclick="setDownPaymentPct(5)" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition text-[11px] font-semibold">5%</button>
+            <button type="button" onclick="setDownPaymentPct(10)" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition text-[11px] font-semibold">10%</button>
+            <button type="button" onclick="setDownPaymentPct(20)" class="px-2.5 py-1 rounded-lg bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 transition text-[11px] font-bold">20% (Standard)</button>
+          </div>
+        </div>
+
+        <!-- 3. Loan Term & Interest Rate -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- Loan Term -->
+          <div class="space-y-1.5">
+            <label for="loan-term" class="block text-xs font-bold text-slate-300">Loan Term</label>
+            <select id="loan-term" class="w-full px-3.5 py-2.5 bg-slate-800/90 border border-slate-700/80 rounded-xl text-white font-bold text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none transition">
+              <option value="30" selected>30 Years (Fixed)</option>
+              <option value="20">20 Years (Fixed)</option>
+              <option value="15">15 Years (Fixed)</option>
+              <option value="10">10 Years (Fixed)</option>
+            </select>
+          </div>
+
+          <!-- Interest Rate -->
+          <div class="space-y-1.5">
+            <div class="flex items-center justify-between text-xs font-bold">
+              <label for="interest-rate" class="text-slate-300">Interest Rate (%)</label>
+              <span class="text-xs text-indigo-400 font-semibold cursor-pointer hover:underline" onclick="applyFredRate()">Use FRED (7.32%)</span>
+            </div>
+            <div class="relative">
+              <input type="number" id="interest-rate" value="7.32" min="0.1" max="25" step="0.01" class="w-full pl-3.5 pr-8 py-2.5 bg-slate-800/90 border border-slate-700/80 rounded-xl text-white font-bold text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none transition">
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-slate-500 font-bold">%</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Advanced Toggle (Taxes, HOI, PMI, HOA) -->
+        <div class="pt-2 border-t border-slate-800/80">
+          <button type="button" onclick="toggleAdvancedOptions()" id="advanced-toggle-btn" class="w-full flex items-center justify-between py-2 text-xs font-bold text-indigo-400 hover:text-indigo-300 transition">
+            <span class="flex items-center gap-1.5">
+              <i class="fa-solid fa-gear"></i>
+              <span>Property Taxes, Insurance &amp; HOA (PITI Options)</span>
+            </span>
+            <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200" id="advanced-arrow"></i>
+          </button>
+
+          <div id="advanced-options-panel" class="hidden pt-3 space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <!-- Property Tax -->
+              <div class="space-y-1">
+                <label for="property-tax-rate" class="block text-xs font-bold text-slate-300">Property Tax (% / year)</label>
+                <div class="relative">
+                  <input type="number" id="property-tax-rate" value="1.1" min="0" max="10" step="0.05" class="w-full pl-3.5 pr-8 py-2 bg-slate-800/80 border border-slate-700 rounded-xl text-white font-bold text-xs focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-slate-500 font-bold text-xs">%</div>
+                </div>
+                <div class="text-[10px] text-slate-400">US National Avg ~1.1%</div>
+              </div>
+
+              <!-- Homeowners Insurance -->
+              <div class="space-y-1">
+                <label for="homeowners-insurance" class="block text-xs font-bold text-slate-300">Homeowners Insurance ($ / yr)</label>
+                <div class="relative">
+                  <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-slate-500 font-bold text-xs">$</div>
+                  <input type="number" id="homeowners-insurance" value="1400" min="0" step="50" class="w-full pl-7 pr-3 py-2 bg-slate-800/80 border border-slate-700 rounded-xl text-white font-bold text-xs focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                </div>
+                <div class="text-[10px] text-slate-400">Avg ~$1,400/yr ($116/mo)</div>
+              </div>
+
+              <!-- PMI Rate -->
+              <div class="space-y-1">
+                <label for="pmi-rate" class="block text-xs font-bold text-slate-300">PMI Rate (% of loan / yr)</label>
+                <div class="relative">
+                  <input type="number" id="pmi-rate" value="0.75" min="0" max="5" step="0.05" class="w-full pl-3.5 pr-8 py-2 bg-slate-800/80 border border-slate-700 rounded-xl text-white font-bold text-xs focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-slate-500 font-bold text-xs">%</div>
+                </div>
+                <div class="text-[10px] text-slate-400">Applies when down payment &lt; 20%</div>
+              </div>
+
+              <!-- HOA Dues -->
+              <div class="space-y-1">
+                <label for="hoa-dues" class="block text-xs font-bold text-slate-300">HOA Dues ($ / month)</label>
+                <div class="relative">
+                  <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-slate-500 font-bold text-xs">$</div>
+                  <input type="number" id="hoa-dues" value="0" min="0" step="25" class="w-full pl-7 pr-3 py-2 bg-slate-800/80 border border-slate-700 rounded-xl text-white font-bold text-xs focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                </div>
+                <div class="text-[10px] text-slate-400">Optional condo/neighborhood fee</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Real-Time Results & PITI Breakdown (5 cols) -->
+      <div class="lg:col-span-5 space-y-4">
+        
+        <!-- Hero Total Monthly PITI Card -->
+        <div class="bg-gradient-to-br from-indigo-900/90 to-slate-900 border-2 border-indigo-500/60 rounded-3xl p-6 sm:p-7 shadow-2xl relative overflow-hidden">
+          <div class="absolute -right-8 -bottom-8 w-36 h-36 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
+          <div class="flex items-center justify-between text-xs font-bold text-indigo-300 mb-1">
+            <span>TOTAL ESTIMATED MONTHLY PAYMENT</span>
+            <span class="px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-[10px]">PITI</span>
+          </div>
+
+          <div class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight my-2" id="total-monthly-payment">
+            $2,667
+          </div>
+          <p class="text-xs text-slate-300 font-medium pb-4 border-b border-indigo-500/30">
+            For a <span class="text-white font-bold" id="loan-amount-badge">$320,000</span> loan (<span id="term-years-badge">30</span>-year fixed at <span id="rate-badge">7.32%</span>)
+          </p>
+
+          <!-- PITI Itemized Breakdown -->
+          <div class="space-y-2.5 pt-4 text-xs font-semibold">
+            <!-- Principal & Interest -->
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-indigo-400"></span>
+                <span class="text-slate-300">Principal &amp; Interest</span>
+              </div>
+              <span class="font-bold text-white text-sm" id="pi-payment-display">$2,200</span>
+            </div>
+
+            <!-- Property Tax -->
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-sky-400"></span>
+                <span class="text-slate-300">Property Taxes</span>
+              </div>
+              <span class="font-bold text-white text-sm" id="tax-payment-display">$367</span>
+            </div>
+
+            <!-- Homeowners Insurance -->
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
+                <span class="text-slate-300">Homeowners Insurance</span>
+              </div>
+              <span class="font-bold text-white text-sm" id="hoi-payment-display">$117</span>
+            </div>
+
+            <!-- PMI -->
+            <div class="flex items-center justify-between" id="pmi-breakdown-row">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+                <span class="text-slate-300">PMI (Private Mortgage Ins.)</span>
+              </div>
+              <span class="font-bold text-amber-300 text-sm" id="pmi-payment-display">$0</span>
+            </div>
+
+            <!-- HOA -->
+            <div class="flex items-center justify-between" id="hoa-breakdown-row" style="display: none;">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-purple-400"></span>
+                <span class="text-slate-300">HOA Dues</span>
+              </div>
+              <span class="font-bold text-white text-sm" id="hoa-payment-display">$0</span>
+            </div>
+          </div>
+
+          <!-- Component Percentage Bar -->
+          <div class="pt-5">
+            <div class="w-full h-3 rounded-full bg-slate-800 overflow-hidden flex" id="piti-progress-bar">
+              <div class="bg-indigo-400 h-full" id="piti-bar-pi" style="width: 82%;"></div>
+              <div class="bg-sky-400 h-full" id="piti-bar-tax" style="width: 14%;"></div>
+              <div class="bg-emerald-400 h-full" id="piti-bar-hoi" style="width: 4%;"></div>
+              <div class="bg-amber-400 h-full" id="piti-bar-pmi" style="width: 0%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lifetime Total Summary Card -->
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-6 shadow-xl space-y-3.5">
+          <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider">30-Year Lifetime Loan Totals</h3>
+          
+          <div class="grid grid-cols-2 gap-3 pt-1">
+            <div class="bg-slate-800/60 p-3 rounded-2xl border border-slate-700/60">
+              <div class="text-[11px] text-slate-400 font-medium">Total Principal</div>
+              <div class="text-base sm:text-lg font-black text-white" id="lifetime-principal">$320,000</div>
+            </div>
+            <div class="bg-slate-800/60 p-3 rounded-2xl border border-slate-700/60">
+              <div class="text-[11px] text-indigo-400 font-medium">Total Interest Paid</div>
+              <div class="text-base sm:text-lg font-black text-indigo-300" id="lifetime-interest">$471,987</div>
+            </div>
+          </div>
+
+          <div class="pt-2 border-t border-slate-800 text-xs flex items-center justify-between">
+            <span class="text-slate-400">Total 30-Year Loan Payments:</span>
+            <span class="font-black text-white text-sm" id="lifetime-total-cost">$791,987</span>
+          </div>
+
+          <!-- Copy & Share Quick Actions -->
+          <div class="pt-2 flex items-center gap-2">
+            <button type="button" onclick="copySummaryText()" class="flex-1 py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs transition active:scale-95 flex items-center justify-center gap-1.5 border border-slate-700">
+              <i class="fa-solid fa-copy text-indigo-400"></i>
+              <span id="copy-btn-text">Copy Summary</span>
+            </button>
+            <button type="button" onclick="shareMortgageResults()" class="py-2.5 px-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs transition active:scale-95 flex items-center justify-center gap-1.5 shadow-sm">
+              <i class="fa-solid fa-share-nodes"></i>
+              <span>Share</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- 30-Year Amortization Schedule Section -->
+    <section class="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-7 shadow-xl space-y-5">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-4 border-b border-slate-800">
+        <div>
+          <h2 class="text-lg sm:text-xl font-black text-white flex items-center gap-2">
+            <i class="fa-solid fa-table-list text-indigo-400 text-base"></i>
+            <span>Annual Amortization Schedule</span>
+          </h2>
+          <p class="text-xs text-slate-400 mt-0.5">Year-by-year breakdown of principal reduction, interest paid, and remaining balance.</p>
+        </div>
+        <div class="flex items-center gap-2 text-xs">
+          <span class="text-slate-400 font-medium">Schedule View:</span>
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-500/20 text-indigo-300 font-bold border border-indigo-500/30">Annual Summary</span>
+        </div>
+      </div>
+
+      <!-- Amortization Table -->
+      <div class="overflow-x-auto -mx-5 sm:mx-0">
+        <table class="w-full text-left text-xs sm:text-sm">
+          <thead>
+            <tr class="border-b border-slate-800 text-slate-400 font-bold text-[11px] sm:text-xs uppercase bg-slate-950/40">
+              <th class="py-3 px-3 sm:px-4">Year</th>
+              <th class="py-3 px-3 sm:px-4">Interest Paid</th>
+              <th class="py-3 px-3 sm:px-4">Principal Paid</th>
+              <th class="py-3 px-3 sm:px-4">Remaining Balance</th>
+              <th class="py-3 px-3 sm:px-4 text-right">Loan Paid Off</th>
+            </tr>
+          </thead>
+          <tbody id="amortization-table-body" class="divide-y divide-slate-800/80 font-medium text-slate-200">
+            <!-- Dynamic Amortization Rows -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 3-Tier SEO Guide & E-E-A-T Content (Thin Content Protection) -->
+    <section class="space-y-6 pt-4">
+
+      <!-- Section 1: The Mortgage Formula -->
+      <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-4">
+        <h2 class="text-xl font-black text-white flex items-center gap-2">
+          <i class="fa-solid fa-square-root-variable text-indigo-400"></i>
+          <span>How US Mortgage Payments Are Calculated (The Formula)</span>
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+          US fixed-rate mortgage payments are based on standard amortization mechanics. The monthly principal and interest payment is calculated using the standard annuity formula:
+        </p>
+        
+        <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 text-center font-mono text-sm sm:text-base text-indigo-300 overflow-x-auto">
+          M = P &times; [ r(1 + r)<sup>n</sup> ] &divide; [ (1 + r)<sup>n</sup> - 1 ]
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs pt-2">
+          <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
+            <strong class="text-indigo-400">M:</strong> Monthly Payment (P&amp;I)
+          </div>
+          <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
+            <strong class="text-indigo-400">P:</strong> Principal Loan Amount
+          </div>
+          <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
+            <strong class="text-indigo-400">r:</strong> Monthly Interest Rate (Annual Rate / 12)
+          </div>
+          <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
+            <strong class="text-indigo-400">n:</strong> Total Payments (Years &times; 12)
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 2: Real-World Case Study (30-Year vs 15-Year Fixed) -->
+      <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-4">
+        <h2 class="text-xl font-black text-white flex items-center gap-2">
+          <i class="fa-solid fa-scale-balanced text-indigo-400"></i>
+          <span>Case Study: 30-Year Fixed vs. 15-Year Fixed Comparison ($400,000 Home)</span>
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+          Assuming a $400,000 home with 20% down ($80,000) and a $320,000 loan amount, here is how a 30-year loan compares to a 15-year loan:
+        </p>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs sm:text-sm">
+            <thead>
+              <tr class="border-b border-slate-800 text-slate-400 uppercase text-[11px] bg-slate-950/40">
+                <th class="py-2.5 px-3">Loan Term</th>
+                <th class="py-2.5 px-3">Benchmark Rate</th>
+                <th class="py-2.5 px-3">Monthly P&amp;I</th>
+                <th class="py-2.5 px-3">Total Lifetime Interest</th>
+                <th class="py-2.5 px-3 text-right">Lifetime Savings</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800 font-medium">
+              <tr>
+                <td class="py-3 px-3 font-bold text-white">30-Year Fixed</td>
+                <td class="py-3 px-3 text-indigo-300 font-bold">7.32%</td>
+                <td class="py-3 px-3 text-white font-bold">$2,200</td>
+                <td class="py-3 px-3 text-amber-300 font-bold">$471,987</td>
+                <td class="py-3 px-3 text-right text-slate-400">Baseline</td>
+              </tr>
+              <tr class="bg-indigo-950/20">
+                <td class="py-3 px-3 font-bold text-indigo-300">15-Year Fixed</td>
+                <td class="py-3 px-3 text-indigo-300 font-bold">6.50%</td>
+                <td class="py-3 px-3 text-white font-bold">$2,789</td>
+                <td class="py-3 px-3 text-emerald-400 font-bold">$182,109</td>
+                <td class="py-3 px-3 text-right text-emerald-400 font-black">Save $289,878</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-[11px] text-slate-400 leading-relaxed">
+          *Key Takeaway: While the 15-year fixed payment is approximately $589 higher per month, you save nearly $290,000 in pure interest over the lifespan of the loan.
+        </p>
+      </div>
+
+      <!-- Section 3: Frequently Asked Questions (FAQ) -->
+      <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-4">
+        <h2 class="text-xl font-black text-white flex items-center gap-2">
+          <i class="fa-solid fa-circle-question text-indigo-400"></i>
+          <span>Frequently Asked Questions (FAQ)</span>
+        </h2>
+        
+        <div class="space-y-3 pt-2 text-xs sm:text-sm">
+          <div class="p-4 rounded-2xl bg-slate-950/60 border border-slate-800 space-y-1.5">
+            <h3 class="font-bold text-white text-sm sm:text-base">What does PITI stand for?</h3>
+            <p class="text-slate-300 leading-relaxed text-xs sm:text-sm">
+              PITI represents Principal, Interest, Taxes, and Insurance. It encompasses the four core components of an escrowed monthly mortgage payment in the United States.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-slate-950/60 border border-slate-800 space-y-1.5">
+            <h3 class="font-bold text-white text-sm sm:text-base">How does Private Mortgage Insurance (PMI) work?</h3>
+            <p class="text-slate-300 leading-relaxed text-xs sm:text-sm">
+              If your down payment is less than 20%, lenders require PMI to mitigate default risk. Annual PMI typically costs between 0.5% and 1.2% of the original loan balance. By federal law, you can request PMI cancellation once your loan principal reaches 80% of original value, and lenders must automatically cancel it at 78%.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-slate-950/60 border border-slate-800 space-y-1.5">
+            <h3 class="font-bold text-white text-sm sm:text-base">Where do GoModo benchmark rates originate?</h3>
+            <p class="text-slate-300 leading-relaxed text-xs sm:text-sm">
+              GoModo integrates weekly 30-Year Fixed Rate Mortgage benchmark averages published by the Federal Reserve Bank of St. Louis (FRED MORTGAGE30US series) using automated serverless data pipelines.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- SSOT Footer Placeholder -->
+  <!-- SHARED:FOOTER -->
+  <footer class="border-t border-slate-800 bg-slate-950 text-slate-400 py-8 text-xs text-center mt-auto">
+    <div class="max-w-5xl mx-auto px-4 space-y-4">
+      <!-- 1. 법적 고지 및 소개 링크 -->
+      <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-semibold text-slate-400">
+        <a href="../about/" class="hover:text-emerald-400 transition">About Us</a>
+        <span>•</span>
+        <a href="../terms/" class="hover:text-emerald-400 transition">Terms of Service</a>
+        <span>•</span>
+        <a href="../privacy/" class="hover:text-emerald-400 transition">Privacy Policy</a>
+      </div>
+
+      <!-- 2. 글로벌 포털 허브 바로가기 -->
+      <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[11px] font-medium text-slate-500">
+        <span class="text-slate-600">Region / Language:</span>
+        <a href="../../" class="hover:text-slate-300 transition">🇰🇷 한국어</a>
+        <span>|</span>
+        <a href="../../ja/" class="hover:text-slate-300 transition">🇯🇵 日本語</a>
+        <span>|</span>
+        <a href="../" class="text-slate-300 font-bold">🇺🇸 English</a>
+      </div>
+
+      <!-- 3. 면책 조항 -->
+      <div class="max-w-3xl mx-auto text-[11px] text-slate-500 leading-relaxed border-t border-slate-900 pt-3">
+        [Disclaimer] GoModo US Mortgage Calculator provides estimations for informational and educational purposes only. Actual interest rates, closing costs, private mortgage insurance (PMI), and tax assessments vary by lender, credit score, and municipality. This does not constitute a commitment to lend or financial advice. Consult an authorized mortgage lender and financial advisor.
+      </div>
+
+      <!-- 4. 저작권 & E-E-A-T 지원 이메일 -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-3 text-[11px] text-slate-500">
+        <span>© 2026 GoModo. All rights reserved.</span>
+        <span class="hidden sm:inline">•</span>
+        <span>Contact: <a href="mailto:support@gomodo.cloud" class="hover:text-slate-400 underline">support@gomodo.cloud</a></span>
+      </div>
+    </div>
+  </footer>
+  <!-- /SHARED:FOOTER -->
+
+  <!-- JavaScript Calculator Logic -->
+  <script>
+    // State Variables
+    let liveFredRate = 7.32;
+
+    // Load Live FRED Rate from Public Data Pipeline
+    async function loadLiveFredRate() {
+      try {
+        const res = await fetch('../../data/us-economic.json');
+        if (res.ok) {
+          const data = await res.json();
+          if (data && typeof data.mortgage30YearRate === 'number') {
+            liveFredRate = data.mortgage30YearRate;
+            const rateValEl = document.getElementById('fred-rate-value');
+            if (rateValEl) rateValEl.textContent = `${liveFredRate.toFixed(2)}%`;
+            const rateDescEl = document.getElementById('fred-rate-desc');
+            if (rateDescEl) {
+              const dateStr = data.latestDate ? ` (as of ${data.latestDate})` : '';
+              rateDescEl.innerHTML = `30-Year Fixed Mortgage Average: <strong class="text-white font-black text-sm">${liveFredRate.toFixed(2)}%</strong>${dateStr}`;
+            }
+          }
+        }
+      } catch (e) {
+        // Fallback gracefully to default benchmark
+      }
+    }
+
+    function applyFredRate() {
+      const rateInput = document.getElementById('interest-rate');
+      if (rateInput) {
+        rateInput.value = liveFredRate.toFixed(2);
+        calculateMortgage();
+      }
+    }
+
+    function setHomePrice(val) {
+      document.getElementById('home-price').value = val;
+      syncDownPaymentFromPct();
+      calculateMortgage();
+    }
+
+    function setDownPaymentPct(pct) {
+      document.getElementById('down-payment-pct').value = pct;
+      syncDownPaymentFromPct();
+      calculateMortgage();
+    }
+
+    function syncDownPaymentFromPct() {
+      const price = parseFloat(document.getElementById('home-price').value) || 0;
+      const pct = parseFloat(document.getElementById('down-payment-pct').value) || 0;
+      const amt = Math.round((price * pct) / 100);
+      document.getElementById('down-payment-amount').value = amt;
+    }
+
+    function syncDownPaymentFromAmt() {
+      const price = parseFloat(document.getElementById('home-price').value) || 0;
+      const amt = parseFloat(document.getElementById('down-payment-amount').value) || 0;
+      if (price > 0) {
+        const pct = (amt / price) * 100;
+        document.getElementById('down-payment-pct').value = pct.toFixed(1);
+      }
+    }
+
+    function toggleAdvancedOptions() {
+      const panel = document.getElementById('advanced-options-panel');
+      const arrow = document.getElementById('advanced-arrow');
+      if (panel) {
+        const isHidden = panel.classList.contains('hidden');
+        panel.classList.toggle('hidden', !isHidden);
+        if (arrow) arrow.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+      }
+    }
+
+    function resetDefaults() {
+      document.getElementById('home-price').value = 400000;
+      document.getElementById('down-payment-pct').value = 20;
+      syncDownPaymentFromPct();
+      document.getElementById('loan-term').value = 30;
+      document.getElementById('interest-rate').value = liveFredRate.toFixed(2);
+      document.getElementById('property-tax-rate').value = 1.1;
+      document.getElementById('homeowners-insurance').value = 1400;
+      document.getElementById('pmi-rate').value = 0.75;
+      document.getElementById('hoa-dues').value = 0;
+      calculateMortgage();
+    }
+
+    function formatUSD(num) {
+      return '$' + Math.round(num).toLocaleString('en-US');
+    }
+
+    function calculateMortgage() {
+      const homePrice = parseFloat(document.getElementById('home-price').value) || 0;
+      const downPayment = parseFloat(document.getElementById('down-payment-amount').value) || 0;
+      const downPct = parseFloat(document.getElementById('down-payment-pct').value) || 0;
+      const termYears = parseInt(document.getElementById('loan-term').value) || 30;
+      const annualRate = parseFloat(document.getElementById('interest-rate').value) || 0;
+      
+      const taxRate = parseFloat(document.getElementById('property-tax-rate').value) || 0;
+      const annualHoi = parseFloat(document.getElementById('homeowners-insurance').value) || 0;
+      const pmiRate = parseFloat(document.getElementById('pmi-rate').value) || 0;
+      const monthlyHoa = parseFloat(document.getElementById('hoa-dues').value) || 0;
+
+      // Loan Amount
+      const principal = Math.max(0, homePrice - downPayment);
+      const totalMonths = termYears * 12;
+      const monthlyRate = (annualRate / 100) / 12;
+
+      // 1. Monthly Principal & Interest
+      let monthlyPI = 0;
+      if (principal > 0) {
+        if (monthlyRate > 0) {
+          monthlyPI = principal * (monthlyRate * Math.pow(1 + monthlyRate, totalMonths)) / (Math.pow(1 + monthlyRate, totalMonths) - 1);
+        } else {
+          monthlyPI = principal / totalMonths;
+        }
+      }
+
+      // 2. Monthly Taxes
+      const monthlyTax = (homePrice * (taxRate / 100)) / 12;
+
+      // 3. Monthly Homeowners Insurance
+      const monthlyHoi = annualHoi / 12;
+
+      // 4. Monthly PMI (applies if down payment < 20%)
+      let monthlyPmi = 0;
+      const pmiBadge = document.getElementById('down-payment-pmi-badge');
+      if (downPct < 20 && principal > 0) {
+        monthlyPmi = (principal * (pmiRate / 100)) / 12;
+        if (pmiBadge) pmiBadge.innerHTML = `<span class="text-amber-400">⚠️ ${downPct.toFixed(1)}% (PMI Required)</span>`;
+      } else {
+        if (pmiBadge) pmiBadge.innerHTML = `<span class="text-emerald-400">✅ ${downPct.toFixed(1)}% (No PMI)</span>`;
+      }
+
+      // Total PITI
+      const totalMonthly = monthlyPI + monthlyTax + monthlyHoi + monthlyPmi + monthlyHoa;
+
+      // Lifetime Totals
+      const totalPayments = monthlyPI * totalMonths;
+      const totalInterest = Math.max(0, totalPayments - principal);
+
+      // Update UI Hero
+      document.getElementById('home-price-display').textContent = formatUSD(homePrice);
+      document.getElementById('total-monthly-payment').textContent = formatUSD(totalMonthly);
+      document.getElementById('loan-amount-badge').textContent = formatUSD(principal);
+      document.getElementById('term-years-badge').textContent = termYears;
+      document.getElementById('rate-badge').textContent = `${annualRate.toFixed(2)}%`;
+
+      document.getElementById('pi-payment-display').textContent = formatUSD(monthlyPI);
+      document.getElementById('tax-payment-display').textContent = formatUSD(monthlyTax);
+      document.getElementById('hoi-payment-display').textContent = formatUSD(monthlyHoi);
+      document.getElementById('pmi-payment-display').textContent = formatUSD(monthlyPmi);
+      document.getElementById('hoa-payment-display').textContent = formatUSD(monthlyHoa);
+
+      // HOA Row visibility
+      const hoaRow = document.getElementById('hoa-breakdown-row');
+      if (hoaRow) hoaRow.style.display = monthlyHoa > 0 ? 'flex' : 'none';
+
+      // Visual Component Bar
+      if (totalMonthly > 0) {
+        const piPct = (monthlyPI / totalMonthly) * 100;
+        const taxPct = (monthlyTax / totalMonthly) * 100;
+        const hoiPct = (monthlyHoi / totalMonthly) * 100;
+        const pmiPct = (monthlyPmi / totalMonthly) * 100;
+        document.getElementById('piti-bar-pi').style.width = `${piPct}%`;
+        document.getElementById('piti-bar-tax').style.width = `${taxPct}%`;
+        document.getElementById('piti-bar-hoi').style.width = `${hoiPct}%`;
+        document.getElementById('piti-bar-pmi').style.width = `${pmiPct}%`;
+      }
+
+      // Lifetime Totals
+      document.getElementById('lifetime-principal').textContent = formatUSD(principal);
+      document.getElementById('lifetime-interest').textContent = formatUSD(totalInterest);
+      document.getElementById('lifetime-total-cost').textContent = formatUSD(totalPayments);
+
+      // Render Amortization Table
+      renderAmortizationSchedule(principal, monthlyRate, monthlyPI, termYears);
+
+      // Update URL State
+      updateUrlState(homePrice, downPayment, annualRate, termYears);
+    }
+
+    function renderAmortizationSchedule(principal, monthlyRate, monthlyPI, termYears) {
+      const tbody = document.getElementById('amortization-table-body');
+      if (!tbody) return;
+
+      let balance = principal;
+      let html = '';
+
+      for (let yr = 1; yr <= termYears; yr++) {
+        let yearInterest = 0;
+        let yearPrincipal = 0;
+
+        for (let m = 1; m <= 12; m++) {
+          if (balance <= 0) break;
+          const interestMonth = balance * monthlyRate;
+          const principalMonth = Math.min(balance, monthlyPI - interestMonth);
+          yearInterest += interestMonth;
+          yearPrincipal += principalMonth;
+          balance = Math.max(0, balance - principalMonth);
+        }
+
+        const paidOffPct = principal > 0 ? (((principal - balance) / principal) * 100).toFixed(1) : 100;
+
+        html += `
+          <tr class="hover:bg-slate-800/40 transition">
+            <td class="py-3 px-3 sm:px-4 font-bold text-white">Year ${yr}</td>
+            <td class="py-3 px-3 sm:px-4 text-indigo-300 font-semibold">${formatUSD(yearInterest)}</td>
+            <td class="py-3 px-3 sm:px-4 text-emerald-400 font-semibold">${formatUSD(yearPrincipal)}</td>
+            <td class="py-3 px-3 sm:px-4 font-bold text-white">${formatUSD(balance)}</td>
+            <td class="py-3 px-3 sm:px-4 text-right">
+              <span class="inline-block px-2 py-0.5 rounded text-[11px] font-bold ${balance === 0 ? 'bg-emerald-500/20 text-emerald-300' : 'bg-slate-800 text-slate-300'}">
+                ${paidOffPct}%
+              </span>
+            </td>
+          </tr>
+        `;
+
+        if (balance <= 0) break;
+      }
+
+      tbody.innerHTML = html;
+    }
+
+    function updateUrlState(price, down, rate, term) {
+      if (!window.history || !window.history.replaceState) return;
+      const params = new URLSearchParams(window.location.search);
+      params.set('price', price);
+      params.set('down', down);
+      params.set('rate', rate);
+      params.set('term', term);
+      const newUrl = `${window.location.pathname}?${params.toString()}`;
+      window.history.replaceState(null, '', newUrl);
+    }
+
+    function readUrlState() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.has('price')) document.getElementById('home-price').value = params.get('price');
+      if (params.has('down')) document.getElementById('down-payment-amount').value = params.get('down');
+      if (params.has('rate')) document.getElementById('interest-rate').value = params.get('rate');
+      if (params.has('term')) document.getElementById('loan-term').value = params.get('term');
+      syncDownPaymentFromAmt();
+    }
+
+    function copySummaryText() {
+      const homePrice = document.getElementById('home-price-display').textContent;
+      const monthly = document.getElementById('total-monthly-payment').textContent;
+      const pi = document.getElementById('pi-payment-display').textContent;
+      const tax = document.getElementById('tax-payment-display').textContent;
+      const hoi = document.getElementById('hoi-payment-display').textContent;
+      const loan = document.getElementById('loan-amount-badge').textContent;
+      const term = document.getElementById('term-years-badge').textContent;
+      const rate = document.getElementById('rate-badge').textContent;
+
+      const summary = `🏠 US Mortgage & PITI Summary:
+Home Price: ${homePrice}
+Loan Amount: ${loan} (${term}-Year Fixed at ${rate})
+-----------------------------------
+💰 Estimated Monthly Payment: ${monthly}
+- Principal & Interest: ${pi}
+- Property Taxes: ${tax}
+- Homeowners Insurance: ${hoi}
+-----------------------------------
+Calculated via GoModo US: ${window.location.href}`;
+
+      navigator.clipboard.writeText(summary).then(() => {
+        const btnText = document.getElementById('copy-btn-text');
+        if (btnText) {
+          btnText.textContent = 'Copied!';
+          setTimeout(() => { btnText.textContent = 'Copy Summary'; }, 2000);
+        }
+      });
+    }
+
+    function shareMortgageResults() {
+      const homePrice = document.getElementById('home-price-display').textContent;
+      const monthly = document.getElementById('total-monthly-payment').textContent;
+      if (navigator.share) {
+        navigator.share({
+          title: 'US Mortgage Payment Calculation | GoModo',
+          text: `Estimated monthly payment for a ${homePrice} home: ${monthly}/mo with 30-year amortization schedule.`,
+          url: window.location.href
+        }).catch(() => {});
+      } else {
+        copySummaryText();
+      }
+    }
+
+    // Event Listeners
+    document.addEventListener('DOMContentLoaded', async () => {
+      await loadLiveFredRate();
+      readUrlState();
+      calculateMortgage();
+
+      // Input change events
+      document.getElementById('home-price').addEventListener('input', () => {
+        syncDownPaymentFromPct();
+        calculateMortgage();
+      });
+
+      document.getElementById('down-payment-amount').addEventListener('input', () => {
+        syncDownPaymentFromAmt();
+        calculateMortgage();
+      });
+
+      document.getElementById('down-payment-pct').addEventListener('input', () => {
+        syncDownPaymentFromPct();
+        calculateMortgage();
+      });
+
+      document.getElementById('loan-term').addEventListener('change', calculateMortgage);
+      document.getElementById('interest-rate').addEventListener('input', calculateMortgage);
+      document.getElementById('property-tax-rate').addEventListener('input', calculateMortgage);
+      document.getElementById('homeowners-insurance').addEventListener('input', calculateMortgage);
+      document.getElementById('pmi-rate').addEventListener('input', calculateMortgage);
+      document.getElementById('hoa-dues').addEventListener('input', calculateMortgage);
+    });
+  </script>
+
+</body>
+</html>

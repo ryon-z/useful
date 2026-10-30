@@ -94,6 +94,12 @@
             "position": 3,
             "name": "US Tip & Split Bill Calculator",
             "url": "https://www.gomodo.cloud/en/tip/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "US Mortgage & PITI Calculator (Live FRED Rates)",
+            "url": "https://www.gomodo.cloud/en/mortgage/"
           }
         ]
       },
@@ -190,10 +196,10 @@
             <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition-transform duration-200" id="tool-dropdown-arrow"></i>
           </button>
 
-          <!-- 드롭다운 메뉴 (United States 특화 도구 3개) -->
+          <!-- 드롭다운 메뉴 (United States 특화 도구 4개) -->
           <div id="tool-dropdown-menu" class="hidden absolute right-0 mt-2 w-64 sm:w-72 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl p-2 z-50 divide-y divide-slate-800">
             <div class="px-3 py-2 text-[11px] font-bold text-slate-400 flex items-center justify-between">
-              <span>GoModo US Tools (3)</span>
+              <span>GoModo US Tools (4)</span>
               <a href="./" class="text-[10px] text-emerald-400 font-semibold hover:underline">US Hub</a>
             </div>
             
@@ -225,6 +231,16 @@
                 <div class="min-w-0 flex-1">
                   <div class="text-xs font-bold text-white group-hover:text-amber-300 transition truncate">Restaurant Tip & Split Bill</div>
                   <div class="text-[10px] text-slate-400 truncate">Pre-tax tipping & Venmo copy</div>
+                </div>
+              </a>
+
+              <a href="./mortgage/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-house-chimney"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-indigo-300 transition truncate">Mortgage & PITI Calculator</div>
+                  <div class="text-[10px] text-slate-400 truncate">Live FRED rate & 30-yr amortization</div>
                 </div>
               </a>
             </div>
@@ -403,7 +419,48 @@
           </a>
         </div>
 
-</div>
+
+        <!-- 4. US Mortgage & PITI Calculator (Active) -->
+        <div class="bg-slate-900 border-2 border-indigo-500/50 hover:border-indigo-400 rounded-3xl p-6 sm:p-7 shadow-xl transition-all flex flex-col justify-between group relative overflow-hidden">
+          <div class="absolute -top-10 -right-10 w-36 h-36 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
+          <div>
+            <div class="flex items-center justify-between gap-3 mb-4">
+              <div class="w-12 h-12 rounded-2xl bg-indigo-500/20 text-indigo-400 border border-indigo-500/40 flex items-center justify-center text-2xl shadow-sm">
+                <i class="fa-solid fa-house-chimney"></i>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-xs font-bold">
+                  🇺🇸 Live FRED Rates
+                </span>
+                <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Active
+                </span>
+              </div>
+            </div>
+
+            <h3 class="text-xl sm:text-2xl font-black text-white mb-2 group-hover:text-indigo-300 transition">
+              Mortgage &amp; PITI Payment Calculator
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
+              Comprehensive US fixed-rate mortgage calculator with live Federal Reserve (FRED) benchmark rates, complete PITI payment breakdown (Principal, Interest, Taxes, Insurance, PMI), and full 30-year amortization schedule.
+            </p>
+
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">30-Yr &amp; 15-Yr Fixed</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">Live FRED Benchmark (7.32%)</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">PITI Breakdown &amp; PMI</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">Annual Amortization Table</span>
+            </div>
+          </div>
+
+          <a href="./mortgage/" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-black py-3.5 px-5 rounded-xl transition text-center text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20 active:scale-95">
+            <span>Calculate Mortgage Payments</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+      </div>
     </section>
 
     <!-- Trust & Performance Pillars (E-E-A-T) -->
