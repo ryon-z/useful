@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compound Interest Calculator - Investment Growth &amp; 401(k) / FIRE Wealth Simulator | GoModo</title>
+  <meta name="description" content="Free online compound interest calculator with monthly contributions, annual return presets, inflation adjustment, and 401(k)/Roth IRA tax options. See complete year-by-year growth table and 4% FIRE retirement rule.">
+  <meta name="keywords" content="compound interest calculator, investment calculator, 401k calculator, roth ira growth, rule of 72, fire calculator, safe withdrawal rate, stock market compounding, wealth simulator, GoModo">
+  <meta name="author" content="GoModo">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://www.gomodo.cloud/en/compound/">
+
+  <!-- Multilingual Hreflang -->
+  <link rel="alternate" hreflang="en" href="https://www.gomodo.cloud/en/compound/">
+  <link rel="alternate" hreflang="ko" href="https://www.gomodo.cloud/compound/">
+  <link rel="alternate" hreflang="x-default" href="https://www.gomodo.cloud/en/compound/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GoModo US">
+  <meta property="og:title" content="Compound Interest Calculator - Investment &amp; Retirement Wealth Simulator">
+  <meta property="og:description" content="Calculate the snowball effect of compounding interest on stocks, ETFs, and 401(k) savings. See annual growth schedules and retirement monthly payouts.">
+  <meta property="og:url" content="https://www.gomodo.cloud/en/compound/">
+  <meta property="og:image" content="https://www.gomodo.cloud/og-image.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Compound Interest &amp; Investment Calculator | GoModo">
+  <meta name="twitter:description" content="Simulate long-term wealth growth with monthly contributions, inflation adjustment, and 4% FIRE retirement withdrawal.">
+  <meta name="twitter:image" content="https://www.gomodo.cloud/og-image.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="apple-touch-icon" href="../../favicon.svg">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-47W29ZQ6ZH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-47W29ZQ6ZH');
+  </script>
+
+  <!-- Tailwind CSS & FontAwesome -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Theme System -->
+  <link rel="stylesheet" href="../../theme.css?v=2">
+  <script src="../../theme.js"></script>
+
+  <!-- SHARED:ADSENSE -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4528673716962845" crossorigin="anonymous"></script>
+  <!-- /SHARED:ADSENSE -->
+
+  <!-- Structured Data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "GoModo Compound Interest & Retirement Calculator",
+    "url": "https://www.gomodo.cloud/en/compound/",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All",
+    "description": "Calculate future portfolio growth with regular monthly additions, inflation purchasing power adjustments, tax options, and full year-by-year amortization schedules.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Initial principal and recurring monthly contributions",
+      "Multiple compounding frequencies: monthly, quarterly, annual, daily",
+      "Stock market asset class return presets (Treasuries, Balanced, S&P 500, NASDAQ)",
+      "Inflation purchasing power deflation adjustment",
+      "Taxable vs Tax-advantaged (Roth IRA / 401k) capital gains deduction",
+      "FIRE 4% rule safe withdrawal rate monthly income",
+      "Interactive annual growth table and visual asset ratio breakdown"
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "GoModo US",
+        "item": "https://www.gomodo.cloud/en/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Compound Interest Calculator",
+        "item": "https://www.gomodo.cloud/en/compound/"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is compound interest and how does it work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Compound interest is interest calculated on the initial principal as well as the accumulated interest from previous periods. Over long time horizons, it creates an exponential growth curve where your interest earns interest, multiplying wealth substantially faster than simple interest."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the Rule of 72?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Rule of 72 is a quick mathematical shortcut to estimate the number of years required to double your investment at a fixed annual rate of return. Simply divide 72 by your annual interest rate percentage (e.g., 72 / 8% = 9 years to double)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does the FIRE 4% rule work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The 4% rule, derived from the landmark Trinity Study, suggests that retirees can safely withdraw 4% of their initial portfolio value in the first year, adjusting for inflation in subsequent years, with a 95%+ probability that the portfolio will last at least 30 years without running out of money."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    .shadow-glow-emerald {
+      box-shadow: 0 0 24px rgba(16, 185, 129, 0.25);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans antialiased selection:bg-emerald-500 selection:text-slate-950">
+
+  <!-- Header Navigation -->
+  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto px-4 h-14 sm:h-16 flex items-center justify-between gap-2 sm:gap-3">
+      <div class="flex items-center gap-2 sm:gap-2.5 flex-shrink-0 min-w-0">
+        <a href="../" class="text-slate-400 hover:text-emerald-400 transition p-1.5 sm:p-2 rounded-xl hover:bg-slate-800 flex items-center gap-1 text-xs sm:text-sm font-bold border border-transparent hover:border-slate-700 flex-shrink-0" title="Back to US Tools">
+          <i class="fa-solid fa-arrow-left text-xs sm:text-sm"></i>
+          <span class="hidden sm:inline">Tools</span>
+        </a>
+        <div class="flex items-center gap-2 flex-shrink-0">
+          <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-400 text-slate-950 flex items-center justify-center font-black text-sm sm:text-base shadow-sm flex-shrink-0">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+          <span class="text-base sm:text-xl font-black tracking-tight text-white whitespace-nowrap">Compound <span class="text-emerald-400">Interest</span></span>
+        </div>
+      </div>
+      <nav class="flex items-center gap-1.5 sm:gap-2.5 text-xs sm:text-sm font-bold text-slate-300 flex-shrink-0 whitespace-nowrap">
+        <!-- SHARED:TOOL_DROPDOWN -->
+        <div class="relative" id="tool-dropdown-container">
+          <button type="button" onclick="toggleToolDropdown(event)" id="tool-dropdown-btn" class="flex items-center gap-1.5 bg-slate-800/90 hover:bg-slate-700 text-slate-200 hover:text-white px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl border border-slate-700/80 transition active:scale-95 shadow-sm whitespace-nowrap flex-shrink-0" aria-expanded="false" aria-label="All Tools">
+            <i class="fa-solid fa-shapes text-emerald-400 text-xs sm:text-sm"></i>
+            <span class="hidden sm:inline font-bold">All Tools</span>
+            <span class="sm:hidden font-bold">Tools</span>
+            <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition-transform duration-200" id="tool-dropdown-arrow"></i>
+          </button>
+
+          <!-- 드롭다운 메뉴 (United States 특화 도구 5개) -->
+          <div id="tool-dropdown-menu" class="hidden absolute right-0 mt-2 w-64 sm:w-72 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl p-2 z-50 divide-y divide-slate-800">
+            <div class="px-3 py-2 text-[11px] font-bold text-slate-400 flex items-center justify-between">
+              <span>GoModo US Tools (5)</span>
+              <a href="../" class="text-[10px] text-emerald-400 font-semibold hover:underline">US Hub</a>
+            </div>
+            
+            <div class="pt-1 space-y-1">
+              <a href="../lottery/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-bolt"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-emerald-300 transition truncate">Powerball Tax Calculator</div>
+                  <div class="text-[10px] text-slate-400 truncate">50-State Payout & 30-Yr Annuity</div>
+                </div>
+              </a>
+
+              <a href="../converter/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-right-left"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-sky-300 transition truncate">Everyday Unit Converter</div>
+                  <div class="text-[10px] text-slate-400 truncate">lbs, miles, °F, gal, cooking</div>
+                </div>
+              </a>
+
+              <a href="../tip/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-receipt"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-amber-300 transition truncate">Restaurant Tip & Split Bill</div>
+                  <div class="text-[10px] text-slate-400 truncate">Pre-tax tipping & Venmo copy</div>
+                </div>
+              </a>
+
+              <a href="../mortgage/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-house-chimney"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-indigo-300 transition truncate">Mortgage & PITI Calculator</div>
+                  <div class="text-[10px] text-slate-400 truncate">Live FRED rate & 30-yr amortization</div>
+                </div>
+              </a>
+
+              <a href="./" class="flex items-center gap-2.5 p-2 rounded-xl bg-slate-800/80 text-emerald-400 transition group">
+                <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-emerald-300 transition truncate">Compound Interest & Investment Calculator</div>
+                  <div class="text-[10px] text-slate-400 truncate">Wealth Growth & 401(k) / FIRE Planner</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- /SHARED:TOOL_DROPDOWN -->
+
+        <!-- Dark/Light Theme Toggle -->
+        <button id="theme-toggle" type="button" aria-label="Toggle theme" class="p-2 sm:p-2.5 text-slate-400 hover:text-white hover:bg-slate-800 rounded-xl transition border border-transparent hover:border-slate-700">
+          <i class="fa-solid fa-moon text-sm"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="max-w-5xl mx-auto px-4 py-6 sm:py-10 space-y-8 flex-1 w-full">
+
+    <!-- Hero Header -->
+    <div class="text-center space-y-3">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs sm:text-sm font-semibold">
+        <i class="fa-solid fa-bolt text-xs"></i>
+        <span>Einstein's 8th Wonder of the World</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+        Compound Interest &amp; Wealth Growth Simulator
+      </h1>
+      <p class="text-xs sm:text-base text-slate-400 max-w-2xl mx-auto leading-relaxed">
+        Simulate your long-term stock portfolio, 401(k), and Roth IRA growth with monthly contributions, inflation purchasing power adjustments, and 4% FIRE retirement payouts.
+      </p>
+    </div>
+
+    <!-- Calculator Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
+
+      <!-- Left: Inputs (7 Cols) -->
+      <section class="lg:col-span-7 bg-slate-900/90 border border-slate-800 rounded-3xl p-5 sm:p-7 shadow-xl space-y-6" aria-label="Investment Parameters">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div class="flex items-center gap-2 font-bold text-white text-base sm:text-lg">
+            <i class="fa-solid fa-sliders text-emerald-400"></i>
+            <span>Investment Settings</span>
+          </div>
+          <button type="button" onclick="resetForm()" class="text-xs text-slate-400 hover:text-emerald-400 transition flex items-center gap-1">
+            <i class="fa-solid fa-rotate-right"></i>
+            <span>Reset</span>
+          </button>
+        </div>
+
+        <!-- 1. Initial Deposit -->
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <label for="initial-deposit" class="text-xs sm:text-sm font-bold text-slate-300">
+              Initial Investment (Starting Principal)
+            </label>
+            <span id="initial-deposit-badge" class="text-xs text-emerald-400 font-semibold">$10,000</span>
+          </div>
+          <div class="relative">
+            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-sm text-slate-400 font-bold">$</span>
+            <input type="text" inputmode="numeric" id="initial-deposit" value="10,000" class="w-full bg-slate-950 border border-slate-700/80 rounded-2xl px-4 py-3 text-base sm:text-lg font-bold text-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition pl-8 pr-4 text-right">
+          </div>
+          <!-- Quick Buttons -->
+          <div class="grid grid-cols-6 gap-1.5 pt-1">
+            <button type="button" onclick="addInitial(1000)" class="py-1.5 bg-slate-800/80 hover:bg-slate-700 rounded-xl text-[11px] font-semibold text-slate-300 hover:text-emerald-300 border border-slate-700/50 transition">+$1k</button>
+            <button type="button" onclick="addInitial(5000)" class="py-1.5 bg-slate-800/80 hover:bg-slate-700 rounded-xl text-[11px] font-semibold text-slate-300 hover:text-emerald-300 border border-slate-700/50 transition">+$5k</button>
+            <button type="button" onclick="addInitial(10000)" class="py-1.5 bg-slate-800/80 hover:bg-slate-700 rounded-xl text-[11px] font-semibold text-slate-300 hover:text-emerald-300 border border-slate-700/50 transition">+$10k</button>
+            <button type="button" onclick="addInitial(50000)" class="py-1.5 bg-slate-800/80 hover:bg-slate-700 rounded-xl text-[11px] font-semibold text-slate-300 hover:text-emerald-300 border border-slate-700/50 transition">+$50k</button>
+            <button type="button" onclick="addInitial(100000)" class="py-1.5 bg-slate-800/80 hover:bg-slate-700 rounded-xl text-[11px] font-semibold text-slate-300 hover:text-emerald-300 border border-slate-700/50 transition">+$100k</button>
+            <button type="button" onclick="clearInitial()" class="py-1.5 bg-slate-800/80 hover:bg-red-500/20 text-slate-400 hover:text-red-400 rounded-xl text-[11px] font-semibold border border-slate-700/50 transition">$0</button>
+          </div>
+        </div>
+
+        <!-- 2. Monthly Contribution -->
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <label for="monthly-deposit" class="text-xs sm:text-sm font-bold text-slate-300">
+              Monthly Contribution
+            </label>
+            <span id="monthly-deposit-badge" class="text-xs text-emerald-400 font-semibold">$500/mo</span>
+          </div>
+          <div class="relative">
+            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-sm text-slate-400 font-bold">$</span>
+            <input type="text" inputmode="numeric" id="monthly-deposit" value="500" class="w-full bg-slate-950 border border-slate-700/80 rounded-2xl px-4 py-3 text-base sm:text-lg font-bold text-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition pl-8 pr-4 text-right">
+          </div>
+          <!-- Quick Buttons -->
+          <div class="grid grid-cols-6 gap-1.5 pt-1">
+            <button type="button" onclick="addMonthly(100)" class="py-1.5 bg-slate-800/80 hover:bg-slate-700 rounded-xl text-[11px] font-semibold text-slate-300 hover:text-emerald-300 border border-slate-700/50 transition">+$100</button>
+            <button type="button" onclick="addMonthly(250)" class="py-1.5 bg-slate-800/80 hover:bg-slate-700 rounded-xl text-[11px] font-semibold text-slate-300 hover:text-emerald-300 border border-slate-700/50 transition">+$250</button>
+            <button type="button" onclick="addMonthly(500)" class="py-1.5 bg-slate-800/80 hover:bg-slate-700 rounded-xl text-[11px] font-semibold text-slate-300 hover:text-emerald-300 border border-slate-700/50 transition">+$500</button>
+            <button type="button" onclick="addMonthly(1000)" class="py-1.5 bg-slate-800/80 hover:bg-slate-700 rounded-xl text-[11px] font-semibold text-slate-300 hover:text-emerald-300 border border-slate-700/50 transition">+$1k</button>
+            <button type="button" onclick="addMonthly(2000)" class="py-1.5 bg-slate-800/80 hover:bg-slate-700 rounded-xl text-[11px] font-semibold text-slate-300 hover:text-emerald-300 border border-slate-700/50 transition">+$2k</button>
+            <button type="button" onclick="clearMonthly()" class="py-1.5 bg-slate-800/80 hover:bg-red-500/20 text-slate-400 hover:text-red-400 rounded-xl text-[11px] font-semibold border border-slate-700/50 transition">$0</button>
+          </div>
+        </div>
+
+        <!-- 3. Annual Return Rate & Presets -->
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <label for="annual-rate" class="text-xs sm:text-sm font-bold text-slate-300">
+              Estimated Annual Return Rate
+            </label>
+            <span class="text-xs text-slate-400">Historical S&amp;P 500: ~10%</span>
+          </div>
+          <div class="relative">
+            <input type="number" step="0.1" min="0" max="100" id="annual-rate" value="8.0" class="w-full bg-slate-950 border border-slate-700/80 rounded-2xl px-4 py-3 text-base sm:text-lg font-bold text-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition pr-12 text-right">
+            <span class="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-slate-400 font-bold">%</span>
+          </div>
+          <!-- Presets -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
+            <button type="button" onclick="setRate(4.5)" class="rate-preset-btn p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 border border-slate-700/60 text-left transition" data-rate="4.5">
+              <div class="text-[10px] text-slate-400">HYSA / Treasury</div>
+              <div class="text-xs font-bold text-white">4.5%</div>
+            </button>
+            <button type="button" onclick="setRate(7.0)" class="rate-preset-btn p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 border border-slate-700/60 text-left transition" data-rate="7.0">
+              <div class="text-[10px] text-slate-400">Balanced / Bonds</div>
+              <div class="text-xs font-bold text-white">7.0%</div>
+            </button>
+            <button type="button" onclick="setRate(10.0)" class="rate-preset-btn p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 border border-slate-700/60 text-left transition border-emerald-500/80 bg-emerald-500/10" data-rate="10.0">
+              <div class="text-[10px] text-emerald-400 font-medium">S&amp;P 500 Avg</div>
+              <div class="text-xs font-bold text-emerald-300">10.0%</div>
+            </button>
+            <button type="button" onclick="setRate(15.0)" class="rate-preset-btn p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 border border-slate-700/60 text-left transition" data-rate="15.0">
+              <div class="text-[10px] text-slate-400">Tech / NASDAQ</div>
+              <div class="text-xs font-bold text-white">15.0%</div>
+            </button>
+          </div>
+        </div>
+
+        <!-- 4. Investment Period -->
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <label for="investment-years" class="text-xs sm:text-sm font-bold text-slate-300">
+              Investment Horizon
+            </label>
+            <span id="investment-years-badge" class="text-xs font-bold text-emerald-400">20 Years (240 Mos)</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <input type="range" min="1" max="40" step="1" id="years-range" value="20" class="flex-1 accent-emerald-500 cursor-pointer h-2 bg-slate-800 rounded-lg">
+            <div class="relative w-28 flex-shrink-0">
+              <input type="number" min="1" max="50" id="investment-years" value="20" class="w-full bg-slate-950 border border-slate-700/80 rounded-xl px-3 py-2 text-sm font-bold text-white focus:outline-none focus:border-emerald-500 text-right pr-12">
+              <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 font-bold">Years</span>
+            </div>
+          </div>
+          <!-- Quick Presets -->
+          <div class="grid grid-cols-5 gap-1.5 pt-1">
+            <button type="button" onclick="setYears(5)" class="years-preset-btn py-1.5 bg-slate-800/80 hover:bg-slate-700 rounded-xl text-xs font-semibold text-slate-300 border border-slate-700/50 transition" data-years="5">5 Yrs</button>
+            <button type="button" onclick="setYears(10)" class="years-preset-btn py-1.5 bg-slate-800/80 hover:bg-slate-700 rounded-xl text-xs font-semibold text-slate-300 border border-slate-700/50 transition" data-years="10">10 Yrs</button>
+            <button type="button" onclick="setYears(15)" class="years-preset-btn py-1.5 bg-slate-800/80 hover:bg-slate-700 rounded-xl text-xs font-semibold text-slate-300 border border-slate-700/50 transition" data-years="15">15 Yrs</button>
+            <button type="button" onclick="setYears(20)" class="years-preset-btn py-1.5 bg-slate-800/80 hover:bg-slate-700 rounded-xl text-xs font-semibold text-emerald-400 border border-emerald-500/50 bg-emerald-500/10 transition" data-years="20">20 Yrs</button>
+            <button type="button" onclick="setYears(30)" class="years-preset-btn py-1.5 bg-slate-800/80 hover:bg-slate-700 rounded-xl text-xs font-semibold text-slate-300 border border-slate-700/50 transition" data-years="30">30 Yrs</button>
+          </div>
+        </div>
+
+        <!-- 5. Advanced Options -->
+        <div class="pt-2 border-t border-slate-800 space-y-4">
+          <div class="text-xs font-bold text-slate-400 flex items-center gap-1.5">
+            <i class="fa-solid fa-gear text-emerald-400"></i>
+            <span>Advanced Settings &amp; Tax Options</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Frequency -->
+            <div class="space-y-1.5">
+              <label for="compound-frequency" class="text-xs font-semibold text-slate-300">Compound Frequency</label>
+              <select id="compound-frequency" class="w-full bg-slate-950 border border-slate-700/80 rounded-xl px-3 py-2 text-xs font-bold text-white focus:outline-none focus:border-emerald-500">
+                <option value="12" selected>Monthly (12/yr - Standard)</option>
+                <option value="1">Annually (1/yr)</option>
+                <option value="4">Quarterly (4/yr)</option>
+                <option value="365">Daily (365/yr)</option>
+              </select>
+            </div>
+
+            <!-- Timing -->
+            <div class="space-y-1.5">
+              <label for="deposit-timing" class="text-xs font-semibold text-slate-300">Deposit Timing</label>
+              <select id="deposit-timing" class="w-full bg-slate-950 border border-slate-700/80 rounded-xl px-3 py-2 text-xs font-bold text-white focus:outline-none focus:border-emerald-500">
+                <option value="beginning" selected>Beginning of Month (Common)</option>
+                <option value="end">End of Month</option>
+              </select>
+            </div>
+
+            <!-- Tax -->
+            <div class="space-y-1.5">
+              <label for="tax-type" class="text-xs font-semibold text-slate-300">Account Tax Treatment</label>
+              <select id="tax-type" class="w-full bg-slate-950 border border-slate-700/80 rounded-xl px-3 py-2 text-xs font-bold text-white focus:outline-none focus:border-emerald-500">
+                <option value="taxfree" selected>Tax-Advantaged (Roth IRA / 401k - 0% Tax)</option>
+                <option value="taxable">Taxable Brokerage (15% Long-Term Gains)</option>
+              </select>
+            </div>
+
+            <!-- Inflation -->
+            <div class="space-y-1.5">
+              <div class="flex items-center justify-between">
+                <label for="inflation-rate" class="text-xs font-semibold text-slate-300">Inflation (Real Purchasing Power)</label>
+                <label class="inline-flex items-center gap-1 cursor-pointer">
+                  <input type="checkbox" id="inflation-toggle" checked class="rounded border-slate-700 text-emerald-500 focus:ring-emerald-500 bg-slate-950">
+                  <span class="text-[10px] text-slate-400">Apply</span>
+                </label>
+              </div>
+              <div class="relative">
+                <input type="number" step="0.1" min="0" max="20" id="inflation-rate" value="2.5" class="w-full bg-slate-950 border border-slate-700/80 rounded-xl px-3 py-2 text-xs font-bold text-white focus:outline-none focus:border-emerald-500 pr-8 text-right">
+                <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 font-bold">%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Right: Results Dashboard (5 Cols) -->
+      <section class="lg:col-span-5 space-y-4" aria-label="Simulation Results">
+
+        <div class="bg-gradient-to-b from-slate-900 to-slate-950 border-2 border-emerald-500/40 rounded-3xl p-5 sm:p-6 shadow-glow-emerald space-y-5">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-emerald-400 flex items-center gap-1.5">
+              <i class="fa-solid fa-trophy"></i>
+              <span id="result-years-badge">Expected Portfolio in 20 Years</span>
+            </span>
+            <span id="multiplier-badge" class="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-extrabold border border-emerald-500/30">
+              3.0x Principal
+            </span>
+          </div>
+
+          <!-- Future Value -->
+          <div class="space-y-1">
+            <div class="text-3xl sm:text-4xl font-black text-white tracking-tight flex items-baseline gap-1" id="total-future-value">
+              $334,103
+            </div>
+            <div id="real-purchasing-power" class="text-xs text-slate-400 flex items-center gap-1">
+              <i class="fa-solid fa-coins text-amber-400 text-[10px]"></i>
+              <span>Purchasing Power in Today's $: <strong class="text-slate-200">~$203,892</strong></span>
+            </div>
+          </div>
+
+          <!-- Ratio Progress Bar -->
+          <div class="space-y-2 pt-2 border-t border-slate-800">
+            <div class="flex items-center justify-between text-xs font-semibold">
+              <span class="text-sky-400 flex items-center gap-1">
+                <span class="w-2.5 h-2.5 rounded-full bg-sky-500 inline-block"></span>
+                Principal <span id="principal-pct">38.9%</span>
+              </span>
+              <span class="text-emerald-400 flex items-center gap-1">
+                Compound Growth <span id="interest-pct">61.1%</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span>
+              </span>
+            </div>
+            <div class="w-full h-3.5 bg-slate-950 rounded-full overflow-hidden flex p-0.5 border border-slate-800">
+              <div id="bar-principal" class="h-full bg-sky-500 rounded-l-full transition-all duration-300" style="width: 38.9%;"></div>
+              <div id="bar-interest" class="h-full bg-emerald-400 rounded-r-full transition-all duration-300" style="width: 61.1%;"></div>
+            </div>
+          </div>
+
+          <!-- Breakdown Grid -->
+          <div class="grid grid-cols-2 gap-3 pt-1">
+            <div class="bg-slate-950/70 border border-slate-800/80 rounded-2xl p-3">
+              <div class="text-[11px] text-slate-400 font-medium">Total Contributions</div>
+              <div class="text-sm sm:text-base font-extrabold text-white mt-0.5" id="total-principal-value">$130,000</div>
+            </div>
+            <div class="bg-slate-950/70 border border-slate-800/80 rounded-2xl p-3">
+              <div class="text-[11px] text-slate-400 font-medium">Total Interest Earned</div>
+              <div class="text-sm sm:text-base font-extrabold text-emerald-400 mt-0.5" id="total-interest-value">+$204,103</div>
+            </div>
+          </div>
+
+          <!-- Taxes & ROI -->
+          <div class="bg-slate-950/70 border border-slate-800/80 rounded-2xl p-3 flex items-center justify-between text-xs">
+            <div>
+              <span class="text-slate-400">Capital Gains Tax:</span>
+              <span class="text-slate-200 font-bold ml-1" id="total-tax-value">$0 (Tax-Advantaged)</span>
+            </div>
+            <div>
+              <span class="text-slate-400">Total Return:</span>
+              <span class="text-emerald-400 font-bold ml-1" id="total-return-pct">+157.0%</span>
+            </div>
+          </div>
+
+          <!-- FIRE 4% Retirement Payout -->
+          <div class="bg-emerald-950/30 border border-emerald-500/30 rounded-2xl p-4 space-y-1.5">
+            <div class="flex items-center justify-between text-xs">
+              <span class="font-bold text-emerald-400 flex items-center gap-1.5">
+                <i class="fa-solid fa-umbrella-beach"></i>
+                <span>FIRE 4% Safe Withdrawal Rule</span>
+              </span>
+              <span class="text-[10px] text-emerald-500/80 font-medium">Trinity Study</span>
+            </div>
+            <div class="flex items-baseline justify-between pt-1">
+              <span class="text-xs text-slate-300">Perpetual Monthly Income:</span>
+              <span class="text-base sm:text-lg font-black text-emerald-300" id="fire-monthly-payout">~$1,114 / mo</span>
+            </div>
+            <p class="text-[10px] text-slate-400 leading-tight">
+              * Withdrawing 4% annually leaves your starting principal intact historically with 95%+ probability over 30 years.
+            </p>
+          </div>
+
+          <!-- Actions -->
+          <div class="pt-2 flex items-center gap-2">
+            <button type="button" onclick="copyResultSummary()" class="flex-1 py-2.5 px-3 bg-emerald-500 hover:bg-emerald-400 text-slate-950 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-1.5 transition active:scale-95 shadow-md">
+              <i class="fa-regular fa-copy"></i>
+              <span id="copy-btn-text">Copy Summary</span>
+            </button>
+            <button type="button" onclick="shareX()" class="py-2.5 px-3 bg-slate-800 hover:bg-slate-700 text-white rounded-xl font-bold text-xs flex items-center justify-center transition active:scale-95 border border-slate-700" title="Share on X">
+              <i class="fa-brands fa-x-twitter"></i>
+            </button>
+            <button type="button" onclick="triggerWebShare()" class="py-2.5 px-3 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-xl font-bold text-xs flex items-center justify-center transition active:scale-95 border border-slate-700" title="Share via Device">
+              <i class="fa-solid fa-share-nodes"></i>
+            </button>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+
+    <!-- Annual Growth Schedule Table -->
+    <section class="bg-slate-900/90 border border-slate-800 rounded-3xl p-5 sm:p-7 shadow-xl space-y-4" aria-label="Year-by-Year Growth Schedule">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-4">
+        <div>
+          <h2 class="text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+            <i class="fa-solid fa-table-list text-emerald-400"></i>
+            <span>Annual Growth Schedule (Amortization Table)</span>
+          </h2>
+          <p class="text-xs text-slate-400 mt-0.5">
+            Watch compound interest surpass your annual contributions over time.
+          </p>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-xs text-slate-400 font-medium" id="table-row-count">20 Years Total</span>
+          <button type="button" onclick="toggleTableExpand()" id="table-toggle-btn" class="text-xs bg-slate-800 hover:bg-slate-700 text-emerald-400 px-3 py-1.5 rounded-xl border border-slate-700 transition font-bold">
+            Compact View
+          </button>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto rounded-2xl border border-slate-800">
+        <table class="w-full text-left text-xs sm:text-sm text-slate-300 border-collapse">
+          <thead class="bg-slate-950 text-slate-400 text-[11px] sm:text-xs uppercase font-bold border-b border-slate-800">
+            <tr>
+              <th scope="col" class="py-3 px-3 text-center w-14">Year</th>
+              <th scope="col" class="py-3 px-3 text-right">Starting Bal</th>
+              <th scope="col" class="py-3 px-3 text-right">Contribution</th>
+              <th scope="col" class="py-3 px-3 text-right text-emerald-400">Interest Earned</th>
+              <th scope="col" class="py-3 px-3 text-right">Total Interest</th>
+              <th scope="col" class="py-3 px-3 text-right text-white font-extrabold">Ending Balance</th>
+              <th scope="col" class="py-3 px-3 text-center w-28 hidden md:table-cell">Growth Scale</th>
+            </tr>
+          </thead>
+          <tbody id="growth-table-body" class="divide-y divide-slate-800/60 font-mono">
+            <!-- Populated dynamically via JS -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 3-Tier SEO Guide (Formula, Case Study, FAQ) -->
+    <section class="space-y-6 pt-4 border-t border-slate-800/80" aria-label="Compound Interest Guide">
+
+      <!-- 1. Formula & Rule of 72 -->
+      <div class="bg-slate-900/60 border border-slate-800/80 rounded-3xl p-5 sm:p-7 space-y-4">
+        <h3 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-square-root-variable text-emerald-400"></i>
+          <span>The Compound Interest Formula &amp; The Rule of 72</span>
+        </h3>
+        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+          Compound interest is interest calculated on initial principal plus accumulated interest from previous periods.
+          Albert Einstein reportedly named it <em>"the eighth wonder of the world. He who understands it, earns it; he who doesn't, pays it."</em>
+        </p>
+
+        <!-- Formula Box -->
+        <div class="bg-slate-950 border border-slate-800 rounded-2xl p-4 space-y-2 font-mono text-xs sm:text-sm">
+          <div class="text-emerald-400 font-bold">Standard Future Value Formula with Recurring Contributions:</div>
+          <div class="text-slate-200 overflow-x-auto py-1">
+            A = P &times; (1 + r/n)<sup>nt</sup> + PMT &times; [((1 + r/n)<sup>nt</sup> - 1) / (r/n)]
+          </div>
+          <div class="text-[11px] text-slate-400 space-y-0.5 pt-1">
+            <div>&bull; <strong>P</strong> = Initial starting principal</div>
+            <div>&bull; <strong>PMT</strong> = Periodic recurring addition (e.g. monthly deposit)</div>
+            <div>&bull; <strong>r</strong> = Nominal annual interest rate (in decimal format)</div>
+            <div>&bull; <strong>n</strong> = Compounding frequency per year (12 = monthly, 1 = annually)</div>
+            <div>&bull; <strong>t</strong> = Number of years invested</div>
+          </div>
+        </div>
+
+        <div class="bg-emerald-500/10 border border-emerald-500/20 rounded-2xl p-4 text-xs sm:text-sm text-emerald-300 leading-relaxed">
+          <strong>💡 The Rule of 72:</strong><br>
+          A mental shortcut to determine how many years it will take for your investment to double at a given annual growth rate:<br>
+          <span class="font-mono font-bold text-white">Years to Double &approx; 72 &divide; Annual Return (%)</span><br>
+          At an 8% return rate, your investment doubles roughly every 9 years (72 &divide; 8). At 10% (the long-term S&amp;P 500 average), it doubles in just 7.2 years!
+        </div>
+      </div>
+
+      <!-- 2. Simple vs Compound Interest Comparison -->
+      <div class="bg-slate-900/60 border border-slate-800/80 rounded-3xl p-5 sm:p-7 space-y-4">
+        <h3 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-scale-balanced text-amber-400"></i>
+          <span>Simple vs. Compound Interest: 20-Year Reality Check ($10,000 + $500/mo at 8%)</span>
+        </h3>
+        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+          See how dramatically compound growth outpaces simple interest when your returns are continuously reinvested over a 20-year horizon.
+        </p>
+
+        <div class="overflow-x-auto rounded-2xl border border-slate-800">
+          <table class="w-full text-left text-xs sm:text-sm text-slate-300">
+            <thead class="bg-slate-950 text-slate-400 font-bold border-b border-slate-800 text-[11px] sm:text-xs">
+              <tr>
+                <th class="py-2.5 px-3">Timeline</th>
+                <th class="py-2.5 px-3 text-right">Total Contributed</th>
+                <th class="py-2.5 px-3 text-right">Simple Interest</th>
+                <th class="py-2.5 px-3 text-right text-emerald-400">Compound Interest</th>
+                <th class="py-2.5 px-3 text-right text-amber-300 font-extrabold">The Compound Advantage</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800/60 font-mono">
+              <tr>
+                <td class="py-2.5 px-3 font-sans font-semibold">5 Years</td>
+                <td class="py-2.5 px-3 text-right">$40,000</td>
+                <td class="py-2.5 px-3 text-right">$48,000</td>
+                <td class="py-2.5 px-3 text-right text-emerald-400">$51,452</td>
+                <td class="py-2.5 px-3 text-right text-amber-300 font-bold">+$3,452</td>
+              </tr>
+              <tr>
+                <td class="py-2.5 px-3 font-sans font-semibold">10 Years</td>
+                <td class="py-2.5 px-3 text-right">$70,000</td>
+                <td class="py-2.5 px-3 text-right">$98,000</td>
+                <td class="py-2.5 px-3 text-right text-emerald-400">$119,386</td>
+                <td class="py-2.5 px-3 text-right text-amber-300 font-bold">+$21,386</td>
+              </tr>
+              <tr>
+                <td class="py-2.5 px-3 font-sans font-semibold">15 Years</td>
+                <td class="py-2.5 px-3 text-right">$100,000</td>
+                <td class="py-2.5 px-3 text-right">$160,000</td>
+                <td class="py-2.5 px-3 text-right text-emerald-400">$220,578</td>
+                <td class="py-2.5 px-3 text-right text-amber-300 font-bold">+$60,578</td>
+              </tr>
+              <tr class="bg-emerald-500/10">
+                <td class="py-2.5 px-3 font-sans font-bold text-white">20 Years (Final)</td>
+                <td class="py-2.5 px-3 text-right text-slate-200">$130,000</td>
+                <td class="py-2.5 px-3 text-right text-slate-200">$234,000</td>
+                <td class="py-2.5 px-3 text-right text-emerald-300 font-extrabold">$378,541</td>
+                <td class="py-2.5 px-3 text-right text-amber-300 font-black">+$144,541</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 3. Frequently Asked Questions (FAQ) -->
+      <div class="bg-slate-900/60 border border-slate-800/80 rounded-3xl p-5 sm:p-7 space-y-4">
+        <h3 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-circle-question text-sky-400"></i>
+          <span>Frequently Asked Questions (FAQ)</span>
+        </h3>
+
+        <div class="space-y-3">
+          <details class="group bg-slate-950/70 border border-slate-800/80 rounded-2xl p-4 transition [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-xs sm:text-sm text-slate-200 group-hover:text-emerald-400 transition">
+              <span>Why should I use a Roth IRA or 401(k) over a regular taxable account?</span>
+              <i class="fa-solid fa-chevron-down text-xs text-slate-500 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <p class="mt-3 text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-slate-800/60 pt-3">
+              In a taxable brokerage account, you owe capital gains taxes (typically 15%) and dividend taxes whenever assets are sold or distributions occur. Tax-advantaged accounts like a Roth IRA or 401(k) allow your investments to grow entirely tax-free or tax-deferred. Over 20 to 30 years, saving 15% on compound returns easily results in tens of thousands of dollars in extra wealth.
+            </p>
+          </details>
+
+          <details class="group bg-slate-950/70 border border-slate-800/80 rounded-2xl p-4 transition [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-xs sm:text-sm text-slate-200 group-hover:text-emerald-400 transition">
+              <span>How does the FIRE 4% rule calculate my retirement target?</span>
+              <i class="fa-solid fa-chevron-down text-xs text-slate-500 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <p class="mt-3 text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-slate-800/60 pt-3">
+              The 4% rule states that you need 25 times your annual living expenses to retire comfortably. If your goal is to spend $40,000 per year, your nest egg target is $1,000,000 ($40,000 &times; 25). Withdrawing 4% ($40,000 / 12 = $3,333/mo) leaves the principal intact over historical 30-year economic cycles.
+            </p>
+          </details>
+
+          <details class="group bg-slate-950/70 border border-slate-800/80 rounded-2xl p-4 transition [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-xs sm:text-sm text-slate-200 group-hover:text-emerald-400 transition">
+              <span>Why is inflation adjustment critical for financial planning?</span>
+              <i class="fa-solid fa-chevron-down text-xs text-slate-500 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <p class="mt-3 text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-slate-800/60 pt-3">
+              A dollar today will buy more goods than a dollar in 20 or 30 years due to inflation. Assuming a standard 2.5% inflation rate, $1,000,000 in 20 years will have the purchasing power of roughly $610,000 in today's money. Factoring in inflation helps you set realistic savings goals that protect your future lifestyle.
+            </p>
+          </details>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- SHARED:FOOTER -->
+  <footer class="border-t border-slate-800 bg-slate-950 text-slate-400 py-8 text-xs text-center mt-auto">
+    <div class="max-w-5xl mx-auto px-4 space-y-4">
+      <!-- 1. 법적 고지 및 소개 링크 -->
+      <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-semibold text-slate-400">
+        <a href="../about/" class="hover:text-emerald-400 transition">About Us</a>
+        <span>•</span>
+        <a href="../terms/" class="hover:text-emerald-400 transition">Terms of Service</a>
+        <span>•</span>
+        <a href="../privacy/" class="hover:text-emerald-400 transition">Privacy Policy</a>
+      </div>
+
+      <!-- 2. 글로벌 포털 허브 바로가기 -->
+      <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[11px] font-medium text-slate-500">
+        <span class="text-slate-600">Region / Language:</span>
+        <a href="../../" class="hover:text-slate-300 transition">🇰🇷 한국어</a>
+        <span>|</span>
+        <a href="../../ja/" class="hover:text-slate-300 transition">🇯🇵 日本語</a>
+        <span>|</span>
+        <a href="../" class="text-slate-300 font-bold">🇺🇸 English</a>
+      </div>
+
+      <!-- 3. 면책 조항 -->
+      <div class="max-w-3xl mx-auto text-[11px] text-slate-500 leading-relaxed border-t border-slate-900 pt-3">
+        [Disclaimer] GoModo Compound Interest Calculator provides simulation outputs for informational and educational purposes only and does not constitute financial, investment, or tax advice. Market returns fluctuate over time and past performance does not guarantee future results.
+      </div>
+
+      <!-- 4. 저작권 & E-E-A-T 지원 이메일 -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-3 text-[11px] text-slate-500">
+        <span>© 2026 GoModo. All rights reserved.</span>
+        <span class="hidden sm:inline">•</span>
+        <span>Contact: <a href="mailto:support@gomodo.cloud" class="hover:text-slate-400 underline">support@gomodo.cloud</a></span>
+      </div>
+    </div>
+  </footer>
+  <!-- /SHARED:FOOTER -->
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-slate-900/95 text-white px-4 py-2.5 rounded-2xl border border-slate-700 shadow-2xl text-xs sm:text-sm font-semibold opacity-0 pointer-events-none transition-all duration-300 z-50 flex items-center gap-2">
+    <i class="fa-solid fa-circle-check text-emerald-400"></i>
+    <span id="toast-message">Notification</span>
+  </div>
+
+  <!-- Business Logic Script -->
+  <script>
+    let isTableExpanded = true;
+    let fullAnnualData = [];
+
+    const initialInput = document.getElementById('initial-deposit');
+    const initialBadge = document.getElementById('initial-deposit-badge');
+    const monthlyInput = document.getElementById('monthly-deposit');
+    const monthlyBadge = document.getElementById('monthly-deposit-badge');
+    const rateInput = document.getElementById('annual-rate');
+    const yearsInput = document.getElementById('investment-years');
+    const yearsRange = document.getElementById('years-range');
+    const yearsBadge = document.getElementById('investment-years-badge');
+    const freqSelect = document.getElementById('compound-frequency');
+    const timingSelect = document.getElementById('deposit-timing');
+    const taxSelect = document.getElementById('tax-type');
+    const inflationToggle = document.getElementById('inflation-toggle');
+    const inflationRateInput = document.getElementById('inflation-rate');
+
+    const totalFutureEl = document.getElementById('total-future-value');
+    const realPowerEl = document.getElementById('real-purchasing-power');
+    const multiplierBadge = document.getElementById('multiplier-badge');
+    const resultYearsBadge = document.getElementById('result-years-badge');
+    const totalPrincipalEl = document.getElementById('total-principal-value');
+    const totalInterestEl = document.getElementById('total-interest-value');
+    const totalTaxEl = document.getElementById('total-tax-value');
+    const totalReturnPctEl = document.getElementById('total-return-pct');
+    const fireMonthlyPayoutEl = document.getElementById('fire-monthly-payout');
+    const principalPctEl = document.getElementById('principal-pct');
+    const interestPctEl = document.getElementById('interest-pct');
+    const barPrincipal = document.getElementById('bar-principal');
+    const barInterest = document.getElementById('bar-interest');
+    const tableBody = document.getElementById('growth-table-body');
+    const tableRowCountEl = document.getElementById('table-row-count');
+
+    function parseNumber(val) {
+      if (typeof val === 'number') return isNaN(val) ? 0 : val;
+      if (!val) return 0;
+      const clean = String(val).replace(/[^0-9.-]/g, '');
+      const num = parseFloat(clean);
+      return isNaN(num) ? 0 : num;
+    }
+
+    function formatCurrency(num) {
+      return '$' + Math.round(num).toLocaleString('en-US');
+    }
+
+    function formatInputField(input, badgeEl, isMonthly = false) {
+      const num = parseNumber(input.value);
+      input.value = num.toLocaleString('en-US');
+      if (badgeEl) badgeEl.textContent = formatCurrency(num) + (isMonthly ? '/mo' : '');
+    }
+
+    function addInitial(amt) {
+      const cur = parseNumber(initialInput.value);
+      initialInput.value = (cur + amt).toLocaleString('en-US');
+      formatInputField(initialInput, initialBadge);
+      calculateAndRender();
+    }
+    function clearInitial() {
+      initialInput.value = '0';
+      formatInputField(initialInput, initialBadge);
+      calculateAndRender();
+    }
+    function addMonthly(amt) {
+      const cur = parseNumber(monthlyInput.value);
+      monthlyInput.value = (cur + amt).toLocaleString('en-US');
+      formatInputField(monthlyInput, monthlyBadge, true);
+      calculateAndRender();
+    }
+    function clearMonthly() {
+      monthlyInput.value = '0';
+      formatInputField(monthlyInput, monthlyBadge, true);
+      calculateAndRender();
+    }
+
+    function setRate(r) {
+      rateInput.value = r.toFixed(1);
+      document.querySelectorAll('.rate-preset-btn').forEach(btn => {
+        const btnRate = parseFloat(btn.dataset.rate);
+        if (Math.abs(btnRate - r) < 0.01) {
+          btn.classList.add('border-emerald-500/80', 'bg-emerald-500/10');
+        } else {
+          btn.classList.remove('border-emerald-500/80', 'bg-emerald-500/10');
+        }
+      });
+      calculateAndRender();
+    }
+
+    function setYears(y) {
+      yearsInput.value = y;
+      yearsRange.value = y;
+      updateYearsUI(y);
+      calculateAndRender();
+    }
+
+    function updateYearsUI(y) {
+      yearsBadge.textContent = `${y} Years (${y * 12} Mos)`;
+      resultYearsBadge.textContent = `Expected Portfolio in ${y} Years`;
+      document.querySelectorAll('.years-preset-btn').forEach(btn => {
+        const btnYears = parseInt(btn.dataset.years, 10);
+        if (btnYears === y) {
+          btn.classList.add('border-emerald-500/50', 'bg-emerald-500/10', 'text-emerald-400');
+          btn.classList.remove('text-slate-300');
+        } else {
+          btn.classList.remove('border-emerald-500/50', 'bg-emerald-500/10', 'text-emerald-400');
+          btn.classList.add('text-slate-300');
+        }
+      });
+    }
+
+    function resetForm() {
+      initialInput.value = '10,000';
+      monthlyInput.value = '500';
+      rateInput.value = '8.0';
+      yearsInput.value = '20';
+      yearsRange.value = '20';
+      freqSelect.value = '12';
+      timingSelect.value = 'beginning';
+      taxSelect.value = 'taxfree';
+      inflationToggle.checked = true;
+      inflationRateInput.value = '2.5';
+      formatInputField(initialInput, initialBadge);
+      formatInputField(monthlyInput, monthlyBadge, true);
+      updateYearsUI(20);
+      calculateAndRender();
+      showToast('Reset to default values.');
+    }
+
+    function calculateAndRender() {
+      const P = parseNumber(initialInput.value);
+      const PMT = parseNumber(monthlyInput.value);
+      const annualRate = parseNumber(rateInput.value) / 100;
+      const years = Math.max(1, parseInt(yearsInput.value, 10) || 1);
+      const compFreq = parseInt(freqSelect.value, 10) || 12;
+      const timing = timingSelect.value;
+      const taxType = taxSelect.value;
+      const useInflation = inflationToggle.checked;
+      const inflationRate = parseNumber(inflationRateInput.value) / 100;
+
+      let balance = P;
+      let totalPrincipal = P;
+      let totalInterest = 0;
+      fullAnnualData = [];
+
+      for (let y = 1; y <= years; y++) {
+        const beginningBalance = balance;
+        let annualDeposit = 0;
+        let annualInterest = 0;
+
+        for (let m = 1; m <= 12; m++) {
+          if (timing === 'beginning') {
+            balance += PMT;
+            annualDeposit += PMT;
+            totalPrincipal += PMT;
+          }
+
+          let monthlyInterest = 0;
+          if (compFreq === 12) {
+            monthlyInterest = balance * (annualRate / 12);
+          } else if (compFreq === 1) {
+            monthlyInterest = balance * (Math.pow(1 + annualRate, 1/12) - 1);
+          } else if (compFreq === 4) {
+            monthlyInterest = balance * (Math.pow(1 + annualRate / 4, 4/12) - 1);
+          } else if (compFreq === 365) {
+            monthlyInterest = balance * (Math.pow(1 + annualRate / 365, 365/12) - 1);
+          }
+
+          balance += monthlyInterest;
+          annualInterest += monthlyInterest;
+          totalInterest += monthlyInterest;
+
+          if (timing === 'end') {
+            balance += PMT;
+            annualDeposit += PMT;
+            totalPrincipal += PMT;
+          }
+        }
+
+        fullAnnualData.push({
+          year: y,
+          beginningBalance: Math.round(beginningBalance),
+          annualDeposit: Math.round(annualDeposit),
+          annualInterest: Math.round(annualInterest),
+          totalInterest: Math.round(totalInterest),
+          endingBalance: Math.round(balance)
+        });
+      }
+
+      let taxAmount = 0;
+      let afterTaxEndingBalance = balance;
+      if (taxType === 'taxable') {
+        taxAmount = totalInterest * 0.15; // 15% Long-Term Capital Gains
+        afterTaxEndingBalance = balance - taxAmount;
+      }
+
+      let realPurchasingPower = afterTaxEndingBalance;
+      if (useInflation && inflationRate > 0) {
+        realPurchasingPower = afterTaxEndingBalance / Math.pow(1 + inflationRate, years);
+      }
+
+      const returnPct = totalPrincipal > 0 ? ((totalInterest / totalPrincipal) * 100) : 0;
+      const multiplier = totalPrincipal > 0 ? (afterTaxEndingBalance / totalPrincipal) : 1;
+      const fireMonthly = (afterTaxEndingBalance * 0.04) / 12;
+
+      const principalPct = afterTaxEndingBalance > 0 ? Math.min(100, Math.max(0, (totalPrincipal / afterTaxEndingBalance) * 100)) : 100;
+      const interestPct = Math.max(0, 100 - principalPct);
+
+      totalFutureEl.textContent = formatCurrency(afterTaxEndingBalance);
+      multiplierBadge.textContent = `${multiplier.toFixed(1)}x Principal`;
+
+      if (useInflation && inflationRate > 0) {
+        realPowerEl.innerHTML = `<i class="fa-solid fa-coins text-amber-400 text-[10px]"></i><span>Purchasing Power (${inflationRateInput.value}% inflation): <strong class="text-slate-200">~${formatCurrency(realPurchasingPower)}</strong></span>`;
+        realPowerEl.classList.remove('hidden');
+      } else {
+        realPowerEl.innerHTML = `<span class="text-slate-500">Nominal Currency (Inflation Unadjusted)</span>`;
+      }
+
+      totalPrincipalEl.textContent = formatCurrency(totalPrincipal);
+      totalInterestEl.textContent = `+${formatCurrency(totalInterest)}`;
+      totalReturnPctEl.textContent = `+${returnPct.toFixed(1)}%`;
+
+      if (taxType === 'taxable') {
+        totalTaxEl.textContent = `${formatCurrency(taxAmount)} (15%)`;
+      } else {
+        totalTaxEl.textContent = `$0 (Tax-Advantaged)`;
+      }
+
+      fireMonthlyPayoutEl.textContent = `~${formatCurrency(fireMonthly)} / mo`;
+
+      principalPctEl.textContent = `${principalPct.toFixed(1)}%`;
+      interestPctEl.textContent = `${interestPct.toFixed(1)}%`;
+      barPrincipal.style.width = `${principalPct}%`;
+      barInterest.style.width = `${interestPct}%`;
+
+      renderTable(years);
+
+      syncUrlParams(P, PMT, rateInput.value, years, compFreq, timing, taxType, useInflation, inflationRateInput.value);
+    }
+
+    function renderTable(totalYears) {
+      tableRowCountEl.textContent = `${totalYears} Years Total`;
+      tableBody.innerHTML = '';
+
+      const maxBalance = fullAnnualData.length > 0 ? fullAnnualData[fullAnnualData.length - 1].endingBalance : 1;
+      const shouldFilter = !isTableExpanded && totalYears > 10;
+
+      fullAnnualData.forEach(row => {
+        if (shouldFilter) {
+          const isKeyYear = [1, 3, 5, 10, 15, 20, 25, 30, totalYears].includes(row.year);
+          if (!isKeyYear) return;
+        }
+
+        const barWidth = Math.min(100, Math.max(3, (row.endingBalance / maxBalance) * 100));
+        const tr = document.createElement('tr');
+        tr.className = row.year === totalYears ? 'bg-emerald-500/10 font-bold' : 'hover:bg-slate-800/40 transition';
+
+        tr.innerHTML = `
+          <td class="py-2.5 px-3 text-center font-sans font-bold ${row.year === totalYears ? 'text-emerald-400' : 'text-slate-400'}">
+            Yr ${row.year}
+          </td>
+          <td class="py-2.5 px-3 text-right text-slate-300">${formatCurrency(row.beginningBalance)}</td>
+          <td class="py-2.5 px-3 text-right text-slate-400">+${formatCurrency(row.annualDeposit)}</td>
+          <td class="py-2.5 px-3 text-right text-emerald-400 font-semibold">+${formatCurrency(row.annualInterest)}</td>
+          <td class="py-2.5 px-3 text-right text-slate-300 font-semibold">${formatCurrency(row.totalInterest)}</td>
+          <td class="py-2.5 px-3 text-right ${row.year === totalYears ? 'text-emerald-300 font-black' : 'text-white font-bold'}">
+            ${formatCurrency(row.endingBalance)}
+          </td>
+          <td class="py-2.5 px-3 text-center hidden md:table-cell">
+            <div class="w-full bg-slate-950 h-2 rounded-full overflow-hidden p-0.5 border border-slate-800">
+              <div class="bg-gradient-to-r from-teal-500 to-emerald-400 h-full rounded-full" style="width: ${barWidth}%;"></div>
+            </div>
+          </td>
+        `;
+        tableBody.appendChild(tr);
+      });
+    }
+
+    function toggleTableExpand() {
+      isTableExpanded = !isTableExpanded;
+      const btn = document.getElementById('table-toggle-btn');
+      btn.textContent = isTableExpanded ? 'Compact View' : 'Full Schedule View';
+      const years = parseInt(yearsInput.value, 10) || 20;
+      renderTable(years);
+    }
+
+    function syncUrlParams(P, PMT, rate, years, comp, timing, tax, inf, infRate) {
+      const params = new URLSearchParams();
+      params.set('init', P);
+      params.set('monthly', PMT);
+      params.set('rate', rate);
+      params.set('years', years);
+      params.set('comp', comp);
+      params.set('timing', timing);
+      params.set('tax', tax);
+      if (inf) {
+        params.set('inf', '1');
+        params.set('infrate', infRate);
+      } else {
+        params.set('inf', '0');
+      }
+      const newUrl = `${window.location.pathname}?${params.toString()}`;
+      window.history.replaceState({}, '', newUrl);
+    }
+
+    function restoreFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.has('init')) initialInput.value = parseNumber(params.get('init')).toLocaleString('en-US');
+      if (params.has('monthly')) monthlyInput.value = parseNumber(params.get('monthly')).toLocaleString('en-US');
+      if (params.has('rate')) rateInput.value = params.get('rate');
+      if (params.has('years')) {
+        const y = parseInt(params.get('years'), 10);
+        yearsInput.value = y;
+        yearsRange.value = y;
+        updateYearsUI(y);
+      }
+      if (params.has('comp')) freqSelect.value = params.get('comp');
+      if (params.has('timing')) timingSelect.value = params.get('timing');
+      if (params.has('tax')) taxSelect.value = params.get('tax');
+      if (params.has('inf')) inflationToggle.checked = (params.get('inf') === '1');
+      if (params.has('infrate')) inflationRateInput.value = params.get('infrate');
+
+      formatInputField(initialInput, initialBadge);
+      formatInputField(monthlyInput, monthlyBadge, true);
+    }
+
+    function getSummaryText() {
+      const P = initialInput.value;
+      const PMT = monthlyInput.value;
+      const rate = rateInput.value;
+      const years = yearsInput.value;
+      const finalVal = totalFutureEl.textContent.trim();
+      const principal = totalPrincipalEl.textContent.trim();
+      const gain = totalInterestEl.textContent.trim();
+      const fire = fireMonthlyPayoutEl.textContent.trim();
+      const url = window.location.href;
+
+      return `[GoModo Compound Interest Simulator Result]\n` +
+             `• Initial Principal: $${P}\n` +
+             `• Monthly Addition: $${PMT}/mo\n` +
+             `• Horizon: ${years} Years at ${rate}% Annual Return\n` +
+             `----------------------------\n` +
+             `🎉 Future Portfolio Value: ${finalVal}\n` +
+             `• Total Invested: ${principal}\n` +
+             `• Compound Earnings: ${gain}\n` +
+             `• FIRE 4% Monthly Payout: ${fire}\n` +
+             `----------------------------\n` +
+             `Try the calculator: ${url}`;
+    }
+
+    function copyResultSummary() {
+      const text = getSummaryText();
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('Summary copied to clipboard!');
+      }).catch(() => {
+        showToast('Failed to copy summary.');
+      });
+    }
+
+    function shareX() {
+      const text = encodeURIComponent(`GoModo Compound Interest Calculator: With $${initialInput.value} and $${monthlyInput.value}/mo for ${yearsInput.value} years, your future portfolio reaches ${totalFutureEl.textContent.trim()}!`);
+      const url = encodeURIComponent(window.location.href);
+      window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank', 'noopener,noreferrer');
+    }
+
+    function triggerWebShare() {
+      if (navigator.share) {
+        navigator.share({
+          title: 'GoModo Compound Interest Calculator',
+          text: getSummaryText(),
+          url: window.location.href,
+        }).catch(() => {});
+      } else {
+        copyResultSummary();
+      }
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-message');
+      toastMsg.textContent = msg;
+      toast.classList.remove('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'pointer-events-none');
+      }, 2500);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      restoreFromUrl();
+      calculateAndRender();
+
+      [initialInput, monthlyInput].forEach(inp => {
+        inp.addEventListener('input', () => {
+          const badgeEl = inp === initialInput ? initialBadge : monthlyBadge;
+          formatInputField(inp, badgeEl, inp === monthlyInput);
+          calculateAndRender();
+        });
+      });
+
+      rateInput.addEventListener('input', calculateAndRender);
+      freqSelect.addEventListener('change', calculateAndRender);
+      timingSelect.addEventListener('change', calculateAndRender);
+      taxSelect.addEventListener('change', calculateAndRender);
+      inflationToggle.addEventListener('change', calculateAndRender);
+      inflationRateInput.addEventListener('input', calculateAndRender);
+
+      yearsRange.addEventListener('input', (e) => {
+        const val = parseInt(e.target.value, 10);
+        yearsInput.value = val;
+        updateYearsUI(val);
+        calculateAndRender();
+      });
+
+      yearsInput.addEventListener('input', (e) => {
+        const val = parseInt(e.target.value, 10) || 1;
+        yearsRange.value = Math.min(40, Math.max(1, val));
+        updateYearsUI(val);
+        calculateAndRender();
+      });
+    });
+
+    function toggleToolDropdown(event) {
+      event.stopPropagation();
+      const menu = document.getElementById('tool-dropdown-menu');
+      const arrow = document.getElementById('tool-dropdown-arrow');
+      const isHidden = menu.classList.contains('hidden');
+      if (isHidden) {
+        menu.classList.remove('hidden');
+        if (arrow) arrow.classList.add('rotate-180');
+      } else {
+        menu.classList.add('hidden');
+        if (arrow) arrow.classList.remove('rotate-180');
+      }
+    }
+    document.addEventListener('click', (e) => {
+      const container = document.getElementById('tool-dropdown-container');
+      const menu = document.getElementById('tool-dropdown-menu');
+      const arrow = document.getElementById('tool-dropdown-arrow');
+      if (container && !container.contains(e.target) && menu && !menu.classList.contains('hidden')) {
+        menu.classList.add('hidden');
+        if (arrow) arrow.classList.remove('rotate-180');
+      }
+    });
+  </script>
+</body>
+</html>

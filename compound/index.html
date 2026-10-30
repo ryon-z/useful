@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-47W29ZQ6ZH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-47W29ZQ6ZH');
+  </script>
+  
+  <!-- SEO 최적화 메타태그 -->
+  <title>적립식 복리 계산기 - 주식·ETF 복리의 마법 & 은퇴 자산 시뮬레이터 | GoModo</title>
+  <meta name="description" content="매월 적립식 주식·ETF 투자, ISA·연금저축 펀드 복리 효과를 시뮬레이션하세요. 초기 투자금, 월 적립액, 연수익률, 물가상승률 및 15.4% 세금을 반영한 연도별 자산 성장표와 파이어(FIRE)족 은퇴 생활비 계산기.">
+  <meta name="keywords" content="복리계산기, 적립식복리계산기, 복리의마법, 은퇴자산계산기, 파이어족계산기, 주식복리, ETF적립식투자, ISA비과세, 72의법칙, GoModo">
+  <meta name="author" content="GoModo">
+  <link rel="canonical" href="https://www.gomodo.cloud/compound/">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%2310b981'/><text x='50' y='67' font-size='44' font-family='sans-serif' font-weight='bold' text-anchor='middle' fill='%23022c22'>複</text></svg>">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GoModo (고모도)">
+  <meta property="og:title" content="적립식 복리 계산기 | 복리의 마법 & 은퇴 자산 시뮬레이터 - GoModo">
+  <meta property="og:description" content="매월 꾸준히 모으면 내 자산은 몇 년 뒤 얼마가 될까? 복리 수익률, 물가상승률 실질가치, 연도별 성장표를 즉시 확인하세요.">
+  <meta property="og:url" content="https://www.gomodo.cloud/compound/">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:image" content="https://www.gomodo.cloud/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="적립식 복리 계산기 | GoModo">
+  <meta name="twitter:description" content="초기 투자금과 월 적립액으로 시뮬레이션하는 자산 성장 곡선 및 은퇴 생활비 계산기">
+  <meta name="twitter:image" content="https://www.gomodo.cloud/og-image.png">
+
+  <!-- 검색엔진 지침 -->
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-video-preview:-1">
+  <meta name="naver-site-verification" content="605bb099e12081793e345f48699f772b535b329a">
+
+  <!-- JSON-LD 구조화 데이터 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://www.gomodo.cloud/compound/#webapp",
+        "url": "https://www.gomodo.cloud/compound/",
+        "name": "적립식 복리 계산기 & 은퇴 자산 시뮬레이터",
+        "description": "매월 정기 적립액과 초기 투자금, 기대 연수익률을 기반으로 미래 자산 가치와 은퇴 후 4% 규칙 생활비를 시뮬레이션하는 금융 유틸리티",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "All",
+        "inLanguage": "ko-KR",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "KRW"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "GoModo 홈",
+            "item": "https://www.gomodo.cloud/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "적립식 복리 계산기",
+            "item": "https://www.gomodo.cloud/compound/"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "단리와 복리의 차이점은 무엇인가요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "단리는 최초 투자 원금에 대해서만 이자가 붙지만, 복리는 원금에 더해 발생한 이자에도 다시 이자가 붙는 방식입니다. 투자 기간이 길어질수록 이자가 이자를 낳으며 기하급수적으로 자산이 증식하는 '복리의 마법(스노우볼 효과)'이 나타납니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "72의 법칙이란 무엇인가요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "복리 투자 시 원금이 2배가 되는 데 걸리는 시간을 간단히 계산하는 공식입니다. 숫자 72를 연수익률(%)로 나누면 됩니다. 예를 들어 연평균 수익률이 8%라면 72 ÷ 8 = 9년 만에 원금이 2배로 불어납니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "물가상승률(인플레이션)을 왜 반영해야 하나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "20년 뒤 10억 원은 현재의 10억 원과 구매력이 다릅니다. 연 2.5%의 물가상승률을 가정하면 20년 뒤의 화폐 가치는 현재의 약 61% 수준으로 하락합니다. 실질적인 은퇴 자산 계획을 세우려면 명목 자산뿐만 아니라 물가 보정 후 실질 구매력을 반드시 함께 확인해야 합니다."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Tailwind CSS & FontAwesome CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+  <style>
+    html {
+      font-size: 16px;
+    }
+    @media (min-width: 640px) {
+      html {
+        font-size: 17px;
+      }
+    }
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      letter-spacing: -0.015em;
+    }
+    .shadow-glow-emerald {
+      box-shadow: 0 0 24px rgba(16, 185, 129, 0.25);
+    }
+  </style>
+
+  <!-- 테마 시스템 -->
+  <link rel="stylesheet" href="../theme.css?v=2">
+  <script src="../theme.js"></script>
+  <!-- SHARED:ADSENSE -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4528673716962845" crossorigin="anonymous"></script>
+  <!-- /SHARED:ADSENSE -->
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-emerald-500 selection:text-slate-950">
+
+  <!-- 헤더 네비게이션 -->
+  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto px-4 h-14 sm:h-16 flex items-center justify-between gap-2 sm:gap-3">
+      <div class="flex items-center gap-2 sm:gap-2.5 flex-shrink-0 min-w-0">
+        <a href="../" class="text-slate-400 hover:text-emerald-400 transition p-1.5 sm:p-2 rounded-xl hover:bg-slate-800 flex items-center gap-1 text-xs sm:text-sm font-bold border border-transparent hover:border-slate-700 flex-shrink-0" title="전체 도구 목록으로 이동">
+          <i class="fa-solid fa-arrow-left text-xs sm:text-sm"></i>
+          <span class="hidden sm:inline">도구모음</span>
+        </a>
+        <div class="flex items-center gap-2 flex-shrink-0">
+          <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-400 text-slate-950 flex items-center justify-center font-black text-sm sm:text-base shadow-sm flex-shrink-0">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+          <span class="text-base sm:text-xl font-black tracking-tight text-white whitespace-nowrap">적립식 <span class="text-emerald-400">복리 계산기</span></span>
+        </div>
+      </div>
+      <nav class="flex items-center gap-1.5 sm:gap-2.5 text-xs sm:text-sm font-bold text-slate-300 flex-shrink-0 whitespace-nowrap">
+        <!-- SHARED:TOOL_DROPDOWN -->
+        <div class="relative" id="tool-dropdown-container">
+          <button type="button" onclick="toggleToolDropdown(event)" id="tool-dropdown-btn" class="flex items-center gap-1.5 bg-slate-800/90 hover:bg-slate-700 text-slate-200 hover:text-white px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl border border-slate-700/80 transition active:scale-95 shadow-sm whitespace-nowrap flex-shrink-0" aria-expanded="false" aria-label="도구 목록">
+            <i class="fa-solid fa-shapes text-amber-400 text-xs sm:text-sm"></i>
+            <span class="hidden sm:inline font-bold">도구 목록</span>
+            <span class="sm:hidden font-bold">도구</span>
+            <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition-transform duration-200" id="tool-dropdown-arrow"></i>
+          </button>
+
+          <!-- 드롭다운 메뉴 (대한민국 특화 도구 7개) -->
+          <div id="tool-dropdown-menu" class="hidden absolute right-0 mt-2 w-64 sm:w-72 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl p-2 z-50 divide-y divide-slate-800">
+            <div class="px-3 py-2 text-[11px] font-bold text-slate-400 flex items-center justify-between">
+              <span>GoModo 제공 도구 (7)</span>
+              <a href="../" class="text-[10px] text-amber-400 font-semibold hover:underline">홈으로</a>
+            </div>
+            
+            <div class="pt-1 space-y-1">
+              <a href="../salary/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-won-sign"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-emerald-300 transition truncate">연봉 실수령액 계산기</div>
+                  <div class="text-[10px] text-slate-400 truncate">2026 4대보험 & 비과세</div>
+                </div>
+              </a>
+
+              <a href="../interest/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-coins"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-amber-300 transition truncate">예·적금 만기 이자 계산기</div>
+                  <div class="text-[10px] text-slate-400 truncate">단리/복리 & 시중 최고금리</div>
+                </div>
+              </a>
+
+              <a href="../real-estate/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-house-chimney"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-indigo-300 transition truncate">부동산 복비 & 취득세</div>
+                  <div class="text-[10px] text-slate-400 truncate">중개보수 상한 요율</div>
+                </div>
+              </a>
+
+              <a href="../lottery/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-clover"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-emerald-300 transition truncate">로또 1등 명당 번호 생성기</div>
+                  <div class="text-[10px] text-slate-400 truncate">사주 명리학 & 역대 통계</div>
+                </div>
+              </a>
+
+              <a href="../age/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-cake-candles"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-sky-300 transition truncate">만 나이 & 띠 계산기</div>
+                  <div class="text-[10px] text-slate-400 truncate">연금 수령 & 정년 나이</div>
+                </div>
+              </a>
+
+              <a href="../dday/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-calendar-check"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-rose-300 transition truncate">D-Day & 음력 변환기</div>
+                  <div class="text-[10px] text-slate-400 truncate">기념일 주차별 역산</div>
+                </div>
+              </a>
+
+              <a href="./" class="flex items-center gap-2.5 p-2 rounded-xl bg-slate-800/80 text-emerald-400 transition group">
+                <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-emerald-300 transition truncate">적립식 복리 & 자산 성장 계산기</div>
+                  <div class="text-[10px] text-slate-400 truncate">복리의 마법 & 은퇴 자산 시뮬레이션</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- /SHARED:TOOL_DROPDOWN -->
+
+        <!-- 다크모드 토글 버튼 -->
+        <button id="theme-toggle" type="button" aria-label="화면 모드 전환" class="p-2 sm:p-2.5 text-slate-400 hover:text-white hover:bg-slate-800 rounded-xl transition border border-transparent hover:border-slate-700">
+          <i class="fa-solid fa-moon text-sm"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 메인 컨테이너 -->
+  <main class="max-w-5xl mx-auto px-4 py-6 sm:py-10 space-y-8 flex-1 w-full">
+
+    <!-- 히어로 안내 섹션 -->
+    <div class="text-center space-y-3">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs sm:text-sm font-semibold">
+        <i class="fa-solid fa-bolt text-xs"></i>
+        <span>아인슈타인이 극찬한 세계 8대 불가사의, '복리의 마법'</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+        적립식 복리 & 은퇴 자산 시뮬레이터
+      </h1>
+      <p class="text-xs sm:text-base text-slate-400 max-w-2xl mx-auto leading-relaxed">
+        초기 투자금과 매월 적립액, 기대 수익률을 입력하세요. 복리 스노우볼 효과로 눈덩이처럼 불어나는 미래 자산과 파이어(FIRE)족 은퇴 생활비를 즉시 산출합니다.
+      </p>
+    </div>
+
+    <!-- 계산기 입력 폼 & 실시간 결과 그리드 -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
+
+      <!-- 좌측: 입력 패널 (7열) -->
+      <section class="lg:col-span-7 bg-slate-900/90 border border-slate-800 rounded-3xl p-5 sm:p-7 shadow-xl space-y-6" aria-label="투자 파라미터 입력">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div class="flex items-center gap-2 font-bold text-white text-base sm:text-lg">
+            <i class="fa-solid fa-sliders text-emerald-400"></i>
+            <span>투자 조건 설정</span>
+          </div>
+          <button type="button" onclick="resetForm()" class="text-xs text-slate-400 hover:text-emerald-400 transition flex items-center gap-1">
+            <i class="fa-solid fa-rotate-right"></i>
+            <span>초기화</span>
+          </button>
+        </div>
+
+        <!-- 1. 초기 투자금 (거치금) -->
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <label for="initial-deposit" class="text-xs sm:text-sm font-bold text-slate-300">
+              초기 투자금 (목돈 원금)
+            </label>
+            <span id="initial-deposit-korean" class="text-xs text-emerald-400 font-semibold">1,000만 원</span>
+          </div>
+          <div class="relative">
+            <input type="text" inputmode="numeric" id="initial-deposit" value="10,000,000" class="w-full bg-slate-950 border border-slate-700/80 rounded-2xl px-4 py-3 text-base sm:text-lg font-bold text-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition pr-12 text-right">
+            <span class="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-slate-400 font-bold">원</span>
+          </div>
+          <!-- 퀵 버튼 -->
+          <div class="grid grid-cols-6 gap-1.5 pt-1">
+            <button type="button" onclick="addInitial(1000000)" class="py-1.5 bg-slate-800/80 hover:bg-slate-700 rounded-xl text-[11px] font-semibold text-slate-300 hover:text-emerald-300 border border-slate-700/50 transition">+100만</button>
+            <button type="button" onclick="addInitial(5000000)" class="py-1.5 bg-slate-800/80 hover:bg-slate-700 rounded-xl text-[11px] font-semibold text-slate-300 hover:text-emerald-300 border border-slate-700/50 transition">+500만</button>
+            <button type="button" onclick="addInitial(10000000)" class="py-1.5 bg-slate-800/80 hover:bg-slate-700 rounded-xl text-[11px] font-semibold text-slate-300 hover:text-emerald-300 border border-slate-700/50 transition">+1천만</button>
+            <button type="button" onclick="addInitial(50000000)" class="py-1.5 bg-slate-800/80 hover:bg-slate-700 rounded-xl text-[11px] font-semibold text-slate-300 hover:text-emerald-300 border border-slate-700/50 transition">+5천만</button>
+            <button type="button" onclick="addInitial(100000000)" class="py-1.5 bg-slate-800/80 hover:bg-slate-700 rounded-xl text-[11px] font-semibold text-slate-300 hover:text-emerald-300 border border-slate-700/50 transition">+1억</button>
+            <button type="button" onclick="clearInitial()" class="py-1.5 bg-slate-800/80 hover:bg-red-500/20 text-slate-400 hover:text-red-400 rounded-xl text-[11px] font-semibold border border-slate-700/50 transition">0원</button>
+          </div>
+        </div>
+
+        <!-- 2. 매월 적립액 -->
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <label for="monthly-deposit" class="text-xs sm:text-sm font-bold text-slate-300">
+              매월 정기 적립액
+            </label>
+            <span id="monthly-deposit-korean" class="text-xs text-emerald-400 font-semibold">50만 원</span>
+          </div>
+          <div class="relative">
+            <input type="text" inputmode="numeric" id="monthly-deposit" value="500,000" class="w-full bg-slate-950 border border-slate-700/80 rounded-2xl px-4 py-3 text-base sm:text-lg font-bold text-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition pr-12 text-right">
+            <span class="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-slate-400 font-bold">원</span>
+          </div>
+          <!-- 퀵 버튼 -->
+          <div class="grid grid-cols-6 gap-1.5 pt-1">
+            <button type="button" onclick="addMonthly(100000)" class="py-1.5 bg-slate-800/80 hover:bg-slate-700 rounded-xl text-[11px] font-semibold text-slate-300 hover:text-emerald-300 border border-slate-700/50 transition">+10만</button>
+            <button type="button" onclick="addMonthly(300000)" class="py-1.5 bg-slate-800/80 hover:bg-slate-700 rounded-xl text-[11px] font-semibold text-slate-300 hover:text-emerald-300 border border-slate-700/50 transition">+30만</button>
+            <button type="button" onclick="addMonthly(500000)" class="py-1.5 bg-slate-800/80 hover:bg-slate-700 rounded-xl text-[11px] font-semibold text-slate-300 hover:text-emerald-300 border border-slate-700/50 transition">+50만</button>
+            <button type="button" onclick="addMonthly(1000000)" class="py-1.5 bg-slate-800/80 hover:bg-slate-700 rounded-xl text-[11px] font-semibold text-slate-300 hover:text-emerald-300 border border-slate-700/50 transition">+100만</button>
+            <button type="button" onclick="addMonthly(2000000)" class="py-1.5 bg-slate-800/80 hover:bg-slate-700 rounded-xl text-[11px] font-semibold text-slate-300 hover:text-emerald-300 border border-slate-700/50 transition">+200만</button>
+            <button type="button" onclick="clearMonthly()" class="py-1.5 bg-slate-800/80 hover:bg-red-500/20 text-slate-400 hover:text-red-400 rounded-xl text-[11px] font-semibold border border-slate-700/50 transition">0원</button>
+          </div>
+        </div>
+
+        <!-- 3. 연수익률 & 프리셋 -->
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <label for="annual-rate" class="text-xs sm:text-sm font-bold text-slate-300">
+              예상 연수익률 (연이율)
+            </label>
+            <span class="text-xs text-slate-400">장기 시장 평균: 8~10%</span>
+          </div>
+          <div class="relative">
+            <input type="number" step="0.1" min="0" max="100" id="annual-rate" value="8.0" class="w-full bg-slate-950 border border-slate-700/80 rounded-2xl px-4 py-3 text-base sm:text-lg font-bold text-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition pr-12 text-right">
+            <span class="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-slate-400 font-bold">%</span>
+          </div>
+          <!-- 투자 성향 프리셋 버튼 -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
+            <button type="button" onclick="setRate(3.5)" class="rate-preset-btn p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 border border-slate-700/60 text-left transition" data-rate="3.5">
+              <div class="text-[10px] text-slate-400">안정형 (예금/채권)</div>
+              <div class="text-xs font-bold text-white">3.5%</div>
+            </button>
+            <button type="button" onclick="setRate(7.0)" class="rate-preset-btn p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 border border-slate-700/60 text-left transition" data-rate="7.0">
+              <div class="text-[10px] text-slate-400">중립형 (배당/코스피)</div>
+              <div class="text-xs font-bold text-white">7.0%</div>
+            </button>
+            <button type="button" onclick="setRate(10.0)" class="rate-preset-btn p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 border border-slate-700/60 text-left transition border-emerald-500/80 bg-emerald-500/10" data-rate="10.0">
+              <div class="text-[10px] text-emerald-400 font-medium">성장형 (S&P 500)</div>
+              <div class="text-xs font-bold text-emerald-300">10.0%</div>
+            </button>
+            <button type="button" onclick="setRate(15.0)" class="rate-preset-btn p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 border border-slate-700/60 text-left transition" data-rate="15.0">
+              <div class="text-[10px] text-slate-400">공격형 (나스닥100)</div>
+              <div class="text-xs font-bold text-white">15.0%</div>
+            </button>
+          </div>
+        </div>
+
+        <!-- 4. 투자 기간 (년) -->
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <label for="investment-years" class="text-xs sm:text-sm font-bold text-slate-300">
+              투자 기간
+            </label>
+            <span id="investment-years-badge" class="text-xs font-bold text-emerald-400">20년 (240개월)</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <input type="range" min="1" max="40" step="1" id="years-range" value="20" class="flex-1 accent-emerald-500 cursor-pointer h-2 bg-slate-800 rounded-lg">
+            <div class="relative w-24 flex-shrink-0">
+              <input type="number" min="1" max="50" id="investment-years" value="20" class="w-full bg-slate-950 border border-slate-700/80 rounded-xl px-3 py-2 text-sm font-bold text-white focus:outline-none focus:border-emerald-500 text-right pr-8">
+              <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 font-bold">년</span>
+            </div>
+          </div>
+          <!-- 기간 퀵 프리셋 -->
+          <div class="grid grid-cols-5 gap-1.5 pt-1">
+            <button type="button" onclick="setYears(5)" class="years-preset-btn py-1.5 bg-slate-800/80 hover:bg-slate-700 rounded-xl text-xs font-semibold text-slate-300 border border-slate-700/50 transition" data-years="5">5년</button>
+            <button type="button" onclick="setYears(10)" class="years-preset-btn py-1.5 bg-slate-800/80 hover:bg-slate-700 rounded-xl text-xs font-semibold text-slate-300 border border-slate-700/50 transition" data-years="10">10년</button>
+            <button type="button" onclick="setYears(15)" class="years-preset-btn py-1.5 bg-slate-800/80 hover:bg-slate-700 rounded-xl text-xs font-semibold text-slate-300 border border-slate-700/50 transition" data-years="15">15년</button>
+            <button type="button" onclick="setYears(20)" class="years-preset-btn py-1.5 bg-slate-800/80 hover:bg-slate-700 rounded-xl text-xs font-semibold text-emerald-400 border border-emerald-500/50 bg-emerald-500/10 transition" data-years="20">20년</button>
+            <button type="button" onclick="setYears(30)" class="years-preset-btn py-1.5 bg-slate-800/80 hover:bg-slate-700 rounded-xl text-xs font-semibold text-slate-300 border border-slate-700/50 transition" data-years="30">30년</button>
+          </div>
+        </div>
+
+        <!-- 5. 고급 옵션 (복리 주기, 납입 시점, 세금, 물가상승률) -->
+        <div class="pt-2 border-t border-slate-800 space-y-4">
+          <div class="text-xs font-bold text-slate-400 flex items-center gap-1.5">
+            <i class="fa-solid fa-gear text-emerald-400"></i>
+            <span>세부 설정 & 과세 옵션</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- 복리 주기 -->
+            <div class="space-y-1.5">
+              <label for="compound-frequency" class="text-xs font-semibold text-slate-300">복리 계산 주기</label>
+              <select id="compound-frequency" class="w-full bg-slate-950 border border-slate-700/80 rounded-xl px-3 py-2 text-xs font-bold text-white focus:outline-none focus:border-emerald-500">
+                <option value="12" selected>매월 복리 (월복리 - 기본)</option>
+                <option value="1">매년 복리 (연복리)</option>
+                <option value="4">매분기 복리 (분기복리)</option>
+                <option value="365">매일 복리 (일복리)</option>
+              </select>
+            </div>
+
+            <!-- 적립 시점 -->
+            <div class="space-y-1.5">
+              <label for="deposit-timing" class="text-xs font-semibold text-slate-300">월 적립 시점</label>
+              <select id="deposit-timing" class="w-full bg-slate-950 border border-slate-700/80 rounded-xl px-3 py-2 text-xs font-bold text-white focus:outline-none focus:border-emerald-500">
+                <option value="beginning" selected>월초 납입 (시작일 - 일반적)</option>
+                <option value="end">월말 납입 (말일)</option>
+              </select>
+            </div>
+
+            <!-- 과세 방식 -->
+            <div class="space-y-1.5">
+              <label for="tax-type" class="text-xs font-semibold text-slate-300">세금 및 계좌 종류</label>
+              <select id="tax-type" class="w-full bg-slate-950 border border-slate-700/80 rounded-xl px-3 py-2 text-xs font-bold text-white focus:outline-none focus:border-emerald-500">
+                <option value="normal" selected>일반과세 (이자/배당소득세 15.4%)</option>
+                <option value="taxfree">비과세 / 절세계좌 (ISA·연금저축 0%)</option>
+              </select>
+            </div>
+
+            <!-- 물가상승률 보정 -->
+            <div class="space-y-1.5">
+              <div class="flex items-center justify-between">
+                <label for="inflation-rate" class="text-xs font-semibold text-slate-300">물가상승률 (실질가치)</label>
+                <label class="inline-flex items-center gap-1 cursor-pointer">
+                  <input type="checkbox" id="inflation-toggle" checked class="rounded border-slate-700 text-emerald-500 focus:ring-emerald-500 bg-slate-950">
+                  <span class="text-[10px] text-slate-400">적용</span>
+                </label>
+              </div>
+              <div class="relative">
+                <input type="number" step="0.1" min="0" max="20" id="inflation-rate" value="2.5" class="w-full bg-slate-950 border border-slate-700/80 rounded-xl px-3 py-2 text-xs font-bold text-white focus:outline-none focus:border-emerald-500 pr-8 text-right">
+                <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 font-bold">%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- 우측: 결과 대시보드 & KPI 카드 (5열) -->
+      <section class="lg:col-span-5 space-y-4" aria-label="복리 시뮬레이션 결과">
+
+        <!-- 메인 미래 자산 카드 -->
+        <div class="bg-gradient-to-b from-slate-900 to-slate-950 border-2 border-emerald-500/40 rounded-3xl p-5 sm:p-6 shadow-glow-emerald space-y-5">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-emerald-400 flex items-center gap-1.5">
+              <i class="fa-solid fa-trophy"></i>
+              <span id="result-years-badge">20년 뒤 예상 최종 자산</span>
+            </span>
+            <span id="multiplier-badge" class="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-extrabold border border-emerald-500/30">
+              원금의 2.9배
+            </span>
+          </div>
+
+          <!-- 최종 만기 금액 -->
+          <div class="space-y-1">
+            <div class="text-3xl sm:text-4xl font-black text-white tracking-tight flex items-baseline gap-1" id="total-future-value">
+              3억 7,854만 원
+            </div>
+            <div id="real-purchasing-power" class="text-xs text-slate-400 flex items-center gap-1">
+              <i class="fa-solid fa-coins text-amber-400 text-[10px]"></i>
+              <span>물가반영 실질구매력: <strong>현재 가치 약 2억 3,102만 원</strong></span>
+            </div>
+          </div>
+
+          <!-- 원금 vs 복리 이자 비중 프로그레스 바 -->
+          <div class="space-y-2 pt-2 border-t border-slate-800">
+            <div class="flex items-center justify-between text-xs font-semibold">
+              <span class="text-sky-400 flex items-center gap-1">
+                <span class="w-2.5 h-2.5 rounded-full bg-sky-500 inline-block"></span>
+                원금 <span id="principal-pct">34.3%</span>
+              </span>
+              <span class="text-emerald-400 flex items-center gap-1">
+                복리 수익 <span id="interest-pct">65.7%</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span>
+              </span>
+            </div>
+            <div class="w-full h-3.5 bg-slate-950 rounded-full overflow-hidden flex p-0.5 border border-slate-800">
+              <div id="bar-principal" class="h-full bg-sky-500 rounded-l-full transition-all duration-300" style="width: 34.3%;"></div>
+              <div id="bar-interest" class="h-full bg-emerald-400 rounded-r-full transition-all duration-300" style="width: 65.7%;"></div>
+            </div>
+          </div>
+
+          <!-- 3개 세부 지표 -->
+          <div class="grid grid-cols-2 gap-3 pt-1">
+            <div class="bg-slate-950/70 border border-slate-800/80 rounded-2xl p-3">
+              <div class="text-[11px] text-slate-400 font-medium">총 투자 원금</div>
+              <div class="text-sm sm:text-base font-extrabold text-white mt-0.5" id="total-principal-value">1억 3,000만 원</div>
+            </div>
+            <div class="bg-slate-950/70 border border-slate-800/80 rounded-2xl p-3">
+              <div class="text-[11px] text-slate-400 font-medium">총 복리 수익 (세전)</div>
+              <div class="text-sm sm:text-base font-extrabold text-emerald-400 mt-0.5" id="total-interest-value">+2억 4,854만 원</div>
+            </div>
+          </div>
+
+          <!-- 세금 & 세후 수익률 -->
+          <div class="bg-slate-950/70 border border-slate-800/80 rounded-2xl p-3 flex items-center justify-between text-xs">
+            <div>
+              <span class="text-slate-400">공제 세금:</span>
+              <span class="text-slate-200 font-bold ml-1" id="total-tax-value">3,827만 원 (15.4%)</span>
+            </div>
+            <div>
+              <span class="text-slate-400">총 투자 수익률:</span>
+              <span class="text-emerald-400 font-bold ml-1" id="total-return-pct">+191.2%</span>
+            </div>
+          </div>
+
+          <!-- 파이어(FIRE)족 4% 규칙 은퇴 생활비 박스 -->
+          <div class="bg-emerald-950/30 border border-emerald-500/30 rounded-2xl p-4 space-y-1.5">
+            <div class="flex items-center justify-between text-xs">
+              <span class="font-bold text-emerald-400 flex items-center gap-1.5">
+                <i class="fa-solid fa-umbrella-beach"></i>
+                <span>파이어(FIRE) 은퇴 4% 규칙</span>
+              </span>
+              <span class="text-[10px] text-emerald-500/80 font-medium">트리니티 연구 기준</span>
+            </div>
+            <div class="flex items-baseline justify-between pt-1">
+              <span class="text-xs text-slate-300">원금 보존형 월 인출 생활비:</span>
+              <span class="text-base sm:text-lg font-black text-emerald-300" id="fire-monthly-payout">월 약 126만 원</span>
+            </div>
+            <p class="text-[10px] text-slate-400 leading-tight">
+              * 만기 시점 총자산의 연 4%를 12개월로 나눈 금액으로, 원금을 훼손하지 않고 평생 인출 가능한 금액입니다.
+            </p>
+          </div>
+
+          <!-- 공유 및 1클릭 복사 액션 버튼 -->
+          <div class="pt-2 flex items-center gap-2">
+            <button type="button" onclick="copyResultSummary()" class="flex-1 py-2.5 px-3 bg-emerald-500 hover:bg-emerald-400 text-slate-950 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-1.5 transition active:scale-95 shadow-md">
+              <i class="fa-regular fa-copy"></i>
+              <span id="copy-btn-text">결과 요약 복사</span>
+            </button>
+            <button type="button" onclick="shareKakao()" class="py-2.5 px-3 bg-[#FEE500] hover:bg-[#FDD835] text-[#3C1E1E] rounded-xl font-bold text-xs flex items-center justify-center gap-1 transition active:scale-95 shadow-sm" title="카카오톡 공유">
+              <i class="fa-solid fa-comment"></i>
+              <span class="hidden sm:inline">카카오톡</span>
+            </button>
+            <button type="button" onclick="shareX()" class="py-2.5 px-3 bg-slate-800 hover:bg-slate-700 text-white rounded-xl font-bold text-xs flex items-center justify-center transition active:scale-95 border border-slate-700" title="X(트위터) 공유">
+              <i class="fa-brands fa-x-twitter"></i>
+            </button>
+            <button type="button" onclick="triggerWebShare()" class="py-2.5 px-3 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-xl font-bold text-xs flex items-center justify-center transition active:scale-95 border border-slate-700" title="기타 공유">
+              <i class="fa-solid fa-share-nodes"></i>
+            </button>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+
+    <!-- 하단 전체 너비: 연도별 자산 성장 상세 테이블 (Amortization / Growth Schedule) -->
+    <section class="bg-slate-900/90 border border-slate-800 rounded-3xl p-5 sm:p-7 shadow-xl space-y-4" aria-label="연도별 자산 성장 스케줄표">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-4">
+        <div>
+          <h2 class="text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+            <i class="fa-solid fa-table-list text-emerald-400"></i>
+            <span>연도별 자산 성장 상세 스케줄표</span>
+          </h2>
+          <p class="text-xs text-slate-400 mt-0.5">
+            시간이 지날수록 이자가 원금 적립액을 추월하는 '스노우볼(Snowball)' 곡선을 확인하세요.
+          </p>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-xs text-slate-400 font-medium" id="table-row-count">총 20개년</span>
+          <button type="button" onclick="toggleTableExpand()" id="table-toggle-btn" class="text-xs bg-slate-800 hover:bg-slate-700 text-emerald-400 px-3 py-1.5 rounded-xl border border-slate-700 transition font-bold">
+            간략히 보기
+          </button>
+        </div>
+      </div>
+
+      <!-- 반응형 스크롤 테이블 -->
+      <div class="overflow-x-auto rounded-2xl border border-slate-800">
+        <table class="w-full text-left text-xs sm:text-sm text-slate-300 border-collapse">
+          <thead class="bg-slate-950 text-slate-400 text-[11px] sm:text-xs uppercase font-bold border-b border-slate-800">
+            <tr>
+              <th scope="col" class="py-3 px-3 text-center w-14">연차</th>
+              <th scope="col" class="py-3 px-3 text-right">연초 원금</th>
+              <th scope="col" class="py-3 px-3 text-right">당해 적립액</th>
+              <th scope="col" class="py-3 px-3 text-right text-emerald-400">당해 이자</th>
+              <th scope="col" class="py-3 px-3 text-right">누적 복리수익</th>
+              <th scope="col" class="py-3 px-3 text-right text-white font-extrabold">연말 총자산</th>
+              <th scope="col" class="py-3 px-3 text-center w-28 hidden md:table-cell">자산 성장 비중</th>
+            </tr>
+          </thead>
+          <tbody id="growth-table-body" class="divide-y divide-slate-800/60 font-mono">
+            <!-- 자바스크립트로 동적 렌더링 -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 3단 SEO & 금융 가이드 콘텐츠 (피처드 스니펫 & Thin Content 방지) -->
+    <section class="space-y-6 pt-4 border-t border-slate-800/80" aria-label="복리 투자 원리 및 가이드">
+
+      <!-- 1. 복리의 공식과 72의 법칙 -->
+      <div class="bg-slate-900/60 border border-slate-800/80 rounded-3xl p-5 sm:p-7 space-y-4">
+        <h3 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-square-root-variable text-emerald-400"></i>
+          <span>복리 계산 공식과 '72의 법칙'</span>
+        </h3>
+        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+          복리(Compound Interest)는 발생한 이자가 다시 원금에 가산되어 다음 주기의 이자를 발생시키는 금융 수학의 핵심 원리입니다. 
+          알베르트 아인슈타인은 복리를 두고 <em>"인류의 8번째 불가사의이며, 이를 이해하는 자는 돈을 벌고 이해하지 못하는 자는 대가를 치른다"</em>고 말했습니다.
+        </p>
+
+        <!-- 공식 박스 -->
+        <div class="bg-slate-950 border border-slate-800 rounded-2xl p-4 space-y-2 font-mono text-xs sm:text-sm">
+          <div class="text-emerald-400 font-bold">복리 최종 자산 계산 공식 (적립식 병행):</div>
+          <div class="text-slate-200 overflow-x-auto py-1">
+            A = P &times; (1 + r/n)<sup>nt</sup> + PMT &times; [((1 + r/n)<sup>nt</sup> - 1) / (r/n)]
+          </div>
+          <div class="text-[11px] text-slate-400 space-y-0.5 pt-1">
+            <div>&bull; <strong>P</strong>: 초기 거치 투자금 (Initial Principal)</div>
+            <div>&bull; <strong>PMT</strong>: 주기별 정기 적립액 (Periodic Deposit)</div>
+            <div>&bull; <strong>r</strong>: 연이자율 / 연간 수익률 (Annual Interest Rate)</div>
+            <div>&bull; <strong>n</strong>: 연간 복리 횟수 (월복리 = 12, 연복리 = 1)</div>
+            <div>&bull; <strong>t</strong>: 투자 기간(년, Years)</div>
+          </div>
+        </div>
+
+        <div class="bg-emerald-500/10 border border-emerald-500/20 rounded-2xl p-4 text-xs sm:text-sm text-emerald-300 leading-relaxed">
+          <strong>💡 72의 법칙 (Rule of 72):</strong><br>
+          복리 투자 시 내 원금이 정확히 2배가 되는 데 걸리는 햇수를 1초 만에 구하는 암산 공식입니다.<br>
+          <span class="font-mono font-bold text-white">걸리는 연수 &approx; 72 &divide; 연수익률(%)</span><br>
+          예를 들어 연 7.2%의 수익률이라면 약 10년(72 &divide; 7.2) 만에, 연 10%의 S&amp;P 500에 투자한다면 단 7.2년 만에 원금이 2배로 불어납니다.
+        </div>
+      </div>
+
+      <!-- 2. 단리 vs 복리 20년 비교표 & 수익률별 조견표 -->
+      <div class="bg-slate-900/60 border border-slate-800/80 rounded-3xl p-5 sm:p-7 space-y-4">
+        <h3 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-scale-balanced text-amber-400"></i>
+          <span>단리 vs 복리 실전 20년 비교 (원금 1천만 원 + 월 50만 원 적립 시)</span>
+        </h3>
+        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+          원금 1,000만 원으로 시작하여 매월 50만 원씩 20년간 연 8% 수익률로 투자했을 때, 단리와 복리의 격차는 시간이 갈수록 극단적으로 벌어집니다.
+        </p>
+
+        <div class="overflow-x-auto rounded-2xl border border-slate-800">
+          <table class="w-full text-left text-xs sm:text-sm text-slate-300">
+            <thead class="bg-slate-950 text-slate-400 font-bold border-b border-slate-800 text-[11px] sm:text-xs">
+              <tr>
+                <th class="py-2.5 px-3">경과 기간</th>
+                <th class="py-2.5 px-3 text-right">총 납입 원금</th>
+                <th class="py-2.5 px-3 text-right">단리 방식 (이자 재투자 X)</th>
+                <th class="py-2.5 px-3 text-right text-emerald-400">복리 방식 (월복리 재투자)</th>
+                <th class="py-2.5 px-3 text-right text-amber-300 font-extrabold">복리의 초과 수익</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800/60 font-mono">
+              <tr>
+                <td class="py-2.5 px-3 font-sans font-semibold">5년차</td>
+                <td class="py-2.5 px-3 text-right">4,000만 원</td>
+                <td class="py-2.5 px-3 text-right">4,800만 원</td>
+                <td class="py-2.5 px-3 text-right text-emerald-400">5,145만 원</td>
+                <td class="py-2.5 px-3 text-right text-amber-300 font-bold">+345만 원</td>
+              </tr>
+              <tr>
+                <td class="py-2.5 px-3 font-sans font-semibold">10년차</td>
+                <td class="py-2.5 px-3 text-right">7,000만 원</td>
+                <td class="py-2.5 px-3 text-right">9,800만 원</td>
+                <td class="py-2.5 px-3 text-right text-emerald-400">1억 1,939만 원</td>
+                <td class="py-2.5 px-3 text-right text-amber-300 font-bold">+2,139만 원</td>
+              </tr>
+              <tr>
+                <td class="py-2.5 px-3 font-sans font-semibold">15년차</td>
+                <td class="py-2.5 px-3 text-right">1억 원</td>
+                <td class="py-2.5 px-3 text-right">1억 6,000만 원</td>
+                <td class="py-2.5 px-3 text-right text-emerald-400">2억 2,058만 원</td>
+                <td class="py-2.5 px-3 text-right text-amber-300 font-bold">+6,058만 원</td>
+              </tr>
+              <tr class="bg-emerald-500/10">
+                <td class="py-2.5 px-3 font-sans font-bold text-white">20년차 (최종)</td>
+                <td class="py-2.5 px-3 text-right text-slate-200">1억 3,000만 원</td>
+                <td class="py-2.5 px-3 text-right text-slate-200">2억 3,400만 원</td>
+                <td class="py-2.5 px-3 text-right text-emerald-300 font-extrabold">3억 7,854만 원</td>
+                <td class="py-2.5 px-3 text-right text-amber-300 font-black">+1억 4,454만 원</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 3. 자주 묻는 질문 (FAQ Accordion) -->
+      <div class="bg-slate-900/60 border border-slate-800/80 rounded-3xl p-5 sm:p-7 space-y-4">
+        <h3 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-circle-question text-sky-400"></i>
+          <span>자주 묻는 질문 (FAQ)</span>
+        </h3>
+
+        <div class="space-y-3">
+          <details class="group bg-slate-950/70 border border-slate-800/80 rounded-2xl p-4 transition [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-xs sm:text-sm text-slate-200 group-hover:text-emerald-400 transition">
+              <span>Q. 복리 효과를 극대화할 수 있는 비과세/절세 계좌는 어떻게 활용하나요?</span>
+              <i class="fa-solid fa-chevron-down text-xs text-slate-500 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <p class="mt-3 text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-slate-800/60 pt-3">
+              일반 주식/예금 계좌에서는 매년 배당금이나 이자가 발생할 때마다 15.4%의 소득세가 원천징수되어 복리로 재투자되는 원금이 깎입니다. 
+              하지만 <strong>ISA(개인종합자산관리계좌)</strong>, <strong>연금저축펀드</strong>, <strong>IRP(개인형퇴직연금)</strong>를 활용하면 운용 기간 중 세금이 0원으로 과세이연되어 세금으로 나갈 돈까지 고스란히 복리 이자를 굴릴 수 있어 20년 장기 투자 시 수천만 원의 세후 수익 차이가 발생합니다.
+            </p>
+          </details>
+
+          <details class="group bg-slate-950/70 border border-slate-800/80 rounded-2xl p-4 transition [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-xs sm:text-sm text-slate-200 group-hover:text-emerald-400 transition">
+              <span>Q. 파이어(FIRE)족의 '4% 규칙(Safe Withdrawal Rate)'이란 무엇인가요?</span>
+              <summary-icon class="fa-solid fa-chevron-down text-xs text-slate-500 group-open:rotate-180 transition-transform"></summary-icon>
+            </summary>
+            <p class="mt-3 text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-slate-800/60 pt-3">
+              미국 텍사스 트리니티 대학교의 교수진이 수십 년간의 주식(S&amp;P 500) 및 미국 국채 역사적 데이터를 분석한 연구 결과입니다. 
+              은퇴 시점 총 자산의 4%를 첫해에 인출하고, 이후 매년 물가상승률만큼 인출액을 늘려가더라도 30년 이상 포트폴리오 원금이 고갈되지 않을 확률이 95% 이상이라는 결론을 도출했습니다. 
+              즉, 연간 생활비의 25배를 모으면 경제적 자유를 달성할 수 있습니다.
+            </p>
+          </details>
+
+          <details class="group bg-slate-950/70 border border-slate-800/80 rounded-2xl p-4 transition [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-xs sm:text-sm text-slate-200 group-hover:text-emerald-400 transition">
+              <span>Q. 물가상승률을 감안하면 실질 구매력은 얼마나 줄어드나요?</span>
+              <i class="fa-solid fa-chevron-down text-xs text-slate-500 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <p class="mt-3 text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-slate-800/60 pt-3">
+              한국은행 및 미국 연준(Fed)의 장기 물가 안정 목표치는 연 2.0%~2.5% 수준입니다. 
+              만약 매년 물가가 2.5%씩 상승한다면 20년 뒤 1억 원의 실질 가치는 현재의 약 6,102만 원(약 39% 구매력 하락)으로 떨어집니다. 
+              따라서 은행 예금(연 3~3.5%)에만 넣어두면 실질 수익률은 1% 미만이 되므로, 인플레이션을 헤지하기 위해 주식/ETF 등의 자산 배분이 필수적입니다.
+            </p>
+          </details>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- SHARED:FOOTER -->
+  <footer class="border-t border-slate-800 bg-slate-950 text-slate-400 py-8 text-xs text-center mt-auto">
+    <div class="max-w-5xl mx-auto px-4 space-y-4">
+      <!-- 1. 법적 고지 및 소개 링크 -->
+      <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-semibold text-slate-400">
+        <a href="../about/" class="hover:text-emerald-400 transition">서비스 소개</a>
+        <span>•</span>
+        <a href="../terms/" class="hover:text-emerald-400 transition">이용약관 및 면책조항</a>
+        <span>•</span>
+        <a href="../privacy/" class="hover:text-emerald-400 transition">개인정보처리방침</a>
+      </div>
+
+      <!-- 2. 글로벌 포털 허브 바로가기 -->
+      <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[11px] font-medium text-slate-500">
+        <span class="text-slate-600">지역 / 언어:</span>
+        <a href="../" class="text-slate-300 font-bold">🇰🇷 한국어</a>
+        <span>|</span>
+        <a href="../ja/" class="hover:text-slate-300 transition">🇯🇵 日本語</a>
+        <span>|</span>
+        <a href="../en/" class="hover:text-slate-300 transition">🇺🇸 English</a>
+      </div>
+
+      <!-- 3. 면책 조항 -->
+      <div class="max-w-3xl mx-auto text-[11px] text-slate-500 leading-relaxed border-t border-slate-900 pt-3">
+        본 계산기는 복리 수학 공식 및 과거 시장 수익률에 기초한 시뮬레이션 도구이며, 미래의 투자 수익을 보장하지 않습니다. 실제 투자 시에는 원금 손실 위험이 따를 수 있으며 시장 변동성, 세법 개정, 펀드 수수료 등에 따라 최종 결과가 달라질 수 있습니다.
+      </div>
+
+      <!-- 4. 저작권 & E-E-A-T 지원 이메일 -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-3 text-[11px] text-slate-500">
+        <span>© 2026 GoModo. All rights reserved.</span>
+        <span class="hidden sm:inline">•</span>
+        <span>Contact: <a href="mailto:support@gomodo.cloud" class="hover:text-slate-400 underline">support@gomodo.cloud</a></span>
+      </div>
+    </div>
+  </footer>
+  <!-- /SHARED:FOOTER -->
+
+  <!-- 토스트 알림 컴포넌트 -->
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-slate-900/95 text-white px-4 py-2.5 rounded-2xl border border-slate-700 shadow-2xl text-xs sm:text-sm font-semibold opacity-0 pointer-events-none transition-all duration-300 z-50 flex items-center gap-2">
+    <i class="fa-solid fa-circle-check text-emerald-400"></i>
+    <span id="toast-message">알림</span>
+  </div>
+
+  <!-- 비즈니스 로직 스크립트 -->
+  <script>
+    // 전역 상태 및 DOM 캐시
+    let isTableExpanded = true;
+    let fullAnnualData = [];
+
+    const initialInput = document.getElementById('initial-deposit');
+    const initialKorean = document.getElementById('initial-deposit-korean');
+    const monthlyInput = document.getElementById('monthly-deposit');
+    const monthlyKorean = document.getElementById('monthly-deposit-korean');
+    const rateInput = document.getElementById('annual-rate');
+    const yearsInput = document.getElementById('investment-years');
+    const yearsRange = document.getElementById('years-range');
+    const yearsBadge = document.getElementById('investment-years-badge');
+    const freqSelect = document.getElementById('compound-frequency');
+    const timingSelect = document.getElementById('deposit-timing');
+    const taxSelect = document.getElementById('tax-type');
+    const inflationToggle = document.getElementById('inflation-toggle');
+    const inflationRateInput = document.getElementById('inflation-rate');
+
+    // 결과 엘리먼트
+    const totalFutureEl = document.getElementById('total-future-value');
+    const realPowerEl = document.getElementById('real-purchasing-power');
+    const multiplierBadge = document.getElementById('multiplier-badge');
+    const resultYearsBadge = document.getElementById('result-years-badge');
+    const totalPrincipalEl = document.getElementById('total-principal-value');
+    const totalInterestEl = document.getElementById('total-interest-value');
+    const totalTaxEl = document.getElementById('total-tax-value');
+    const totalReturnPctEl = document.getElementById('total-return-pct');
+    const fireMonthlyPayoutEl = document.getElementById('fire-monthly-payout');
+    const principalPctEl = document.getElementById('principal-pct');
+    const interestPctEl = document.getElementById('interest-pct');
+    const barPrincipal = document.getElementById('bar-principal');
+    const barInterest = document.getElementById('bar-interest');
+    const tableBody = document.getElementById('growth-table-body');
+    const tableRowCountEl = document.getElementById('table-row-count');
+
+    // 숫자 파싱 유틸리티
+    function parseNumber(val) {
+      if (typeof val === 'number') return isNaN(val) ? 0 : val;
+      if (!val) return 0;
+      const clean = String(val).replace(/[^0-9.-]/g, '');
+      const num = parseFloat(clean);
+      return isNaN(num) ? 0 : num;
+    }
+
+    // 세자리 콤마 포맷터
+    function formatNumber(num) {
+      return Math.round(num).toLocaleString('ko-KR');
+    }
+
+    // 한국어 금액 포맷터 (억, 만 원 표기)
+    function formatKoreanMoney(amount) {
+      const abs = Math.abs(Math.round(amount));
+      if (abs === 0) return '0원';
+      const eok = Math.floor(abs / 100000000);
+      const man = Math.floor((abs % 100000000) / 10000);
+      const won = abs % 10000;
+
+      let result = '';
+      if (eok > 0) result += `${eok}억 `;
+      if (man > 0) result += `${man.toLocaleString('ko-KR')}만 `;
+      if (won > 0 && eok === 0 && man === 0) result += `${won.toLocaleString('ko-KR')}`;
+      if (!result.trim().endsWith('원')) result = result.trim() + '원';
+      return (amount < 0 ? '-' : '') + result.trim();
+    }
+
+    // 입력 필드 포맷터
+    function formatInputField(input, koreanEl) {
+      const num = parseNumber(input.value);
+      input.value = num.toLocaleString('ko-KR');
+      if (koreanEl) koreanEl.textContent = formatKoreanMoney(num);
+    }
+
+    // 퀵 버튼 조작 함수
+    function addInitial(amt) {
+      const cur = parseNumber(initialInput.value);
+      initialInput.value = (cur + amt).toLocaleString('ko-KR');
+      formatInputField(initialInput, initialKorean);
+      calculateAndRender();
+    }
+    function clearInitial() {
+      initialInput.value = '0';
+      formatInputField(initialInput, initialKorean);
+      calculateAndRender();
+    }
+    function addMonthly(amt) {
+      const cur = parseNumber(monthlyInput.value);
+      monthlyInput.value = (cur + amt).toLocaleString('ko-KR');
+      formatInputField(monthlyInput, monthlyKorean);
+      calculateAndRender();
+    }
+    function clearMonthly() {
+      monthlyInput.value = '0';
+      formatInputField(monthlyInput, monthlyKorean);
+      calculateAndRender();
+    }
+
+    function setRate(r) {
+      rateInput.value = r.toFixed(1);
+      document.querySelectorAll('.rate-preset-btn').forEach(btn => {
+        const btnRate = parseFloat(btn.dataset.rate);
+        if (Math.abs(btnRate - r) < 0.01) {
+          btn.classList.add('border-emerald-500/80', 'bg-emerald-500/10');
+        } else {
+          btn.classList.remove('border-emerald-500/80', 'bg-emerald-500/10');
+        }
+      });
+      calculateAndRender();
+    }
+
+    function setYears(y) {
+      yearsInput.value = y;
+      yearsRange.value = y;
+      updateYearsUI(y);
+      calculateAndRender();
+    }
+
+    function updateYearsUI(y) {
+      yearsBadge.textContent = `${y}년 (${y * 12}개월)`;
+      resultYearsBadge.textContent = `${y}년 뒤 예상 최종 자산`;
+      document.querySelectorAll('.years-preset-btn').forEach(btn => {
+        const btnYears = parseInt(btn.dataset.years, 10);
+        if (btnYears === y) {
+          btn.classList.add('border-emerald-500/50', 'bg-emerald-500/10', 'text-emerald-400');
+          btn.classList.remove('text-slate-300');
+        } else {
+          btn.classList.remove('border-emerald-500/50', 'bg-emerald-500/10', 'text-emerald-400');
+          btn.classList.add('text-slate-300');
+        }
+      });
+    }
+
+    function resetForm() {
+      initialInput.value = '10,000,000';
+      monthlyInput.value = '500,000';
+      rateInput.value = '8.0';
+      yearsInput.value = '20';
+      yearsRange.value = '20';
+      freqSelect.value = '12';
+      timingSelect.value = 'beginning';
+      taxSelect.value = 'normal';
+      inflationToggle.checked = true;
+      inflationRateInput.value = '2.5';
+      formatInputField(initialInput, initialKorean);
+      formatInputField(monthlyInput, monthlyKorean);
+      updateYearsUI(20);
+      calculateAndRender();
+      showToast('기본값으로 초기화되었습니다.');
+    }
+
+    // 핵심 복리 시뮬레이션 엔진
+    function calculateAndRender() {
+      const P = parseNumber(initialInput.value);
+      const PMT = parseNumber(monthlyInput.value);
+      const annualRate = parseNumber(rateInput.value) / 100;
+      const years = Math.max(1, parseInt(yearsInput.value, 10) || 1);
+      const compFreq = parseInt(freqSelect.value, 10) || 12;
+      const timing = timingSelect.value;
+      const taxType = taxSelect.value;
+      const useInflation = inflationToggle.checked;
+      const inflationRate = parseNumber(inflationRateInput.value) / 100;
+
+      // 월별 및 연도별 시뮬레이션
+      let balance = P;
+      let totalPrincipal = P;
+      let totalInterest = 0;
+      fullAnnualData = [];
+
+      for (let y = 1; y <= years; y++) {
+        const beginningBalance = balance;
+        let annualDeposit = 0;
+        let annualInterest = 0;
+
+        for (let m = 1; m <= 12; m++) {
+          if (timing === 'beginning') {
+            balance += PMT;
+            annualDeposit += PMT;
+            totalPrincipal += PMT;
+          }
+
+          // 월간 이자 계산 (선택한 복리 주기에 따른 환산)
+          // 월복리: 매월 balance * (annualRate / 12)
+          let monthlyInterest = 0;
+          if (compFreq === 12) {
+            monthlyInterest = balance * (annualRate / 12);
+          } else if (compFreq === 1) {
+            monthlyInterest = balance * (Math.pow(1 + annualRate, 1/12) - 1);
+          } else if (compFreq === 4) {
+            monthlyInterest = balance * (Math.pow(1 + annualRate / 4, 4/12) - 1);
+          } else if (compFreq === 365) {
+            monthlyInterest = balance * (Math.pow(1 + annualRate / 365, 365/12) - 1);
+          }
+
+          balance += monthlyInterest;
+          annualInterest += monthlyInterest;
+          totalInterest += monthlyInterest;
+
+          if (timing === 'end') {
+            balance += PMT;
+            annualDeposit += PMT;
+            totalPrincipal += PMT;
+          }
+        }
+
+        fullAnnualData.push({
+          year: y,
+          beginningBalance: Math.round(beginningBalance),
+          annualDeposit: Math.round(annualDeposit),
+          annualInterest: Math.round(annualInterest),
+          totalInterest: Math.round(totalInterest),
+          endingBalance: Math.round(balance)
+        });
+      }
+
+      // 세금 계산
+      let taxAmount = 0;
+      let afterTaxEndingBalance = balance;
+      if (taxType === 'normal') {
+        taxAmount = totalInterest * 0.154; // 이자소득세 14% + 지방소득세 1.4%
+        afterTaxEndingBalance = balance - taxAmount;
+      }
+
+      // 물가상승률 보정 (실질 가치)
+      let realPurchasingPower = afterTaxEndingBalance;
+      if (useInflation && inflationRate > 0) {
+        realPurchasingPower = afterTaxEndingBalance / Math.pow(1 + inflationRate, years);
+      }
+
+      // 수익률 및 배수
+      const returnPct = totalPrincipal > 0 ? ((totalInterest / totalPrincipal) * 100) : 0;
+      const multiplier = totalPrincipal > 0 ? (afterTaxEndingBalance / totalPrincipal) : 1;
+
+      // 파이어(FIRE) 4% 규칙 월 수령액
+      const fireMonthly = (afterTaxEndingBalance * 0.04) / 12;
+
+      // 비중 계산
+      const principalPct = afterTaxEndingBalance > 0 ? Math.min(100, Math.max(0, (totalPrincipal / afterTaxEndingBalance) * 100)) : 100;
+      const interestPct = Math.max(0, 100 - principalPct);
+
+      // UI 렌더링
+      totalFutureEl.textContent = formatKoreanMoney(afterTaxEndingBalance);
+      multiplierBadge.textContent = `원금의 ${multiplier.toFixed(1)}배`;
+      
+      if (useInflation && inflationRate > 0) {
+        realPowerEl.innerHTML = `<i class="fa-solid fa-coins text-amber-400 text-[10px]"></i><span>물가반영(${inflationRateInput.value}%) 실질구매력: <strong class="text-slate-200">현재 가치 약 ${formatKoreanMoney(realPurchasingPower)}</strong></span>`;
+        realPowerEl.classList.remove('hidden');
+      } else {
+        realPowerEl.innerHTML = `<span class="text-slate-500">물가상승률 미반영 (명목 화폐 가치)</span>`;
+      }
+
+      totalPrincipalEl.textContent = formatKoreanMoney(totalPrincipal);
+      totalInterestEl.textContent = `+${formatKoreanMoney(totalInterest)}`;
+      totalReturnPctEl.textContent = `+${returnPct.toFixed(1)}%`;
+      
+      if (taxType === 'normal') {
+        totalTaxEl.textContent = `${formatKoreanMoney(taxAmount)} (15.4%)`;
+      } else {
+        totalTaxEl.textContent = `0원 (비과세·절세 혜택)`;
+      }
+
+      fireMonthlyPayoutEl.textContent = `월 약 ${formatKoreanMoney(fireMonthly)}`;
+
+      principalPctEl.textContent = `${principalPct.toFixed(1)}%`;
+      interestPctEl.textContent = `${interestPct.toFixed(1)}%`;
+      barPrincipal.style.width = `${principalPct}%`;
+      barInterest.style.width = `${interestPct}%`;
+
+      // 테이블 렌더링
+      renderTable(years);
+
+      // URL 파라미터 동기화
+      syncUrlParams(P, PMT, rateInput.value, years, compFreq, timing, taxType, useInflation, inflationRateInput.value);
+    }
+
+    // 연도별 테이블 렌더링
+    function renderTable(totalYears) {
+      tableRowCountEl.textContent = `총 ${totalYears}개년`;
+      tableBody.innerHTML = '';
+
+      const maxBalance = fullAnnualData.length > 0 ? fullAnnualData[fullAnnualData.length - 1].endingBalance : 1;
+
+      // 간략히 보기 모드일 때는 주요 연도만 표시 (1, 2, 3, 5, 10, 15, 20, 25, 30, 마지막)
+      const shouldFilter = !isTableExpanded && totalYears > 10;
+
+      fullAnnualData.forEach(row => {
+        if (shouldFilter) {
+          const isKeyYear = [1, 3, 5, 10, 15, 20, 25, 30, totalYears].includes(row.year);
+          if (!isKeyYear) return;
+        }
+
+        const barWidth = Math.min(100, Math.max(3, (row.endingBalance / maxBalance) * 100));
+        const tr = document.createElement('tr');
+        tr.className = row.year === totalYears ? 'bg-emerald-500/10 font-bold' : 'hover:bg-slate-800/40 transition';
+
+        tr.innerHTML = `
+          <td class="py-2.5 px-3 text-center font-sans font-bold ${row.year === totalYears ? 'text-emerald-400' : 'text-slate-400'}">
+            ${row.year}년
+          </td>
+          <td class="py-2.5 px-3 text-right text-slate-300">${formatNumber(row.beginningBalance)}원</td>
+          <td class="py-2.5 px-3 text-right text-slate-400">+${formatNumber(row.annualDeposit)}원</td>
+          <td class="py-2.5 px-3 text-right text-emerald-400 font-semibold">+${formatNumber(row.annualInterest)}원</td>
+          <td class="py-2.5 px-3 text-right text-slate-300 font-semibold">${formatNumber(row.totalInterest)}원</td>
+          <td class="py-2.5 px-3 text-right ${row.year === totalYears ? 'text-emerald-300 font-black' : 'text-white font-bold'}">
+            ${formatNumber(row.endingBalance)}원
+          </td>
+          <td class="py-2.5 px-3 text-center hidden md:table-cell">
+            <div class="w-full bg-slate-950 h-2 rounded-full overflow-hidden p-0.5 border border-slate-800">
+              <div class="bg-gradient-to-r from-teal-500 to-emerald-400 h-full rounded-full" style="width: ${barWidth}%;"></div>
+            </div>
+          </td>
+        `;
+        tableBody.appendChild(tr);
+      });
+    }
+
+    function toggleTableExpand() {
+      isTableExpanded = !isTableExpanded;
+      const btn = document.getElementById('table-toggle-btn');
+      btn.textContent = isTableExpanded ? '간략히 보기' : '전체 연도 보기';
+      const years = parseInt(yearsInput.value, 10) || 20;
+      renderTable(years);
+    }
+
+    // URL 파라미터 양방향 보존
+    function syncUrlParams(P, PMT, rate, years, comp, timing, tax, inf, infRate) {
+      const params = new URLSearchParams();
+      params.set('init', P);
+      params.set('monthly', PMT);
+      params.set('rate', rate);
+      params.set('years', years);
+      params.set('comp', comp);
+      params.set('timing', timing);
+      params.set('tax', tax);
+      if (inf) {
+        params.set('inf', '1');
+        params.set('infrate', infRate);
+      } else {
+        params.set('inf', '0');
+      }
+      const newUrl = `${window.location.pathname}?${params.toString()}`;
+      window.history.replaceState({}, '', newUrl);
+    }
+
+    function restoreFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      let changed = false;
+
+      if (params.has('init')) {
+        initialInput.value = parseNumber(params.get('init')).toLocaleString('ko-KR');
+        changed = true;
+      }
+      if (params.has('monthly')) {
+        monthlyInput.value = parseNumber(params.get('monthly')).toLocaleString('ko-KR');
+        changed = true;
+      }
+      if (params.has('rate')) {
+        rateInput.value = params.get('rate');
+        changed = true;
+      }
+      if (params.has('years')) {
+        const y = parseInt(params.get('years'), 10);
+        yearsInput.value = y;
+        yearsRange.value = y;
+        updateYearsUI(y);
+        changed = true;
+      }
+      if (params.has('comp')) freqSelect.value = params.get('comp');
+      if (params.has('timing')) timingSelect.value = params.get('timing');
+      if (params.has('tax')) taxSelect.value = params.get('tax');
+      if (params.has('inf')) inflationToggle.checked = (params.get('inf') === '1');
+      if (params.has('infrate')) inflationRateInput.value = params.get('infrate');
+
+      formatInputField(initialInput, initialKorean);
+      formatInputField(monthlyInput, monthlyKorean);
+    }
+
+    // 결과 텍스트 복사 & 공유
+    function getSummaryText() {
+      const P = initialInput.value;
+      const PMT = monthlyInput.value;
+      const rate = rateInput.value;
+      const years = yearsInput.value;
+      const finalVal = totalFutureEl.textContent.trim();
+      const principal = totalPrincipalEl.textContent.trim();
+      const gain = totalInterestEl.textContent.trim();
+      const fire = fireMonthlyPayoutEl.textContent.trim();
+      const url = window.location.href;
+
+      return `[GoModo 적립식 복리 시뮬레이션 결과]\n` +
+             `• 초기 투자금: ${P}원\n` +
+             `• 매월 적립액: ${PMT}원\n` +
+             `• 투자 기간: ${years}년 (연 ${rate}%)\n` +
+             `----------------------------\n` +
+             `🎉 예상 최종 자산: ${finalVal}\n` +
+             `• 총 투자원금: ${principal}\n` +
+             `• 총 복리수익: ${gain}\n` +
+             `• 은퇴 4% 월생활비: ${fire}\n` +
+             `----------------------------\n` +
+             `직접 계산해보기: ${url}`;
+    }
+
+    function copyResultSummary() {
+      const text = getSummaryText();
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('계산 결과가 클립보드에 복사되었습니다.');
+      }).catch(() => {
+        showToast('복사에 실패했습니다. 권한을 확인해주세요.');
+      });
+    }
+
+    function shareKakao() {
+      if (window.Kakao && window.Kakao.isInitialized && window.Kakao.isInitialized()) {
+        window.Kakao.Share.sendDefault({
+          objectType: 'feed',
+          content: {
+            title: '적립식 복리 & 은퇴 자산 시뮬레이터',
+            description: `${yearsInput.value}년 뒤 예상 자산: ${totalFutureEl.textContent.trim()} (${fireMonthlyPayoutEl.textContent.trim()})`,
+            imageUrl: 'https://www.gomodo.cloud/og-image.png',
+            link: {
+              mobileWebUrl: window.location.href,
+              webUrl: window.location.href,
+            },
+          },
+        });
+      } else {
+        copyResultSummary();
+      }
+    }
+
+    function shareX() {
+      const text = encodeURIComponent(`GoModo 적립식 복리 계산기: ${yearsInput.value}년간 월 ${monthlyInput.value}원 적립 시 예상 자산은 ${totalFutureEl.textContent.trim()}!`);
+      const url = encodeURIComponent(window.location.href);
+      window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank', 'noopener,noreferrer');
+    }
+
+    function triggerWebShare() {
+      if (navigator.share) {
+        navigator.share({
+          title: 'GoModo 적립식 복리 계산기',
+          text: getSummaryText(),
+          url: window.location.href,
+        }).catch(() => {});
+      } else {
+        copyResultSummary();
+      }
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-message');
+      toastMsg.textContent = msg;
+      toast.classList.remove('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'pointer-events-none');
+      }, 2500);
+    }
+
+    // 이벤트 리스너 등록
+    window.addEventListener('DOMContentLoaded', () => {
+      restoreFromUrl();
+      calculateAndRender();
+
+      // 입력 이벤트
+      [initialInput, monthlyInput].forEach(inp => {
+        inp.addEventListener('input', () => {
+          const koreanEl = inp === initialInput ? initialKorean : monthlyKorean;
+          formatInputField(inp, koreanEl);
+          calculateAndRender();
+        });
+      });
+
+      rateInput.addEventListener('input', calculateAndRender);
+      freqSelect.addEventListener('change', calculateAndRender);
+      timingSelect.addEventListener('change', calculateAndRender);
+      taxSelect.addEventListener('change', calculateAndRender);
+      inflationToggle.addEventListener('change', calculateAndRender);
+      inflationRateInput.addEventListener('input', calculateAndRender);
+
+      yearsRange.addEventListener('input', (e) => {
+        const val = parseInt(e.target.value, 10);
+        yearsInput.value = val;
+        updateYearsUI(val);
+        calculateAndRender();
+      });
+
+      yearsInput.addEventListener('input', (e) => {
+        const val = parseInt(e.target.value, 10) || 1;
+        yearsRange.value = Math.min(40, Math.max(1, val));
+        updateYearsUI(val);
+        calculateAndRender();
+      });
+    });
+
+    // 헤더 드롭다운 토글 함수
+    function toggleToolDropdown(event) {
+      event.stopPropagation();
+      const menu = document.getElementById('tool-dropdown-menu');
+      const arrow = document.getElementById('tool-dropdown-arrow');
+      const isHidden = menu.classList.contains('hidden');
+      if (isHidden) {
+        menu.classList.remove('hidden');
+        if (arrow) arrow.classList.add('rotate-180');
+      } else {
+        menu.classList.add('hidden');
+        if (arrow) arrow.classList.remove('rotate-180');
+      }
+    }
+    document.addEventListener('click', (e) => {
+      const container = document.getElementById('tool-dropdown-container');
+      const menu = document.getElementById('tool-dropdown-menu');
+      const arrow = document.getElementById('tool-dropdown-arrow');
+      if (container && !container.contains(e.target) && menu && !menu.classList.contains('hidden')) {
+        menu.classList.add('hidden');
+        if (arrow) arrow.classList.remove('rotate-180');
+      }
+    });
+  </script>
+</body>
+</html>

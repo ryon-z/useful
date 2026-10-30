@@ -240,10 +240,10 @@
             <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition-transform duration-200" id="tool-dropdown-arrow"></i>
           </button>
 
-          <!-- 드롭다운 메뉴 (대한민국 특화 도구 6개) -->
+          <!-- 드롭다운 메뉴 (대한민국 특화 도구 7개) -->
           <div id="tool-dropdown-menu" class="hidden absolute right-0 mt-2 w-64 sm:w-72 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl p-2 z-50 divide-y divide-slate-800">
             <div class="px-3 py-2 text-[11px] font-bold text-slate-400 flex items-center justify-between">
-              <span>GoModo 제공 도구 (6)</span>
+              <span>GoModo 제공 도구 (7)</span>
               <a href="./" class="text-[10px] text-amber-400 font-semibold hover:underline">홈으로</a>
             </div>
             
@@ -305,6 +305,16 @@
                 <div class="min-w-0 flex-1">
                   <div class="text-xs font-bold text-white group-hover:text-rose-300 transition truncate">D-Day & 음력 변환기</div>
                   <div class="text-[10px] text-slate-400 truncate">기념일 주차별 역산</div>
+                </div>
+              </a>
+
+              <a href="./compound/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-emerald-300 transition truncate">적립식 복리 & 자산 성장 계산기</div>
+                  <div class="text-[10px] text-slate-400 truncate">복리의 마법 & 은퇴 자산 시뮬레이션</div>
                 </div>
               </a>
             </div>
@@ -600,6 +610,48 @@
 
           <a href="./salary/" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black py-3.5 px-5 rounded-xl transition text-center text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/25 active:scale-95">
             <span>실수령액 바로 계산하기</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+
+        <!-- 7. 적립식 복리 & 은퇴 자산 시뮬레이터 (신규 출시) -->
+        <div class="bg-slate-900 border-2 border-emerald-500/50 hover:border-emerald-400 rounded-3xl p-6 sm:p-7 shadow-xl transition-all flex flex-col justify-between group relative overflow-hidden">
+          <div class="absolute -top-10 -right-10 w-48 h-48 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
+          <div>
+            <div class="flex items-center justify-between gap-3 mb-4">
+              <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center text-2xl shadow-sm">
+                <i class="fa-solid fa-chart-line"></i>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs sm:text-sm font-bold">
+                  ✨ 신규 오픈
+                </span>
+                <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs sm:text-sm font-bold flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> 운영 중
+                </span>
+              </div>
+            </div>
+
+            <h3 class="text-xl sm:text-2xl font-black text-white mb-2 group-hover:text-emerald-300 transition">
+              적립식 복리 &amp; 은퇴 자산 시뮬레이터
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
+              아인슈타인이 극찬한 세계 8대 불가사의, 복리의 마법! 초기 투자금과 매월 적립액, 기대 수익률을 기반으로 연도별 자산 성장표, 72의 법칙, 물가상승률 보정 및 파이어(FIRE)족 은퇴 4% 규칙 생활비를 시뮬레이션합니다.
+            </p>
+
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">적립식 주식·ETF 복리</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">연도별 성장 스케줄표</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">물가상승률(2.5%) 실질가치</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">ISA·연금저축 절세</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">파이어족 4% 은퇴생활비</span>
+            </div>
+          </div>
+
+          <a href="./compound/" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black py-3.5 px-5 rounded-xl transition text-center text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/25 active:scale-95">
+            <span>복리 수익률 계산하기</span>
             <i class="fa-solid fa-arrow-right"></i>
           </a>
         </div>
