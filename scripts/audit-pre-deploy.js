@@ -47,7 +47,7 @@ let totalWarnings = 0;
 process.stdout.write('1. Checking SSOT synchronization (sync-common.js)... ');
 try {
   const syncOutput = execSync('node scripts/sync-common.js', { cwd: rootDir, encoding: 'utf8' });
-  if (syncOutput.includes('0 files updated, 30 files up-to-date') || !syncOutput.includes('files updated')) {
+  if (syncOutput.includes('0 files updated') || !syncOutput.includes('files updated')) {
     console.log(`${colors.green}PASSED${colors.reset}`);
   } else {
     console.log(`${colors.yellow}UPDATED (files were synchronized)${colors.reset}`);

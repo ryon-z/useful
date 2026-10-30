@@ -131,36 +131,42 @@
           {
             "@type": "ListItem",
             "position": 4,
+            "name": "직장인 실시간 월급 타이머 & 화장실 재테크 계산기",
+            "url": "https://www.gomodo.cloud/salary-timer/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
             "name": "적립식 복리 & 자산 성장 계산기",
             "url": "https://www.gomodo.cloud/compound/"
           },
           {
             "@type": "ListItem",
-            "position": 5,
+            "position": 6,
             "name": "예·적금 만기 이자 & 세후 실수령 계산기",
             "url": "https://www.gomodo.cloud/interest/"
           },
           {
             "@type": "ListItem",
-            "position": 6,
+            "position": 7,
             "name": "부동산 중개보수(복비) & 취득세 간편 계산기",
             "url": "https://www.gomodo.cloud/real-estate/"
           },
           {
             "@type": "ListItem",
-            "position": 7,
+            "position": 8,
             "name": "로또 명당 - 사주 맞춤 번호 & 실시간 분석기",
             "url": "https://www.gomodo.cloud/lottery/"
           },
           {
             "@type": "ListItem",
-            "position": 8,
+            "position": 9,
             "name": "만 나이 & 띠·천간지지 간편 계산기",
             "url": "https://www.gomodo.cloud/age/"
           },
           {
             "@type": "ListItem",
-            "position": 9,
+            "position": 10,
             "name": "D-Day 및 음력·양력 기념일 변환기",
             "url": "https://www.gomodo.cloud/dday/"
           }
@@ -258,10 +264,10 @@
             <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition-transform duration-200" id="tool-dropdown-arrow"></i>
           </button>
 
-          <!-- 드롭다운 메뉴 (대한민국 특화 도구 9개) -->
+          <!-- 드롭다운 메뉴 (대한민국 특화 도구 10개) -->
           <div id="tool-dropdown-menu" class="hidden absolute right-0 mt-2 w-64 sm:w-72 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl p-2 z-50 divide-y divide-slate-800">
             <div class="px-3 py-2 text-[11px] font-bold text-slate-400 flex items-center justify-between">
-              <span>GoModo 제공 도구 (9)</span>
+              <span>GoModo 제공 도구 (10)</span>
               <a href="./" class="text-[10px] text-amber-400 font-semibold hover:underline">홈으로</a>
             </div>
             
@@ -293,6 +299,16 @@
                 <div class="min-w-0 flex-1">
                   <div class="text-xs font-bold text-white group-hover:text-emerald-300 transition truncate">연봉 실수령액 계산기</div>
                   <div class="text-[10px] text-slate-400 truncate">2026 4대보험 & 비과세</div>
+                </div>
+              </a>
+
+              <a href="./salary-timer/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-stopwatch-20"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-amber-300 transition truncate">실시간 월급루팡 타이머</div>
+                  <div class="text-[10px] text-slate-400 truncate">초당 실시간 수익 & 화장실 재테크</div>
                 </div>
               </a>
 
@@ -542,6 +558,47 @@
 
           <a href="./salary/" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black py-3.5 px-5 rounded-xl transition text-center text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/25 active:scale-95">
             <span>실수령액 바로 계산하기</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- 도구 4: 직장인 실시간 월급 타이머 & 화장실 재테크 -->
+        <div class="bg-slate-900 border-2 border-amber-500/50 hover:border-amber-400 rounded-3xl p-6 sm:p-7 shadow-xl transition-all flex flex-col justify-between group relative overflow-hidden">
+          <div class="absolute -top-10 -right-10 w-48 h-48 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
+          <div>
+            <div class="flex items-center justify-between gap-3 mb-4">
+              <div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 border border-amber-500/40 flex items-center justify-center text-2xl shadow-sm">
+                <i class="fa-solid fa-stopwatch-20"></i>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs sm:text-sm font-bold">
+                  🔥 2030 바이럴 1위
+                </span>
+                <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs sm:text-sm font-bold flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> 라이브 카운트
+                </span>
+              </div>
+            </div>
+
+            <h3 class="text-xl sm:text-2xl font-black text-white mb-2 group-hover:text-amber-300 transition">
+              직장인 실시간 월급 타이머 &amp; 화장실 재테크
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
+              연봉과 출퇴근 시간을 입력하면 초당 통장에 쌓이는 돈이 0.01원 단위로 실시간 카운트업! 오늘 출근 후 번 돈, 큰일 보면서 번 돈(Poop Salary), 고통의 회의 비용 증발량을 유쾌하게 체감하세요.
+            </p>
+
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">0.01원 단위 실시간 머니 카운터</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">화장실 재테크 스톱워치 💩</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">회의 비용 증발 계산기</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">칼퇴 D-Day 카운트다운</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">월루 레벨 칭호 시스템</span>
+            </div>
+          </div>
+
+          <a href="./salary-timer/" class="w-full bg-gradient-to-r from-amber-500 to-orange-400 hover:from-amber-400 hover:to-orange-300 text-slate-950 font-black py-3.5 px-5 rounded-xl transition text-center text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-amber-500/25 active:scale-95">
+            <span>실시간 수익 확인하기</span>
             <i class="fa-solid fa-arrow-right"></i>
           </a>
         </div>

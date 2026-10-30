@@ -97,6 +97,18 @@
     </image:image>
   </url>
 
+  <!-- 실시간 월급루팡 타이머 & 화장실 재테크 -->
+  <url>
+    <loc>https://www.gomodo.cloud/salary-timer/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.gomodo.cloud/og-image.png</image:loc>
+      <image:title>직장인 실시간 월급 타이머 &amp; 화장실 재테크 계산기</image:title>
+    </image:image>
+  </url>
+
   <!-- 일본 서력 ↔ 와레키 & 이력서 계산기 -->
   <url>
     <loc>https://www.gomodo.cloud/ja/age/</loc>

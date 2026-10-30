@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="ko" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>직장인 실시간 월급 타이머 & 월급루팡 화장실 재테크 계산기 | GoModo</title>
+  <meta name="description" content="연봉과 출퇴근 시간을 입력하면 초당 통장에 꽂히는 돈을 실시간 0.01원 단위로 카운트업! 오늘 출근 후 번 돈, 화장실에 앉아있는 동안 번 돈(Poop Salary), 고통의 회의 인건비 및 퇴근 D-Day 타이머를 실시간으로 확인하세요.">
+  <link rel="canonical" href="https://www.gomodo.cloud/salary-timer/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="직장인 실시간 월급 타이머 &amp; 화장실 재테크 계산기 | GoModo">
+  <meta property="og:description" content="초당 통장에 쌓이는 돈 실시간 0.01원 단위 롤링! 화장실 모드, 회의 비용 계산기, 퇴근 타이머.">
+  <meta property="og:url" content="https://www.gomodo.cloud/salary-timer/">
+  <meta property="og:image" content="https://www.gomodo.cloud/og-image.png">
+
+  <!-- Google AdSense -->
+  
+  <!-- SHARED:ADSENSE -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4528673716962845" crossorigin="anonymous"></script>
+  <!-- /SHARED:ADSENSE -->
+
+  <!-- Tailwind CSS & Font Awesome -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "직장인 실시간 월급 타이머 & 월급루팡 화장실 재테크 계산기",
+        "url": "https://www.gomodo.cloud/salary-timer/",
+        "description": "연봉을 초당 수익으로 환산하여 오늘 근무 중 번 돈, 화장실 체류 시간 동안 번 돈(Poop Salary), 회의 비용을 실시간 0.01원 단위로 측정하는 직장인 라이프스타일 유틸리티",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "inLanguage": "ko-KR",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "KRW"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "홈",
+            "item": "https://www.gomodo.cloud/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "실시간 월급루팡 타이머",
+            "item": "https://www.gomodo.cloud/salary-timer/"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "초당 급여와 시급은 어떤 기준으로 계산되나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "대한민국 근로기준법상 주 40시간 근무 기준 유급 주휴시간(주 8시간)을 포함한 월 소정근로시간 '209시간'을 기준으로 통상시급을 도출합니다. [월급 ÷ 209시간 = 시급], [시급 ÷ 60 = 분당 급여], [분당 급여 ÷ 60 = 초당 급여] 공식으로 정밀 산출됩니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "세전 연봉과 세후 실수령액 중 무엇을 기준으로 해야 하나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "회사가 나에게 지불하는 인건비 전체의 가치를 체감하고 싶다면 '세전'을, 실제 내 통장에 꽂히는 순수 현금 흐름을 보고 싶다면 '세후 실수령액'을 선택하시면 됩니다. 세후 모드 선택 시 2026년 4대보험 요율 및 소득세가 자동 공제된 금액으로 시급이 책정됩니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "화장실 모드(Poop Salary)는 어떤 기능인가요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "직장인들 사이에서 유명한 '화장실 재테크(똥싸면서 돈 벌기)' 밈을 인터랙티브 스톱워치로 구현한 기능입니다. 화장실 입장 시 버튼을 누르면 머문 시간과 그동안 발생한 급여를 실시간으로 환산해주며 스타벅스 커피 등 재치 있는 소비 단위로 비교해 줍니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "점심시간이나 휴게시간은 계산에서 제외되나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "네, 근로기준법상 점심시간(통상 1시간)은 무급 휴게시간으로 규정되어 있으므로, 09:00 출근 18:00 퇴근(총 9시간 체류) 중 점심 1시간을 제외한 실근무 8시간을 기준으로 정밀하게 계산됩니다."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-amber-500 selection:text-slate-950 font-sans">
+
+  <!-- 헤더 내비게이션 -->
+  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 h-14 sm:h-16 flex items-center justify-between gap-3">
+      <!-- 로고 & 뒤로가기 -->
+      <div class="flex items-center gap-2.5 min-w-0">
+        <a href="../" class="text-slate-400 hover:text-amber-400 transition p-2 rounded-xl hover:bg-slate-800 flex items-center gap-1.5 text-xs sm:text-sm font-bold border border-transparent hover:border-slate-700" title="홈으로">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span class="hidden sm:inline">홈으로</span>
+        </a>
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-amber-500 to-orange-400 text-slate-950 flex items-center justify-center font-black text-sm sm:text-base shadow-sm">
+            <i class="fa-solid fa-stopwatch-20"></i>
+          </div>
+          <span class="text-base sm:text-xl font-black tracking-tight text-white whitespace-nowrap">
+            실시간 월급 <span class="text-amber-400">타이머</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- 우측 액션 버튼 (SSOT 헤더) -->
+      <nav class="flex items-center gap-2 text-xs sm:text-sm font-bold text-slate-300">
+        <!-- SHARED:TOOL_DROPDOWN -->
+        <div class="relative" id="tool-dropdown-container">
+          <button type="button" onclick="toggleToolDropdown(event)" id="tool-dropdown-btn" class="flex items-center gap-1.5 bg-slate-800/90 hover:bg-slate-700 text-slate-200 hover:text-white px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl border border-slate-700/80 transition active:scale-95 shadow-sm whitespace-nowrap flex-shrink-0" aria-expanded="false" aria-label="도구 목록">
+            <i class="fa-solid fa-shapes text-amber-400 text-xs sm:text-sm"></i>
+            <span class="hidden sm:inline font-bold">도구 목록</span>
+            <span class="sm:hidden font-bold">도구</span>
+            <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition-transform duration-200" id="tool-dropdown-arrow"></i>
+          </button>
+
+          <!-- 드롭다운 메뉴 (대한민국 특화 도구 10개) -->
+          <div id="tool-dropdown-menu" class="hidden absolute right-0 mt-2 w-64 sm:w-72 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl p-2 z-50 divide-y divide-slate-800">
+            <div class="px-3 py-2 text-[11px] font-bold text-slate-400 flex items-center justify-between">
+              <span>GoModo 제공 도구 (10)</span>
+              <a href="../" class="text-[10px] text-amber-400 font-semibold hover:underline">홈으로</a>
+            </div>
+            
+            <div class="pt-1 space-y-1">
+              <a href="../severance/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-briefcase"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-indigo-300 transition truncate">퇴직금 & 실업급여 계산기</div>
+                  <div class="text-[10px] text-slate-400 truncate">법정 퇴직금 세후 실수령액 & 실업급여 자격진단</div>
+                </div>
+              </a>
+
+              <a href="../stock-tax/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-chart-pie"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-sky-300 transition truncate">해외주식 양도세 & 손익통산</div>
+                  <div class="text-[10px] text-slate-400 truncate">250만원 비과세 & 미국주식 T+1 절세</div>
+                </div>
+              </a>
+
+              <a href="../salary/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-won-sign"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-emerald-300 transition truncate">연봉 실수령액 계산기</div>
+                  <div class="text-[10px] text-slate-400 truncate">2026 4대보험 & 비과세</div>
+                </div>
+              </a>
+
+              <a href="./" class="flex items-center gap-2.5 p-2 rounded-xl bg-slate-800/80 text-amber-400 transition group">
+                <div class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-stopwatch-20"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-amber-300 transition truncate">실시간 월급루팡 타이머</div>
+                  <div class="text-[10px] text-slate-400 truncate">초당 실시간 수익 & 화장실 재테크</div>
+                </div>
+              </a>
+
+              <a href="../compound/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-emerald-300 transition truncate">적립식 복리 & 자산 성장 계산기</div>
+                  <div class="text-[10px] text-slate-400 truncate">복리의 마법 & 은퇴 자산 시뮬레이션</div>
+                </div>
+              </a>
+
+              <a href="../interest/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-coins"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-amber-300 transition truncate">예·적금 만기 이자 계산기</div>
+                  <div class="text-[10px] text-slate-400 truncate">단리/복리 & 시중 최고금리</div>
+                </div>
+              </a>
+
+              <a href="../real-estate/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-house-chimney"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-indigo-300 transition truncate">부동산 복비 & 취득세</div>
+                  <div class="text-[10px] text-slate-400 truncate">중개보수 상한 요율</div>
+                </div>
+              </a>
+
+              <a href="../lottery/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-clover"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-emerald-300 transition truncate">로또 1등 명당 번호 생성기</div>
+                  <div class="text-[10px] text-slate-400 truncate">사주 명리학 & 역대 통계</div>
+                </div>
+              </a>
+
+              <a href="../age/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-cake-candles"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-sky-300 transition truncate">만 나이 & 띠 계산기</div>
+                  <div class="text-[10px] text-slate-400 truncate">연금 수령 & 정년 나이</div>
+                </div>
+              </a>
+
+              <a href="../dday/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-calendar-check"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-rose-300 transition truncate">D-Day & 음력 변환기</div>
+                  <div class="text-[10px] text-slate-400 truncate">기념일 주차별 역산</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- /SHARED:TOOL_DROPDOWN -->
+
+        <!-- 공유 버튼 -->
+        <button type="button" onclick="shareTimerResults()" class="p-2 sm:p-2.5 text-slate-400 hover:text-white hover:bg-slate-800 rounded-xl transition border border-transparent hover:border-slate-700" title="공유하기">
+          <i class="fa-solid fa-share-nodes text-sm"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 메인 컨테이너 -->
+  <main class="flex-1 max-w-6xl w-full mx-auto px-4 py-6 sm:py-8 space-y-6">
+
+    <!-- 히어로 배너 -->
+    <div class="space-y-1.5 text-left">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-bold">
+        <i class="fa-solid fa-bolt"></i>
+        <span>직장인 도파민 충전 & 합법적 월루 재테크</span>
+      </div>
+      <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight">
+        직장인 실시간 월급 타이머 &amp; 화장실 재테크
+      </h1>
+      <p class="text-xs sm:text-sm text-slate-400 max-w-3xl leading-relaxed">
+        연봉과 출퇴근 시간을 입력하면 초당 통장에 꽂히는 돈이 0.01원 단위로 실시간 카운트업됩니다. 오늘 출근 후 번 돈, 큰일 보면서 번 돈(Poop Salary), 회의 비용 증발량을 실시간으로 체감하세요.
+      </p>
+    </div>
+
+    <!-- 12-컬럼 메인 그리드 -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+
+      <!-- [좌측 5열: 급여 및 근무 시간 설정 폼] -->
+      <section class="lg:col-span-5 bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-6 shadow-xl space-y-5">
+        
+        <!-- 세전 vs 세후 실수령액 토글 -->
+        <div class="space-y-1.5">
+          <label class="text-xs font-bold text-slate-300 block">급여 기준 선택</label>
+          <div class="grid grid-cols-2 gap-2 p-1 bg-slate-950 rounded-2xl border border-slate-800">
+            <button type="button" onclick="setSalaryMode('gross')" id="mode-btn-gross" class="py-2 px-3 rounded-xl font-black text-xs sm:text-sm transition flex items-center justify-center gap-1.5 bg-gradient-to-r from-amber-500 to-orange-400 text-slate-950 shadow-md">
+              <i class="fa-solid fa-building"></i>
+              <span>세전 (회사 인건비)</span>
+            </button>
+            <button type="button" onclick="setSalaryMode('net')" id="mode-btn-net" class="py-2 px-3 rounded-xl font-bold text-xs sm:text-sm transition flex items-center justify-center gap-1.5 text-slate-400 hover:text-white">
+              <i class="fa-solid fa-wallet"></i>
+              <span>세후 (통장 입금액)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 연봉 금액 입력 -->
+        <div class="space-y-2">
+          <div class="flex items-center justify-between text-xs sm:text-sm font-bold text-slate-300">
+            <label for="salary-input" class="text-white flex items-center gap-1.5">
+              <i class="fa-solid fa-won-sign text-amber-400"></i>
+              <span id="salary-label">세전 연봉 금액</span>
+            </label>
+            <span id="salary-korean" class="text-amber-400 font-black">5,000만 원</span>
+          </div>
+
+          <div class="relative">
+            <input type="text" id="salary-input" value="50,000,000" oninput="handleSalaryInput(this)" class="w-full bg-slate-950 border border-slate-700 rounded-2xl px-4 py-3 text-white font-mono font-black text-lg sm:text-xl outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/20 transition pr-12 text-right" placeholder="50,000,000" />
+            <span class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-sm pointer-events-none">원</span>
+          </div>
+
+          <!-- 퀵 금액 버튼 -->
+          <div class="flex flex-wrap gap-1.5 pt-1">
+            <button type="button" onclick="addSalary(5000000)" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-amber-300 font-bold text-xs border border-slate-700 transition">+500만</button>
+            <button type="button" onclick="addSalary(10000000)" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-amber-300 font-bold text-xs border border-slate-700 transition">+1,000만</button>
+            <button type="button" onclick="addSalary(20000000)" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-amber-300 font-bold text-xs border border-slate-700 transition">+2,000만</button>
+            <button type="button" onclick="setSalaryVal(50000000)" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-rose-300 font-bold text-xs border border-slate-700 transition">5천만 리셋</button>
+          </div>
+        </div>
+
+        <!-- 출퇴근 및 근무시간 설정 -->
+        <div class="pt-3 border-t border-slate-800/80 space-y-3">
+          <div class="flex items-center justify-between text-xs font-bold text-slate-300">
+            <span class="flex items-center gap-1.5">
+              <i class="fa-regular fa-clock text-amber-400"></i>
+              <span>근무 시간 설정 (기본: 9 to 6)</span>
+            </span>
+            <span class="text-[11px] text-slate-400">점심 1시간 제외</span>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div class="space-y-1">
+              <label for="work-start-time" class="text-[11px] text-slate-400 font-semibold">출근 시간</label>
+              <input type="time" id="work-start-time" value="09:00" oninput="onTimeConfigChange()" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white font-bold text-xs sm:text-sm focus:outline-none focus:border-amber-400">
+            </div>
+            <div class="space-y-1">
+              <label for="work-end-time" class="text-[11px] text-slate-400 font-semibold">퇴근 시간</label>
+              <input type="time" id="work-end-time" value="18:00" oninput="onTimeConfigChange()" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white font-bold text-xs sm:text-sm focus:outline-none focus:border-amber-400">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div class="space-y-1">
+              <label for="lunch-start-time" class="text-[11px] text-slate-400 font-semibold">점심 시작</label>
+              <input type="time" id="lunch-start-time" value="12:00" oninput="onTimeConfigChange()" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white font-bold text-xs sm:text-sm focus:outline-none focus:border-amber-400">
+            </div>
+            <div class="space-y-1">
+              <label for="lunch-end-time" class="text-[11px] text-slate-400 font-semibold">점심 종료</label>
+              <input type="time" id="lunch-end-time" value="13:00" oninput="onTimeConfigChange()" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white font-bold text-xs sm:text-sm focus:outline-none focus:border-amber-400">
+            </div>
+          </div>
+        </div>
+
+        <!-- 단위별 급여 분해 명세서 카드 -->
+        <div class="p-3.5 rounded-2xl bg-slate-950 border border-slate-800 space-y-2 text-xs">
+          <div class="text-[11px] font-bold text-slate-400 flex items-center justify-between border-b border-slate-800/80 pb-1.5">
+            <span>내 시간의 가치 (단위별 환산)</span>
+            <span class="text-amber-400 font-bold" id="rate-badge-mode">세전 기준</span>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2 text-slate-300">
+            <div>월 실수령/지급액: <strong class="text-white block font-mono text-sm" id="calc-monthly-val">₩4,166,667</strong></div>
+            <div>일급 (8시간): <strong class="text-white block font-mono text-sm" id="calc-daily-val">₩159,488</strong></div>
+            <div>시급 (209h 기준): <strong class="text-white block font-mono text-sm" id="calc-hourly-val">₩19,936</strong></div>
+            <div>분당 수입: <strong class="text-white block font-mono text-sm" id="calc-minute-val">₩332.27</strong></div>
+          </div>
+
+          <div class="pt-2 border-t border-slate-800 flex items-center justify-between text-xs">
+            <span class="text-slate-300 font-bold">숨만 쉬어도 버는 돈:</span>
+            <span class="font-black text-amber-400 font-mono text-base" id="calc-second-val">₩ 5.54 / 초</span>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- [우측 7열: 라이브 전광판 & 화장실/회의 인터랙티브 도구] -->
+      <section class="lg:col-span-7 space-y-5">
+
+        <!-- 1. 메인 라이브 머니 전광판 카드 -->
+        <div class="bg-gradient-to-br from-amber-950/80 via-slate-900 to-slate-900 border-2 border-amber-500/60 rounded-3xl p-5 sm:p-7 shadow-2xl relative overflow-hidden">
+          <div class="absolute -right-10 -bottom-10 w-44 h-44 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+          <!-- 상단 뱃지 & 실시간 시간 -->
+          <div class="flex items-center justify-between text-xs font-bold text-amber-300 mb-2">
+            <div class="flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span id="live-status-label">현재 실시간 근무 중</span>
+            </div>
+            <span class="px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40 text-[11px]" id="current-time-clock">
+              13:45:12
+            </span>
+          </div>
+
+          <!-- 오늘 지금까지 번 돈 (대형 롤링 숫자) -->
+          <div class="space-y-1 my-3">
+            <div class="text-xs sm:text-sm text-slate-300 font-medium">오늘 출근 후 지금까지 번 돈</div>
+            <div class="text-3xl sm:text-4xl lg:text-5xl font-black text-white font-mono tracking-tight" id="live-money-display">
+              ₩ 84,210.45
+            </div>
+          </div>
+
+          <!-- 프로그레스 바 & 퇴근 타이머 -->
+          <div class="space-y-2 pt-3 border-t border-amber-500/30">
+            <div class="flex items-center justify-between text-xs font-semibold">
+              <span class="text-slate-300" id="progress-percent-label">오늘 일당 달성률: 52.8%</span>
+              <span class="text-amber-400 font-bold" id="countdown-leave-label">퇴근까지 04시간 15분 남음 🏃</span>
+            </div>
+            <div class="w-full bg-slate-950 rounded-full h-3 p-0.5 border border-slate-700/80 overflow-hidden">
+              <div id="live-progress-bar" class="h-full rounded-full bg-gradient-to-r from-amber-500 to-orange-400 transition-all duration-300" style="width: 52.8%;"></div>
+            </div>
+          </div>
+
+          <!-- 직장인 실시간 월루 레벨 & 칭호 -->
+          <div class="mt-4 p-3 rounded-2xl bg-slate-950/80 border border-slate-800 flex items-center justify-between gap-3 text-xs">
+            <div class="flex items-center gap-2.5 min-w-0">
+              <span class="text-xl" id="status-level-icon">👻</span>
+              <div class="min-w-0 flex-1">
+                <div class="font-bold text-white text-xs sm:text-sm truncate" id="status-level-title">Lv.4 영혼 탈곡된 프로 딴짓러</div>
+                <div class="text-[11px] text-slate-400 truncate" id="status-level-desc">오후 2시는 합법적 뇌 정지 시간입니다. 커피 한 잔 더?</div>
+              </div>
+            </div>
+            <span class="px-2 py-1 rounded-lg bg-slate-800 text-amber-300 font-black text-[10px] whitespace-nowrap">실시간 감지</span>
+          </div>
+
+          <!-- 공유 및 복사 액션 -->
+          <div class="pt-4 flex items-center gap-2">
+            <button type="button" onclick="copyLiveSummary()" class="flex-1 py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs transition active:scale-95 flex items-center justify-center gap-1.5 border border-slate-700 shadow-sm">
+              <i class="fa-solid fa-copy text-amber-400"></i>
+              <span id="copy-btn-text">오늘 번 돈 텍스트 복사</span>
+            </button>
+            <button type="button" onclick="shareTimerResults()" class="py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-orange-400 hover:from-amber-400 hover:to-orange-300 text-slate-950 font-black text-xs transition active:scale-95 flex items-center justify-center gap-1.5 shadow-sm">
+              <i class="fa-solid fa-share-nodes"></i>
+              <span>단톡방 자랑</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 2. 화장실 재테크 스톱워치 모드 (Poop Salary) -->
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-6 shadow-xl space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <div class="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm font-black">
+                💩
+              </div>
+              <div>
+                <h3 class="text-sm font-black text-white">화장실 재테크 스톱워치 (Poop Salary)</h3>
+                <p class="text-[11px] text-slate-400">큰일 보러 가실 때 누르면 화장실에 앉아있는 동안 번 돈을 측정합니다.</p>
+              </div>
+            </div>
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-800 text-slate-300" id="poop-state-badge">대기 중</span>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <!-- 화장실 타이머 디스플레이 -->
+            <div class="text-center sm:text-left">
+              <div class="text-[11px] text-slate-400">화장실 체류 시간 & 획득 수익</div>
+              <div class="flex items-baseline gap-3 my-1">
+                <span class="text-2xl sm:text-3xl font-black font-mono text-white" id="poop-timer-clock">00:00</span>
+                <span class="text-xl sm:text-2xl font-black font-mono text-amber-400" id="poop-money-clock">₩ 0</span>
+              </div>
+              <div class="text-[11px] text-slate-400" id="poop-coffee-convert">☕ 아메리카노 0.0잔 획득</div>
+            </div>
+
+            <!-- 버튼 액션 -->
+            <div class="flex items-center gap-2 w-full sm:w-auto">
+              <button type="button" id="poop-toggle-btn" onclick="togglePoopTimer()" class="flex-1 sm:flex-none px-5 py-3 rounded-2xl font-black text-xs sm:text-sm bg-gradient-to-r from-amber-500 to-orange-400 hover:from-amber-400 hover:to-orange-300 text-slate-950 transition active:scale-95 shadow-md flex items-center justify-center gap-2">
+                <i class="fa-solid fa-toilet"></i>
+                <span id="poop-btn-label">화장실 입장 🚽</span>
+              </button>
+              <button type="button" id="poop-share-btn" onclick="sharePoopResult()" class="hidden px-3.5 py-3 rounded-2xl font-bold text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 transition active:scale-95 border border-slate-700" title="결과 복사">
+                <i class="fa-solid fa-share-nodes text-amber-400"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. 고통의 회의 비용 증발 계산기 -->
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-6 shadow-xl space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <div class="w-8 h-8 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center text-sm font-black">
+                <i class="fa-solid fa-users"></i>
+              </div>
+              <div>
+                <h3 class="text-sm font-black text-white">고통의 회의 인건비 증발 타이머</h3>
+                <p class="text-[11px] text-slate-400">회의실에 모인 인원수만큼 매초 회사 돈이 얼마씩 사라지는지 측정합니다.</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1.5 text-xs">
+              <label for="meeting-headcount" class="text-slate-400 font-bold">인원:</label>
+              <input type="number" id="meeting-headcount" value="5" min="2" max="100" oninput="onMeetingConfigChange()" class="w-14 bg-slate-950 border border-slate-700 rounded-lg px-2 py-1 text-center font-bold text-white text-xs">
+              <span class="text-slate-400 text-xs">명</span>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="text-center sm:text-left">
+              <div class="text-[11px] text-slate-400">회의 경과 시간 & 총 증발 인건비</div>
+              <div class="flex items-baseline gap-3 my-1">
+                <span class="text-2xl sm:text-3xl font-black font-mono text-white" id="meeting-timer-clock">00:00</span>
+                <span class="text-xl sm:text-2xl font-black font-mono text-rose-400" id="meeting-money-clock">₩ 0</span>
+              </div>
+              <div class="text-[11px] text-slate-400" id="meeting-food-convert">🍗 치킨 0.0마리 분량 인건비 증발</div>
+            </div>
+
+            <div class="w-full sm:w-auto">
+              <button type="button" id="meeting-toggle-btn" onclick="toggleMeetingTimer()" class="w-full sm:w-auto px-5 py-3 rounded-2xl font-black text-xs sm:text-sm bg-rose-500 hover:bg-rose-400 text-white transition active:scale-95 shadow-md flex items-center justify-center gap-2">
+                <i class="fa-solid fa-play"></i>
+                <span id="meeting-btn-label">회의 시작 🔴</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+
+    <!-- SEO 전문 가이드 및 E-E-A-T 콘텐츠 -->
+    <section class="mt-12 space-y-6 text-slate-300 text-sm leading-relaxed border-t border-slate-800 pt-8">
+      <div class="space-y-2">
+        <h2 class="text-lg sm:text-xl font-black text-white flex items-center gap-2">
+          <i class="fa-solid fa-calculator text-amber-400"></i>
+          <span>근로기준법상 209시간 통상시급과 초당 수익 환산 원리</span>
+        </h2>
+        <p>
+          대한민국 근로기준법 제56조 및 대법원 판례에 따라, 주 40시간(1일 8시간, 주 5일) 근무 직장인의 월 소정근로시간은 주휴수당 시간(주 8시간)을 합산하여 <strong>월 209시간</strong>으로 산정됩니다. 즉, [주 40시간 + 주휴 8시간 = 주 48시간]에 1년의 평균 주 수(365일 ÷ 7일 ÷ 12개월 = 4.345주)를 곱하면 [48시간 × 4.345주 ≒ 208.57시간], 반올림하여 <strong>209시간</strong>이 법정 표준 근로시간이 됩니다.
+        </p>
+        <p>
+          본 타이머는 입력된 연봉을 12개월로 나눈 월급에서 209시간을 나누어 1시간당 시급을 도출하고, 이를 60으로 나누어 분당 수익, 다시 60으로 나누어 <strong>초당 수익(0.01원 단위)</strong>을 실시간으로 추적합니다.
+        </p>
+      </div>
+
+      <!-- FAQ 아코디언 -->
+      <div class="space-y-3 pt-4">
+        <h3 class="text-base font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-circle-question text-amber-400"></i>
+          <span>자주 묻는 질문 (FAQ)</span>
+        </h3>
+
+        <div class="space-y-2">
+          <details class="group bg-slate-900 border border-slate-800 rounded-2xl p-4 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-white text-xs sm:text-sm">
+              <span>초당 급여와 시급은 어떤 기준으로 계산되나요?</span>
+              <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <p class="pt-3 text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-slate-800/80 mt-3">
+              대한민국 근로기준법상 주 40시간 근무 기준 유급 주휴시간(주 8시간)을 포함한 월 소정근로시간 '209시간'을 기준으로 통상시급을 도출합니다. [월급 ÷ 209시간 = 시급], [시급 ÷ 60 = 분당 급여], [분당 급여 ÷ 60 = 초당 급여] 공식으로 정밀 산출됩니다.
+            </p>
+          </details>
+
+          <details class="group bg-slate-900 border border-slate-800 rounded-2xl p-4 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-white text-xs sm:text-sm">
+              <span>세전 연봉과 세후 실수령액 중 무엇을 기준으로 해야 하나요?</span>
+              <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <p class="pt-3 text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-slate-800/80 mt-3">
+              회사가 나에게 지불하는 인건비 전체의 가치를 체감하고 싶다면 '세전'을, 실제 내 통장에 꽂히는 순수 현금 흐름을 보고 싶다면 '세후 실수령액'을 선택하시면 됩니다. 세후 모드 선택 시 2026년 4대보험 요율 및 소득세가 자동 공제된 금액으로 시급이 책정됩니다.
+            </p>
+          </details>
+
+          <details class="group bg-slate-900 border border-slate-800 rounded-2xl p-4 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-white text-xs sm:text-sm">
+              <span>화장실 모드(Poop Salary)는 어떤 기능인가요?</span>
+              <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <p class="pt-3 text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-slate-800/80 mt-3">
+              직장인들 사이에서 유명한 '화장실 재테크(똥싸면서 돈 벌기)' 밈을 인터랙티브 스톱워치로 구현한 기능입니다. 화장실 입장 시 버튼을 누르면 머문 시간과 그동안 발생한 급여를 실시간으로 환산해주며 스타벅스 커피 등 재치 있는 소비 단위로 비교해 줍니다.
+            </p>
+          </details>
+
+          <details class="group bg-slate-900 border border-slate-800 rounded-2xl p-4 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-white text-xs sm:text-sm">
+              <span>점심시간이나 휴게시간은 계산에서 제외되나요?</span>
+              <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <p class="pt-3 text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-slate-800/80 mt-3">
+              네, 근로기준법상 점심시간(통상 1시간)은 무급 휴게시간으로 규정되어 있으므로, 09:00 출근 18:00 퇴근(총 9시간 체류) 중 점심 1시간을 제외한 실근무 8시간을 기준으로 정밀하게 계산됩니다.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 푸터 (SSOT) -->
+  <!-- SHARED:FOOTER -->
+  <footer class="border-t border-slate-800 bg-slate-950 text-slate-400 py-8 text-xs text-center mt-auto">
+    <div class="max-w-5xl mx-auto px-4 space-y-4">
+      <!-- 1. 법적 고지 및 소개 링크 -->
+      <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-semibold text-slate-400">
+        <a href="../about/" class="hover:text-emerald-400 transition">서비스 소개</a>
+        <span>•</span>
+        <a href="../terms/" class="hover:text-emerald-400 transition">이용약관 및 면책조항</a>
+        <span>•</span>
+        <a href="../privacy/" class="hover:text-emerald-400 transition">개인정보처리방침</a>
+      </div>
+
+      <!-- 2. 글로벌 포털 허브 바로가기 -->
+      <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[11px] font-medium text-slate-500">
+        <span class="text-slate-600">지역 / 언어:</span>
+        <a href="../" class="text-slate-300 font-bold">🇰🇷 한국어</a>
+        <span>|</span>
+        <a href="../ja/" class="hover:text-slate-300 transition">🇯🇵 日本語</a>
+        <span>|</span>
+        <a href="../en/" class="hover:text-slate-300 transition">🇺🇸 English</a>
+      </div>
+
+      <!-- 3. 면책 조항 -->
+      <div class="max-w-3xl mx-auto text-[11px] text-slate-500 leading-relaxed border-t border-slate-900 pt-3">
+        본 타이머는 근로기준법상 주 40시간(월 209시간) 통상임금 기준을 바탕으로 한 오락형 시뮬레이션입니다. 실제 급여 지급 규정 및 연장·야간수당 가산 여부에 따라 실제 시급과 다소 차이가 있을 수 있습니다.
+      </div>
+
+      <!-- 4. 저작권 & E-E-A-T 지원 이메일 -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-3 text-[11px] text-slate-500">
+        <span>© 2026 GoModo. All rights reserved.</span>
+        <span class="hidden sm:inline">•</span>
+        <span>Contact: <a href="mailto:support@gomodo.cloud" class="hover:text-slate-400 underline">support@gomodo.cloud</a></span>
+      </div>
+    </div>
+  </footer>
+  <!-- /SHARED:FOOTER -->
+
+  <!-- JavaScript 엔진 -->
+  <script>
+    // State
+    const AppState = {
+      salaryGross: 50000000,
+      mode: 'gross', // 'gross' or 'net'
+      workStart: '09:00',
+      workEnd: '18:00',
+      lunchStart: '12:00',
+      lunchEnd: '13:00',
+      meetingHeadcount: 5
+    };
+
+    // 2026 4대보험 및 세후 계산기
+    function calculateNetSalary(annualGross) {
+      const monthlyGross = Math.floor(annualGross / 12);
+      const nonTax = 200000;
+      const taxable = Math.max(0, monthlyGross - nonTax);
+
+      // 국민연금 (4.5%, 상한 590만, 하한 37만)
+      const npBase = Math.min(Math.max(taxable, 370000), 5900000);
+      const nationalPension = Math.floor(npBase * 0.045);
+
+      // 건강보험 (3.545%)
+      const healthInsurance = Math.floor(taxable * 0.03545);
+
+      // 장기요양보험 (건보료의 12.81%)
+      const longTermCare = Math.floor(healthInsurance * 0.1281);
+
+      // 고용보험 (0.9%)
+      const employmentInsurance = Math.floor(taxable * 0.009);
+
+      // 소득세 약식 산출 (간이세액표 근사)
+      let incomeTax = 0;
+      const annualTaxable = taxable * 12;
+      if (annualTaxable <= 14000000) {
+        incomeTax = (annualTaxable * 0.06) / 12;
+      } else if (annualTaxable <= 50000000) {
+        incomeTax = (840000 + (annualTaxable - 14000000) * 0.15) / 12;
+      } else if (annualTaxable <= 88000000) {
+        incomeTax = (6240000 + (annualTaxable - 50000000) * 0.24) / 12;
+      } else {
+        incomeTax = (15360000 + (annualTaxable - 88000000) * 0.35) / 12;
+      }
+      incomeTax = Math.max(0, Math.floor(incomeTax * 0.85)); // 기본 근로소득세액공제 반영
+      const localTax = Math.floor(incomeTax * 0.10);
+
+      const totalDeduction = nationalPension + healthInsurance + longTermCare + employmentInsurance + incomeTax + localTax;
+      const netMonthly = Math.max(0, monthlyGross - totalDeduction);
+      return netMonthly;
+    }
+
+    // 통상 시급/초당 단가 도출
+    function getRates() {
+      let monthlyPay = 0;
+      if (AppState.mode === 'gross') {
+        monthlyPay = AppState.salaryGross / 12;
+      } else {
+        monthlyPay = calculateNetSalary(AppState.salaryGross);
+      }
+
+      // 209시간 기준 통상시급
+      const hourly = monthlyPay / 209;
+      const daily = hourly * 8;
+      const minute = hourly / 60;
+      const second = hourly / 3600;
+
+      return {
+        monthly: monthlyPay,
+        daily,
+        hourly,
+        minute,
+        second
+      };
+    }
+
+    function formatNumber(num) {
+      return Math.round(num).toLocaleString('ko-KR');
+    }
+
+    function formatKoreanMoney(amount) {
+      if (!amount || amount <= 0) return '0원';
+      const eok = Math.floor(amount / 100000000);
+      const man = Math.floor((amount % 100000000) / 10000);
+      const rem = Math.floor(amount % 10000);
+
+      let str = '';
+      if (eok > 0) str += `${eok}억 `;
+      if (man > 0) str += `${man.toLocaleString('ko-KR')}만 `;
+      if (rem > 0 && eok === 0) str += `${rem.toLocaleString('ko-KR')}원`;
+      else if (str) str += '원';
+      return str.trim() || '0원';
+    }
+
+    // 폼 업데이트
+    function updateStaticDisplays() {
+      const rates = getRates();
+
+      document.getElementById('calc-monthly-val').textContent = `₩ ${formatNumber(rates.monthly)}`;
+      document.getElementById('calc-daily-val').textContent = `₩ ${formatNumber(rates.daily)}`;
+      document.getElementById('calc-hourly-val').textContent = `₩ ${formatNumber(rates.hourly)}`;
+      document.getElementById('calc-minute-val').textContent = `₩ ${rates.minute.toFixed(2)}`;
+      document.getElementById('calc-second-val').textContent = `₩ ${rates.second.toFixed(2)} / 초`;
+      document.getElementById('rate-badge-mode').textContent = AppState.mode === 'gross' ? '세전 기준' : '세후 실수령 기준';
+    }
+
+    // 라이브 카운터 로직
+    function parseTimeToSeconds(timeStr) {
+      const [h, m] = timeStr.split(':').map(Number);
+      return h * 3600 + m * 60;
+    }
+
+    function updateLiveAccumulator() {
+      const now = new Date();
+      const currentSeconds = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds() + (now.getMilliseconds() / 1000);
+
+      // 시계 업데이트
+      const pad = n => String(n).padStart(2, '0');
+      document.getElementById('current-time-clock').textContent = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+
+      const startSec = parseTimeToSeconds(AppState.workStart);
+      const endSec = parseTimeToSeconds(AppState.workEnd);
+      const lunchStartSec = parseTimeToSeconds(AppState.lunchStart);
+      const lunchEndSec = parseTimeToSeconds(AppState.lunchEnd);
+
+      const rates = getRates();
+      let workedSeconds = 0;
+      let totalWorkDaySeconds = (endSec - startSec) - (lunchEndSec - lunchStartSec);
+      if (totalWorkDaySeconds <= 0) totalWorkDaySeconds = 8 * 3600;
+
+      let statusIcon = '👔';
+      let statusTitle = 'Lv.2 성실한 직장인 모드';
+      let statusDesc = '키보드를 두드리며 성실히 일당을 채우는 중입니다.';
+      let statusLabel = '현재 실시간 근무 중';
+
+      if (currentSeconds < startSec) {
+        // 출근 전
+        workedSeconds = 0;
+        statusIcon = '💤';
+        statusTitle = 'Lv.0 출근 준비 중';
+        statusDesc = '아직 업무 시작 전입니다. 꿀잠 또는 출근길 파이팅!';
+        statusLabel = '업무 대기 중';
+      } else if (currentSeconds >= endSec) {
+        // 퇴근 후
+        workedSeconds = totalWorkDaySeconds;
+        statusIcon = '🧦';
+        statusTitle = 'Lv.MAX 자유를 찾은 도비';
+        statusDesc = '오늘 하루도 해냈습니다! 칼퇴 후 행복한 저녁 되세요.';
+        statusLabel = '오늘 업무 완료';
+      } else if (currentSeconds >= lunchStartSec && currentSeconds < lunchEndSec) {
+        // 점심 시간
+        workedSeconds = lunchStartSec - startSec;
+        statusIcon = '🍱';
+        statusTitle = 'Lv.3 합법적 점심시간';
+        statusDesc = '맛있는 밥 먹고 당 충전 중! (무급 휴게시간)';
+        statusLabel = '점심 식사 중';
+      } else if (currentSeconds >= lunchEndSec) {
+        // 오후 근무
+        workedSeconds = (currentSeconds - startSec) - (lunchEndSec - lunchStartSec);
+        if (now.getHours() >= 16) {
+          statusIcon = '🎒';
+          statusTitle = 'Lv.5 멸망의 칼퇴 기원단';
+          statusDesc = '가방 지퍼 닫고 슬슬 퇴근 시동 거는 중...';
+        } else {
+          statusIcon = '👻';
+          statusTitle = 'Lv.4 영혼 탈곡된 프로 딴짓러';
+          statusDesc = '오후 2~3시는 합법적 뇌 정지 시간입니다. 커피 한 잔 더?';
+        }
+      } else {
+        // 오전 근무
+        workedSeconds = currentSeconds - startSec;
+        if (now.getHours() <= 9) {
+          statusIcon = '☕';
+          statusTitle = 'Lv.1 몽롱한 모닝 커피 수혈자';
+          statusDesc = '출근해서 텀블러에 얼음 채우고 잠 깨는 중입니다.';
+        }
+      }
+
+      // 오늘 번 돈 계산
+      const earnedToday = workedSeconds * rates.second;
+      document.getElementById('live-money-display').textContent = `₩ ${earnedToday.toLocaleString('ko-KR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+
+      // 진행률 계산
+      const pct = Math.min(100, Math.max(0, (workedSeconds / totalWorkDaySeconds) * 100));
+      document.getElementById('live-progress-bar').style.width = `${pct.toFixed(1)}%`;
+      document.getElementById('progress-percent-label').textContent = `오늘 일당 달성률: ${pct.toFixed(1)}%`;
+
+      // 남은 시간 계산
+      if (currentSeconds < endSec && currentSeconds >= startSec) {
+        const remainingSeconds = Math.max(0, endSec - currentSeconds);
+        const remH = Math.floor(remainingSeconds / 3600);
+        const remM = Math.floor((remainingSeconds % 3600) / 60);
+        document.getElementById('countdown-leave-label').textContent = `퇴근까지 ${pad(remH)}시간 ${pad(remM)}분 남음 🏃`;
+      } else if (currentSeconds < startSec) {
+        document.getElementById('countdown-leave-label').textContent = '출근 전입니다 💤';
+      } else {
+        document.getElementById('countdown-leave-label').textContent = '퇴근 완료! 고생하셨습니다 🎉';
+      }
+
+      // 상태 UI 업데이트
+      document.getElementById('live-status-label').textContent = statusLabel;
+      document.getElementById('status-level-icon').textContent = statusIcon;
+      document.getElementById('status-level-title').textContent = statusTitle;
+      document.getElementById('status-level-desc').textContent = statusDesc;
+    }
+
+    // 모드 토글 (세전 vs 세후)
+    function setSalaryMode(mode) {
+      AppState.mode = mode;
+      const btnGross = document.getElementById('mode-btn-gross');
+      const btnNet = document.getElementById('mode-btn-net');
+      const label = document.getElementById('salary-label');
+
+      if (mode === 'gross') {
+        btnGross.className = 'py-2 px-3 rounded-xl font-black text-xs sm:text-sm transition flex items-center justify-center gap-1.5 bg-gradient-to-r from-amber-500 to-orange-400 text-slate-950 shadow-md';
+        btnNet.className = 'py-2 px-3 rounded-xl font-bold text-xs sm:text-sm transition flex items-center justify-center gap-1.5 text-slate-400 hover:text-white';
+        label.textContent = '세전 연봉 금액';
+      } else {
+        btnNet.className = 'py-2 px-3 rounded-xl font-black text-xs sm:text-sm transition flex items-center justify-center gap-1.5 bg-gradient-to-r from-amber-500 to-orange-400 text-slate-950 shadow-md';
+        btnGross.className = 'py-2 px-3 rounded-xl font-bold text-xs sm:text-sm transition flex items-center justify-center gap-1.5 text-slate-400 hover:text-white';
+        label.textContent = '세후 환산 연봉';
+      }
+      updateStaticDisplays();
+      syncUrlParams();
+    }
+
+    function handleSalaryInput(el) {
+      const raw = el.value.replace(/[^0-9]/g, '');
+      const num = parseInt(raw, 10) || 0;
+      AppState.salaryGross = num;
+      el.value = num ? num.toLocaleString('ko-KR') : '';
+      document.getElementById('salary-korean').textContent = formatKoreanMoney(num);
+      updateStaticDisplays();
+      syncUrlParams();
+    }
+
+    function addSalary(delta) {
+      AppState.salaryGross = Math.min(1000000000, AppState.salaryGross + delta);
+      document.getElementById('salary-input').value = AppState.salaryGross.toLocaleString('ko-KR');
+      document.getElementById('salary-korean').textContent = formatKoreanMoney(AppState.salaryGross);
+      updateStaticDisplays();
+      syncUrlParams();
+    }
+
+    function setSalaryVal(val) {
+      AppState.salaryGross = val;
+      document.getElementById('salary-input').value = val.toLocaleString('ko-KR');
+      document.getElementById('salary-korean').textContent = formatKoreanMoney(val);
+      updateStaticDisplays();
+      syncUrlParams();
+    }
+
+    function onTimeConfigChange() {
+      AppState.workStart = document.getElementById('work-start-time').value;
+      AppState.workEnd = document.getElementById('work-end-time').value;
+      AppState.lunchStart = document.getElementById('lunch-start-time').value;
+      AppState.lunchEnd = document.getElementById('lunch-end-time').value;
+      updateStaticDisplays();
+      syncUrlParams();
+    }
+
+    // -------------------------------------------------------------
+    // 화장실 모드 (Poop Salary Stopwatch)
+    // -------------------------------------------------------------
+    let poopTimerInterval = null;
+    let poopSeconds = 0;
+    let isPooping = false;
+
+    function togglePoopTimer() {
+      const btn = document.getElementById('poop-toggle-btn');
+      const label = document.getElementById('poop-btn-label');
+      const badge = document.getElementById('poop-state-badge');
+      const shareBtn = document.getElementById('poop-share-btn');
+
+      if (!isPooping) {
+        // 입장
+        isPooping = true;
+        poopSeconds = 0;
+        btn.className = 'flex-1 sm:flex-none px-5 py-3 rounded-2xl font-black text-xs sm:text-sm bg-rose-500 hover:bg-rose-400 text-white transition active:scale-95 shadow-md flex items-center justify-center gap-2 animate-pulse';
+        label.textContent = '시원하게 퇴장 ✨';
+        badge.className = 'px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-400 border border-amber-500/30';
+        badge.textContent = '쾌변 진행 중...';
+        shareBtn.classList.add('hidden');
+
+        poopTimerInterval = setInterval(() => {
+          poopSeconds++;
+          const m = Math.floor(poopSeconds / 60);
+          const s = poopSeconds % 60;
+          const pad = n => String(n).padStart(2, '0');
+          document.getElementById('poop-timer-clock').textContent = `${pad(m)}:${pad(s)}`;
+
+          const rates = getRates();
+          const earned = poopSeconds * rates.second;
+          document.getElementById('poop-money-clock').textContent = `₩ ${formatNumber(earned)}`;
+
+          const cups = (earned / 4500).toFixed(1);
+          document.getElementById('poop-coffee-convert').textContent = `☕ 스타벅스 아메리카노 ${cups}잔 획득!`;
+        }, 1000);
+      } else {
+        // 퇴장
+        isPooping = false;
+        clearInterval(poopTimerInterval);
+        btn.className = 'flex-1 sm:flex-none px-5 py-3 rounded-2xl font-black text-xs sm:text-sm bg-gradient-to-r from-amber-500 to-orange-400 hover:from-amber-400 hover:to-orange-300 text-slate-950 transition active:scale-95 shadow-md flex items-center justify-center gap-2';
+        label.textContent = '다시 입장 🚽';
+        badge.className = 'px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30';
+        badge.textContent = '수익 확정 완료';
+        shareBtn.classList.remove('hidden');
+      }
+    }
+
+    function sharePoopResult() {
+      const rates = getRates();
+      const earned = formatNumber(poopSeconds * rates.second);
+      const m = Math.floor(poopSeconds / 60);
+      const s = poopSeconds % 60;
+      const text = `💩 [화장실 재테크 결과]\n회사 화장실에서 ${m}분 ${s}초 동안 큰일 보면서 ₩${earned} 벌었습니다! (초당 ${rates.second.toFixed(2)}원 적립 중)\n👉 https://www.gomodo.cloud/salary-timer/`;
+
+      navigator.clipboard.writeText(text).then(() => {
+        alert('화장실 수익 결과 텍스트가 복사되었습니다! 카톡 단톡방에 붙여넣어 보세요.');
+      });
+    }
+
+    // -------------------------------------------------------------
+    // 회의 비용 타이머 (Meeting Waste Counter)
+    // -------------------------------------------------------------
+    let meetingTimerInterval = null;
+    let meetingSeconds = 0;
+    let isMeeting = false;
+
+    function onMeetingConfigChange() {
+      AppState.meetingHeadcount = parseInt(document.getElementById('meeting-headcount').value, 10) || 5;
+    }
+
+    function toggleMeetingTimer() {
+      const btn = document.getElementById('meeting-toggle-btn');
+      const label = document.getElementById('meeting-btn-label');
+
+      if (!isMeeting) {
+        isMeeting = true;
+        meetingSeconds = 0;
+        btn.className = 'w-full sm:w-auto px-5 py-3 rounded-2xl font-black text-xs sm:text-sm bg-slate-700 hover:bg-slate-600 text-white transition active:scale-95 shadow-md flex items-center justify-center gap-2';
+        label.textContent = '회의 종료 🛑';
+
+        meetingTimerInterval = setInterval(() => {
+          meetingSeconds++;
+          const m = Math.floor(meetingSeconds / 60);
+          const s = meetingSeconds % 60;
+          const pad = n => String(n).padStart(2, '0');
+          document.getElementById('meeting-timer-clock').textContent = `${pad(m)}:${pad(s)}`;
+
+          const rates = getRates();
+          const totalSecondCost = rates.second * AppState.meetingHeadcount;
+          const wasted = meetingSeconds * totalSecondCost;
+          document.getElementById('meeting-money-clock').textContent = `₩ ${formatNumber(wasted)}`;
+
+          const chickens = (wasted / 20000).toFixed(1);
+          document.getElementById('meeting-food-convert').textContent = `🍗 치킨 ${chickens}마리 어치 인건비 증발`;
+        }, 1000);
+      } else {
+        isMeeting = false;
+        clearInterval(meetingTimerInterval);
+        btn.className = 'w-full sm:w-auto px-5 py-3 rounded-2xl font-black text-xs sm:text-sm bg-rose-500 hover:bg-rose-400 text-white transition active:scale-95 shadow-md flex items-center justify-center gap-2';
+        label.textContent = '회의 시작 🔴';
+      }
+    }
+
+    // 복사 & 공유
+    function copyLiveSummary() {
+      const rates = getRates();
+      const moneyText = document.getElementById('live-money-display').textContent;
+      const statusTitle = document.getElementById('status-level-title').textContent;
+      const progress = document.getElementById('progress-percent-label').textContent;
+
+      const summary = `⏱️ [직장인 실시간 월급 타이머]
+지금까지 번 돈: ${moneyText}
+나의 현재 상태: ${statusTitle} (${progress})
+숨만 쉬어도 초당 ${rates.second.toFixed(2)}원씩 적립 중!
+-----------------------------------
+나의 실시간 수익 확인하기 👉 https://www.gomodo.cloud/salary-timer/`;
+
+      navigator.clipboard.writeText(summary).then(() => {
+        const btn = document.getElementById('copy-btn-text');
+        btn.textContent = '복사 완료!';
+        setTimeout(() => { btn.textContent = '오늘 번 돈 텍스트 복사'; }, 2000);
+      });
+    }
+
+    function shareTimerResults() {
+      const moneyText = document.getElementById('live-money-display').textContent;
+      if (navigator.share) {
+        navigator.share({
+          title: '직장인 실시간 월급 타이머 & 화장실 재테크 | GoModo',
+          text: `오늘 출근하고 지금까지 ${moneyText} 벌었습니다! 초당 실시간 머니 카운터로 월급 확인해보세요.`,
+          url: window.location.href
+        }).catch(() => {});
+      } else {
+        copyLiveSummary();
+      }
+    }
+
+    // URL 파라미터 동기화
+    function syncUrlParams() {
+      if (!window.history || !window.history.replaceState) return;
+      const params = new URLSearchParams();
+      params.set('sal', AppState.salaryGross);
+      params.set('mode', AppState.mode);
+      params.set('start', AppState.workStart);
+      params.set('end', AppState.workEnd);
+      window.history.replaceState(null, '', `${window.location.pathname}?${params.toString()}`);
+    }
+
+    function restoreUrlParams() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.has('sal')) {
+        AppState.salaryGross = parseInt(params.get('sal'), 10) || 50000000;
+        document.getElementById('salary-input').value = AppState.salaryGross.toLocaleString('ko-KR');
+        document.getElementById('salary-korean').textContent = formatKoreanMoney(AppState.salaryGross);
+      }
+      if (params.has('mode')) {
+        setSalaryMode(params.get('mode'));
+      }
+      if (params.has('start')) {
+        AppState.workStart = params.get('start');
+        document.getElementById('work-start-time').value = AppState.workStart;
+      }
+      if (params.has('end')) {
+        AppState.workEnd = params.get('end');
+        document.getElementById('work-end-time').value = AppState.workEnd;
+      }
+    }
+
+    // 헤더 드롭다운 토글
+    function toggleToolDropdown(event) {
+      event.stopPropagation();
+      const menu = document.getElementById('tool-dropdown-menu');
+      const arrow = document.getElementById('tool-dropdown-arrow');
+      if (menu.classList.contains('hidden')) {
+        menu.classList.remove('hidden');
+        if (arrow) arrow.classList.add('rotate-180');
+      } else {
+        menu.classList.add('hidden');
+        if (arrow) arrow.classList.remove('rotate-180');
+      }
+    }
+
+    document.addEventListener('click', (e) => {
+      const menu = document.getElementById('tool-dropdown-menu');
+      const btn = document.getElementById('tool-dropdown-btn');
+      const arrow = document.getElementById('tool-dropdown-arrow');
+      if (menu && !menu.classList.contains('hidden') && !btn.contains(e.target) && !menu.contains(e.target)) {
+        menu.classList.add('hidden');
+        if (arrow) arrow.classList.remove('rotate-180');
+      }
+    });
+
+    // 초기화
+    document.addEventListener('DOMContentLoaded', () => {
+      restoreUrlParams();
+      updateStaticDisplays();
+      updateLiveAccumulator();
+      // 100ms마다 실시간 롤링 머니 업데이트
+      setInterval(updateLiveAccumulator, 100);
+    });
+  </script>
+
+</body>
+</html>
