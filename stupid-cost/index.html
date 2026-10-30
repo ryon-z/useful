@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="ko" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이 돈이면 국밥이 몇 그릇? 스튜피드 소비 & 기회비용 판독기 | GoModo</title>
+  <meta name="description" content="사고 싶은 물건 가격을 입력하면 뜨끈한 국밥, 치킨, 스타벅스 잔수로 즉시 환산! 내 시급 기준 노동시간 팩폭 및 30년 뒤 S&P500 복리 기회비용을 유쾌하게 확인하고 과소비를 방어하세요.">
+  <link rel="canonical" href="https://www.gomodo.cloud/stupid-cost/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="이 돈이면 국밥이 몇 그릇? 스튜피드 소비 &amp; 기회비용 판독기 | GoModo">
+  <meta property="og:description" content="사고 싶은 물건 가격 ➔ 국밥/치킨 환산 + 내 시급 기준 노동시간 팩폭 + 30년 뒤 복리 투자 기회비용.">
+  <meta property="og:url" content="https://www.gomodo.cloud/stupid-cost/">
+  <meta property="og:image" content="https://www.gomodo.cloud/og-image.png">
+
+  <!-- Google AdSense -->
+  
+  <!-- SHARED:ADSENSE -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4528673716962845" crossorigin="anonymous"></script>
+  <!-- /SHARED:ADSENSE -->
+
+  <!-- Tailwind CSS & Font Awesome -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "스튜피드 소비 & 국밥 기회비용 판독기",
+        "url": "https://www.gomodo.cloud/stupid-cost/",
+        "description": "물건 가격을 국밥, 치킨 등 생활 화폐와 노동 시간, 미래 복리 기회비용으로 환산해 과소비를 방지하는 짠테크 엔터테인먼트 유틸리티",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "All",
+        "inLanguage": "ko-KR",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "KRW"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "홈",
+            "item": "https://www.gomodo.cloud/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "스튜피드 소비 & 국밥 계산기",
+            "item": "https://www.gomodo.cloud/stupid-cost/"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "국밥 및 생활 화폐 환산 기준 금액은 얼마인가요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "2026년 통계청 주요 외식 물가 및 시중 표준 가격을 기준으로 순대국밥 10,000원, 프랜차이즈 치킨(배달비 포함) 23,000원, 스타벅스 아메리카노(Tall) 4,500원, 넷플릭스 프리미엄 월 17,000원, 제주도 왕복 항공권 100,000원을 기준으로 산출됩니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "노동 시간은 어떤 방식으로 환산되나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "사용자가 선택하거나 입력한 세후 시급(기본 월 300만원 기준 시급 약 14,354원 또는 2026 최저시급 10,030원)으로 물건 가격을 나눕니다. 즉, 세금을 다 떼고 순수하게 내 손에 쥐어지는 돈으로 해당 물건을 사기 위해 몇 시간 동안 상사의 눈치를 보며 일해야 하는지 정밀 계산합니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "S&P 500 복리 기회비용은 무엇인가요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "이 돈을 당장 소비하지 않고 미국 대표 지수인 S&P 500 ETF에 연평균 복리 8%(워런 버핏 벤치마크)로 장기 투자했을 때 10년, 20년, 30년 뒤 불어날 은퇴 자산 가치입니다. 8% 복리 시 10년에 약 2.16배, 20년에 4.66배, 30년에 약 10.06배로 원금이 불어납니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "정기 지출 모드는 어떻게 작동하나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "매일 마시는 커피나 주 3회 시켜 먹는 배달음식처럼 습관적인 지출의 1년 치 총 누적액(연간 비용)을 자동으로 환산하여, 눈에 보이지 않던 연간 누수 금액의 크기를 체감할 수 있도록 도와줍니다."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-rose-500 selection:text-slate-950 font-sans">
+
+  <!-- 헤더 내비게이션 -->
+  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 h-14 sm:h-16 flex items-center justify-between gap-3">
+      <!-- 로고 & 뒤로가기 -->
+      <div class="flex items-center gap-2.5 min-w-0">
+        <a href="../" class="text-slate-400 hover:text-rose-400 transition p-2 rounded-xl hover:bg-slate-800 flex items-center gap-1.5 text-xs sm:text-sm font-bold border border-transparent hover:border-slate-700" title="홈으로">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span class="hidden sm:inline">홈으로</span>
+        </a>
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-rose-500 to-pink-500 text-slate-950 flex items-center justify-center font-black text-sm sm:text-base shadow-sm">
+            <i class="fa-solid fa-bowl-rice"></i>
+          </div>
+          <span class="text-base sm:text-xl font-black tracking-tight text-white whitespace-nowrap">
+            스튜피드 소비 &amp; <span class="text-rose-400">국밥 계산기</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- 우측 액션 버튼 (SSOT 헤더) -->
+      <nav class="flex items-center gap-2 text-xs sm:text-sm font-bold text-slate-300">
+        <!-- SHARED:TOOL_DROPDOWN -->
+        <div class="relative" id="tool-dropdown-container">
+          <button type="button" onclick="toggleToolDropdown(event)" id="tool-dropdown-btn" class="flex items-center gap-1.5 bg-slate-800/90 hover:bg-slate-700 text-slate-200 hover:text-white px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl border border-slate-700/80 transition active:scale-95 shadow-sm whitespace-nowrap flex-shrink-0" aria-expanded="false" aria-label="도구 목록">
+            <i class="fa-solid fa-shapes text-amber-400 text-xs sm:text-sm"></i>
+            <span class="hidden sm:inline font-bold">도구 목록</span>
+            <span class="sm:hidden font-bold">도구</span>
+            <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition-transform duration-200" id="tool-dropdown-arrow"></i>
+          </button>
+
+          <!-- 드롭다운 메뉴 (대한민국 특화 도구 11개) -->
+          <div id="tool-dropdown-menu" class="hidden absolute right-0 mt-2 w-64 sm:w-72 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl p-2 z-50 divide-y divide-slate-800">
+            <div class="px-3 py-2 text-[11px] font-bold text-slate-400 flex items-center justify-between">
+              <span>GoModo 제공 도구 (11)</span>
+              <a href="../" class="text-[10px] text-amber-400 font-semibold hover:underline">홈으로</a>
+            </div>
+            
+            <div class="pt-1 space-y-1">
+              <a href="../severance/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-briefcase"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-indigo-300 transition truncate">퇴직금 & 실업급여 계산기</div>
+                  <div class="text-[10px] text-slate-400 truncate">법정 퇴직금 세후 실수령액 & 실업급여 자격진단</div>
+                </div>
+              </a>
+
+              <a href="../stock-tax/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-chart-pie"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-sky-300 transition truncate">해외주식 양도세 & 손익통산</div>
+                  <div class="text-[10px] text-slate-400 truncate">250만원 비과세 & 미국주식 T+1 절세</div>
+                </div>
+              </a>
+
+              <a href="../salary/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-won-sign"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-emerald-300 transition truncate">연봉 실수령액 계산기</div>
+                  <div class="text-[10px] text-slate-400 truncate">2026 4대보험 & 비과세</div>
+                </div>
+              </a>
+
+              <a href="../salary-timer/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-stopwatch-20"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-amber-300 transition truncate">실시간 월급루팡 타이머</div>
+                  <div class="text-[10px] text-slate-400 truncate">초당 실시간 수익 & 화장실 재테크</div>
+                </div>
+              </a>
+
+              <a href="./" class="flex items-center gap-2.5 p-2 rounded-xl bg-slate-800/80 text-rose-400 transition group">
+                <div class="w-7 h-7 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-bowl-rice"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-rose-300 transition truncate">스튜피드 소비 & 국밥 계산기</div>
+                  <div class="text-[10px] text-slate-400 truncate">국밥·치킨 환산 & 노동시간 팩폭 기회비용</div>
+                </div>
+              </a>
+
+              <a href="../compound/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-emerald-300 transition truncate">적립식 복리 & 자산 성장 계산기</div>
+                  <div class="text-[10px] text-slate-400 truncate">복리의 마법 & 은퇴 자산 시뮬레이션</div>
+                </div>
+              </a>
+
+              <a href="../interest/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-coins"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-amber-300 transition truncate">예·적금 만기 이자 계산기</div>
+                  <div class="text-[10px] text-slate-400 truncate">단리/복리 & 시중 최고금리</div>
+                </div>
+              </a>
+
+              <a href="../real-estate/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-house-chimney"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-indigo-300 transition truncate">부동산 복비 & 취득세</div>
+                  <div class="text-[10px] text-slate-400 truncate">중개보수 상한 요율</div>
+                </div>
+              </a>
+
+              <a href="../lottery/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-clover"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-emerald-300 transition truncate">로또 1등 명당 번호 생성기</div>
+                  <div class="text-[10px] text-slate-400 truncate">사주 명리학 & 역대 통계</div>
+                </div>
+              </a>
+
+              <a href="../age/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-cake-candles"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-sky-300 transition truncate">만 나이 & 띠 계산기</div>
+                  <div class="text-[10px] text-slate-400 truncate">연금 수령 & 정년 나이</div>
+                </div>
+              </a>
+
+              <a href="../dday/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-calendar-check"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-rose-300 transition truncate">D-Day & 음력 변환기</div>
+                  <div class="text-[10px] text-slate-400 truncate">기념일 주차별 역산</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- /SHARED:TOOL_DROPDOWN -->
+
+        <!-- 공유 버튼 -->
+        <button type="button" onclick="shareDiagnosisResults()" class="p-2 sm:p-2.5 text-slate-400 hover:text-white hover:bg-slate-800 rounded-xl transition border border-transparent hover:border-slate-700" title="공유하기">
+          <i class="fa-solid fa-share-nodes text-sm"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 메인 컨테이너 -->
+  <main class="flex-1 max-w-6xl w-full mx-auto px-4 py-6 sm:py-8 space-y-6">
+
+    <!-- 히어로 타이틀 -->
+    <div class="space-y-1.5 text-left">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs font-bold">
+        <i class="fa-solid fa-fire-flame-curved"></i>
+        <span>지갑 수호 프로젝트 & 팩폭 기회비용 판독기</span>
+      </div>
+      <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight">
+        이 돈이면 국밥이 몇 그릇? 스튜피드 소비 판독기
+      </h1>
+      <p class="text-xs sm:text-sm text-slate-400 max-w-3xl leading-relaxed">
+        사고 싶은 물건 가격을 입력하면 국밥·치킨 대체 화폐 환산, 내 시급 기준 노동시간 팩폭, 30년 뒤 미국 S&P 500 복리 기회비용을 실시간으로 도출해 과소비 충동을 0.1초 만에 잠재웁니다.
+      </p>
+    </div>
+
+    <!-- 12-컬럼 메인 그리드 -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+
+      <!-- [좌측 5열: 지출 입력 & 시급 설정 폼] -->
+      <section class="lg:col-span-5 bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-6 shadow-xl space-y-5">
+        
+        <!-- 지출 성격 탭 (일회성 소비 vs 정기적 습관 소비) -->
+        <div class="space-y-1.5">
+          <label class="text-xs font-bold text-slate-300 block">지출 성격 선택</label>
+          <div class="grid grid-cols-2 gap-2 p-1 bg-slate-950 rounded-2xl border border-slate-800">
+            <button type="button" onclick="setExpenseType('once')" id="type-btn-once" class="py-2 px-3 rounded-xl font-black text-xs sm:text-sm transition flex items-center justify-center gap-1.5 bg-gradient-to-r from-rose-500 to-pink-500 text-white shadow-md">
+              <i class="fa-solid fa-bag-shopping"></i>
+              <span>일회성 구매 (아이템)</span>
+            </button>
+            <button type="button" onclick="setExpenseType('recurring')" id="type-btn-recurring" class="py-2 px-3 rounded-xl font-bold text-xs sm:text-sm transition flex items-center justify-center gap-1.5 text-slate-400 hover:text-white">
+              <i class="fa-solid fa-repeat"></i>
+              <span>정기 습관 (연간 누적)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 물건 이름 입력 -->
+        <div class="space-y-1.5">
+          <label for="item-name-input" class="text-xs font-bold text-slate-300 block">사고 싶은 아이템 이름</label>
+          <input type="text" id="item-name-input" value="에어팟 맥스" oninput="onItemNameChange(this.value)" class="w-full bg-slate-950 border border-slate-700 rounded-2xl px-4 py-2.5 text-white font-bold text-sm outline-none focus:border-rose-400 focus:ring-2 focus:ring-rose-400/20 transition" placeholder="예: 에어팟 맥스, 오마카세, 명품백">
+        </div>
+
+        <!-- 가격 입력 -->
+        <div class="space-y-2">
+          <div class="flex items-center justify-between text-xs sm:text-sm font-bold text-slate-300">
+            <label for="item-price-input" class="text-white flex items-center gap-1.5">
+              <i class="fa-solid fa-tag text-rose-400"></i>
+              <span id="price-label">소비 가격</span>
+            </label>
+            <span id="price-korean" class="text-rose-400 font-black">77만 원</span>
+          </div>
+
+          <div class="relative">
+            <input type="text" id="item-price-input" value="770,000" oninput="handlePriceInput(this)" class="w-full bg-slate-950 border border-slate-700 rounded-2xl px-4 py-3 text-white font-mono font-black text-lg sm:text-xl outline-none focus:border-rose-400 focus:ring-2 focus:ring-rose-400/20 transition pr-12 text-right" placeholder="770,000" />
+            <span class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-sm pointer-events-none">원</span>
+          </div>
+
+          <!-- 핫 아이템 퀵 프리셋 버튼 -->
+          <div class="pt-1">
+            <div class="text-[11px] font-bold text-slate-400 mb-1.5">🔥 인기 고민 아이템 바로가기</div>
+            <div class="flex flex-wrap gap-1.5">
+              <button type="button" onclick="setPresetItem('호텔 오마카세', 250000)" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-rose-300 font-bold text-xs border border-slate-700 transition">오마카세 (25만)</button>
+              <button type="button" onclick="setPresetItem('에어팟 맥스', 770000)" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-rose-300 font-bold text-xs border border-slate-700 transition">에어팟 맥스 (77만)</button>
+              <button type="button" onclick="setPresetItem('플스5 프로', 1118000)" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-rose-300 font-bold text-xs border border-slate-700 transition">플스5 프로 (111만)</button>
+              <button type="button" onclick="setPresetItem('아이폰 16 Pro', 1700000)" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-rose-300 font-bold text-xs border border-slate-700 transition">아이폰 16 Pro (170만)</button>
+              <button type="button" onclick="setPresetItem('샤넬 클래식 플랩백', 15000000)" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-rose-300 font-bold text-xs border border-slate-700 transition">명품 가방 (1,500만)</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 내 시급(월급) 기준 설정 (노동시간 팩폭용) -->
+        <div class="pt-3 border-t border-slate-800/80 space-y-2">
+          <div class="flex items-center justify-between text-xs font-bold text-slate-300">
+            <span class="flex items-center gap-1.5">
+              <i class="fa-solid fa-user-clock text-rose-400"></i>
+              <span>내 노동 가치 (시급 기준)</span>
+            </span>
+            <span class="text-[11px] text-slate-400" id="hourly-wage-display">시급 14,354원</span>
+          </div>
+
+          <div class="grid grid-cols-3 gap-1.5">
+            <button type="button" onclick="setWagePreset('min')" id="wage-btn-min" class="py-2 px-1.5 rounded-xl border font-bold text-xs transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700 text-center">
+              최저시급<br><span class="text-[10px] text-slate-400">10,030원</span>
+            </button>
+            <button type="button" onclick="setWagePreset('300')" id="wage-btn-300" class="py-2 px-1.5 rounded-xl border font-black text-xs transition bg-rose-500/20 text-rose-300 border-rose-500/40 text-center">
+              월급 300만<br><span class="text-[10px] text-rose-400">시급 1.4만</span>
+            </button>
+            <button type="button" onclick="setWagePreset('450')" id="wage-btn-450" class="py-2 px-1.5 rounded-xl border font-bold text-xs transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700 text-center">
+              월급 450만<br><span class="text-[10px] text-slate-400">시급 2.1만</span>
+            </button>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- [우측 7열: 팩폭 진단 & 생활 화폐 5종 환산 카드] -->
+      <section class="lg:col-span-7 space-y-5">
+
+        <!-- 1. 메인 팩폭 진단서 카드 -->
+        <div class="bg-gradient-to-br from-rose-950/80 via-slate-900 to-slate-900 border-2 border-rose-500/60 rounded-3xl p-5 sm:p-7 shadow-2xl relative overflow-hidden">
+          <div class="absolute -right-10 -bottom-10 w-44 h-44 bg-rose-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+          <div class="flex items-center justify-between text-xs font-bold text-rose-300 mb-2">
+            <span class="flex items-center gap-1.5">
+              <i class="fa-solid fa-triangle-exclamation text-rose-400"></i>
+              <span>지갑 수호 팩폭 진단서</span>
+            </span>
+            <span class="px-2.5 py-0.5 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/40 text-[11px]" id="diag-badge-level">
+              Lv.3 카드 슬래시 난사마 💳
+            </span>
+          </div>
+
+          <!-- 물건명 및 가격 요약 -->
+          <div class="space-y-1 my-3">
+            <div class="text-xs sm:text-sm text-slate-300 font-medium" id="diag-item-headline">[에어팟 맥스] 결제 시 발생할 대참사</div>
+            <div class="text-2xl sm:text-3xl font-black text-white tracking-tight" id="diag-labor-headline">
+              회사에서 <span class="text-rose-400">53.6시간(약 6.7일)</span> 동안 노동해야 함
+            </div>
+            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed pt-1" id="diag-commentary">
+              이 물건을 손에 쥐기 위해 당신은 상사의 눈치를 보며 약 <strong>6.7일 동안 무보수 노예</strong>처럼 키보드를 두드려야 합니다.
+            </p>
+          </div>
+
+          <!-- 복리 30년 미래 은퇴자금 기회비용 비교 박스 -->
+          <div class="mt-4 p-3.5 rounded-2xl bg-slate-950/90 border border-slate-800 space-y-2 text-xs">
+            <div class="flex items-center justify-between text-slate-300 font-bold border-b border-slate-800/80 pb-1.5">
+              <span class="flex items-center gap-1.5 text-emerald-400">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>S&amp;P 500 복리 8% 투자 시 기회비용</span>
+              </span>
+              <span class="text-[10px] text-slate-400">안 쓰고 묻어뒀다면?</span>
+            </div>
+
+            <div class="grid grid-cols-3 gap-2 text-center pt-1">
+              <div class="p-2 rounded-xl bg-slate-900 border border-slate-800">
+                <span class="text-[10px] text-slate-400 block">10년 뒤 (2.16배)</span>
+                <strong class="text-white font-mono text-xs sm:text-sm block mt-0.5" id="future-10yr-val">₩166만</strong>
+              </div>
+              <div class="p-2 rounded-xl bg-slate-900 border border-slate-800">
+                <span class="text-[10px] text-slate-400 block">20년 뒤 (4.66배)</span>
+                <strong class="text-white font-mono text-xs sm:text-sm block mt-0.5" id="future-20yr-val">₩359만</strong>
+              </div>
+              <div class="p-2 rounded-xl bg-slate-900 border border-rose-500/40 bg-rose-500/10">
+                <span class="text-[10px] text-rose-300 block font-bold">30년 뒤 은퇴자금</span>
+                <strong class="text-rose-400 font-mono text-xs sm:text-sm block mt-0.5" id="future-30yr-val">₩775만</strong>
+              </div>
+            </div>
+            <div class="text-[11px] text-slate-400 text-center pt-1" id="future-summary-text">
+              지금 77만 원짜리 아이템을 사면, 은퇴할 때 <strong>775만 원</strong>짜리 자산을 날리는 셈입니다!
+            </div>
+          </div>
+
+          <!-- 1클릭 단톡방 자랑 & 투표 복사 버튼 -->
+          <div class="pt-4 flex items-center gap-2">
+            <button type="button" onclick="copyVoteTemplate()" class="flex-1 py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs transition active:scale-95 flex items-center justify-center gap-1.5 border border-slate-700 shadow-sm">
+              <i class="fa-solid fa-copy text-rose-400"></i>
+              <span id="vote-copy-btn-text">단톡방 투표 템플릿 복사</span>
+            </button>
+            <button type="button" onclick="shareDiagnosisResults()" class="py-2.5 px-4 rounded-xl bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-400 hover:to-pink-400 text-white font-black text-xs transition active:scale-95 flex items-center justify-center gap-1.5 shadow-sm">
+              <i class="fa-solid fa-share-nodes"></i>
+              <span>단톡방 공유</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 2. 대체 생활 화폐 5종 환산 그리드 -->
+        <div class="space-y-3">
+          <div class="flex items-center justify-between text-xs font-bold text-slate-300">
+            <span class="flex items-center gap-1.5">
+              <i class="fa-solid fa-scale-balanced text-rose-400"></i>
+              <span>생활 체감 화폐 5종 실시간 환산표</span>
+            </span>
+            <span class="text-[11px] text-slate-400">2026 통계청 외식물가 기준</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <!-- 1. 국밥 -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex items-center gap-3">
+              <div class="w-11 h-11 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl font-black flex-shrink-0">
+                🍲
+              </div>
+              <div class="min-w-0 flex-1">
+                <div class="text-[11px] text-slate-400 font-semibold">뜨끈한 순대국밥 (10,000원)</div>
+                <div class="text-lg font-black text-white font-mono" id="convert-gukbap-count">77.0 그릇</div>
+                <div class="text-[10px] text-slate-400 truncate" id="convert-gukbap-desc">삼시세끼 25일 동안 든든히 먹을 양</div>
+              </div>
+            </div>
+
+            <!-- 2. 치킨 -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex items-center gap-3">
+              <div class="w-11 h-11 rounded-2xl bg-orange-500/20 text-orange-400 flex items-center justify-center text-xl font-black flex-shrink-0">
+                🍗
+              </div>
+              <div class="min-w-0 flex-1">
+                <div class="text-[11px] text-slate-400 font-semibold">황금올리브 치킨 (23,000원)</div>
+                <div class="text-lg font-black text-white font-mono" id="convert-chicken-count">33.5 마리</div>
+                <div class="text-[10px] text-slate-400 truncate" id="convert-chicken-desc">매주 1닭 8개월 동안 뜯을 양</div>
+              </div>
+            </div>
+
+            <!-- 3. 스타벅스 커피 -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex items-center gap-3">
+              <div class="w-11 h-11 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl font-black flex-shrink-0">
+                ☕
+              </div>
+              <div class="min-w-0 flex-1">
+                <div class="text-[11px] text-slate-400 font-semibold">스타벅스 아메리카노 (4,500원)</div>
+                <div class="text-lg font-black text-white font-mono" id="convert-coffee-count">171.1 잔</div>
+                <div class="text-[10px] text-slate-400 truncate" id="convert-coffee-desc">평일 8개월치 모닝 카페인</div>
+              </div>
+            </div>
+
+            <!-- 4. 넷플릭스 프리미엄 -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex items-center gap-3">
+              <div class="w-11 h-11 rounded-2xl bg-rose-500/20 text-rose-400 flex items-center justify-center text-xl font-black flex-shrink-0">
+                🎬
+              </div>
+              <div class="min-w-0 flex-1">
+                <div class="text-[11px] text-slate-400 font-semibold">넷플릭스 프리미엄 (17,000원/월)</div>
+                <div class="text-lg font-black text-white font-mono" id="convert-netflix-count">45.3 개월</div>
+                <div class="text-[10px] text-slate-400 truncate" id="convert-netflix-desc">3.8년 동안 침대에서 정주행 가능</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. 제주도 여행 와이드 카드 -->
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex items-center gap-3">
+            <div class="w-11 h-11 rounded-2xl bg-sky-500/20 text-sky-400 flex items-center justify-center text-xl font-black flex-shrink-0">
+              ✈️
+            </div>
+            <div class="min-w-0 flex-1">
+              <div class="flex items-center justify-between">
+                <div class="text-[11px] text-slate-400 font-semibold">제주도 왕복 항공권 (100,000원)</div>
+                <div class="text-base font-black text-sky-400 font-mono" id="convert-jeju-count">7.7 회 왕복</div>
+              </div>
+              <div class="text-[11px] text-slate-400 truncate mt-0.5" id="convert-jeju-desc">비행기 타고 제주도 힐링 여행을 7번 다녀올 수 있는 금액입니다.</div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+
+    <!-- SEO 전문 가이드 및 E-E-A-T 콘텐츠 -->
+    <section class="mt-12 space-y-6 text-slate-300 text-sm leading-relaxed border-t border-slate-800 pt-8">
+      <div class="space-y-2">
+        <h2 class="text-lg sm:text-xl font-black text-white flex items-center gap-2">
+          <i class="fa-solid fa-brain text-rose-400"></i>
+          <span>스튜피드 소비(Stupid Cost) 방지와 기회비용의 심리학</span>
+        </h2>
+        <p>
+          행동경제학(Behavioral Economics)에서는 인간이 돈을 지출할 때 '숫자' 그 자체보다 <strong>'체감할 수 있는 대체재'</strong>로 환산할 때 비이성적 과소비 충동이 급격히 억제된다고 설명합니다. 100만 원이라는 숫자는 추상적이지만, "내가 60시간 동안 일해야 하는 고통"이나 "순대국밥 100그릇"으로 변환되는 순간 뇌의 전두엽이 활성화되며 즉각적인 충동구매 억제 호르몬이 분비됩니다.
+        </p>
+        <p>
+          또한 워런 버핏(Warren Buffett)이 강조한 것처럼, 젊은 시절의 100만 원 소비는 단순한 100만 원이 아니라 30년 뒤 복리 8% 기준으로 약 <strong>1,000만 원 이상의 은퇴 자산 기회비용</strong>을 포기하는 것과 같습니다. 본 도구를 통해 일상의 소비 충동을 유쾌하게 검증해 보세요.
+        </p>
+      </div>
+
+      <!-- FAQ 아코디언 -->
+      <div class="space-y-3 pt-4">
+        <h3 class="text-base font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-circle-question text-rose-400"></i>
+          <span>자주 묻는 질문 (FAQ)</span>
+        </h3>
+
+        <div class="space-y-2">
+          <details class="group bg-slate-900 border border-slate-800 rounded-2xl p-4 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-white text-xs sm:text-sm">
+              <span>국밥 및 생활 화폐 환산 기준 금액은 얼마인가요?</span>
+              <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <p class="pt-3 text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-slate-800/80 mt-3">
+              2026년 통계청 주요 외식 물가 및 시중 표준 가격을 기준으로 순대국밥 10,000원, 프랜차이즈 치킨(배달비 포함) 23,000원, 스타벅스 아메리카노(Tall) 4,500원, 넷플릭스 프리미엄 월 17,000원, 제주도 왕복 항공권 100,000원을 기준으로 산출됩니다.
+            </p>
+          </details>
+
+          <details class="group bg-slate-900 border border-slate-800 rounded-2xl p-4 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-white text-xs sm:text-sm">
+              <span>노동 시간은 어떤 방식으로 환산되나요?</span>
+              <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <p class="pt-3 text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-slate-800/80 mt-3">
+              사용자가 선택하거나 입력한 세후 시급(기본 월 300만원 기준 시급 약 14,354원 또는 2026 최저시급 10,030원)으로 물건 가격을 나눕니다. 즉, 세금을 다 떼고 순수하게 내 손에 쥐어지는 돈으로 해당 물건을 사기 위해 몇 시간 동안 상사의 눈치를 보며 일해야 하는지 정밀 계산합니다.
+            </p>
+          </details>
+
+          <details class="group bg-slate-900 border border-slate-800 rounded-2xl p-4 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-white text-xs sm:text-sm">
+              <span>S&P 500 복리 기회비용은 무엇인가요?</span>
+              <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <p class="pt-3 text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-slate-800/80 mt-3">
+              이 돈을 당장 소비하지 않고 미국 대표 지수인 S&P 500 ETF에 연평균 복리 8%(워런 버핏 벤치마크)로 장기 투자했을 때 10년, 20년, 30년 뒤 불어날 은퇴 자산 가치입니다. 8% 복리 시 10년에 약 2.16배, 20년에 4.66배, 30년에 약 10.06배로 원금이 불어납니다.
+            </p>
+          </details>
+
+          <details class="group bg-slate-900 border border-slate-800 rounded-2xl p-4 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-white text-xs sm:text-sm">
+              <span>정기 지출 모드는 어떻게 작동하나요?</span>
+              <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <p class="pt-3 text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-slate-800/80 mt-3">
+              매일 마시는 커피나 주 3회 시켜 먹는 배달음식처럼 습관적인 지출의 1년 치 총 누적액(연간 비용)을 자동으로 환산하여, 눈에 보이지 않던 연간 누수 금액의 크기를 체감할 수 있도록 도와줍니다.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 푸터 (SSOT) -->
+  <!-- SHARED:FOOTER -->
+  <footer class="border-t border-slate-800 bg-slate-950 text-slate-400 py-8 text-xs text-center mt-auto">
+    <div class="max-w-5xl mx-auto px-4 space-y-4">
+      <!-- 1. 법적 고지 및 소개 링크 -->
+      <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-semibold text-slate-400">
+        <a href="../about/" class="hover:text-emerald-400 transition">서비스 소개</a>
+        <span>•</span>
+        <a href="../terms/" class="hover:text-emerald-400 transition">이용약관 및 면책조항</a>
+        <span>•</span>
+        <a href="../privacy/" class="hover:text-emerald-400 transition">개인정보처리방침</a>
+      </div>
+
+      <!-- 2. 글로벌 포털 허브 바로가기 -->
+      <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[11px] font-medium text-slate-500">
+        <span class="text-slate-600">지역 / 언어:</span>
+        <a href="../" class="text-slate-300 font-bold">🇰🇷 한국어</a>
+        <span>|</span>
+        <a href="../ja/" class="hover:text-slate-300 transition">🇯🇵 日本語</a>
+        <span>|</span>
+        <a href="../en/" class="hover:text-slate-300 transition">🇺🇸 English</a>
+      </div>
+
+      <!-- 3. 면책 조항 -->
+      <div class="max-w-3xl mx-auto text-[11px] text-slate-500 leading-relaxed border-t border-slate-900 pt-3">
+        본 시뮬레이터는 과소비 방지 및 재미를 위해 통계청 외식물가 및 미국 S&P500 역사적 연평균 복리 수익률(8%)을 기반으로 한 오락형 금융 기회비용 계산 도구입니다.
+      </div>
+
+      <!-- 4. 저작권 & E-E-A-T 지원 이메일 -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-3 text-[11px] text-slate-500">
+        <span>© 2026 GoModo. All rights reserved.</span>
+        <span class="hidden sm:inline">•</span>
+        <span>Contact: <a href="mailto:support@gomodo.cloud" class="hover:text-slate-400 underline">support@gomodo.cloud</a></span>
+      </div>
+    </div>
+  </footer>
+  <!-- /SHARED:FOOTER -->
+
+  <!-- JavaScript 엔진 -->
+  <script>
+    // State
+    const AppState = {
+      itemName: '에어팟 맥스',
+      price: 770000,
+      expenseType: 'once', // 'once' or 'recurring'
+      wagePreset: '300',   // 'min', '300', '450'
+      hourlyWage: 14354     // 월 300만원 세후 기준
+    };
+
+    const BENCHMARKS = {
+      gukbap: 10000,
+      chicken: 23000,
+      coffee: 4500,
+      netflix: 17000,
+      jeju: 100000
+    };
+
+    function formatNumber(num) {
+      return Math.round(num).toLocaleString('ko-KR');
+    }
+
+    function formatKoreanMoney(amount) {
+      if (!amount || amount <= 0) return '0원';
+      const eok = Math.floor(amount / 100000000);
+      const man = Math.floor((amount % 100000000) / 10000);
+      const rem = Math.floor(amount % 10000);
+
+      let str = '';
+      if (eok > 0) str += `${eok}억 `;
+      if (man > 0) str += `${man.toLocaleString('ko-KR')}만 `;
+      if (rem > 0 && eok === 0) str += `${rem.toLocaleString('ko-KR')}원`;
+      else if (str) str += '원';
+      return str.trim() || '0원';
+    }
+
+    function calculateResults() {
+      const price = AppState.expenseType === 'recurring' ? AppState.price * 12 : AppState.price;
+
+      // 1. 생활 화폐 환산
+      const gukbapCount = price / BENCHMARKS.gukbap;
+      const chickenCount = price / BENCHMARKS.chicken;
+      const coffeeCount = price / BENCHMARKS.coffee;
+      const netflixCount = price / BENCHMARKS.netflix;
+      const jejuCount = price / BENCHMARKS.jeju;
+
+      document.getElementById('convert-gukbap-count').textContent = `${gukbapCount.toFixed(1)} 그릇`;
+      document.getElementById('convert-chicken-count').textContent = `${chickenCount.toFixed(1)} 마리`;
+      document.getElementById('convert-coffee-count').textContent = `${coffeeCount.toFixed(1)} 잔`;
+      document.getElementById('convert-netflix-count').textContent = `${netflixCount.toFixed(1)} 개월`;
+      document.getElementById('convert-jeju-count').textContent = `${jejuCount.toFixed(1)} 회 왕복`;
+
+      // 국밥 일수 설명
+      const gukbapDays = (gukbapCount / 3).toFixed(1);
+      document.getElementById('convert-gukbap-desc').textContent = `삼시세끼 약 ${gukbapDays}일 동안 든든히 먹을 양`;
+      const chickenMonths = (chickenCount / 4).toFixed(1);
+      document.getElementById('convert-chicken-desc').textContent = `매주 1닭 약 ${chickenMonths}개월 동안 뜯을 양`;
+      const coffeeMonths = (coffeeCount / 22).toFixed(1);
+      document.getElementById('convert-coffee-desc').textContent = `평일 근무일 기준 약 ${coffeeMonths}개월치 카페인`;
+      const netflixYears = (netflixCount / 12).toFixed(1);
+      document.getElementById('convert-netflix-desc').textContent = `약 ${netflixYears}년 동안 침대에서 넷플릭스 정주행`;
+      document.getElementById('convert-jeju-desc').textContent = `비행기 타고 제주도 힐링 여행을 ${jejuCount.toFixed(1)}번 다녀올 수 있는 금액`;
+
+      // 2. 노동 시간 환산
+      const laborHours = price / AppState.hourlyWage;
+      const laborDays = laborHours / 8;
+
+      document.getElementById('diag-item-headline').textContent = `[${AppState.itemName || '선택 아이템'}] 결제 시 발생할 대참사`;
+      document.getElementById('diag-labor-headline').innerHTML = `회사에서 <span class="text-rose-400">${laborHours.toFixed(1)}시간(약 ${laborDays.toFixed(1)}일)</span> 동안 노동해야 함`;
+
+      // 3. 소비 등급 및 팩폭 코멘트
+      let badgeLevel = 'Lv.1 소소한 도파민 충전 🍭';
+      let commentary = '';
+
+      if (price < 100000) {
+        badgeLevel = 'Lv.1 소소한 도파민 충전 🍭';
+        commentary = `이 정도는 일상의 힐링을 위해 스스로에게 선물해도 통장이 버텨줍니다.`;
+      } else if (price < 500000) {
+        badgeLevel = 'Lv.2 통장 방어선 경계 경보 ⚠️';
+        commentary = `약간의 고민이 필요합니다. ${laborDays.toFixed(1)}일 동안 상사의 잔소리를 견디며 일한 대가가 이 물건에 담깁니다.`;
+      } else if (price < 1500000) {
+        badgeLevel = 'Lv.3 카드 슬래시 난사마 💳';
+        commentary = `이 물건을 손에 쥐기 위해 당신은 상사의 눈치를 보며 약 <strong>${laborDays.toFixed(1)}일 동안 무보수 노예</strong>처럼 키보드를 두드려야 합니다.`;
+      } else if (price < 5000000) {
+        badgeLevel = 'Lv.4 자발적 금융 노예 💸';
+        commentary = `축하합니다! 당신은 스스로 회사에 족쇄를 채웠습니다. ${laborDays.toFixed(1)}일간 절대 퇴사할 수 없습니다.`;
+      } else {
+        badgeLevel = 'Lv.5 영혼 매각 탕진 황제 👑';
+        commentary = `이건 단순 소비가 아니라 통장에 대한 사형 선고입니다. 다음 달 카드 명세서를 보고 울부짖을 운명입니다.`;
+      }
+
+      document.getElementById('diag-badge-level').textContent = badgeLevel;
+      document.getElementById('diag-commentary').innerHTML = commentary;
+
+      // 4. 복리 기회비용 (S&P 500 8%)
+      // 10yr: (1.08)^10 = 2.1589
+      // 20yr: (1.08)^20 = 4.6610
+      // 30yr: (1.08)^30 = 10.0627
+      const val10 = price * 2.1589;
+      const val20 = price * 4.6610;
+      const val30 = price * 10.0627;
+
+      document.getElementById('future-10yr-val').textContent = `₩${formatKoreanMoney(val10)}`;
+      document.getElementById('future-20yr-val').textContent = `₩${formatKoreanMoney(val20)}`;
+      document.getElementById('future-30yr-val').textContent = `₩${formatKoreanMoney(val30)}`;
+      document.getElementById('future-summary-text').innerHTML = `지금 ${formatKoreanMoney(price)}을 참아서 S&P500에 넣으면 30년 뒤 은퇴할 때 <strong>${formatKoreanMoney(val30)}</strong>짜리 자산이 됩니다!`;
+    }
+
+    function setExpenseType(type) {
+      AppState.expenseType = type;
+      const btnOnce = document.getElementById('type-btn-once');
+      const btnRec = document.getElementById('type-btn-recurring');
+      const label = document.getElementById('price-label');
+
+      if (type === 'once') {
+        btnOnce.className = 'py-2 px-3 rounded-xl font-black text-xs sm:text-sm transition flex items-center justify-center gap-1.5 bg-gradient-to-r from-rose-500 to-pink-500 text-white shadow-md';
+        btnRec.className = 'py-2 px-3 rounded-xl font-bold text-xs sm:text-sm transition flex items-center justify-center gap-1.5 text-slate-400 hover:text-white';
+        label.textContent = '소비 가격';
+      } else {
+        btnRec.className = 'py-2 px-3 rounded-xl font-black text-xs sm:text-sm transition flex items-center justify-center gap-1.5 bg-gradient-to-r from-rose-500 to-pink-500 text-white shadow-md';
+        btnOnce.className = 'py-2 px-3 rounded-xl font-bold text-xs sm:text-sm transition flex items-center justify-center gap-1.5 text-slate-400 hover:text-white';
+        label.textContent = '월 지출액 (1년 치로 자동 환산)';
+      }
+      calculateResults();
+      syncUrlParams();
+    }
+
+    function onItemNameChange(val) {
+      AppState.itemName = val.trim();
+      calculateResults();
+      syncUrlParams();
+    }
+
+    function handlePriceInput(el) {
+      const raw = el.value.replace(/[^0-9]/g, '');
+      const num = parseInt(raw, 10) || 0;
+      AppState.price = num;
+      el.value = num ? num.toLocaleString('ko-KR') : '';
+      document.getElementById('price-korean').textContent = formatKoreanMoney(num);
+      calculateResults();
+      syncUrlParams();
+    }
+
+    function setPresetItem(name, price) {
+      AppState.itemName = name;
+      AppState.price = price;
+      document.getElementById('item-name-input').value = name;
+      document.getElementById('item-price-input').value = price.toLocaleString('ko-KR');
+      document.getElementById('price-korean').textContent = formatKoreanMoney(price);
+      calculateResults();
+      syncUrlParams();
+    }
+
+    function setWagePreset(preset) {
+      AppState.wagePreset = preset;
+      const btnMin = document.getElementById('wage-btn-min');
+      const btn300 = document.getElementById('wage-btn-300');
+      const btn450 = document.getElementById('wage-btn-450');
+
+      [btnMin, btn300, btn450].forEach(b => {
+        b.className = 'py-2 px-1.5 rounded-xl border font-bold text-xs transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700 text-center';
+      });
+
+      if (preset === 'min') {
+        AppState.hourlyWage = 10030;
+        btnMin.className = 'py-2 px-1.5 rounded-xl border font-black text-xs transition bg-rose-500/20 text-rose-300 border-rose-500/40 text-center';
+        document.getElementById('hourly-wage-display').textContent = '시급 10,030원 (2026 최저)';
+      } else if (preset === '300') {
+        AppState.hourlyWage = 14354;
+        btn300.className = 'py-2 px-1.5 rounded-xl border font-black text-xs transition bg-rose-500/20 text-rose-300 border-rose-500/40 text-center';
+        document.getElementById('hourly-wage-display').textContent = '시급 14,354원 (월 300만)';
+      } else {
+        AppState.hourlyWage = 21531;
+        btn450.className = 'py-2 px-1.5 rounded-xl border font-black text-xs transition bg-rose-500/20 text-rose-300 border-rose-500/40 text-center';
+        document.getElementById('hourly-wage-display').textContent = '시급 21,531원 (월 450만)';
+      }
+
+      calculateResults();
+      syncUrlParams();
+    }
+
+    // 템플릿 복사 및 공유
+    function copyVoteTemplate() {
+      const price = AppState.expenseType === 'recurring' ? AppState.price * 12 : AppState.price;
+      const gukbap = (price / BENCHMARKS.gukbap).toFixed(1);
+      const hours = (price / AppState.hourlyWage).toFixed(1);
+      const val30 = formatKoreanMoney(price * 10.0627);
+
+      const template = `🚨 [지갑 수호 비상 투표]
+나 지금 [${AppState.itemName} (${formatNumber(price)}원)] 결제 직전인데 살까 말까?
+-----------------------------------
+🍲 순대국밥: ${gukbap}그릇 분량
+⌛ 내 노동시간: ${hours}시간 야근해야 함
+📈 30년 뒤 복리 은퇴자금: ${val30} 날림
+-----------------------------------
+친구야 투표해줘 👉 https://www.gomodo.cloud/stupid-cost/`;
+
+      navigator.clipboard.writeText(template).then(() => {
+        const btn = document.getElementById('vote-copy-btn-text');
+        btn.textContent = '투표 템플릿 복사 완료!';
+        setTimeout(() => { btn.textContent = '단톡방 투표 템플릿 복사'; }, 2000);
+      });
+    }
+
+    function shareDiagnosisResults() {
+      const price = AppState.expenseType === 'recurring' ? AppState.price * 12 : AppState.price;
+      const gukbap = (price / BENCHMARKS.gukbap).toFixed(1);
+      if (navigator.share) {
+        navigator.share({
+          title: '스튜피드 소비 & 국밥 계산기 | GoModo',
+          text: `[${AppState.itemName}] 사면 국밥 ${gukbap}그릇 날아갑니다! 지갑 수호 팩폭 진단 확인해보세요.`,
+          url: window.location.href
+        }).catch(() => {});
+      } else {
+        copyVoteTemplate();
+      }
+    }
+
+    // URL 파라미터 동기화
+    function syncUrlParams() {
+      if (!window.history || !window.history.replaceState) return;
+      const params = new URLSearchParams();
+      params.set('item', AppState.itemName);
+      params.set('price', AppState.price);
+      params.set('type', AppState.expenseType);
+      params.set('wage', AppState.wagePreset);
+      window.history.replaceState(null, '', `${window.location.pathname}?${params.toString()}`);
+    }
+
+    function restoreUrlParams() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.has('item')) {
+        AppState.itemName = params.get('item');
+        document.getElementById('item-name-input').value = AppState.itemName;
+      }
+      if (params.has('price')) {
+        AppState.price = parseInt(params.get('price'), 10) || 770000;
+        document.getElementById('item-price-input').value = AppState.price.toLocaleString('ko-KR');
+        document.getElementById('price-korean').textContent = formatKoreanMoney(AppState.price);
+      }
+      if (params.has('type')) {
+        setExpenseType(params.get('type'));
+      }
+      if (params.has('wage')) {
+        setWagePreset(params.get('wage'));
+      }
+    }
+
+    // 헤더 드롭다운 토글
+    function toggleToolDropdown(event) {
+      event.stopPropagation();
+      const menu = document.getElementById('tool-dropdown-menu');
+      const arrow = document.getElementById('tool-dropdown-arrow');
+      if (menu.classList.contains('hidden')) {
+        menu.classList.remove('hidden');
+        if (arrow) arrow.classList.add('rotate-180');
+      } else {
+        menu.classList.add('hidden');
+        if (arrow) arrow.classList.remove('rotate-180');
+      }
+    }
+
+    document.addEventListener('click', (e) => {
+      const menu = document.getElementById('tool-dropdown-menu');
+      const btn = document.getElementById('tool-dropdown-btn');
+      const arrow = document.getElementById('tool-dropdown-arrow');
+      if (menu && !menu.classList.contains('hidden') && !btn.contains(e.target) && !menu.contains(e.target)) {
+        menu.classList.add('hidden');
+        if (arrow) arrow.classList.remove('rotate-180');
+      }
+    });
+
+    // 초기화
+    document.addEventListener('DOMContentLoaded', () => {
+      restoreUrlParams();
+      calculateResults();
+    });
+  </script>
+
+</body>
+</html>
