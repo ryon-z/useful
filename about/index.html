@@ -184,31 +184,83 @@
 
     <!-- 현재 제공 중인 도구 요약 -->
     <section class="bg-slate-900 border border-slate-800 rounded-2xl p-5 sm:p-7 space-y-4">
-      <h2 class="text-lg sm:text-xl font-black text-white flex items-center gap-2">
-        <i class="fa-solid fa-grid-2 text-amber-400"></i>
-        <span>제공 도구 라인업</span>
-      </h2>
+      <div class="flex items-center justify-between">
+        <h2 class="text-lg sm:text-xl font-black text-white flex items-center gap-2">
+          <i class="fa-solid fa-shapes text-amber-400"></i>
+          <span>대한민국 특화 도구 라인업 (총 7개)</span>
+        </h2>
+        <span class="text-xs text-emerald-400 font-bold bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">전 도구 100% 무료</span>
+      </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm">
-        <a href="../lottery/" class="p-3.5 bg-slate-950 rounded-xl border border-slate-800 hover:border-amber-400 transition block">
-          <strong class="text-amber-400 block mb-1 font-bold">1. 로또 명당 (사주 오행 번호 & 세금 계산기)</strong>
-          <span class="text-slate-400">매주 동행복권 실시간 당첨금 브리핑, 사주 5게임 추천, 당첨 실수령액 산출</span>
+        <a href="../salary/" class="p-3.5 bg-slate-950 rounded-xl border border-slate-800 hover:border-emerald-400 transition block">
+          <strong class="text-emerald-400 block mb-1 font-bold">1. 2026 연봉·월급 실수령액 계산기</strong>
+          <span class="text-slate-400">2026년 4대보험 개정 요율, 국세청 근로소득 간이세액표, 비과세 식대, 부양가족별 실수령액 및 조견표</span>
+        </a>
+        <a href="../compound/" class="p-3.5 bg-slate-950 rounded-xl border border-slate-800 hover:border-emerald-400 transition block">
+          <strong class="text-emerald-400 block mb-1 font-bold">2. 적립식 복리 & 은퇴 자산 시뮬레이터</strong>
+          <span class="text-slate-400">주식·ETF 매월 적립 복리 계산, 72의 법칙, 물가상승률(2.5%) 실질구매력, 파이어(FIRE) 4% 은퇴 생활비</span>
+        </a>
+        <a href="../interest/" class="p-3.5 bg-slate-950 rounded-xl border border-slate-800 hover:border-amber-400 transition block">
+          <strong class="text-amber-400 block mb-1 font-bold">3. 예·적금 만기 이자 & 시중 최고금리</strong>
+          <span class="text-slate-400">정기예금·적금 단리/복리 세후 이자, 만 65세 비과세종합저축, 시중은행 최고금리 Top 5 브리핑</span>
+        </a>
+        <a href="../real-estate/" class="p-3.5 bg-slate-950 rounded-xl border border-slate-800 hover:border-indigo-400 transition block">
+          <strong class="text-indigo-400 block mb-1 font-bold">4. 부동산 복비(중개보수) & 취득세</strong>
+          <span class="text-slate-400">아파트·오피스텔 매매·전월세 70계수 룰 복비 한도, 주택 취득세 누진세율 및 생애최초 200만 감면</span>
+        </a>
+        <a href="../lottery/" class="p-3.5 bg-slate-950 rounded-xl border border-slate-800 hover:border-emerald-400 transition block">
+          <strong class="text-emerald-400 block mb-1 font-bold">5. 로또 명당 - 사주 맞춤 번호 생성기</strong>
+          <span class="text-slate-400">동행복권 1·2등 실시간 당첨금, 사주 오행 5게임 추천, 길일·길방위 나침반, 실수령액 세금계산</span>
         </a>
         <a href="../age/" class="p-3.5 bg-slate-950 rounded-xl border border-slate-800 hover:border-sky-400 transition block">
-          <strong class="text-sky-400 block mb-1 font-bold">2. 만 나이 & 띠·천간지지 계산기</strong>
-          <span class="text-slate-400">개정 민법 기준 만 나이, 연 나이, 세는 나이 및 십이지 띠와 생애 복지 혜택</span>
+          <strong class="text-sky-400 block mb-1 font-bold">6. 만 나이 & 띠·천간지지 계산기</strong>
+          <span class="text-slate-400">개정 민법 기준 만 나이, 연 나이, 세는 나이, 십이지 띠, 국민연금 수령 연령 및 법정 정년</span>
         </a>
-        <a href="../interest/" class="p-3.5 bg-slate-950 rounded-xl border border-slate-800 hover:border-emerald-400 transition block">
-          <strong class="text-emerald-400 block mb-1 font-bold">3. 예·적금 만기 이자 & 실수령액 계산기</strong>
-          <span class="text-slate-400">정기예금·적금 단리/월복리 세후 이자 및 만 65세 이상 비과세종합저축 절세 비교</span>
+        <a href="../dday/" class="p-3.5 bg-slate-950 rounded-xl border border-slate-800 hover:border-rose-400 transition block sm:col-span-2">
+          <strong class="text-rose-400 block mb-1 font-bold">7. D-Day 및 음력·양력 기념일 변환기</strong>
+          <span class="text-slate-400">한국천문연구원 기준 음양력 정밀 변환, 부모님 음력 생신·제사일 양력 조회 및 환갑·칠순·팔순 계산</span>
         </a>
-        <a href="../dday/" class="p-3.5 bg-slate-950 rounded-xl border border-slate-800 hover:border-rose-400 transition block">
-          <strong class="text-rose-400 block mb-1 font-bold">4. D-Day 및 음력·양력 기념일 변환기</strong>
-          <span class="text-slate-400">음양력 정밀 변환, 부모님 음력 생신·제사일 양력 조회 및 환갑·칠순·팔순 계산</span>
-        </a>
-        <a href="../real-estate/" class="p-3.5 bg-slate-950 rounded-xl border border-slate-800 hover:border-indigo-400 transition block sm:col-span-2">
-          <strong class="text-indigo-400 block mb-1 font-bold">5. 부동산 중개보수(복비) & 취득세 계산기</strong>
-          <span class="text-slate-400">주택·오피스텔 매매·전월세 중개보수 한도 요율 및 부가세, 주택 취득세 및 생애최초 200만원 감면 계산</span>
-        </a>
+      </div>
+    </section>
+
+    <!-- E-E-A-T 공식 데이터 출처 & 산출 근거 -->
+    <section class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 sm:p-7 space-y-4">
+      <h2 class="text-lg sm:text-xl font-black text-white flex items-center gap-2">
+        <i class="fa-solid fa-building-columns text-emerald-400"></i>
+        <span>공식 데이터 출처 & E-E-A-T 검증 체계</span>
+      </h2>
+      <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+        GoModo의 모든 금융·세무·생활 계산기는 대한민국 정부 부처 및 공공기관의 공식 고시 기준과 법령을 100% 준수하여 오차 없는 정확한 결과를 산출합니다.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-1">
+          <div class="font-bold text-white flex items-center gap-1.5">
+            <i class="fa-solid fa-file-invoice-dollar text-emerald-400"></i>
+            <span>근로소득세 & 간이세액표</span>
+          </div>
+          <p class="text-slate-400">국세청(NTS) 소득세법 제127조 및 근로소득 간이세액표 공식 산출식 준수</p>
+        </div>
+        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-1">
+          <div class="font-bold text-white flex items-center gap-1.5">
+            <i class="fa-solid fa-shield-heart text-sky-400"></i>
+            <span>4대 사회보험 요율</span>
+          </div>
+          <p class="text-slate-400">국민연금공단(기준소득월액 상한액), 국민건강보험공단, 고용노동부 최신 개정 요율 100% 반영</p>
+        </div>
+        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-1">
+          <div class="font-bold text-white flex items-center gap-1.5">
+            <i class="fa-solid fa-house-circle-check text-indigo-400"></i>
+            <span>부동산 중개보수 & 취득세</span>
+          </div>
+          <p class="text-slate-400">국토교통부 공인중개사법 시행규칙 제20조 제1항 [별표 1] 상한 요율 및 지방세법 누진세율 준수</p>
+        </div>
+        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-1">
+          <div class="font-bold text-white flex items-center gap-1.5">
+            <i class="fa-solid fa-satellite-dish text-amber-400"></i>
+            <span>음양력 천문 역법</span>
+          </div>
+          <p class="text-slate-400">과학기술정보통신부 산하 한국천문연구원(KASI) 만세력 역법 및 천문 계산 기준</p>
+        </div>
       </div>
     </section>
 
