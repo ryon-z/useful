@@ -321,7 +321,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
 
       <!-- [좌측 5열: 급여 및 근무 시간 설정 폼] -->
-      <section class="lg:col-span-5 bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-6 shadow-xl space-y-5">
+      <section class="lg:col-span-5 bg-slate-900 border border-slate-800 rounded-3xl p-4 sm:p-6 shadow-xl space-y-5 overflow-hidden">
         
         <!-- 세전 vs 세후 실수령액 토글 -->
         <div class="space-y-1.5">
@@ -372,25 +372,25 @@
             <span class="text-[11px] text-slate-400">점심 1시간 제외</span>
           </div>
 
-          <div class="grid grid-cols-2 gap-3">
-            <div class="space-y-1">
-              <label for="work-start-time" class="text-[11px] text-slate-400 font-semibold">출근 시간</label>
-              <input type="time" id="work-start-time" value="09:00" oninput="onTimeConfigChange()" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white font-bold text-xs sm:text-sm focus:outline-none focus:border-amber-400">
+          <div class="grid grid-cols-2 gap-2 sm:gap-3">
+            <div class="space-y-1 min-w-0">
+              <label for="work-start-time" class="text-[11px] text-slate-400 font-semibold block truncate">출근 시간</label>
+              <input type="time" id="work-start-time" value="09:00" oninput="onTimeConfigChange()" class="w-full max-w-full min-w-0 box-border text-center bg-slate-950 border border-slate-700 rounded-xl px-1.5 sm:px-3 py-2 text-white font-bold text-xs sm:text-sm focus:outline-none focus:border-amber-400">
             </div>
-            <div class="space-y-1">
-              <label for="work-end-time" class="text-[11px] text-slate-400 font-semibold">퇴근 시간</label>
-              <input type="time" id="work-end-time" value="18:00" oninput="onTimeConfigChange()" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white font-bold text-xs sm:text-sm focus:outline-none focus:border-amber-400">
+            <div class="space-y-1 min-w-0">
+              <label for="work-end-time" class="text-[11px] text-slate-400 font-semibold block truncate">퇴근 시간</label>
+              <input type="time" id="work-end-time" value="18:00" oninput="onTimeConfigChange()" class="w-full max-w-full min-w-0 box-border text-center bg-slate-950 border border-slate-700 rounded-xl px-1.5 sm:px-3 py-2 text-white font-bold text-xs sm:text-sm focus:outline-none focus:border-amber-400">
             </div>
           </div>
 
-          <div class="grid grid-cols-2 gap-3">
-            <div class="space-y-1">
-              <label for="lunch-start-time" class="text-[11px] text-slate-400 font-semibold">점심 시작</label>
-              <input type="time" id="lunch-start-time" value="12:00" oninput="onTimeConfigChange()" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white font-bold text-xs sm:text-sm focus:outline-none focus:border-amber-400">
+          <div class="grid grid-cols-2 gap-2 sm:gap-3">
+            <div class="space-y-1 min-w-0">
+              <label for="lunch-start-time" class="text-[11px] text-slate-400 font-semibold block truncate">점심 시작</label>
+              <input type="time" id="lunch-start-time" value="12:00" oninput="onTimeConfigChange()" class="w-full max-w-full min-w-0 box-border text-center bg-slate-950 border border-slate-700 rounded-xl px-1.5 sm:px-3 py-2 text-white font-bold text-xs sm:text-sm focus:outline-none focus:border-amber-400">
             </div>
-            <div class="space-y-1">
-              <label for="lunch-end-time" class="text-[11px] text-slate-400 font-semibold">점심 종료</label>
-              <input type="time" id="lunch-end-time" value="13:00" oninput="onTimeConfigChange()" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white font-bold text-xs sm:text-sm focus:outline-none focus:border-amber-400">
+            <div class="space-y-1 min-w-0">
+              <label for="lunch-end-time" class="text-[11px] text-slate-400 font-semibold block truncate">점심 종료</label>
+              <input type="time" id="lunch-end-time" value="13:00" oninput="onTimeConfigChange()" class="w-full max-w-full min-w-0 box-border text-center bg-slate-950 border border-slate-700 rounded-xl px-1.5 sm:px-3 py-2 text-white font-bold text-xs sm:text-sm focus:outline-none focus:border-amber-400">
             </div>
           </div>
         </div>
