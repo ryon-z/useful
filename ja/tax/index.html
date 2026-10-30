@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>消費税・軽減税率（8%・10%）＆インボイス計算機（税込・税抜・端数処理） | GoModo</title>
+  <meta name="description" content="【2026年最新】消費税10%（標準税率）と8%（軽減税率）の税込・税抜相互変換、端数処理（切り捨て・四捨五入・切り上げ）、インボイス制度対応の免税事業者経過措置（80%/50%仕入控除）が瞬時に計算できる無料Webツール。">
+  <meta name="keywords" content="消費税計算機, 軽減税率, インボイス制度, 税込計算, 税抜計算, 消費税8%, 消費税10%, 端数処理, 仕入税額控除, 免税事業者, 経理計算">
+  <meta name="author" content="GoModo">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://www.gomodo.cloud/ja/tax/">
+
+  <!-- 多言語 hreflang 設定 -->
+  <link rel="alternate" hreflang="ja" href="https://www.gomodo.cloud/ja/tax/">
+  <link rel="alternate" hreflang="x-default" href="https://www.gomodo.cloud/ja/tax/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GoModo 日本版">
+  <meta property="og:title" content="消費税・軽減税率（8%・10%）＆インボイス計算機 | GoModo">
+  <meta property="og:description" content="消費税10%（標準税率）と8%（軽減税率）の税込・税抜計算、端数処理、インボイス制度の経過措置計算がすぐわかる無料Webツール。">
+  <meta property="og:url" content="https://www.gomodo.cloud/ja/tax/">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:image" content="https://www.gomodo.cloud/og-image.png">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="消費税・軽減税率（8%・10%）＆インボイス計算機 | GoModo">
+  <meta name="twitter:description" content="税込・税抜相互変換、軽減税率8%、イン보이스制度の経過措置を即時計算。">
+  <meta name="twitter:image" content="https://www.gomodo.cloud/og-image.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="apple-touch-icon" href="../../favicon.svg">
+
+  <!-- Tailwind CSS & FontAwesome -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Noto Sans JP"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- テーマシステム (ダーク/ライト) -->
+  <link rel="stylesheet" href="../../theme.css?v=2">
+  <script src="../../theme.js"></script>
+
+  <!-- Google AdSense -->
+  
+  <!-- SHARED:ADSENSE -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4528673716962845" crossorigin="anonymous"></script>
+  <!-- /SHARED:ADSENSE -->
+
+  <!-- Structured Data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "GoModo 消費税・軽減税率＆インボイス計算機",
+    "url": "https://www.gomodo.cloud/ja/tax/",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "All",
+    "description": "消費税10%（標準税率）および8%（軽減税率）の税込・税抜金額、端数処理（切り捨て/四捨五入/切り上げ）、インボイス制度の経過措置（80%/50%仕入税額控除）を瞬時に算出する計算ツール。",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "JPY"
+    },
+    "featureList": [
+      "税込・税抜双方向の瞬時相互変換",
+      "10%（標準税率）と8%（軽減税率）の同時税額比較",
+      "端数処理方式（切り捨て・四捨五入・切り上げ）選択",
+      "インボイス制度対応 免税事業者からの仕入税額控除（80%・50%経過措置）計算",
+      "標準税率10%＋軽減税率8%の複数品目同時合算",
+      "請求書・領収書用テキストの1クリックコピー＆LINE共有"
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "GoModo 日本版",
+        "item": "https://www.gomodo.cloud/ja/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "消費税・インボイス計算機",
+        "item": "https://www.gomodo.cloud/ja/tax/"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "消費税の軽減税率（8%）の対象品目は何ですか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "軽減税率（8%）の対象は、酒類および外食（イートイン）を除くすべての飲食料品と、週2回以上発行され定期購読契約に基づく新聞です。テイクアウトや出前（デリバリー）は8%ですが、店内飲食（イートイン）は10%となります。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "消費税の端数処理（1円未満）のルールはどうなっていますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "消費税法上、1円未満の端数処理方法（切り捨て・四捨五入・切り上げ）は事業者の判断に委ねられていますが、商慣習および国税庁の指針では『切り捨て（floor）』が最も広く採用されています。また、インボイス制度下では1つの請求書につき税率ごとに1回のみ端数処理を行う必要があります。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "インボイス制度における免税事業者の経過措置とは何ですか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "インボイス発行事業者以外の免税事業者等からの課税仕入れであっても、一定期間は仕入税額相当額の一定割合を仕入税額控除できる特例です。2023年10月1日〜2026年9月30日までは80%控除、2026年10月1日〜2029年9月30日までは50%控除が適用されます。"
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-emerald-500 selection:text-slate-950">
+
+  <!-- ヘッダーナビゲーション -->
+  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto px-4 h-14 sm:h-16 flex items-center justify-between gap-2 sm:gap-3">
+      <!-- ロゴ & 戻るリンク -->
+      <div class="flex items-center gap-2 sm:gap-2.5 flex-shrink-0 min-w-0">
+        <a href="../" class="text-slate-400 hover:text-emerald-400 transition p-1.5 sm:p-2 rounded-xl hover:bg-slate-800 flex items-center gap-1 text-xs sm:text-sm font-bold border border-transparent hover:border-slate-700 flex-shrink-0" title="日本版ホームへ戻る">
+          <i class="fa-solid fa-arrow-left text-xs sm:text-sm"></i>
+          <span class="hidden sm:inline">日本版ホーム</span>
+        </a>
+        <div class="flex items-center gap-2 flex-shrink-0">
+          <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-400 text-slate-950 flex items-center justify-center font-black text-sm sm:text-base shadow-sm flex-shrink-0">
+            <i class="fa-solid fa-percent"></i>
+          </div>
+          <span class="text-base sm:text-xl font-black tracking-tight text-white whitespace-nowrap">消費税・軽減税率 <span class="text-emerald-400">計算機</span></span>
+        </div>
+      </div>
+
+      <!-- 右側アクションボタン (SSOT) -->
+      <nav class="flex items-center gap-1.5 sm:gap-2.5 text-xs sm:text-sm font-bold text-slate-300 flex-shrink-0 whitespace-nowrap">
+        <!-- ツール一覧 ドロップダウン (SSOT 自動生成) -->
+        <!-- SHARED:TOOL_DROPDOWN -->
+        <div class="relative" id="tool-dropdown-container">
+          <button type="button" onclick="toggleToolDropdown(event)" id="tool-dropdown-btn" class="flex items-center gap-1.5 bg-slate-800/90 hover:bg-slate-700 text-slate-200 hover:text-white px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl border border-slate-700/80 transition active:scale-95 shadow-sm whitespace-nowrap flex-shrink-0" aria-expanded="false" aria-label="ツール一覧">
+            <i class="fa-solid fa-shapes text-sky-400 text-xs sm:text-sm"></i>
+            <span class="hidden sm:inline font-bold">ツール一覧</span>
+            <span class="sm:hidden font-bold">ツール</span>
+            <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition-transform duration-200" id="tool-dropdown-arrow"></i>
+          </button>
+
+          <!-- 드롭다운 메뉴 (日本 특화 도구 4개) -->
+          <div id="tool-dropdown-menu" class="hidden absolute right-0 mt-2 w-64 sm:w-72 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl p-2 z-50 divide-y divide-slate-800">
+            <div class="px-3 py-2 text-[11px] font-bold text-slate-400 flex items-center justify-between">
+              <span>GoModo 日本版ツール (4)</span>
+              <a href="../" class="text-[10px] text-sky-400 font-semibold hover:underline">日本版ホーム</a>
+            </div>
+            
+            <div class="pt-1 space-y-1">
+              <a href="../age/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-calendar-days"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-sky-300 transition truncate">和暦・西暦・満年齢計算機</div>
+                  <div class="text-[10px] text-slate-400 truncate">令和・平成・学歴履歴書早見</div>
+                </div>
+              </a>
+
+              <a href="../lottery/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-clover"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-amber-300 transition truncate">ロト6・ロト7 吉日カレンダー</div>
+                  <div class="text-[10px] text-slate-400 truncate">2026年 宝くじ開運日 TOP3</div>
+                </div>
+              </a>
+
+              <a href="../warikan/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-receipt"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-rose-300 transition truncate">飲み会・割り勘計算機</div>
+                  <div class="text-[10px] text-slate-400 truncate">上司傾斜・端数調整・LINE精算</div>
+                </div>
+              </a>
+
+              <a href="./" class="flex items-center gap-2.5 p-2 rounded-xl bg-slate-800/80 text-emerald-400 transition group">
+                <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-percent"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-emerald-300 transition truncate">消費税・軽減税率計算機</div>
+                  <div class="text-[10px] text-slate-400 truncate">10%・8%税込税抜 & インボイス</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- /SHARED:TOOL_DROPDOWN -->
+        </div>
+
+      </div>
+
+      <!-- 右カラム: 計算結果サマリー & 10%/8% 比較カード (5 cols) -->
+      <div class="lg:col-span-5 space-y-4">
+
+        <!-- ヒーロー計算結果カード -->
+        <div class="bg-gradient-to-br from-emerald-950/80 to-slate-900 border-2 border-emerald-500/60 rounded-3xl p-6 sm:p-7 shadow-2xl relative overflow-hidden">
+          <div class="absolute -right-8 -bottom-8 w-36 h-36 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
+          <div class="flex items-center justify-between text-xs font-bold text-emerald-300 mb-1">
+            <span id="hero-result-label">税込合計金額</span>
+            <span class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[10px]" id="hero-rate-badge">消費税 10%</span>
+          </div>
+
+          <div class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight my-2" id="hero-result-amount">
+            ¥11,000
+          </div>
+          
+          <div class="space-y-3 pt-3 border-t border-emerald-500/30 text-xs sm:text-sm font-semibold">
+            <!-- 本体価格 (税抜) -->
+            <div class="flex items-center justify-between">
+              <span class="text-slate-300">本体価格（税抜）:</span>
+              <span class="font-bold text-white text-base" id="breakdown-net">¥10,000</span>
+            </div>
+
+            <!-- 消費税額 -->
+            <div class="flex items-center justify-between">
+              <span class="text-slate-300">消費税額:</span>
+              <span class="font-bold text-emerald-400 text-base" id="breakdown-tax">¥1,000</span>
+            </div>
+
+            <!-- 10% vs 8% 軽減税率比較 -->
+            <div class="p-3 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-1 text-xs">
+              <div class="flex items-center justify-between text-slate-300">
+                <span>軽減税率（8%）の場合:</span>
+                <span class="font-bold text-amber-300" id="compare-8-amount">¥10,800 (税額: ¥800)</span>
+              </div>
+              <div class="flex items-center justify-between text-[11px] text-emerald-400 font-bold">
+                <span>軽減税率との差額:</span>
+                <span id="compare-diff-amount">2%おトク（-¥200）</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- クイックアクションボタン -->
+          <div class="pt-5 flex items-center gap-2">
+            <button type="button" onclick="copyTaxSummary()" class="flex-1 py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs transition active:scale-95 flex items-center justify-center gap-1.5 border border-slate-700 shadow-sm">
+              <i class="fa-solid fa-copy text-emerald-400"></i>
+              <span id="copy-btn-text">内訳テキストをコピー</span>
+            </button>
+            <button type="button" onclick="shareTaxResults()" class="py-2.5 px-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs transition active:scale-95 flex items-center justify-center gap-1.5 shadow-sm">
+              <i class="fa-solid fa-share-nodes"></i>
+              <span>共有</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 複数品目（10%標準 + 8%軽減）合算ミニ計算機 -->
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-6 shadow-xl space-y-3">
+          <h3 class="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+            <i class="fa-solid fa-cart-shopping text-emerald-400"></i>
+            <span>10%標準 ＆ 8%軽減 同時合算（レシート計算）</span>
+          </h3>
+          <p class="text-[11px] text-slate-400">日用品（10%）と飲食料品（8%）を同時に購入した合算金額を算出します。</p>
+
+          <div class="space-y-2 pt-1 text-xs">
+            <div class="flex items-center justify-between gap-2">
+              <label for="basket-10-amt" class="text-slate-300 font-semibold flex-shrink-0">10%対象（税抜）:</label>
+              <div class="relative w-36">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-2.5 text-slate-500 text-xs">¥</span>
+                <input type="number" id="basket-10-amt" value="3000" min="0" step="100" class="w-full pl-6 pr-2 py-1.5 bg-slate-800 border border-slate-700 rounded-xl text-white font-bold text-xs focus:ring-1 focus:ring-emerald-500 focus:outline-none">
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between gap-2">
+              <label for="basket-8-amt" class="text-slate-300 font-semibold flex-shrink-0">8%対象（税抜）:</label>
+              <div class="relative w-36">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-2.5 text-slate-500 text-xs">¥</span>
+                <input type="number" id="basket-8-amt" value="2000" min="0" step="100" class="w-full pl-6 pr-2 py-1.5 bg-slate-800 border border-slate-700 rounded-xl text-white font-bold text-xs focus:ring-1 focus:ring-emerald-500 focus:outline-none">
+              </div>
+            </div>
+
+            <div class="pt-2 border-t border-slate-800 flex items-center justify-between text-xs">
+              <span class="font-bold text-slate-200">総合計（税込）:</span>
+              <span class="font-black text-emerald-400 text-base" id="basket-total-display">¥5,460</span>
+            </div>
+            <div class="flex items-center justify-between text-[11px] text-slate-400">
+              <span>内消費税（10%: ¥300 / 8%: ¥160）:</span>
+              <span class="font-bold text-slate-300" id="basket-tax-display">¥460</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- 3段 SEO ガイド & 解説コンテンツ (Thin Content 防止) -->
+    <section class="space-y-6 pt-4">
+
+      <!-- 1. 消費税の計算式と内税・外税の求め方 -->
+      <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-4">
+        <h2 class="text-lg sm:text-xl font-black text-white flex items-center gap-2">
+          <i class="fa-solid fa-square-root-variable text-emerald-400"></i>
+          <span>消費税の計算式と求め方（税抜・税込・内税）</span>
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+          消費税の計算は、本体価格に消費税率を乗算して求める方法と、税込金額から税抜価格や消費税額を逆算する方法があります。
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-mono">
+          <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
+            <div class="text-emerald-400 font-bold font-sans text-sm">【1】税抜金額から税込金額を求める（外税計算）</div>
+            <div class="text-white">税込金額 = 税抜金額 &times; 1.10（軽減税率は 1.08）</div>
+            <div class="text-slate-400">消費税額 = 税抜金額 &times; 0.10（軽減税率は 0.08）</div>
+            <div class="text-[11px] text-slate-500 font-sans">例: 税抜10,000円の場合 ➔ 10,000 &times; 1.10 = 11,000円</div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
+            <div class="text-emerald-400 font-bold font-sans text-sm">【2】税込金額から税抜金額を求める（内税逆算）</div>
+            <div class="text-white">税抜金額 = 税込金額 &divide; 1.10（軽減税率は 1.08）</div>
+            <div class="text-slate-400">内消費税額 = 税込金額 &minus; 税抜金額</div>
+            <div class="text-[11px] text-slate-500 font-sans">例: 税込11,000円の場合 ➔ 11,000 &divide; 1.10 = 10,000円</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. 軽減税率（8%）と標準税率（10%）の対象品目区分表 -->
+      <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-4">
+        <h2 class="text-lg sm:text-xl font-black text-white flex items-center gap-2">
+          <i class="fa-solid fa-table-list text-emerald-400"></i>
+          <span>軽減税率（8%）と標準税率（10%）の対象品目早見表</span>
+        </h2>
+        
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs sm:text-sm">
+            <thead>
+              <tr class="border-b border-slate-800 text-slate-400 uppercase text-[11px] bg-slate-950/40">
+                <th class="py-3 px-3 sm:px-4">区分</th>
+                <th class="py-3 px-3 sm:px-4">適用税率</th>
+                <th class="py-3 px-3 sm:px-4">主な対象品目・具体例</th>
+                <th class="py-3 px-3 sm:px-4">注意が必要な境界線</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800 font-medium">
+              <tr class="hover:bg-slate-800/40">
+                <td class="py-3 px-3 sm:px-4 font-bold text-amber-300">軽減税率</td>
+                <td class="py-3 px-3 sm:px-4 font-black text-amber-400">8%</td>
+                <td class="py-3 px-3 sm:px-4 text-slate-200">飲食料品（食品・飲料・米・野菜等）、定期購読の新聞（週2回以上発行）</td>
+                <td class="py-3 px-3 sm:px-4 text-slate-400">テイクアウトや出前は8%。お酒やみりんは対象外（10%）。</td>
+              </tr>
+              <tr class="hover:bg-slate-800/40">
+                <td class="py-3 px-3 sm:px-4 font-bold text-emerald-300">標準税率</td>
+                <td class="py-3 px-3 sm:px-4 font-black text-emerald-400">10%</td>
+                <td class="py-3 px-3 sm:px-4 text-slate-200">外食（店内飲食）、日用品、家電、衣料品、書籍、酒類、交通費、各種サービス</td>
+                <td class="py-3 px-3 sm:px-4 text-slate-400">フードコートでの飲食は外食扱いとなり10%適用。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 3. よくある質問 (FAQ) -->
+      <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-4">
+        <h2 class="text-lg sm:text-xl font-black text-white flex items-center gap-2">
+          <i class="fa-solid fa-circle-question text-emerald-400"></i>
+          <span>よくある質問（FAQ）</span>
+        </h2>
+        
+        <div class="space-y-3 pt-2 text-xs sm:text-sm">
+          <div class="p-4 rounded-2xl bg-slate-950/60 border border-slate-800 space-y-1.5">
+            <h3 class="font-bold text-white text-sm sm:text-base">消費税の端数処理は切り捨てですか？四捨五入ですか？</h3>
+            <p class="text-slate-300 leading-relaxed text-xs sm:text-sm">
+              消費税法上、端数処理の計算方法に特段の定めはなく、事業者の任意とされていますが、日本の商慣習においては「切り捨て」を採用するケースが一般的です。また、インボイス（適格請求書）制度においては「1つのインボイスにつき、税率ごとに1回のみ端数処理を行う」という義務がある点にご留意ください。
+            </p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-slate-950/60 border border-slate-800 space-y-1.5">
+            <h3 class="font-bold text-white text-sm sm:text-base">インボイス制度の経過措置（80%・50%控除）とは何ですか？</h3>
+            <p class="text-slate-300 leading-relaxed text-xs sm:text-sm">
+              インボイス発行事業者以外の免税事業者からの仕入れでも、制度導入後の激変緩和措置として一定割合の仕入税額控除が認められます。2023年10月〜2026年9月までは80%控除、2026年10月〜2029年9月までは50%控除が可能です。
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- SSOT プライベートフッター (scripts/sync-common.js により自動更新) -->
+  <!-- SHARED:FOOTER -->
+  <footer class="border-t border-slate-800 bg-slate-950 text-slate-400 py-8 text-xs text-center mt-auto">
+    <div class="max-w-5xl mx-auto px-4 space-y-4">
+      <!-- 1. 법적 고지 및 소개 링크 -->
+      <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-semibold text-slate-400">
+        <a href="../about/" class="hover:text-sky-400 transition">運営者情報 (About)</a>
+        <span>•</span>
+        <a href="../terms/" class="hover:text-sky-400 transition">利用規約・免責事項</a>
+        <span>•</span>
+        <a href="../privacy/" class="hover:text-sky-400 transition">プライバシーポリシー</a>
+      </div>
+
+      <!-- 2. 글로벌 포털 허브 바로가기 -->
+      <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[11px] font-medium text-slate-500">
+        <span class="text-slate-600">地域 / 言語:</span>
+        <a href="../../" class="hover:text-slate-300 transition">🇰🇷 한국어</a>
+        <span>|</span>
+        <a href="../" class="text-slate-300 font-bold">🇯🇵 日本語</a>
+        <span>|</span>
+        <a href="../../en/" class="hover:text-slate-300 transition">🇺🇸 English</a>
+      </div>
+
+      <!-- 3. 면책 조항 -->
+      <div class="max-w-3xl mx-auto text-[11px] text-slate-500 leading-relaxed border-t border-slate-900 pt-3">
+        【免責事項】当ツールで算出される消費税額、税込・税抜価格およびインボイス制度の仕入控除額はシミュレーション上の目安です。実際の申告や会計処理に際しては、所轄税務署または税理士等の専門家にご相談ください。
+      </div>
+
+      <!-- 4. 저작권 & E-E-A-T 지원 이메일 -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-3 text-[11px] text-slate-500">
+        <span>© 2026 GoModo. All rights reserved.</span>
+        <span class="hidden sm:inline">•</span>
+        <span>Contact: <a href="mailto:support@gomodo.cloud" class="hover:text-slate-400 underline">support@gomodo.cloud</a></span>
+      </div>
+    </div>
+  </footer>
+  <!-- /SHARED:FOOTER -->
+
+  <!-- JavaScript 計算ロジック -->
+  <script>
+    // State Variables
+    let currentMode = 'ex'; // 'ex': 税抜➔税込, 'in': 税込➔税抜
+    let currentRate = 10;   // 10 or 8
+    let currentRounding = 'floor'; // 'floor', 'round', 'ceil'
+    let currentInvoiceDeduct = 50; // 50 or 80
+
+    function setMode(mode) {
+      currentMode = mode;
+      const btnEx = document.getElementById('mode-btn-ex');
+      const btnIn = document.getElementById('mode-btn-in');
+      const label = document.getElementById('amount-input-label');
+      const heroLabel = document.getElementById('hero-result-label');
+
+      if (mode === 'ex') {
+        btnEx.className = 'py-2.5 px-3 rounded-xl font-bold text-xs sm:text-sm transition flex items-center justify-center gap-2 bg-emerald-500 text-slate-950 shadow-md';
+        btnIn.className = 'py-2.5 px-3 rounded-xl font-bold text-xs sm:text-sm transition flex items-center justify-center gap-2 text-slate-300 hover:text-white';
+        if (label) label.textContent = '基準金額（税抜）';
+        if (heroLabel) heroLabel.textContent = '税込合計金額';
+      } else {
+        btnIn.className = 'py-2.5 px-3 rounded-xl font-bold text-xs sm:text-sm transition flex items-center justify-center gap-2 bg-emerald-500 text-slate-950 shadow-md';
+        btnEx.className = 'py-2.5 px-3 rounded-xl font-bold text-xs sm:text-sm transition flex items-center justify-center gap-2 text-slate-300 hover:text-white';
+        if (label) label.textContent = '基準金額（税込）';
+        if (heroLabel) heroLabel.textContent = '税抜本体価格';
+      }
+      calculateTax();
+    }
+
+    function setTaxRate(rate) {
+      currentRate = rate;
+      const btn10 = document.getElementById('rate-btn-10');
+      const btn8 = document.getElementById('rate-btn-8');
+      const heroBadge = document.getElementById('hero-rate-badge');
+
+      if (rate === 10) {
+        btn10.className = 'p-3 rounded-2xl border-2 transition text-left relative overflow-hidden bg-slate-800/90 border-emerald-500 text-white shadow-md';
+        btn8.className = 'p-3 rounded-2xl border-2 transition text-left relative overflow-hidden bg-slate-800/50 border-slate-700 text-slate-300 hover:border-slate-600';
+        if (heroBadge) heroBadge.textContent = '消費税 10%（標準）';
+      } else {
+        btn8.className = 'p-3 rounded-2xl border-2 transition text-left relative overflow-hidden bg-slate-800/90 border-amber-500 text-white shadow-md';
+        btn10.className = 'p-3 rounded-2xl border-2 transition text-left relative overflow-hidden bg-slate-800/50 border-slate-700 text-slate-300 hover:border-slate-600';
+        if (heroBadge) heroBadge.textContent = '軽減税率 8%';
+      }
+      calculateTax();
+    }
+
+    function setRounding(method) {
+      currentRounding = method;
+      const btns = {
+        floor: document.getElementById('round-btn-floor'),
+        round: document.getElementById('round-btn-round'),
+        ceil: document.getElementById('round-btn-ceil')
+      };
+
+      Object.keys(btns).forEach(key => {
+        if (key === method) {
+          btns[key].className = 'py-2 px-3 rounded-xl font-bold text-xs transition border bg-emerald-500/20 text-emerald-300 border-emerald-500/40';
+        } else {
+          btns[key].className = 'py-2 px-3 rounded-xl font-bold text-xs transition border bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700';
+        }
+      });
+      calculateTax();
+    }
+
+    function applyRounding(val) {
+      if (currentRounding === 'ceil') return Math.ceil(val);
+      if (currentRounding === 'round') return Math.round(val);
+      return Math.floor(val); // default: floor
+    }
+
+    function toggleInvoicePanel() {
+      const panel = document.getElementById('invoice-options-panel');
+      const arrow = document.getElementById('invoice-arrow');
+      if (panel) {
+        const isHidden = panel.classList.contains('hidden');
+        panel.classList.toggle('hidden', !isHidden);
+        if (arrow) arrow.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+      }
+    }
+
+    function setInvoiceDeduction(pct) {
+      currentInvoiceDeduct = pct;
+      const btn50 = document.getElementById('inv-deduct-50');
+      const btn80 = document.getElementById('inv-deduct-80');
+      const pctLabel = document.getElementById('inv-pct-label');
+
+      if (pct === 50) {
+        btn50.className = 'p-2.5 rounded-xl border font-bold text-left transition bg-emerald-500/20 text-emerald-300 border-emerald-500/40';
+        btn80.className = 'p-2.5 rounded-xl border font-bold text-left transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700';
+      } else {
+        btn80.className = 'p-2.5 rounded-xl border font-bold text-left transition bg-emerald-500/20 text-emerald-300 border-emerald-500/40';
+        btn50.className = 'p-2.5 rounded-xl border font-bold text-left transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700';
+      }
+      if (pctLabel) pctLabel.textContent = pct;
+      calculateTax();
+    }
+
+    function addAmount(val) {
+      const input = document.getElementById('tax-amount');
+      const current = parseFloat(input.value) || 0;
+      input.value = current + val;
+      calculateTax();
+    }
+
+    function clearAmount() {
+      document.getElementById('tax-amount').value = 0;
+      calculateTax();
+    }
+
+    function resetTaxForm() {
+      document.getElementById('tax-amount').value = 10000;
+      setMode('ex');
+      setTaxRate(10);
+      setRounding('floor');
+      setInvoiceDeduction(50);
+      calculateTax();
+    }
+
+    function formatJPY(val) {
+      return '¥' + Math.round(val).toLocaleString('ja-JP');
+    }
+
+    function calculateTax() {
+      const inputVal = parseFloat(document.getElementById('tax-amount').value) || 0;
+      const preview = document.getElementById('amount-display-preview');
+      if (preview) preview.textContent = formatJPY(inputVal);
+
+      let netAmount = 0;
+      let taxAmount = 0;
+      let totalAmount = 0;
+
+      const rateMultiplier = currentRate / 100;
+
+      if (currentMode === 'ex') {
+        // 税抜 ➔ 税込
+        netAmount = inputVal;
+        taxAmount = applyRounding(netAmount * rateMultiplier);
+        totalAmount = netAmount + taxAmount;
+      } else {
+        // 税込 ➔ 税抜
+        totalAmount = inputVal;
+        netAmount = applyRounding(totalAmount / (1 + rateMultiplier));
+        taxAmount = totalAmount - netAmount;
+      }
+
+      // UI 更新
+      const heroAmount = document.getElementById('hero-result-amount');
+      const breakdownNet = document.getElementById('breakdown-net');
+      const breakdownTax = document.getElementById('breakdown-tax');
+
+      if (currentMode === 'ex') {
+        if (heroAmount) heroAmount.textContent = formatJPY(totalAmount);
+      } else {
+        if (heroAmount) heroAmount.textContent = formatJPY(netAmount);
+      }
+
+      if (breakdownNet) breakdownNet.textContent = formatJPY(netAmount);
+      if (breakdownTax) breakdownTax.textContent = formatJPY(taxAmount);
+
+      // 8% 軽減税率比較計算
+      const compare8AmountEl = document.getElementById('compare-8-amount');
+      const compareDiffEl = document.getElementById('compare-diff-amount');
+      
+      let comp8Total = 0;
+      let comp8Tax = 0;
+      if (currentMode === 'ex') {
+        comp8Tax = applyRounding(netAmount * 0.08);
+        comp8Total = netAmount + comp8Tax;
+        const diff = totalAmount - comp8Total;
+        if (compare8AmountEl) compare8AmountEl.textContent = `${formatJPY(comp8Total)} (税額: ${formatJPY(comp8Tax)})`;
+        if (compareDiffEl) {
+          if (currentRate === 10) {
+            compareDiffEl.textContent = `軽減税率(8%)なら ${formatJPY(diff)} おトク`;
+          } else {
+            compareDiffEl.textContent = `標準税率(10%)との差額: ${formatJPY(Math.abs(diff))}`;
+          }
+        }
+      } else {
+        const comp8Net = applyRounding(totalAmount / 1.08);
+        comp8Tax = totalAmount - comp8Net;
+        if (compare8AmountEl) compare8AmountEl.textContent = `税抜: ${formatJPY(comp8Net)} (税額: ${formatJPY(comp8Tax)})`;
+        if (compareDiffEl) compareDiffEl.textContent = `税抜価格の差: ${formatJPY(Math.abs(netAmount - comp8Net))}`;
+      }
+
+      // インボイス制度経過措置計算
+      const invDeductibleEl = document.getElementById('inv-deductible-tax');
+      const invNonDeductibleEl = document.getElementById('inv-non-deductible-tax');
+      if (invDeductibleEl && invNonDeductibleEl) {
+        const deductible = applyRounding(taxAmount * (currentInvoiceDeduct / 100));
+        const nonDeductible = taxAmount - deductible;
+        invDeductibleEl.textContent = formatJPY(deductible);
+        invNonDeductibleEl.textContent = formatJPY(nonDeductible);
+      }
+
+      // 複数品目（10% + 8%）合算計算
+      calculateBasket();
+
+      // URL パラメータ更新
+      updateUrlState(inputVal, currentMode, currentRate, currentRounding);
+    }
+
+    function calculateBasket() {
+      const b10 = parseFloat(document.getElementById('basket-10-amt').value) || 0;
+      const b8 = parseFloat(document.getElementById('basket-8-amt').value) || 0;
+
+      const tax10 = applyRounding(b10 * 0.10);
+      const tax8 = applyRounding(b8 * 0.08);
+      const totalTax = tax10 + tax8;
+      const total = b10 + b8 + totalTax;
+
+      const totalEl = document.getElementById('basket-total-display');
+      const taxEl = document.getElementById('basket-tax-display');
+
+      if (totalEl) totalEl.textContent = formatJPY(total);
+      if (taxEl) taxEl.textContent = `内消費税（10%: ${formatJPY(tax10)} / 8%: ${formatJPY(tax8)}）: ${formatJPY(totalTax)}`;
+    }
+
+    function updateUrlState(amt, mode, rate, round) {
+      if (!window.history || !window.history.replaceState) return;
+      const params = new URLSearchParams(window.location.search);
+      params.set('amt', amt);
+      params.set('mode', mode);
+      params.set('rate', rate);
+      params.set('round', round);
+      const newUrl = `${window.location.pathname}?${params.toString()}`;
+      window.history.replaceState(null, '', newUrl);
+    }
+
+    function readUrlState() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.has('amt')) document.getElementById('tax-amount').value = params.get('amt');
+      if (params.has('mode')) setMode(params.get('mode'));
+      if (params.has('rate')) setTaxRate(parseInt(params.get('rate')));
+      if (params.has('round')) setRounding(params.get('round'));
+    }
+
+    function copyTaxSummary() {
+      const inputVal = parseFloat(document.getElementById('tax-amount').value) || 0;
+      const net = document.getElementById('breakdown-net').textContent;
+      const tax = document.getElementById('breakdown-tax').textContent;
+      const total = currentMode === 'ex' ? document.getElementById('hero-result-amount').textContent : formatJPY(inputVal);
+      const rateLabel = currentRate === 10 ? '10%（標準税率）' : '8%（軽減税率）';
+
+      const summary = `【消費税 計算明細】
+税率: ${rateLabel}（端数: ${currentRounding === 'floor' ? '切り捨て' : currentRounding === 'round' ? '四捨五入' : '切り上げ'}）
+・本体価格（税抜）: ${net}
+・消費税額: ${tax}
+・合計金額（税込）: ${total}
+-----------------------------
+計算機: ${window.location.href}`;
+
+      navigator.clipboard.writeText(summary).then(() => {
+        const btnText = document.getElementById('copy-btn-text');
+        if (btnText) {
+          btnText.textContent = 'コピーしました！';
+          setTimeout(() => { btnText.textContent = '内訳テキストをコピー'; }, 2000);
+        }
+      });
+    }
+
+    function shareTaxResults() {
+      const total = currentMode === 'ex' ? document.getElementById('hero-result-amount').textContent : document.getElementById('breakdown-net').textContent;
+      if (navigator.share) {
+        navigator.share({
+          title: '消費税・軽減税率＆インボイス計算機 | GoModo',
+          text: `消費税計算結果（税込 ${total}）をGoModoで計算しました。`,
+          url: window.location.href
+        }).catch(() => {});
+      } else {
+        copyTaxSummary();
+      }
+    }
+
+    // 初期化
+    document.addEventListener('DOMContentLoaded', () => {
+      readUrlState();
+      calculateTax();
+
+      document.getElementById('tax-amount').addEventListener('input', calculateTax);
+      document.getElementById('basket-10-amt').addEventListener('input', calculateBasket);
+      document.getElementById('basket-8-amt').addEventListener('input', calculateBasket);
+    });
+  </script>
+
+</body>
+</html>
