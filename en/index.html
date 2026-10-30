@@ -75,31 +75,37 @@
       },
       {
         "@type": "ItemList",
-        "name": "GoModo US Online Calculators",
+        "name": "GoModo US Calculators & Tools",
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
+            "name": "Compound Interest & Investment Calculator",
+            "url": "https://www.gomodo.cloud/en/compound/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "US Mortgage & PITI Calculator (Live FRED Rates)",
+            "url": "https://www.gomodo.cloud/en/mortgage/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
             "name": "Powerball & Mega Millions Lottery Tax & Payout Calculator",
             "url": "https://www.gomodo.cloud/en/lottery/"
           },
           {
             "@type": "ListItem",
-            "position": 2,
-            "name": "Everyday US Unit Converter (Imperial to Metric)",
-            "url": "https://www.gomodo.cloud/en/converter/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
+            "position": 4,
             "name": "US Tip & Split Bill Calculator",
             "url": "https://www.gomodo.cloud/en/tip/"
           },
           {
             "@type": "ListItem",
-            "position": 4,
-            "name": "US Mortgage & PITI Calculator (Live FRED Rates)",
-            "url": "https://www.gomodo.cloud/en/mortgage/"
+            "position": 5,
+            "name": "Everyday US Unit Converter (Imperial to Metric)",
+            "url": "https://www.gomodo.cloud/en/converter/"
           }
         ]
       },
@@ -204,33 +210,13 @@
             </div>
             
             <div class="pt-1 space-y-1">
-              <a href="./lottery/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+              <a href="./compound/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
                 <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-black">
-                  <i class="fa-solid fa-bolt"></i>
+                  <i class="fa-solid fa-chart-line"></i>
                 </div>
                 <div class="min-w-0 flex-1">
-                  <div class="text-xs font-bold text-white group-hover:text-emerald-300 transition truncate">Powerball Tax Calculator</div>
-                  <div class="text-[10px] text-slate-400 truncate">50-State Payout & 30-Yr Annuity</div>
-                </div>
-              </a>
-
-              <a href="./converter/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
-                <div class="w-7 h-7 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center text-xs font-black">
-                  <i class="fa-solid fa-right-left"></i>
-                </div>
-                <div class="min-w-0 flex-1">
-                  <div class="text-xs font-bold text-white group-hover:text-sky-300 transition truncate">Everyday Unit Converter</div>
-                  <div class="text-[10px] text-slate-400 truncate">lbs, miles, °F, gal, cooking</div>
-                </div>
-              </a>
-
-              <a href="./tip/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
-                <div class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-xs font-black">
-                  <i class="fa-solid fa-receipt"></i>
-                </div>
-                <div class="min-w-0 flex-1">
-                  <div class="text-xs font-bold text-white group-hover:text-amber-300 transition truncate">Restaurant Tip & Split Bill</div>
-                  <div class="text-[10px] text-slate-400 truncate">Pre-tax tipping & Venmo copy</div>
+                  <div class="text-xs font-bold text-white group-hover:text-emerald-300 transition truncate">Compound Interest & Investment Calculator</div>
+                  <div class="text-[10px] text-slate-400 truncate">Wealth Growth & 401(k) / FIRE Planner</div>
                 </div>
               </a>
 
@@ -244,13 +230,33 @@
                 </div>
               </a>
 
-              <a href="./compound/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+              <a href="./lottery/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
                 <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-black">
-                  <i class="fa-solid fa-chart-line"></i>
+                  <i class="fa-solid fa-bolt"></i>
                 </div>
                 <div class="min-w-0 flex-1">
-                  <div class="text-xs font-bold text-white group-hover:text-emerald-300 transition truncate">Compound Interest & Investment Calculator</div>
-                  <div class="text-[10px] text-slate-400 truncate">Wealth Growth & 401(k) / FIRE Planner</div>
+                  <div class="text-xs font-bold text-white group-hover:text-emerald-300 transition truncate">Powerball Tax Calculator</div>
+                  <div class="text-[10px] text-slate-400 truncate">50-State Payout & 30-Yr Annuity</div>
+                </div>
+              </a>
+
+              <a href="./tip/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-receipt"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-amber-300 transition truncate">Restaurant Tip & Split Bill</div>
+                  <div class="text-[10px] text-slate-400 truncate">Pre-tax tipping & Venmo copy</div>
+                </div>
+              </a>
+
+              <a href="./converter/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-right-left"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-sky-300 transition truncate">Everyday Unit Converter</div>
+                  <div class="text-[10px] text-slate-400 truncate">lbs, miles, °F, gal, cooking</div>
                 </div>
               </a>
             </div>
@@ -308,170 +314,6 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
 
-        <!-- 1. Powerball & Mega Millions Tax Calculator (Active) -->
-        <div class="bg-slate-900 border-2 border-emerald-500/50 hover:border-emerald-400 rounded-3xl p-6 sm:p-7 shadow-xl transition-all flex flex-col justify-between group relative overflow-hidden">
-          <div class="absolute -top-10 -right-10 w-36 h-36 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
-
-          <div>
-            <div class="flex items-center justify-between gap-3 mb-4">
-              <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center text-2xl shadow-sm">
-                <i class="fa-solid fa-ticket"></i>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold">
-                  🇺🇸 US Special
-                </span>
-                <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold flex items-center gap-1.5">
-                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Active
-                </span>
-              </div>
-            </div>
-
-            <h3 class="text-xl sm:text-2xl font-black text-white mb-2 group-hover:text-emerald-300 transition">
-              Powerball &amp; Mega Millions Tax Calculator
-            </h3>
-            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
-              Calculate exact net take-home payouts after federal (24% upfront + 37% top bracket) and state taxes for all 50 states. Compare Lump Sum Cash Option vs 30-Year Annuity with annual 5% escalation.
-            </p>
-
-            <div class="flex flex-wrap gap-1.5 mb-6">
-              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">Cash vs 30-Yr Annuity</span>
-              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">50 States + DC Tax Rates</span>
-              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">0% Tax States (CA, TX, FL)</span>
-              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">Federal 24% + 13% Gap</span>
-              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">NYC &amp; Local Surtax</span>
-            </div>
-          </div>
-
-          <a href="./lottery/" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black py-3.5 px-5 rounded-xl transition text-center text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 active:scale-95">
-            <span>Calculate Lottery Taxes</span>
-            <i class="fa-solid fa-arrow-right"></i>
-          </a>
-        </div>
-
-        <!-- 2. Everyday US Unit Converter (Active) -->
-        <div class="bg-slate-900 border-2 border-amber-500/50 hover:border-amber-400 rounded-3xl p-6 sm:p-7 shadow-xl transition-all flex flex-col justify-between group relative overflow-hidden">
-          <div class="absolute -top-10 -right-10 w-36 h-36 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"></div>
-
-          <div>
-            <div class="flex items-center justify-between gap-3 mb-4">
-              <div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 border border-amber-500/40 flex items-center justify-center text-2xl shadow-sm">
-                <i class="fa-solid fa-scale-unbalanced-flip"></i>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-bold">
-                  🇺🇸 Everyday Utility
-                </span>
-                <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold flex items-center gap-1.5">
-                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Active
-                </span>
-              </div>
-            </div>
-
-            <h3 class="text-xl sm:text-2xl font-black text-white mb-2 group-hover:text-amber-300 transition">
-              Everyday US Unit Converter
-            </h3>
-            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
-              Effortlessly switch between US Imperial and Metric systems: Pounds (lbs) to kg, Miles/Feet/Inches to km/m/cm, Fahrenheit (°F) to Celsius (°C), and Gallons/Fluid Ounces to Liters/mL.
-            </p>
-
-            <div class="flex flex-wrap gap-1.5 mb-6">
-              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">lbs ↔ kg / oz ↔ g</span>
-              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">mi ↔ km / ft &amp; in ↔ cm</span>
-              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">°F ↔ °C Temperature</span>
-              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">gal ↔ L / fl oz ↔ ml</span>
-            </div>
-          </div>
-
-          <a href="./converter/" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-black py-3.5 px-5 rounded-xl transition text-center text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20 active:scale-95">
-            <span>Convert Units Now</span>
-            <i class="fa-solid fa-arrow-right"></i>
-          </a>
-        </div>
-
-        <!-- 3. Dining Tip & Fair Bill Splitter (Active) -->
-        <div class="bg-slate-900 border-2 border-sky-500/50 hover:border-sky-400 rounded-3xl p-6 sm:p-7 shadow-xl transition-all flex flex-col justify-between group relative overflow-hidden">
-          <div class="absolute -top-10 -right-10 w-36 h-36 bg-sky-500/10 rounded-full blur-2xl pointer-events-none"></div>
-
-          <div>
-            <div class="flex items-center justify-between gap-3 mb-4">
-              <div class="w-12 h-12 rounded-2xl bg-sky-500/20 text-sky-400 border border-sky-500/40 flex items-center justify-center text-2xl shadow-sm">
-                <i class="fa-solid fa-receipt"></i>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="px-3 py-1 rounded-full bg-sky-500/20 text-sky-300 border border-sky-500/30 text-xs font-bold">
-                  🇺🇸 Dining &amp; Travel
-                </span>
-                <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold flex items-center gap-1.5">
-                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Active
-                </span>
-              </div>
-            </div>
-
-            <h3 class="text-xl sm:text-2xl font-black text-white mb-2 group-hover:text-sky-300 transition">
-              Dining Tip &amp; Fair Bill Splitter
-            </h3>
-            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
-              Smart US restaurant tipping calculator with standard 15%, 18%, 20%, 25% presets, pre-tax vs post-tax calculation toggles, and fair group split options with copyable share text.
-            </p>
-
-            <div class="flex flex-wrap gap-1.5 mb-6">
-              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">15% - 25% Tip Presets</span>
-              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">Pre-tax / Post-tax Option</span>
-              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">Equal Bill Splitting</span>
-              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">One-Click Summary Copy</span>
-            </div>
-          </div>
-
-          <a href="./tip/" class="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-black py-3.5 px-5 rounded-xl transition text-center text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-sky-500/20 active:scale-95">
-            <span>Calculate Dining Tips</span>
-            <i class="fa-solid fa-arrow-right"></i>
-          </a>
-        </div>
-
-
-        <!-- 4. US Mortgage & PITI Calculator (Active) -->
-        <div class="bg-slate-900 border-2 border-indigo-500/50 hover:border-indigo-400 rounded-3xl p-6 sm:p-7 shadow-xl transition-all flex flex-col justify-between group relative overflow-hidden">
-          <div class="absolute -top-10 -right-10 w-36 h-36 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none"></div>
-
-          <div>
-            <div class="flex items-center justify-between gap-3 mb-4">
-              <div class="w-12 h-12 rounded-2xl bg-indigo-500/20 text-indigo-400 border border-indigo-500/40 flex items-center justify-center text-2xl shadow-sm">
-                <i class="fa-solid fa-house-chimney"></i>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-xs font-bold">
-                  🇺🇸 Live FRED Rates
-                </span>
-                <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold flex items-center gap-1.5">
-                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Active
-                </span>
-              </div>
-            </div>
-
-            <h3 class="text-xl sm:text-2xl font-black text-white mb-2 group-hover:text-indigo-300 transition">
-              Mortgage &amp; PITI Payment Calculator
-            </h3>
-            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
-              Comprehensive US fixed-rate mortgage calculator with live Federal Reserve (FRED) benchmark rates, complete PITI payment breakdown (Principal, Interest, Taxes, Insurance, PMI), and full 30-year amortization schedule.
-            </p>
-
-            <div class="flex flex-wrap gap-1.5 mb-6">
-              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">30-Yr &amp; 15-Yr Fixed</span>
-              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">Live FRED Benchmark (7.32%)</span>
-              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">PITI Breakdown &amp; PMI</span>
-              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">Annual Amortization Table</span>
-            </div>
-          </div>
-
-          <a href="./mortgage/" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-black py-3.5 px-5 rounded-xl transition text-center text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20 active:scale-95">
-            <span>Calculate Mortgage Payments</span>
-            <i class="fa-solid fa-arrow-right"></i>
-          </a>
-        </div>
-
-
-        <!-- 5. Compound Interest & Wealth Simulator (Active) -->
         <div class="bg-slate-900 border-2 border-emerald-500/50 hover:border-emerald-400 rounded-3xl p-6 sm:p-7 shadow-xl transition-all flex flex-col justify-between group relative overflow-hidden">
           <div class="absolute -top-10 -right-10 w-36 h-36 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
 
@@ -512,10 +354,164 @@
           </a>
         </div>
 
-      </div>
-    </section>
+        <div class="bg-slate-900 border-2 border-indigo-500/50 hover:border-indigo-400 rounded-3xl p-6 sm:p-7 shadow-xl transition-all flex flex-col justify-between group relative overflow-hidden">
+          <div class="absolute -top-10 -right-10 w-36 h-36 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none"></div>
 
-    <!-- Trust & Performance Pillars (E-E-A-T) -->
+          <div>
+            <div class="flex items-center justify-between gap-3 mb-4">
+              <div class="w-12 h-12 rounded-2xl bg-indigo-500/20 text-indigo-400 border border-indigo-500/40 flex items-center justify-center text-2xl shadow-sm">
+                <i class="fa-solid fa-house-chimney"></i>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-xs font-bold">
+                  🇺🇸 Live FRED Rates
+                </span>
+                <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Active
+                </span>
+              </div>
+            </div>
+
+            <h3 class="text-xl sm:text-2xl font-black text-white mb-2 group-hover:text-indigo-300 transition">
+              Mortgage &amp; PITI Payment Calculator
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
+              Comprehensive US fixed-rate mortgage calculator with live Federal Reserve (FRED) benchmark rates, complete PITI payment breakdown (Principal, Interest, Taxes, Insurance, PMI), and full 30-year amortization schedule.
+            </p>
+
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">30-Yr &amp; 15-Yr Fixed</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">Live FRED Benchmark (7.32%)</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">PITI Breakdown &amp; PMI</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">Annual Amortization Table</span>
+            </div>
+          </div>
+
+          <a href="./mortgage/" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-black py-3.5 px-5 rounded-xl transition text-center text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20 active:scale-95">
+            <span>Calculate Mortgage Payments</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <div class="bg-slate-900 border-2 border-emerald-500/50 hover:border-emerald-400 rounded-3xl p-6 sm:p-7 shadow-xl transition-all flex flex-col justify-between group relative overflow-hidden">
+          <div class="absolute -top-10 -right-10 w-36 h-36 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
+          <div>
+            <div class="flex items-center justify-between gap-3 mb-4">
+              <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center text-2xl shadow-sm">
+                <i class="fa-solid fa-ticket"></i>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold">
+                  🇺🇸 US Special
+                </span>
+                <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Active
+                </span>
+              </div>
+            </div>
+
+            <h3 class="text-xl sm:text-2xl font-black text-white mb-2 group-hover:text-emerald-300 transition">
+              Powerball &amp; Mega Millions Tax Calculator
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
+              Calculate exact net take-home payouts after federal (24% upfront + 37% top bracket) and state taxes for all 50 states. Compare Lump Sum Cash Option vs 30-Year Annuity with annual 5% escalation.
+            </p>
+
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">Cash vs 30-Yr Annuity</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">50 States + DC Tax Rates</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">0% Tax States (CA, TX, FL)</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">Federal 24% + 13% Gap</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">NYC &amp; Local Surtax</span>
+            </div>
+          </div>
+
+          <a href="./lottery/" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black py-3.5 px-5 rounded-xl transition text-center text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 active:scale-95">
+            <span>Calculate Lottery Taxes</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <div class="bg-slate-900 border-2 border-sky-500/50 hover:border-sky-400 rounded-3xl p-6 sm:p-7 shadow-xl transition-all flex flex-col justify-between group relative overflow-hidden">
+          <div class="absolute -top-10 -right-10 w-36 h-36 bg-sky-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
+          <div>
+            <div class="flex items-center justify-between gap-3 mb-4">
+              <div class="w-12 h-12 rounded-2xl bg-sky-500/20 text-sky-400 border border-sky-500/40 flex items-center justify-center text-2xl shadow-sm">
+                <i class="fa-solid fa-receipt"></i>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="px-3 py-1 rounded-full bg-sky-500/20 text-sky-300 border border-sky-500/30 text-xs font-bold">
+                  🇺🇸 Dining &amp; Travel
+                </span>
+                <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Active
+                </span>
+              </div>
+            </div>
+
+            <h3 class="text-xl sm:text-2xl font-black text-white mb-2 group-hover:text-sky-300 transition">
+              Dining Tip &amp; Fair Bill Splitter
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
+              Smart US restaurant tipping calculator with standard 15%, 18%, 20%, 25% presets, pre-tax vs post-tax calculation toggles, and fair group split options with copyable share text.
+            </p>
+
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">15% - 25% Tip Presets</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">Pre-tax / Post-tax Option</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">Equal Bill Splitting</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">One-Click Summary Copy</span>
+            </div>
+          </div>
+
+          <a href="./tip/" class="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-black py-3.5 px-5 rounded-xl transition text-center text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-sky-500/20 active:scale-95">
+            <span>Calculate Dining Tips</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <div class="bg-slate-900 border-2 border-amber-500/50 hover:border-amber-400 rounded-3xl p-6 sm:p-7 shadow-xl transition-all flex flex-col justify-between group relative overflow-hidden">
+          <div class="absolute -top-10 -right-10 w-36 h-36 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
+          <div>
+            <div class="flex items-center justify-between gap-3 mb-4">
+              <div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 border border-amber-500/40 flex items-center justify-center text-2xl shadow-sm">
+                <i class="fa-solid fa-scale-unbalanced-flip"></i>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-bold">
+                  🇺🇸 Everyday Utility
+                </span>
+                <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Active
+                </span>
+              </div>
+            </div>
+
+            <h3 class="text-xl sm:text-2xl font-black text-white mb-2 group-hover:text-amber-300 transition">
+              Everyday US Unit Converter
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
+              Effortlessly switch between US Imperial and Metric systems: Pounds (lbs) to kg, Miles/Feet/Inches to km/m/cm, Fahrenheit (°F) to Celsius (°C), and Gallons/Fluid Ounces to Liters/mL.
+            </p>
+
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">lbs ↔ kg / oz ↔ g</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">mi ↔ km / ft &amp; in ↔ cm</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">°F ↔ °C Temperature</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">gal ↔ L / fl oz ↔ ml</span>
+            </div>
+          </div>
+
+          <a href="./converter/" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-black py-3.5 px-5 rounded-xl transition text-center text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20 active:scale-95">
+            <span>Convert Units Now</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+      </div> Pillars (E-E-A-T) -->
     <section class="bg-gradient-to-r from-slate-900 via-slate-900 to-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-7">
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 text-center sm:text-left">
         <div class="flex items-start gap-3.5">

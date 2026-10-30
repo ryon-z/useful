@@ -33,6 +33,24 @@
       },
       "tools": [
         {
+          "id": "severance",
+          "path": "severance/",
+          "name": "퇴직금 & 실업급여 계산기",
+          "desc": "법정 퇴직금 세후 실수령액 & 실업급여 자격진단",
+          "icon": "fa-briefcase",
+          "color": "indigo",
+          "disclaimer": "본 계산기는 근로기준법 및 고용보험법, 소득세법령에 기초한 모의 시뮬레이션입니다. 실제 퇴직금 및 실업급여 수급 자격 여부는 회사 규정 및 관할 고용센터의 이직확인서 심사에 따라 최종 결정됩니다."
+        },
+        {
+          "id": "stock-tax",
+          "path": "stock-tax/",
+          "name": "해외주식 양도세 & 손익통산",
+          "desc": "250만원 비과세 & 미국주식 T+1 절세",
+          "icon": "fa-chart-pie",
+          "color": "sky",
+          "disclaimer": "본 계산기는 소득세법 제118조의2 및 국민건강보험법 규정에 기초한 모의 시뮬레이션입니다. 실제 양도소득세 신고 시에는 증권사 결제일 기준 환율 및 거래 제비용 차이로 실제 납부세액과 다소 차이가 발생할 수 있으며, 5월 정기신고 시 관할 세무서 또는 공인 세무사의 확인을 거치시기 바랍니다."
+        },
+        {
           "id": "salary",
           "path": "salary/",
           "name": "연봉 실수령액 계산기",
@@ -40,6 +58,15 @@
           "icon": "fa-won-sign",
           "color": "emerald",
           "disclaimer": "본 계산기의 산출 결과는 2026년 4대보험 요율 및 국세청 근로소득 간이세액표를 기준으로 한 모의 계산액입니다. 실제 급여 지급 시 회사의 상여금, 수당 체계, 비과세 항목 및 연말정산 공제 내역에 따라 실제 입금액과 약간의 차이가 발생할 수 있습니다."
+        },
+        {
+          "id": "compound",
+          "path": "compound/",
+          "name": "적립식 복리 & 자산 성장 계산기",
+          "desc": "복리의 마법 & 은퇴 자산 시뮬레이션",
+          "icon": "fa-chart-line",
+          "color": "emerald",
+          "disclaimer": "본 계산기는 복리 수학 공식 및 과거 시장 수익률에 기초한 시뮬레이션 도구이며, 미래의 투자 수익을 보장하지 않습니다. 실제 투자 시에는 원금 손실 위험이 따를 수 있으며 시장 변동성, 세법 개정, 펀드 수수료 등에 따라 최종 결과가 달라질 수 있습니다."
         },
         {
           "id": "interest",
@@ -85,33 +112,6 @@
           "icon": "fa-calendar-check",
           "color": "rose",
           "disclaimer": "본 변환기는 한국천문연구원(KASI) 음양력 역법 및 천문 계산 기준을 준수합니다. 음력 윤달 및 시차에 따라 1일 내외의 오차가 발생할 수 있습니다."
-        },
-        {
-          "id": "compound",
-          "path": "compound/",
-          "name": "적립식 복리 & 자산 성장 계산기",
-          "desc": "복리의 마법 & 은퇴 자산 시뮬레이션",
-          "icon": "fa-chart-line",
-          "color": "emerald",
-          "disclaimer": "본 계산기는 복리 수학 공식 및 과거 시장 수익률에 기초한 시뮬레이션 도구이며, 미래의 투자 수익을 보장하지 않습니다. 실제 투자 시에는 원금 손실 위험이 따를 수 있으며 시장 변동성, 세법 개정, 펀드 수수료 등에 따라 최종 결과가 달라질 수 있습니다."
-        },
-        {
-          "id": "severance",
-          "path": "severance/",
-          "name": "퇴직금 & 실업급여 계산기",
-          "desc": "법정 퇴직금 세후 실수령액 & 실업급여 자격진단",
-          "icon": "fa-briefcase",
-          "color": "indigo",
-          "disclaimer": "본 계산기는 근로기준법 및 고용보험법, 소득세법령에 기초한 모의 시뮬레이션입니다. 실제 퇴직금 및 실업급여 수급 자격 여부는 회사 규정 및 관할 고용센터의 이직확인서 심사에 따라 최종 결정됩니다."
-        },
-        {
-          "id": "stock-tax",
-          "path": "stock-tax/",
-          "name": "해외주식 양도세 & 손익통산",
-          "desc": "250만원 비과세 & 미국주식 T+1 절세",
-          "icon": "fa-chart-pie",
-          "color": "sky",
-          "disclaimer": "본 계산기는 소득세법 제118조의2 및 국민건강보험법 규정에 기초한 모의 시뮬레이션입니다. 실제 양도소득세 신고 시에는 증권사 결제일 기준 환율 및 거래 제비용 차이로 실제 납부세액과 다소 차이가 발생할 수 있으며, 5월 정기신고 시 관할 세무서 또는 공인 세무사의 확인을 거치시기 바랍니다."
         }
       ]
     },
@@ -141,6 +141,24 @@
       },
       "tools": [
         {
+          "id": "ja-tax",
+          "path": "ja/tax/",
+          "name": "消費税・軽減税率計算機",
+          "desc": "10%・8%税込税抜 & インボイス",
+          "icon": "fa-percent",
+          "color": "emerald",
+          "disclaimer": "【免責事項】当ツールで算出される消費税額、税込・税抜価格およびインボイス制度の仕入控除額はシミュレーション上の目安です。実際の申告や会計処理に際しては、所轄税務署または税理士等の専門家にご相談ください。"
+        },
+        {
+          "id": "ja-warikan",
+          "path": "ja/warikan/",
+          "name": "飲み会・割り勘計算機",
+          "desc": "上司傾斜・端数調整・LINE精算",
+          "icon": "fa-receipt",
+          "color": "rose",
+          "disclaimer": "【免責事項】当ツールで算出される計算結果および端数配分は目安です。実際の支払いおよび金銭授受の最終確認は幹事様および参加者各自の合意のもとで行ってください。"
+        },
+        {
           "id": "ja-age",
           "path": "ja/age/",
           "name": "和暦・西暦・満年齢計算機",
@@ -157,24 +175,6 @@
           "icon": "fa-clover",
           "color": "amber",
           "disclaimer": "【免責事項】当ツールで提供する予想番号および開運日情報は当選を保証するものではありません。宝くじはご自身の責任と無理のない予算の範囲内でお楽しみください。"
-        },
-        {
-          "id": "ja-warikan",
-          "path": "ja/warikan/",
-          "name": "飲み会・割り勘計算機",
-          "desc": "上司傾斜・端数調整・LINE精算",
-          "icon": "fa-receipt",
-          "color": "rose",
-          "disclaimer": "【免責事項】当ツールで算出される計算結果および端数配分は目安です。実際の支払いおよび金銭授受の最終確認は幹事様および参加者各自の合意のもとで行ってください。"
-        },
-        {
-          "id": "ja-tax",
-          "path": "ja/tax/",
-          "name": "消費税・軽減税率計算機",
-          "desc": "10%・8%税込税抜 & インボイス",
-          "icon": "fa-percent",
-          "color": "emerald",
-          "disclaimer": "【免責事項】当ツールで算出される消費税額、税込・税抜価格およびインボイス制度の仕入控除額はシミュレーション上の目安です。実際の申告や会計処理に際しては、所轄税務署または税理士等の専門家にご相談ください。"
         }
       ]
     },
@@ -204,31 +204,13 @@
       },
       "tools": [
         {
-          "id": "en-lottery",
-          "path": "en/lottery/",
-          "name": "Powerball Tax Calculator",
-          "desc": "50-State Payout & 30-Yr Annuity",
-          "icon": "fa-bolt",
+          "id": "en-compound",
+          "path": "en/compound/",
+          "name": "Compound Interest & Investment Calculator",
+          "desc": "Wealth Growth & 401(k) / FIRE Planner",
+          "icon": "fa-chart-line",
           "color": "emerald",
-          "disclaimer": "[Disclaimer] GoModo Lottery Tax Calculator provides estimations for informational and educational purposes only. Tax regulations and withholding rates are subject to federal and state legislative updates. This tool does not constitute tax, legal, or investment advice. Consult a certified public accountant (CPA) and legal counsel upon claiming lottery prizes."
-        },
-        {
-          "id": "en-converter",
-          "path": "en/converter/",
-          "name": "Everyday Unit Converter",
-          "desc": "lbs, miles, °F, gal, cooking",
-          "icon": "fa-right-left",
-          "color": "sky",
-          "disclaimer": "[Disclaimer] GoModo Everyday Unit Converter uses NIST (National Institute of Standards and Technology) standard conversion factors for maximum precision. Numerical outputs are for informational, educational, and everyday domestic use."
-        },
-        {
-          "id": "en-tip",
-          "path": "en/tip/",
-          "name": "Restaurant Tip & Split Bill",
-          "desc": "Pre-tax tipping & Venmo copy",
-          "icon": "fa-receipt",
-          "color": "amber",
-          "disclaimer": "[Disclaimer] GoModo US Tip & Split Bill Calculator provides calculations based on standard American dining customs. Tipping practices vary by venue and service quality."
+          "disclaimer": "[Disclaimer] GoModo Compound Interest Calculator provides simulation outputs for informational and educational purposes only and does not constitute financial, investment, or tax advice. Market returns fluctuate over time and past performance does not guarantee future results."
         },
         {
           "id": "en-mortgage",
@@ -240,13 +222,31 @@
           "disclaimer": "[Disclaimer] GoModo US Mortgage Calculator provides estimations for informational and educational purposes only. Actual interest rates, closing costs, private mortgage insurance (PMI), and tax assessments vary by lender, credit score, and municipality. This does not constitute a commitment to lend or financial advice. Consult an authorized mortgage lender and financial advisor."
         },
         {
-          "id": "en-compound",
-          "path": "en/compound/",
-          "name": "Compound Interest & Investment Calculator",
-          "desc": "Wealth Growth & 401(k) / FIRE Planner",
-          "icon": "fa-chart-line",
+          "id": "en-lottery",
+          "path": "en/lottery/",
+          "name": "Powerball Tax Calculator",
+          "desc": "50-State Payout & 30-Yr Annuity",
+          "icon": "fa-bolt",
           "color": "emerald",
-          "disclaimer": "[Disclaimer] GoModo Compound Interest Calculator provides simulation outputs for informational and educational purposes only and does not constitute financial, investment, or tax advice. Market returns fluctuate over time and past performance does not guarantee future results."
+          "disclaimer": "[Disclaimer] GoModo Lottery Tax Calculator provides estimations for informational and educational purposes only. Tax regulations and withholding rates are subject to federal and state legislative updates. This tool does not constitute tax, legal, or investment advice. Consult a certified public accountant (CPA) and legal counsel upon claiming lottery prizes."
+        },
+        {
+          "id": "en-tip",
+          "path": "en/tip/",
+          "name": "Restaurant Tip & Split Bill",
+          "desc": "Pre-tax tipping & Venmo copy",
+          "icon": "fa-receipt",
+          "color": "amber",
+          "disclaimer": "[Disclaimer] GoModo US Tip & Split Bill Calculator provides calculations based on standard American dining customs. Tipping practices vary by venue and service quality."
+        },
+        {
+          "id": "en-converter",
+          "path": "en/converter/",
+          "name": "Everyday Unit Converter",
+          "desc": "lbs, miles, °F, gal, cooking",
+          "icon": "fa-right-left",
+          "color": "sky",
+          "disclaimer": "[Disclaimer] GoModo Everyday Unit Converter uses NIST (National Institute of Standards and Technology) standard conversion factors for maximum precision. Numerical outputs are for informational, educational, and everyday domestic use."
         }
       ]
     }
