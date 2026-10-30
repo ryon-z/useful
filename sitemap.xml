@@ -133,6 +133,18 @@
     </image:image>
   </url>
 
+  <!-- 렘 수면 골든타임 & 카페인 컷오프 계산기 -->
+  <url>
+    <loc>https://www.gomodo.cloud/sleep/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.gomodo.cloud/og-image.png</image:loc>
+      <image:title>렘(REM) 수면 골든타임 &amp; 카페인 컷오프 계산기</image:title>
+    </image:image>
+  </url>
+
   <!-- 일본 서력 ↔ 와레키 & 이력서 계산기 -->
   <url>
     <loc>https://www.gomodo.cloud/ja/age/</loc>

@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="ko" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>렘(REM) 수면 골든타임 &amp; 카페인 컷오프 계산기 | GoModo</title>
+  <meta name="description" content="언제 자야 개운할까? 90분 렘 수면 사이클 기반 지금 잘 때 기상 골든타임과 내일 기상 시간 맞춤 취침 시간을 0.01초 만에 판독! 커피 카페인 반감기(5시간) 체내 잔류량 및 오후 커피 마감 컷오프 시간을 실시간 계산하세요.">
+  <link rel="canonical" href="https://www.gomodo.cloud/sleep/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="렘(REM) 수면 골든타임 &amp; 카페인 컷오프 계산기 | GoModo">
+  <meta property="og:description" content="수면 주기 90분의 법칙! 지금 잘 때 개운한 기상 시간과 카페인 마감 컷오프를 실시간 확인하세요.">
+  <meta property="og:url" content="https://www.gomodo.cloud/sleep/">
+  <meta property="og:image" content="https://www.gomodo.cloud/og-image.png">
+
+  <!-- Google AdSense -->
+  <!-- SHARED:ADSENSE -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4528673716962845" crossorigin="anonymous"></script>
+  <!-- /SHARED:ADSENSE -->
+
+  <!-- Tailwind CSS & Font Awesome -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "렘(REM) 수면 골든타임 & 카페인 컷오프 계산기",
+        "url": "https://www.gomodo.cloud/sleep/",
+        "description": "90분 렘 수면 주기 및 카페인 체내 반감기(5시간)를 기반으로 최적의 기상·취침 골든타임과 숙면을 위한 커피 마감 시각을 실시간 계산하는 수면 건강 라이프스타일 유틸리티",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "All",
+        "inLanguage": "ko-KR",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "KRW"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "홈",
+            "item": "https://www.gomodo.cloud/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "렘 수면 골든타임 계산기",
+            "item": "https://www.gomodo.cloud/sleep/"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "왜 90분 단위로 잠을 자야 개운한가요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "인간의 수면은 얕은 수면(NREM 1~2단계), 깊은 서파 수면(NREM 3단계), 그리고 꿈을 꾸는 렘(REM) 수면이 약 90분(80~100분) 주기로 반복됩니다. 깊은 수면 단계에서 알람이 울려 억지로 깨어나면 뇌가 혼미해지는 '수면 관성(Sleep Inertia)'이 발생해 온종일 피곤합니다. 반면 90분 주기 끝자락인 얕은 렘 수면 직후에 기상하면 뇌파가 각성 상태에 가까워 단 4.5시간이나 6시간만 자도 가뿐하게 일어날 수 있습니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "성인에게 가장 이상적인 수면 사이클은 몇 번인가요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "미국 국립수면재단(NSF)과 수면의학회에 따르면 성인 기준 5 사이클(총 7.5시간 수면)이 뇌 기억 정리, 세포 재생, 면역력 유지에 가장 이상적입니다. 바쁜 직장인의 경우 4 사이클(총 6시간 수면)도 양호하며, 긴급한 철야나 밤샘 시에는 최소 3 사이클(4.5시간)을 확보해야 일상생활 뇌기능 저하를 막을 수 있습니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "커피는 취침 몇 시간 전부터 마시지 말아야 하나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "성인의 체내 카페인 반감기는 평균 5~7시간입니다. 스타벅스 아메리카노 1잔(카페인 150mg)을 마실 경우 5시간 후에도 75mg, 10시간 후에도 약 37mg이 뇌 속 아데노신 수용체에 잔류합니다. 체내 카페인이 50mg 이상 남아있으면 깊은 잠 단계 진입이 최대 30% 방해되므로, 밤 11시에 잠들려면 최소 8~9시간 전인 오후 2시~2시 30분 이전에는 커피 섭취를 멈추는 것이 이상적입니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "침대에 누워 잠드는 데 걸리는 시간(입면 시간)도 계산에 포함되나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "네, 건강한 성인이 침대에 누워 불을 끄고 실제 잠에 빠져들기까지 평균 14~15분의 '수면 잠복기(Sleep Latency)'가 소요됩니다. 본 계산기는 기본 입면 시간 15분을 모든 기상·취침 시간에 기본 자동 합산하며, 개인차에 따라 5분/10분/15분/20분으로 자유롭게 조정할 수 있습니다."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-indigo-500 selection:text-white antialiased">
+
+  <!-- ==================== HEADER (SSOT SYNCHRONIZED) ==================== -->
+  <!-- SHARED:HEADER -->
+  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a href="../" class="flex items-center gap-2.5 group">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-500 to-sky-400 flex items-center justify-center text-white shadow-md shadow-indigo-500/20 group-hover:scale-105 transition">
+            <i class="fa-solid fa-shapes text-base"></i>
+          </div>
+          <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-100 to-slate-300">GoModo</span>
+        </a>
+        <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 border border-slate-700/60 hidden sm:inline-block">Life Utilities</span>
+      </div>
+
+      <nav class="flex items-center gap-2 sm:gap-4">
+        <div class="relative group">
+          <button id="toolsDropdownBtn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition">
+            <i class="fa-solid fa-grid-2 text-xs text-indigo-400"></i>
+            <span>도구 모음</span>
+            <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 group-hover:rotate-180 transition"></i>
+          </button>
+          <div id="toolsDropdownMenu" class="absolute right-0 mt-1 w-64 bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl p-2 hidden group-hover:block z-50">
+            <div class="text-[11px] font-semibold text-slate-400 px-3 py-1.5 uppercase tracking-wider">생활 도구</div>
+            <a href="../severance/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+              <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-black">
+                <i class="fa-solid fa-coins"></i>
+              </div>
+              <div class="min-w-0 flex-1">
+                <div class="text-xs font-bold text-white group-hover:text-emerald-300 transition truncate">퇴직금·실업급여 계산기</div>
+                <div class="text-[10px] text-slate-400 truncate">2026 최신 기준 수급액 산출</div>
+              </div>
+            </a>
+            <a href="../stock-tax/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+              <div class="w-7 h-7 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center text-xs font-black">
+                <i class="fa-solid fa-chart-line"></i>
+              </div>
+              <div class="min-w-0 flex-1">
+                <div class="text-xs font-bold text-white group-hover:text-sky-300 transition truncate">해외주식 양도소득세 절세</div>
+                <div class="text-[10px] text-slate-400 truncate">손익통산 250만원 공제 시뮬레이션</div>
+              </div>
+            </a>
+            <a href="../salary/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+              <div class="w-7 h-7 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-xs font-black">
+                <i class="fa-solid fa-wallet"></i>
+              </div>
+              <div class="min-w-0 flex-1">
+                <div class="text-xs font-bold text-white group-hover:text-indigo-300 transition truncate">연봉 실수령액 계산기</div>
+                <div class="text-[10px] text-slate-400 truncate">4대보험·소득세 자동 공제 조견표</div>
+              </div>
+            </a>
+            <a href="../salary-timer/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+              <div class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-xs font-black">
+                <i class="fa-solid fa-stopwatch-20"></i>
+              </div>
+              <div class="min-w-0 flex-1">
+                <div class="text-xs font-bold text-white group-hover:text-amber-300 transition truncate">실시간 월급루팡 타이머</div>
+                <div class="text-[10px] text-slate-400 truncate">초당 통장 입금 & 화장실 재테크</div>
+              </div>
+            </a>
+            <a href="../stupid-cost/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+              <div class="w-7 h-7 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center text-xs font-black">
+                <i class="fa-solid fa-bowl-rice"></i>
+              </div>
+              <div class="min-w-0 flex-1">
+                <div class="text-xs font-bold text-white group-hover:text-rose-300 transition truncate">스튜피드 소비 & 국밥 계산기</div>
+                <div class="text-[10px] text-slate-400 truncate">국밥·치킨 환산 & 노동시간 팩폭 기회비용</div>
+              </div>
+            </a>
+            <a href="../wedding-gift/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+              <div class="w-7 h-7 rounded-lg bg-pink-500/20 text-pink-400 flex items-center justify-center text-xs font-black">
+                <i class="fa-solid fa-envelope-open-text"></i>
+              </div>
+              <div class="min-w-0 flex-1">
+                <div class="text-xs font-bold text-white group-hover:text-pink-300 transition truncate">결혼식 축의금 & 식대 판독기</div>
+                <div class="text-[10px] text-slate-400 truncate">친밀도·식대 마진·축하 문구 판독</div>
+              </div>
+            </a>
+            <a href="../compound/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+              <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-black">
+                <i class="fa-solid fa-chart-line"></i>
+              </div>
+              <div class="min-w-0 flex-1">
+                <div class="text-xs font-bold text-white group-hover:text-emerald-300 transition truncate">적립식 복리 & 자산 성장 계산기</div>
+                <div class="text-[10px] text-slate-400 truncate">월 적립액·수익률 기준 미래 자산 예측</div>
+              </div>
+            </a>
+            <a href="../interest/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+              <div class="w-7 h-7 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-black">
+                <i class="fa-solid fa-piggy-bank"></i>
+              </div>
+              <div class="min-w-0 flex-1">
+                <div class="text-xs font-bold text-white group-hover:text-blue-300 transition truncate">예·적금 만기 이자 계산기</div>
+                <div class="text-[10px] text-slate-400 truncate">단리/복리 및 비과세·일반과세 실수령</div>
+              </div>
+            </a>
+            <a href="../real-estate/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+              <div class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-xs font-black">
+                <i class="fa-solid fa-house-chimney"></i>
+              </div>
+              <div class="min-w-0 flex-1">
+                <div class="text-xs font-bold text-white group-hover:text-amber-300 transition truncate">부동산 중개보수·취득세 계산기</div>
+                <div class="text-[10px] text-slate-400 truncate">매매·전월세 복비 상한요율 및 세금</div>
+              </div>
+            </a>
+            <a href="../lottery/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+              <div class="w-7 h-7 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center text-xs font-black">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+              </div>
+              <div class="min-w-0 flex-1">
+                <div class="text-xs font-bold text-white group-hover:text-purple-300 transition truncate">로또 6/45 명당 분석기</div>
+                <div class="text-[10px] text-slate-400 truncate">사주 오행 및 통계 기반 번호 추출</div>
+              </div>
+            </a>
+            <a href="../age/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+              <div class="w-7 h-7 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-xs font-black">
+                <i class="fa-solid fa-cake-candles"></i>
+              </div>
+              <div class="min-w-0 flex-1">
+                <div class="text-xs font-bold text-white group-hover:text-cyan-300 transition truncate">만 나이 & 띠 계산기</div>
+                <div class="text-[10px] text-slate-400 truncate">연 나이·살아온 날수 및 천간지지</div>
+              </div>
+            </a>
+            <a href="../dday/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+              <div class="w-7 h-7 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center text-xs font-black">
+                <i class="fa-solid fa-calendar-check"></i>
+              </div>
+              <div class="min-w-0 flex-1">
+                <div class="text-xs font-bold text-white group-hover:text-rose-300 transition truncate">D-Day & 기념일 계산기</div>
+                <div class="text-[10px] text-slate-400 truncate">음력 변환 및 100일·커플 기념일</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <a href="https://github.com/ryon-z/useful" target="_blank" rel="noopener" class="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition" aria-label="GitHub">
+          <i class="fa-brands fa-github text-lg"></i>
+        </a>
+      </nav>
+    </div>
+  </header>
+  <!-- /SHARED:HEADER -->
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main class="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-8 sm:py-12">
+
+    <!-- Hero Header -->
+    <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs sm:text-sm font-bold mb-4 shadow-sm">
+        <i class="fa-solid fa-moon text-indigo-400"></i>
+        <span>수면 주기 90분의 과학 &amp; 숙면 가이드</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-black text-white tracking-tight mb-3">
+        렘(REM) 수면 골든타임 &amp; 카페인 컷오프
+      </h1>
+      <p class="text-sm sm:text-base text-slate-400 leading-relaxed">
+        "언제 자야 덜 피곤할까?" 깊은 잠 중간에 깨어 하루 종일 피곤한 <span class="text-indigo-400 font-semibold">'수면 관성'</span>을 방지하고, 오늘 마신 커피가 수면을 방해하지 않는 최적의 골든타임을 실시간 판독합니다.
+      </p>
+    </div>
+
+    <!-- Navigation Mode Tabs -->
+    <div class="flex p-1.5 bg-slate-900 border border-slate-800 rounded-2xl max-w-xl mx-auto mb-8 shadow-inner">
+      <button id="tabModeNow" class="flex-1 py-3 px-3 rounded-xl font-bold text-xs sm:text-sm transition flex items-center justify-center gap-2 bg-indigo-600 text-white shadow-md shadow-indigo-600/30">
+        <i class="fa-solid fa-bed"></i>
+        <span>지금 잘래요</span>
+      </button>
+      <button id="tabModeWake" class="flex-1 py-3 px-3 rounded-xl font-bold text-xs sm:text-sm transition flex items-center justify-center gap-2 text-slate-400 hover:text-white">
+        <i class="fa-solid fa-clock"></i>
+        <span>기상 시간 맞춤</span>
+      </button>
+      <button id="tabModeCaffeine" class="flex-1 py-3 px-3 rounded-xl font-bold text-xs sm:text-sm transition flex items-center justify-center gap-2 text-slate-400 hover:text-white">
+        <i class="fa-solid fa-mug-hot"></i>
+        <span>커피 컷오프</span>
+      </button>
+    </div>
+
+    <!-- TAB 1: 지금 잘래요 (Sleep Now) -->
+    <section id="panelModeNow" class="space-y-6">
+      <!-- Setting Bar: Current Time & Fall Asleep Latency -->
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-xl flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-xl bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 flex items-center justify-center text-xl">
+            <i class="fa-solid fa-hourglass-start animate-spin" style="animation-duration: 12s;"></i>
+          </div>
+          <div>
+            <div class="text-xs text-slate-400 font-medium">현재 침대에 눕는 시간 (실시간)</div>
+            <div class="text-xl sm:text-2xl font-black text-white flex items-center gap-2">
+              <span id="currentTimeDisplay">--:--:--</span>
+              <span class="text-xs font-bold px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300">LIVE</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 w-full md:w-auto justify-end">
+          <label for="latencyNow" class="text-xs sm:text-sm text-slate-400 whitespace-nowrap">잠드는 데 걸리는 시간:</label>
+          <select id="latencyNow" class="bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs sm:text-sm font-bold text-white focus:outline-none focus:border-indigo-500">
+            <option value="5">5분 (눕자마자 기절)</option>
+            <option value="10">10분 (빠른 입면)</option>
+            <option value="15" selected>15분 (일반 성인 평균)</option>
+            <option value="20">20분 (뒤척이는 편)</option>
+            <option value="30">30분 (생각이 많음)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Result Cards Grid (Cycle 1 ~ 6) -->
+      <div>
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+            <i class="fa-solid fa-sparkles text-amber-400"></i>
+            <span>지금 자면 개운하게 일어날 수 있는 시간</span>
+          </h2>
+          <span class="text-xs text-slate-400">90분 수면 사이클 적용</span>
+        </div>
+
+        <div id="sleepNowCards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Dynamically Rendered -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: 기상 시간 맞춤 (Wake Up At) -->
+    <section id="panelModeWake" class="hidden space-y-6">
+      <!-- Target Wake Time Input Card -->
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-xl space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h2 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+              <i class="fa-solid fa-bell text-indigo-400"></i>
+              <span>내일 몇 시에 일어나야 하나요?</span>
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-400">희망 기상 시간을 정하면 역산하여 침대에 누워야 할 최적의 시간을 계산합니다.</p>
+          </div>
+
+          <!-- Quick Presets -->
+          <div class="flex flex-wrap gap-1.5">
+            <button type="button" class="preset-wake-btn text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 hover:bg-indigo-600 hover:text-white transition" data-time="06:30">06:30 기상</button>
+            <button type="button" class="preset-wake-btn text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 hover:bg-indigo-600 hover:text-white transition" data-time="07:00">07:00 기상</button>
+            <button type="button" class="preset-wake-btn text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 hover:bg-indigo-600 hover:text-white transition" data-time="07:30">07:30 기상</button>
+            <button type="button" class="preset-wake-btn text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 hover:bg-indigo-600 hover:text-white transition" data-time="08:00">08:00 기상</button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 border-t border-slate-800">
+          <div>
+            <label for="wakeTargetTime" class="block text-xs font-bold text-slate-300 mb-2">목표 기상 시간 (시:분)</label>
+            <input type="time" id="wakeTargetTime" value="07:00" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-lg font-black text-white focus:outline-none focus:border-indigo-500">
+          </div>
+          <div>
+            <label for="latencyWake" class="block text-xs font-bold text-slate-300 mb-2">잠드는 데 걸리는 시간 (입면 잠복기)</label>
+            <select id="latencyWake" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-sm font-bold text-white focus:outline-none focus:border-indigo-500">
+              <option value="5">5분 (머리 닿자마자)</option>
+              <option value="10">10분 (빠른 편)</option>
+              <option value="15" selected>15분 (일반 성인 권장)</option>
+              <option value="20">20분 (약간 뒤척임)</option>
+              <option value="30">30분 (느린 입면)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wake Mode Result Cards Grid -->
+      <div>
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+            <i class="fa-solid fa-moon text-indigo-400"></i>
+            <span>불 끄고 침대에 누워야 하는 취침 골든타임</span>
+          </h3>
+          <span class="text-xs text-slate-400">입면 시간 포함</span>
+        </div>
+
+        <div id="wakeTargetCards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Dynamically Rendered -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: 커피 컷오프 (Caffeine Cutoff) -->
+    <section id="panelModeCaffeine" class="hidden space-y-6">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-xl space-y-6">
+        <div>
+          <h2 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+            <i class="fa-solid fa-mug-saucer text-amber-500"></i>
+            <span>오늘 커피, 언제까지 마셔도 될까?</span>
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-400">카페인의 체내 반감기는 평균 5~7시간! 밤에 푹 자려면 체내 카페인이 50mg 미만으로 떨어져야 합니다.</p>
+        </div>
+
+        <!-- Target Bedtime for Caffeine -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="caffeineSleepTarget" class="block text-xs font-bold text-slate-300 mb-2">오늘 밤 자고 싶은 취침 시간</label>
+            <input type="time" id="caffeineSleepTarget" value="23:00" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-base font-black text-white focus:outline-none focus:border-amber-500">
+          </div>
+          <div>
+            <label for="caffeineLastTime" class="block text-xs font-bold text-slate-300 mb-2">마지막으로 커피/음료를 마신 시간 (혹은 마실 예정 시간)</label>
+            <input type="time" id="caffeineLastTime" value="14:00" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-base font-black text-white focus:outline-none focus:border-amber-500">
+          </div>
+        </div>
+
+        <!-- Beverage Presets -->
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-2">마신 음료 종류 (단일 혹은 누적 선택)</label>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+            <button type="button" class="caffeine-item-btn p-3 rounded-xl border border-slate-700 bg-slate-950 hover:border-amber-500 text-left transition flex flex-col justify-between" data-mg="150" data-name="아메리카노 (1잔)">
+              <div class="flex items-center justify-between text-xs text-amber-400 mb-1">
+                <span>☕ 아메리카노</span>
+                <span class="font-bold">150mg</span>
+              </div>
+              <div class="text-[11px] text-slate-400">일반 프랜차이즈 Tall</div>
+            </button>
+
+            <button type="button" class="caffeine-item-btn p-3 rounded-xl border border-slate-700 bg-slate-950 hover:border-amber-500 text-left transition flex flex-col justify-between" data-mg="150" data-name="카페라떼 / 카푸치노">
+              <div class="flex items-center justify-between text-xs text-amber-400 mb-1">
+                <span>🧋 2샷 라떼</span>
+                <span class="font-bold">150mg</span>
+              </div>
+              <div class="text-[11px] text-slate-400">에스프레소 2샷 기본</div>
+            </button>
+
+            <button type="button" class="caffeine-item-btn p-3 rounded-xl border border-slate-700 bg-slate-950 hover:border-amber-500 text-left transition flex flex-col justify-between" data-mg="100" data-name="에너지드링크">
+              <div class="flex items-center justify-between text-xs text-amber-400 mb-1">
+                <span>🚀 에너지음료</span>
+                <span class="font-bold">100mg</span>
+              </div>
+              <div class="text-[11px] text-slate-400">몬스터, 핫식스 등</div>
+            </button>
+
+            <button type="button" class="caffeine-item-btn p-3 rounded-xl border border-slate-700 bg-slate-950 hover:border-amber-500 text-left transition flex flex-col justify-between" data-mg="70" data-name="캔커피">
+              <div class="flex items-center justify-between text-xs text-amber-400 mb-1">
+                <span>🥫 캔/편의점 커피</span>
+                <span class="font-bold">70mg</span>
+              </div>
+              <div class="text-[11px] text-slate-400">레쓰비, TOP 등</div>
+            </button>
+
+            <button type="button" class="caffeine-item-btn p-3 rounded-xl border border-slate-700 bg-slate-950 hover:border-amber-500 text-left transition flex flex-col justify-between" data-mg="50" data-name="믹스커피 1봉">
+              <div class="flex items-center justify-between text-xs text-amber-400 mb-1">
+                <span>☕ 믹스커피</span>
+                <span class="font-bold">50mg</span>
+              </div>
+              <div class="text-[11px] text-slate-400">노란색 봉지커피 1개</div>
+            </button>
+
+            <button type="button" class="caffeine-item-btn p-3 rounded-xl border border-slate-700 bg-slate-950 hover:border-amber-500 text-left transition flex flex-col justify-between" data-mg="30" data-name="녹차 / 홍차 / 밀크티">
+              <div class="flex items-center justify-between text-xs text-amber-400 mb-1">
+                <span>🍵 차/밀크티</span>
+                <span class="font-bold">30mg</span>
+              </div>
+              <div class="text-[11px] text-slate-400">녹차, 얼그레이 등</div>
+            </button>
+
+            <button type="button" class="caffeine-item-btn p-3 rounded-xl border border-slate-700 bg-slate-950 hover:border-amber-500 text-left transition flex flex-col justify-between" data-mg="200" data-name="고함량 샷 추가 / 콜드브루">
+              <div class="flex items-center justify-between text-xs text-amber-400 mb-1">
+                <span>⚡ 샷 추가 / 콜드브루</span>
+                <span class="font-bold">200mg</span>
+              </div>
+              <div class="text-[11px] text-slate-400">고카페인 추출 커피</div>
+            </button>
+
+            <button type="button" class="caffeine-item-btn p-3 rounded-xl border border-slate-700 bg-slate-950 hover:border-amber-500 text-left transition flex flex-col justify-between" data-mg="5" data-name="디카페인 커피">
+              <div class="flex items-center justify-between text-xs text-amber-400 mb-1">
+                <span>🌿 디카페인</span>
+                <span class="font-bold">5mg</span>
+              </div>
+              <div class="text-[11px] text-slate-400">미량 카페인 잔류</div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Custom Caffeine Input -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-xl bg-slate-950/60 border border-slate-800">
+          <div class="flex items-center gap-3">
+            <span class="text-xs sm:text-sm font-bold text-slate-300">오늘 마신 총 카페인:</span>
+            <span id="caffeineTotalDisplay" class="text-xl font-black text-amber-400">150 mg</span>
+          </div>
+          <div class="flex items-center gap-2 w-full sm:w-auto">
+            <label for="caffeineCustomInput" class="text-xs text-slate-400 whitespace-nowrap">직접 입력:</label>
+            <input type="number" id="caffeineCustomInput" value="150" min="0" max="1000" class="w-24 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-sm font-bold text-white focus:outline-none focus:border-amber-500">
+            <span class="text-xs text-slate-400">mg</span>
+            <button type="button" id="caffeineResetBtn" class="text-xs px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition ml-2">초기화</button>
+          </div>
+        </div>
+
+        <!-- Caffeine Cutoff Analysis Result Board -->
+        <div class="p-6 rounded-2xl bg-gradient-to-br from-slate-900 via-amber-950/20 to-slate-900 border-2 border-amber-500/40 shadow-xl space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
+            <div>
+              <div class="text-xs font-bold text-amber-400 flex items-center gap-1.5 mb-1">
+                <i class="fa-solid fa-ban text-amber-400"></i>
+                <span>숙면을 위한 카페인 섭취 마감 시각 (Cutoff Time)</span>
+              </div>
+              <div class="text-2xl sm:text-3xl font-black text-white" id="cutoffTimeResult">
+                오후 02:18 이전 커피 금지
+              </div>
+            </div>
+            <div id="caffeineStatusBadge" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-black flex items-center gap-2 self-start sm:self-auto bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>오늘 숙면 안전</span>
+            </div>
+          </div>
+
+          <!-- Metabolism Metrics -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-4 rounded-xl bg-slate-950/80 border border-slate-800">
+              <div class="text-xs text-slate-400 mb-1">취침 시점(밤 <span id="targetSleepText">23:00</span>) 예상 체내 잔류 카페인</div>
+              <div class="text-xl sm:text-2xl font-black" id="residualAtSleep">
+                <span id="residualValue">24</span> <span class="text-sm font-normal text-slate-400">mg</span>
+              </div>
+              <div class="text-[11px] text-slate-400 mt-1" id="residualComment">
+                50mg 미만으로 깊은 수면에 방해되지 않습니다.
+              </div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-950/80 border border-slate-800">
+              <div class="text-xs text-slate-400 mb-1">체내 카페인 완전 배출(50mg 미만 도달) 예상 시각</div>
+              <div class="text-xl sm:text-2xl font-black text-white" id="safeHourResult">
+                오늘 밤 22:45 이후
+              </div>
+              <div class="text-[11px] text-slate-400 mt-1">
+                마지막 커피 섭취 후 약 <span id="metabolismHours">8.7</span>시간 소요
+              </div>
+            </div>
+          </div>
+
+          <!-- Progress Bar of Residual Caffeine -->
+          <div>
+            <div class="flex justify-between text-xs font-semibold text-slate-400 mb-1.5">
+              <span>카페인 분해 상태 (반감기 5.5시간 모델)</span>
+              <span id="caffeinePercentText">숙면 안전선(50mg) 통과</span>
+            </div>
+            <div class="w-full bg-slate-950 h-3 rounded-full overflow-hidden border border-slate-800 p-0.5">
+              <div id="caffeineProgressBar" class="h-full rounded-full bg-gradient-to-r from-emerald-500 to-amber-500 transition-all duration-500" style="width: 25%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sleep Diagnosis & Tier Banner -->
+    <div id="sleepDiagnosisSection" class="mt-8 bg-slate-900 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-xl flex flex-col md:flex-row items-center justify-between gap-5">
+      <div class="flex items-center gap-4">
+        <div id="tierEmojiBox" class="w-14 h-14 rounded-2xl bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 flex items-center justify-center text-3xl shadow-inner shrink-0">
+          👑
+        </div>
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span id="tierBadge" class="text-xs font-black px-2.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+              Lv.4 갓생 골든 모드
+            </span>
+            <span class="text-xs text-slate-400">수면 주기 5회 (7.5시간)</span>
+          </div>
+          <div id="tierTitle" class="text-base sm:text-lg font-black text-white">
+            "완벽한 두뇌 컨디션! 내일 아침 도파민과 집중력이 폭발합니다."
+          </div>
+          <div id="tierDesc" class="text-xs text-slate-400 mt-0.5">
+            깊은 수면과 렘 수면이 균형을 이뤄 피로 물질(아데노신)이 100% 해소되는 황금 시간대입니다.
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2 w-full md:w-auto justify-end">
+        <button type="button" id="copyShareBtn" class="w-full md:w-auto px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs sm:text-sm transition flex items-center justify-center gap-2 border border-slate-700 active:scale-95">
+          <i class="fa-solid fa-share-nodes text-indigo-400"></i>
+          <span>수면 시간 카톡 공유</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Alarm Setup Quick Guide -->
+    <div class="mt-8 p-5 rounded-2xl bg-indigo-950/20 border border-indigo-500/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-lg shrink-0">
+          <i class="fa-solid fa-mobile-screen-button"></i>
+        </div>
+        <div>
+          <div class="text-xs font-bold text-indigo-300">스마트폰 알람 꿀팁</div>
+          <div class="text-xs text-slate-400">시간을 클릭하면 클립보드에 복사됩니다. 시계 앱에서 그대로 알람을 맞춰보세요.</div>
+        </div>
+      </div>
+      <button type="button" id="copyAlarmBtn" class="text-xs font-bold px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white transition whitespace-nowrap self-stretch sm:self-auto text-center">
+        추천 알람 복사하기
+      </button>
+    </div>
+
+    <!-- Sleep Science & FAQ Section (SEO E-E-A-T) -->
+    <div class="mt-12 space-y-8">
+      <div class="border-t border-slate-800 pt-8">
+        <h2 class="text-xl sm:text-2xl font-black text-white mb-4 flex items-center gap-2">
+          <i class="fa-solid fa-brain text-indigo-400"></i>
+          <span>수면 주기와 렘(REM) 수면의 과학적 원리</span>
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm text-slate-300 leading-relaxed">
+          <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+            <h3 class="font-bold text-white mb-2 flex items-center gap-1.5">
+              <i class="fa-solid fa-circle-dot text-indigo-400 text-xs"></i> 90분 사이클의 법칙
+            </h3>
+            <p class="text-slate-400">
+              수면은 얕은 잠, 깊은 숙면, 렘 수면 단계가 약 90분 주기로 반복됩니다. 주기 중간인 깊은 수면 단계에서 억지로 깨어나면 온종일 피로가 지속되는 반면, 주기가 끝나는 시점에 일어나면 매우 개운합니다.
+            </p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+            <h3 class="font-bold text-white mb-2 flex items-center gap-1.5">
+              <i class="fa-solid fa-circle-dot text-indigo-400 text-xs"></i> 수면 잠복기 (입면 시간)
+            </h3>
+            <p class="text-slate-400">
+              인간은 불을 끄고 침대에 눕자마자 바로 잠들지 않습니다. 건강한 성인의 평균 입면 시간은 14~15분입니다. 본 계산기는 이 입면 시간을 자동 반영하여 실제 수면 시작 시점을 정밀하게 역산합니다.
+            </p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+            <h3 class="font-bold text-white mb-2 flex items-center gap-1.5">
+              <i class="fa-solid fa-circle-dot text-indigo-400 text-xs"></i> 카페인 반감기와 수면의 질
+            </h3>
+            <p class="text-slate-400">
+              커피 속 카페인은 뇌의 피로 물질인 아데노신을 차단합니다. 반감기가 5~6시간에 달하므로 오후 늦게 마신 커피는 밤에 잠이 들더라도 깊은 서파 수면 단계 진입을 방해하여 수면의 질을 급격히 떨어뜨립니다.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Accordion -->
+      <div class="border-t border-slate-800 pt-8">
+        <h2 class="text-xl sm:text-2xl font-black text-white mb-6 flex items-center gap-2">
+          <i class="fa-solid fa-circle-question text-indigo-400"></i>
+          <span>자주 묻는 질문 (FAQ)</span>
+        </h2>
+        <div class="space-y-3">
+          <div class="bg-slate-900 border border-slate-800 rounded-xl p-4">
+            <h3 class="text-sm sm:text-base font-bold text-white mb-2">Q. 알람 소리를 듣고 5분만 더 자면 왜 더 피곤할까요?</h3>
+            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+              알람을 끄고 다시 잠들면 뇌는 새로운 90분 수면 사이클의 초기 단계로 진입합니다. 새로운 사이클이 완성되기 전인 5분~15분 뒤에 다시 깨어나면 '수면 관성(Sleep Inertia)'이 극대화되어 차라리 첫 번째 알람에 바로 일어났을 때보다 몸이 훨씬 더 무겁고 두통이 발생합니다.
+            </p>
+          </div>
+          <div class="bg-slate-900 border border-slate-800 rounded-xl p-4">
+            <h3 class="text-sm sm:text-base font-bold text-white mb-2">Q. 4.5시간 자는 것이 5시간 자는 것보다 낫나요?</h3>
+            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+              네, 수면 주기 과학에 따르면 그렇습니다. 4.5시간은 90분 사이클 3회가 깔끔하게 끝나는 시점인 반면, 5시간은 4번째 사이클의 가장 깊은 수면 단계에 해당합니다. 따라서 5시간을 자다 깨면 뇌파가 억지로 각성되어 4.5시간을 잤을 때보다 피로감이 훨씬 큽니다.
+            </p>
+          </div>
+          <div class="bg-slate-900 border border-slate-800 rounded-xl p-4">
+            <h3 class="text-sm sm:text-base font-bold text-white mb-2">Q. 카페인은 사람마다 분해 속도가 다른가요?</h3>
+            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+              간의 CYP1A2 효소 활성도에 따라 카페인 대사 속도에 개인차가 존재합니다. 빠른 대사자는 3~4시간 만에 반감기를 맞이하지만, 느린 대사자나 피임약 복용자, 간 기능 저하자의 경우 8~10시간 이상 지속될 수 있습니다. 본 계산기는 의학적 표준 평균치인 5.5시간 반감기 모델을 적용합니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toastNotification" class="fixed bottom-6 right-6 bg-indigo-600 text-white px-4 py-2.5 rounded-xl shadow-2xl text-xs sm:text-sm font-bold flex items-center gap-2 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none z-50">
+      <i class="fa-solid fa-check"></i>
+      <span id="toastMessage">복사되었습니다!</span>
+    </div>
+
+  </main>
+
+  <!-- ==================== FOOTER (SSOT SYNCHRONIZED) ==================== -->
+  <!-- SHARED:FOOTER -->
+  <footer class="border-t border-slate-800 bg-slate-950 text-slate-400 py-8 text-xs text-center mt-auto">
+    <div class="max-w-5xl mx-auto px-4 space-y-4">
+      <!-- 1. 법적 고지 및 소개 링크 -->
+      <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-semibold text-slate-400">
+        <a href="../about/" class="hover:text-emerald-400 transition">서비스 소개</a>
+        <span>•</span>
+        <a href="../terms/" class="hover:text-emerald-400 transition">이용약관 및 면책조항</a>
+        <span>•</span>
+        <a href="../privacy/" class="hover:text-emerald-400 transition">개인정보처리방침</a>
+      </div>
+
+      <!-- 2. 글로벌 포털 허브 바로가기 -->
+      <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[11px] font-medium text-slate-500">
+        <span class="text-slate-600">지역 / 언어:</span>
+        <a href="../" class="text-slate-300 font-bold">🇰🇷 한국어</a>
+        <span>|</span>
+        <a href="../ja/" class="hover:text-slate-300 transition">🇯🇵 日本語</a>
+        <span>|</span>
+        <a href="../en/" class="hover:text-slate-300 transition">🇺🇸 English</a>
+      </div>
+
+      <!-- 3. 면책 조항 -->
+      <div class="max-w-3xl mx-auto text-[11px] text-slate-500 leading-relaxed border-t border-slate-900 pt-3">
+        본 계산기는 90분 렘(REM) 수면 주기 및 카페인 평균 반감기(5~6시간) 통계를 기반으로 한 생활 가이드이며, 개인의 체질·수면 장애 여부에 따라 차이가 있을 수 있습니다.
+      </div>
+
+      <!-- 4. 저작권 & E-E-A-T 지원 이메일 -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-3 text-[11px] text-slate-500">
+        <span>© 2026 GoModo. All rights reserved.</span>
+        <span class="hidden sm:inline">•</span>
+        <span>Contact: <a href="mailto:support@gomodo.cloud" class="hover:text-slate-400 underline">support@gomodo.cloud</a></span>
+      </div>
+    </div>
+  </footer>
+  <!-- /SHARED:FOOTER -->
+
+  <!-- ==================== JAVASCRIPT LOGIC ==================== -->
+  <script>
+    (function() {
+      // DOM Elements
+      const tabModeNow = document.getElementById('tabModeNow');
+      const tabModeWake = document.getElementById('tabModeWake');
+      const tabModeCaffeine = document.getElementById('tabModeCaffeine');
+
+      const panelModeNow = document.getElementById('panelModeNow');
+      const panelModeWake = document.getElementById('panelModeWake');
+      const panelModeCaffeine = document.getElementById('panelModeCaffeine');
+
+      const currentTimeDisplay = document.getElementById('currentTimeDisplay');
+      const latencyNow = document.getElementById('latencyNow');
+      const sleepNowCards = document.getElementById('sleepNowCards');
+
+      const wakeTargetTime = document.getElementById('wakeTargetTime');
+      const latencyWake = document.getElementById('latencyWake');
+      const wakeTargetCards = document.getElementById('wakeTargetCards');
+
+      const caffeineSleepTarget = document.getElementById('caffeineSleepTarget');
+      const caffeineLastTime = document.getElementById('caffeineLastTime');
+      const caffeineCustomInput = document.getElementById('caffeineCustomInput');
+      const caffeineTotalDisplay = document.getElementById('caffeineTotalDisplay');
+      const caffeineResetBtn = document.getElementById('caffeineResetBtn');
+      const cutoffTimeResult = document.getElementById('cutoffTimeResult');
+      const caffeineStatusBadge = document.getElementById('caffeineStatusBadge');
+      const targetSleepText = document.getElementById('targetSleepText');
+      const residualAtSleep = document.getElementById('residualAtSleep');
+      const residualValue = document.getElementById('residualValue');
+      const residualComment = document.getElementById('residualComment');
+      const safeHourResult = document.getElementById('safeHourResult');
+      const metabolismHours = document.getElementById('metabolismHours');
+      const caffeinePercentText = document.getElementById('caffeinePercentText');
+      const caffeineProgressBar = document.getElementById('caffeineProgressBar');
+
+      const tierEmojiBox = document.getElementById('tierEmojiBox');
+      const tierBadge = document.getElementById('tierBadge');
+      const tierTitle = document.getElementById('tierTitle');
+      const tierDesc = document.getElementById('tierDesc');
+      const copyShareBtn = document.getElementById('copyShareBtn');
+      const copyAlarmBtn = document.getElementById('copyAlarmBtn');
+
+      const toastNotification = document.getElementById('toastNotification');
+      const toastMessage = document.getElementById('toastMessage');
+
+      // State
+      let currentMode = 'now'; // 'now' | 'wake' | 'caffeine'
+      let currentCaffeineMg = 150;
+      let primaryRecommendedTime = '';
+
+      // Helpers
+      function pad(num) {
+        return num < 10 ? '0' + num : num;
+      }
+
+      function formatTimeAMPM(date) {
+        let hours = date.getHours();
+        const minutes = date.getMinutes();
+        const ampm = hours >= 12 ? '오후' : '오전';
+        hours = hours % 12;
+        hours = hours ? hours : 12; // 0시는 12시로
+        return ampm + ' ' + pad(hours) + ':' + pad(minutes);
+      }
+
+      function showToast(msg) {
+        toastMessage.textContent = msg;
+        toastNotification.classList.remove('translate-y-20', 'opacity-0');
+        setTimeout(() => {
+          toastNotification.classList.add('translate-y-20', 'opacity-0');
+        }, 2500);
+      }
+
+      // 1. Live Clock
+      function updateLiveClock() {
+        const now = new Date();
+        currentTimeDisplay.textContent = pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds());
+        if (currentMode === 'now') {
+          renderSleepNow();
+        }
+      }
+      setInterval(updateLiveClock, 1000);
+      updateLiveClock();
+
+      // 2. Mode Switching
+      function setMode(mode) {
+        currentMode = mode;
+        const activeTabClass = ['bg-indigo-600', 'text-white', 'shadow-md', 'shadow-indigo-600/30'];
+        const inactiveTabClass = ['text-slate-400', 'hover:text-white'];
+
+        [tabModeNow, tabModeWake, tabModeCaffeine].forEach(btn => {
+          btn.classList.remove(...activeTabClass);
+          btn.classList.add(...inactiveTabClass);
+        });
+
+        panelModeNow.classList.add('hidden');
+        panelModeWake.classList.add('hidden');
+        panelModeCaffeine.classList.add('hidden');
+
+        if (mode === 'now') {
+          tabModeNow.classList.add(...activeTabClass);
+          tabModeNow.classList.remove(...inactiveTabClass);
+          panelModeNow.classList.remove('hidden');
+          renderSleepNow();
+        } else if (mode === 'wake') {
+          tabModeWake.classList.add(...activeTabClass);
+          tabModeWake.classList.remove(...inactiveTabClass);
+          panelModeWake.classList.remove('hidden');
+          renderWakeMode();
+        } else if (mode === 'caffeine') {
+          tabModeCaffeine.classList.add(...activeTabClass);
+          tabModeCaffeine.classList.remove(...inactiveTabClass);
+          panelModeCaffeine.classList.remove('hidden');
+          renderCaffeineMode();
+        }
+
+        updateUrlParams();
+      }
+
+      tabModeNow.addEventListener('click', () => setMode('now'));
+      tabModeWake.addEventListener('click', () => setMode('wake'));
+      tabModeCaffeine.addEventListener('click', () => setMode('caffeine'));
+
+      // 3. Render Mode 1: 지금 잘래요
+      function renderSleepNow() {
+        const now = new Date();
+        const latency = parseInt(latencyNow.value, 10) || 15;
+
+        // Cycles: 1 to 6
+        // 1: 90m (1.5h), 2: 180m (3h), 3: 270m (4.5h), 4: 360m (6h), 5: 450m (7.5h), 6: 540m (9h)
+        const cycles = [
+          { cycle: 1, mins: 90, label: '파워 낮잠', tag: '⚡ 긴급 충전', color: 'slate', desc: '두뇌 피로 급속 리셋 (1.5시간 수면)' },
+          { cycle: 2, mins: 180, label: '짧은 수면', tag: '☕ 철야/야근', color: 'slate', desc: '최소한의 각성 유지 (3시간 수면)' },
+          { cycle: 3, mins: 270, label: '생존 수면', tag: '🏃 바쁜 날 추천', color: 'sky', desc: '렘 수면 직후 가뿐한 기상 (4.5시간 수면)' },
+          { cycle: 4, mins: 360, label: '직장인 표준', tag: '💼 추천 (양호)', color: 'blue', desc: '가장 현실적인 활력 수면 (6시간 수면)' },
+          { cycle: 5, mins: 450, label: '최적의 골든타임', tag: '👑 가장 추천 (완벽)', color: 'indigo', desc: '피로 완벽 해소 & 집중력 극대화 (7.5시간 수면)', isPrimary: true },
+          { cycle: 6, mins: 540, label: '주말 꿀잠', tag: '🛌 롱슬리퍼', color: 'emerald', desc: '주말 피로 회복 풀충전 (9시간 수면)' }
+        ];
+
+        let html = '';
+        cycles.forEach(c => {
+          const wakeDate = new Date(now.getTime() + (latency + c.mins) * 60000);
+          const timeStr = formatTimeAMPM(wakeDate);
+          if (c.isPrimary) primaryRecommendedTime = timeStr;
+
+          const isHighlight = c.isPrimary;
+          const borderStyle = isHighlight ? 'border-2 border-indigo-500 shadow-indigo-500/20 shadow-lg bg-indigo-950/20' : 'border border-slate-800 bg-slate-900 hover:border-slate-700';
+
+          html += `
+            <div class="${borderStyle} rounded-2xl p-5 transition flex flex-col justify-between group cursor-pointer alarm-card" data-time="${timeStr}">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-2">
+                  <span class="text-xs font-bold text-slate-400">${c.cycle}사이클 (${(c.mins / 60).toFixed(1)}시간)</span>
+                  <span class="text-xs font-black px-2 py-0.5 rounded-full ${isHighlight ? 'bg-indigo-500 text-white' : 'bg-slate-800 text-slate-300'}">${c.tag}</span>
+                </div>
+                <div class="text-2xl sm:text-3xl font-black ${isHighlight ? 'text-indigo-300' : 'text-white'} group-hover:scale-105 transition origin-left flex items-center justify-between">
+                  <span>${timeStr}</span>
+                  <i class="fa-regular fa-copy text-xs text-slate-500 group-hover:text-slate-300 transition"></i>
+                </div>
+                <p class="text-xs text-slate-400 mt-2 leading-relaxed">${c.desc}</p>
+              </div>
+              <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-500">
+                <span>입면 ${latency}분 포함</span>
+                <span class="text-indigo-400 font-semibold group-hover:underline">클릭 시 알람 복사</span>
+              </div>
+            </div>
+          `;
+        });
+
+        sleepNowCards.innerHTML = html;
+        bindCardCopyEvents();
+        updateDiagnosis(5);
+      }
+
+      // 4. Render Mode 2: 기상 시간 맞춤
+      function renderWakeMode() {
+        const timeVal = wakeTargetTime.value || '07:00';
+        const latency = parseInt(latencyWake.value, 10) || 15;
+
+        const parts = timeVal.split(':');
+        const targetHours = parseInt(parts[0], 10);
+        const targetMins = parseInt(parts[1], 10);
+
+        // Target Date (assuming tomorrow)
+        const targetDate = new Date();
+        targetDate.setHours(targetHours, targetMins, 0, 0);
+
+        const cycles = [
+          { cycle: 6, mins: 540, label: '주말 꿀잠', tag: '🛌 9시간 전 취침', color: 'emerald', desc: '주말 피로 보충용 취침 시간' },
+          { cycle: 5, mins: 450, label: '황금 골든타임', tag: '👑 가장 추천 (7.5시간)', color: 'indigo', desc: '내일 최상의 컨디션을 만드는 기적의 시간', isPrimary: true },
+          { cycle: 4, mins: 360, label: '직장인 현실형', tag: '💼 추천 (6시간)', color: 'blue', desc: '바쁜 평일 무난한 활동을 보장하는 시간' },
+          { cycle: 3, mins: 270, label: '생존 마지노선', tag: '🏃 급할 때 (4.5시간)', color: 'sky', desc: '최소한의 뇌기능 유지를 위한 마지노선' },
+          { cycle: 2, mins: 180, label: '초단기 수면', tag: '☕ 주의 (3시간)', color: 'slate', desc: '수면 부족으로 낮 동안 졸릴 수 있습니다' },
+          { cycle: 1, mins: 90, label: '초긴급 쪽잠', tag: '⚡ 쪽잠 (1.5시간)', color: 'slate', desc: '철야 후 기상 직전 최소한의 사이클' }
+        ];
+
+        let html = '';
+        cycles.forEach(c => {
+          // Bedtime = TargetWake - (cycleMins + latency)
+          const bedDate = new Date(targetDate.getTime() - (c.mins + latency) * 60000);
+          const timeStr = formatTimeAMPM(bedDate);
+          if (c.isPrimary) primaryRecommendedTime = timeStr;
+
+          const isHighlight = c.isPrimary;
+          const borderStyle = isHighlight ? 'border-2 border-indigo-500 shadow-indigo-500/20 shadow-lg bg-indigo-950/20' : 'border border-slate-800 bg-slate-900 hover:border-slate-700';
+
+          html += `
+            <div class="${borderStyle} rounded-2xl p-5 transition flex flex-col justify-between group cursor-pointer alarm-card" data-time="${timeStr}">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-2">
+                  <span class="text-xs font-bold text-slate-400">${c.cycle}사이클 (${(c.mins / 60).toFixed(1)}시간 수면)</span>
+                  <span class="text-xs font-black px-2 py-0.5 rounded-full ${isHighlight ? 'bg-indigo-500 text-white' : 'bg-slate-800 text-slate-300'}">${c.tag}</span>
+                </div>
+                <div class="text-2xl sm:text-3xl font-black ${isHighlight ? 'text-indigo-300' : 'text-white'} group-hover:scale-105 transition origin-left flex items-center justify-between">
+                  <span>${timeStr}</span>
+                  <i class="fa-regular fa-copy text-xs text-slate-500 group-hover:text-slate-300 transition"></i>
+                </div>
+                <p class="text-xs text-slate-400 mt-2 leading-relaxed">${c.desc}</p>
+              </div>
+              <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-500">
+                <span>입면 ${latency}분 전 취침</span>
+                <span class="text-indigo-400 font-semibold group-hover:underline">클릭 시 알람 복사</span>
+              </div>
+            </div>
+          `;
+        });
+
+        wakeTargetCards.innerHTML = html;
+        bindCardCopyEvents();
+        updateDiagnosis(5);
+      }
+
+      // Preset wake buttons
+      document.querySelectorAll('.preset-wake-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          wakeTargetTime.value = btn.getAttribute('data-time');
+          renderWakeMode();
+        });
+      });
+
+      // 5. Render Mode 3: 커피 컷오프
+      function renderCaffeineMode() {
+        const sleepTimeVal = caffeineSleepTarget.value || '23:00';
+        const lastCoffeeVal = caffeineLastTime.value || '14:00';
+        const mg = currentCaffeineMg;
+
+        targetSleepText.textContent = sleepTimeVal;
+
+        // Half-life: 5.5 hours
+        const halfLife = 5.5;
+        // Threshold for safe sleep: 50 mg
+        const safeThreshold = 50;
+
+        // 1. Calculate required time difference to drop to 50mg:
+        // C(t) = C0 * (0.5)^(t / 5.5) = 50
+        // log2(C0 / 50) = t / 5.5 => t = 5.5 * (Math.log(C0 / 50) / Math.LN2)
+        let hoursNeeded = 0;
+        if (mg > safeThreshold) {
+          hoursNeeded = halfLife * (Math.log(mg / safeThreshold) / Math.LN2);
+        } else {
+          hoursNeeded = 0;
+        }
+        metabolismHours.textContent = hoursNeeded.toFixed(1);
+
+        // 2. Cutoff time: sleepTime - hoursNeeded
+        const sleepParts = sleepTimeVal.split(':');
+        const sleepDate = new Date();
+        sleepDate.setHours(parseInt(sleepParts[0], 10), parseInt(sleepParts[1], 10), 0, 0);
+
+        const cutoffDate = new Date(sleepDate.getTime() - hoursNeeded * 3600000);
+        cutoffTimeResult.textContent = formatTimeAMPM(cutoffDate) + ' 이전 섭취 마감';
+
+        // 3. Last Coffee time to sleep time difference:
+        const coffeeParts = lastCoffeeVal.split(':');
+        const coffeeDate = new Date();
+        coffeeDate.setHours(parseInt(coffeeParts[0], 10), parseInt(coffeeParts[1], 10), 0, 0);
+
+        let elapsedHours = (sleepDate.getTime() - coffeeDate.getTime()) / 3600000;
+        if (elapsedHours < 0) elapsedHours += 24; // next day crossing
+
+        // Residual at sleep:
+        let residual = mg * Math.pow(0.5, elapsedHours / halfLife);
+        residual = Math.max(0, Math.round(residual));
+        residualValue.textContent = residual;
+
+        // Safe Hour Result (coffeeDate + hoursNeeded)
+        const safeDate = new Date(coffeeDate.getTime() + hoursNeeded * 3600000);
+        safeHourResult.textContent = formatTimeAMPM(safeDate) + ' 안전선 도달';
+
+        // Status Badge & Comments
+        if (residual < 50) {
+          caffeineStatusBadge.className = 'px-4 py-2 rounded-xl text-xs sm:text-sm font-black flex items-center gap-2 self-start sm:self-auto bg-emerald-500/20 text-emerald-300 border border-emerald-500/30';
+          caffeineStatusBadge.innerHTML = '<i class="fa-solid fa-circle-check"></i><span>오늘 밤 숙면 안전</span>';
+          residualComment.textContent = '체내 잔류량이 50mg 미만으로 깊은 렘 수면에 방해되지 않습니다.';
+          caffeinePercentText.textContent = `안전선 통과 (취침 시점 ${residual}mg 잔류)`;
+          caffeineProgressBar.className = 'h-full rounded-full bg-emerald-500 transition-all duration-500';
+          caffeineProgressBar.style.width = Math.min(100, Math.max(10, (residual / safeThreshold) * 50)) + '%';
+        } else if (residual < 100) {
+          caffeineStatusBadge.className = 'px-4 py-2 rounded-xl text-xs sm:text-sm font-black flex items-center gap-2 self-start sm:self-auto bg-amber-500/20 text-amber-300 border border-amber-500/30';
+          caffeineStatusBadge.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i><span>약간의 수면 방해 주의</span>';
+          residualComment.textContent = '깊은 잠(서파 수면) 진입이 다소 지연될 수 있습니다. 따뜻한 물을 많이 드세요.';
+          caffeinePercentText.textContent = `주의 수준 (취침 시점 ${residual}mg 잔류)`;
+          caffeineProgressBar.className = 'h-full rounded-full bg-amber-500 transition-all duration-500';
+          caffeineProgressBar.style.width = '75%';
+        } else {
+          caffeineStatusBadge.className = 'px-4 py-2 rounded-xl text-xs sm:text-sm font-black flex items-center gap-2 self-start sm:self-auto bg-rose-500/20 text-rose-300 border border-rose-500/30';
+          caffeineStatusBadge.innerHTML = '<i class="fa-solid fa-bell text-rose-400"></i><span>수면 장애 위험 경보</span>';
+          residualComment.textContent = '체내 카페인이 과다합니다! 잠들기 어렵거나 얕은 잠에 그칠 위험이 큽니다.';
+          caffeinePercentText.textContent = `위험 수준 (취침 시점 ${residual}mg 잔류)`;
+          caffeineProgressBar.className = 'h-full rounded-full bg-rose-500 transition-all duration-500';
+          caffeineProgressBar.style.width = '100%';
+        }
+      }
+
+      // Caffeine Buttons
+      document.querySelectorAll('.caffeine-item-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const mg = parseInt(btn.getAttribute('data-mg'), 10);
+          currentCaffeineMg = mg;
+          caffeineCustomInput.value = mg;
+          caffeineTotalDisplay.textContent = mg + ' mg';
+          renderCaffeineMode();
+        });
+      });
+
+      caffeineCustomInput.addEventListener('input', () => {
+        currentCaffeineMg = parseInt(caffeineCustomInput.value, 10) || 0;
+        caffeineTotalDisplay.textContent = currentCaffeineMg + ' mg';
+        renderCaffeineMode();
+      });
+
+      caffeineResetBtn.addEventListener('click', () => {
+        currentCaffeineMg = 0;
+        caffeineCustomInput.value = 0;
+        caffeineTotalDisplay.textContent = '0 mg';
+        renderCaffeineMode();
+      });
+
+      // Events for real-time reactivity
+      latencyNow.addEventListener('change', renderSleepNow);
+      latencyWake.addEventListener('change', renderWakeMode);
+      wakeTargetTime.addEventListener('input', renderWakeMode);
+      caffeineSleepTarget.addEventListener('input', renderCaffeineMode);
+      caffeineLastTime.addEventListener('input', renderCaffeineMode);
+
+      // Card Copy Events
+      function bindCardCopyEvents() {
+        document.querySelectorAll('.alarm-card').forEach(card => {
+          card.addEventListener('click', () => {
+            const time = card.getAttribute('data-time');
+            navigator.clipboard.writeText(time).then(() => {
+              showToast(`'${time}' 알람 시간이 복사되었습니다!`);
+            });
+          });
+        });
+      }
+
+      // Diagnosis Banner Update
+      function updateDiagnosis(cycleCount) {
+        if (cycleCount >= 5) {
+          tierEmojiBox.textContent = '👑';
+          tierBadge.textContent = 'Lv.4 갓생 골든 모드';
+          tierBadge.className = 'text-xs font-black px-2.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30';
+          tierTitle.textContent = '"완벽한 두뇌 컨디션! 내일 아침 도파민과 집중력이 폭발합니다."';
+          tierDesc.textContent = '깊은 수면과 렘 수면이 균형을 이뤄 피로 물질(아데노신)이 100% 해소되는 황금 시간대입니다.';
+        }
+      }
+
+      // Copy Action Buttons
+      copyAlarmBtn.addEventListener('click', () => {
+        const timeToCopy = primaryRecommendedTime || '오전 07:00';
+        navigator.clipboard.writeText(timeToCopy).then(() => {
+          showToast(`가장 추천하는 골든타임 '${timeToCopy}'이 복사되었습니다!`);
+        });
+      });
+
+      copyShareBtn.addEventListener('click', () => {
+        let shareText = '';
+        if (currentMode === 'now') {
+          shareText = `[GoModo 렘 수면 골든타임]\n지금 자면 내일 ${primaryRecommendedTime}에 일어날 때 제일 개운하대!\n90분 수면 사이클 맞추고 덜 피곤하게 일어나기:\nhttps://www.gomodo.cloud/sleep/`;
+        } else if (currentMode === 'wake') {
+          shareText = `[GoModo 취침 골든타임]\n내일 ${wakeTargetTime.value}에 일어나려면 오늘 밤 ${primaryRecommendedTime}에는 불 끄고 누워야 갓생 가능!\n너도 오늘 밤 취침 시간 계산해봐:\nhttps://www.gomodo.cloud/sleep/`;
+        } else {
+          shareText = `[GoModo 커피 컷오프 판독기]\n오늘 마신 커피 때문에 ${cutoffTimeResult.textContent}!\n오늘 밤 숙면을 위한 카페인 마감 시간 확인:\nhttps://www.gomodo.cloud/sleep/`;
+        }
+        navigator.clipboard.writeText(shareText).then(() => {
+          showToast('카카오톡/SNS 공유 문구가 복사되었습니다!');
+        });
+      });
+
+      // URL Params handling
+      function updateUrlParams() {
+        const params = new URLSearchParams();
+        params.set('mode', currentMode);
+        if (currentMode === 'wake') params.set('wake', wakeTargetTime.value);
+        if (currentMode === 'caffeine') params.set('mg', currentCaffeineMg);
+        window.history.replaceState({}, '', `${window.location.pathname}?${params.toString()}`);
+      }
+
+      function loadUrlParams() {
+        const params = new URLSearchParams(window.location.search);
+        const mode = params.get('mode');
+        if (mode && ['now', 'wake', 'caffeine'].includes(mode)) {
+          setMode(mode);
+        } else {
+          setMode('now');
+        }
+
+        const wake = params.get('wake');
+        if (wake) {
+          wakeTargetTime.value = wake;
+          renderWakeMode();
+        }
+
+        const mg = params.get('mg');
+        if (mg) {
+          currentCaffeineMg = parseInt(mg, 10) || 150;
+          caffeineCustomInput.value = currentCaffeineMg;
+          caffeineTotalDisplay.textContent = currentCaffeineMg + ' mg';
+          renderCaffeineMode();
+        }
+      }
+
+      // Initial Render
+      loadUrlParams();
+    })();
+  </script>
+</body>
+</html>
