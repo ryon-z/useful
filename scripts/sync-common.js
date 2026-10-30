@@ -29,6 +29,12 @@ const adsenseClientId = toolsData.meta.adsenseClientId;
 // AdSense 스니펫
 const adsenseSnippet = `  <!-- SHARED:ADSENSE -->\n  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClientId}" crossorigin="anonymous"></script>\n  <!-- /SHARED:ADSENSE -->`;
 
+function generateInAppScriptTag(currentRelDir) {
+  const relSharedDir = getRelativeLink(currentRelDir, 'shared');
+  const scriptPath = relSharedDir + 'inapp-webview.js';
+  return `  <!-- SHARED:INAPP_SUPPORT -->\n  <script src="${scriptPath}"></script>\n  <!-- /SHARED:INAPP_SUPPORT -->`;
+}
+
 function findHtmlFiles(dir) {
   let results = [];
   const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -242,6 +248,21 @@ function syncFile(filePath) {
       content = content.replace(rawFooterRegex, newFooter);
       modified = true;
     }
+  }
+
+  // 4. In-App WebView Support Script Sync
+  const newInAppScript = generateInAppScriptTag(relDir);
+  if (content.includes('<!-- SHARED:INAPP_SUPPORT -->')) {
+    const inappRegex = /<!-- SHARED:INAPP_SUPPORT -->[\s\S]*?<!-- \/SHARED:INAPP_SUPPORT -->/;
+    const updated = content.replace(inappRegex, newInAppScript.trim());
+    if (updated !== content) {
+      content = updated;
+      modified = true;
+    }
+  } else if (content.includes('</head>')) {
+    // Inject right before </head>
+    content = content.replace('</head>', newInAppScript + '\n</head>');
+    modified = true;
   }
 
   if (modified) {
