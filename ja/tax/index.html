@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>消費税・軽減税率（8%・10%）＆インボイス計算機 - 経過措置50%控除・端数処理 | GoModo</title>
-  <meta name="description" content="2026年最新インボイス制度対応！税込・税抜の相互変換、標準税率10% vs 軽減税率8%の差額、免税事業者からの仕入税額控除（50%・80%経過措置）、端数処理（切り捨て等）を瞬時に計算。">>
-  <meta name="keywords" content="消費税計算機, 軽減税率計算, 税込税抜変換, インボイス経過措置計算, 免税事業者仕入控除50%, 消費税端数処理切り捨て, 8パーセント10パーセント計算, GoModo">>
+  <meta name="description" content="2026年最新インボイス制度対応！税込・税抜の相互変換、標準税率10% vs 軽減税率8%の差額、免税事業者からの仕入税額控除（50%・80%経過措置）、端数処理（切り捨て等）を瞬時に計算。">
+  <meta name="keywords" content="消費税計算機, 軽減税率計算, 税込税抜変換, インボイス経過措置計算, 免税事業者仕入控除50%, 消費税端数処理切り捨て, 8パーセント10パーセント計算, GoModo">
   <meta name="author" content="GoModo">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://www.gomodo.cloud/ja/tax/">
@@ -17,16 +17,16 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="GoModo 日本版">
-  <meta property="og:title" content="消費税・軽減税率（8%・10%）＆インボイス計算機 | GoModo">>
-  <meta property="og:description" content="税込・税抜変換、10%標準 vs 8%軽減税率比較、インボイス経過措置50%控除を瞬時計算">>
+  <meta property="og:title" content="消費税・軽減税率（8%・10%）＆インボイス計算機 | GoModo">
+  <meta property="og:description" content="税込・税抜変換、10%標準 vs 8%軽減税率比較、インボイス経過措置50%控除を瞬時計算">
   <meta property="og:url" content="https://www.gomodo.cloud/ja/tax/">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:image" content="https://www.gomodo.cloud/og-image.png">
 
   <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="消費税・軽減税率（8%・10%）＆インボイス計算機 | GoModo">>
-  <meta name="twitter:description" content="税込・税抜変換、10%標準 vs 8%軽減税率比較、インボイス経過措置50%控除を瞬時計算">>
+  <meta name="twitter:title" content="消費税・軽減税率（8%・10%）＆インボイス計算機 | GoModo">
+  <meta name="twitter:description" content="税込・税抜変換、10%標準 vs 8%軽減税率比較、インボイス経過措置50%控除を瞬時計算">
   <meta name="twitter:image" content="https://www.gomodo.cloud/og-image.png">
 
   <!-- Favicon -->
@@ -227,8 +227,156 @@
           </div>
         </div>
         <!-- /SHARED:TOOL_DROPDOWN -->
-        </div>
 
+        <!-- 共有ボタン -->
+        <button type="button" onclick="shareTaxResults()" class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-emerald-400 border border-slate-700/80 flex items-center justify-center transition active:scale-95 shadow-sm flex-shrink-0" title="ツールを共有する" aria-label="共有">
+          <i class="fa-solid fa-share-nodes text-xs sm:text-sm"></i>
+        </button>
+
+        <!-- テーマ切替ボタン -->
+        <button type="button" onclick="toggleTheme()" class="theme-toggle-btn w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-emerald-400 border border-slate-700/80 flex items-center justify-center transition active:scale-95 shadow-sm flex-shrink-0" title="テーマ切り替え (ダーク/ライト)" aria-label="テーマ切替">
+          <i class="fa-solid fa-sun text-xs sm:text-sm theme-icon-sun hidden"></i>
+          <i class="fa-solid fa-moon text-xs sm:text-sm theme-icon-moon"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- メインコンテンツ -->
+  <main class="max-w-5xl mx-auto px-4 py-6 sm:py-8 space-y-6 flex-1 w-full">
+
+    <!-- ページ見出し -->
+    <div class="space-y-1">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold">
+        <i class="fa-solid fa-receipt text-xs"></i>
+        <span>10%標準・8%軽減税率 ＆ インボイス仕入控除対応</span>
+      </div>
+      <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+        消費税・軽減税率（10%・8%）計算機
+      </h1>
+      <p class="text-xs sm:text-sm text-slate-400">
+        税込・税抜の双方向スピード換算、1円未満の端数処理（切り捨て・四捨五入・切り上げ）、インボイス免税事業者経過措置（80%・50%控除）に対応した日本国税庁基準の計算ツールです。
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      <!-- 左カラム: 金額入力 & 税率・端数・インボイス設定 (7 cols) -->
+      <div class="lg:col-span-7 space-y-5">
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-6 shadow-xl space-y-5">
+          <!-- 1. 計算モード切替 (税抜➔税込 vs 税込➔税抜) -->
+          <div class="grid grid-cols-2 gap-2 p-1 bg-slate-950 rounded-2xl border border-slate-800">
+            <button type="button" onclick="setMode('ex')" id="mode-btn-ex" class="py-2.5 px-3 rounded-xl font-bold text-xs sm:text-sm transition flex items-center justify-center gap-2 bg-emerald-500 text-slate-950 shadow-md">
+              <i class="fa-solid fa-arrow-right"></i>
+              <span>税抜 ➔ 税込（加算）</span>
+            </button>
+            <button type="button" onclick="setMode('in')" id="mode-btn-in" class="py-2.5 px-3 rounded-xl font-bold text-xs sm:text-sm transition flex items-center justify-center gap-2 text-slate-300 hover:text-white">
+              <i class="fa-solid fa-arrow-left"></i>
+              <span>税込 ➔ 税抜（内税計算）</span>
+            </button>
+          </div>
+
+          <!-- 2. 金額入力 -->
+          <div class="space-y-1.5">
+            <div class="flex items-center justify-between text-xs font-bold text-slate-300">
+              <label for="tax-amount" id="amount-input-label" class="text-slate-300">基準金額（税抜）</label>
+              <span id="amount-display-preview" class="text-emerald-400 font-black text-sm">¥10,000</span>
+            </div>
+            <div class="relative">
+              <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500 font-bold text-base">¥</div>
+              <input type="number" id="tax-amount" value="10000" min="0" step="100" class="w-full pl-8 pr-4 py-3 bg-slate-950 border border-slate-700/80 rounded-2xl text-white font-black text-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none transition">
+            </div>
+            <!-- クイック加算ボタン -->
+            <div class="flex flex-wrap items-center gap-1.5 pt-1 text-xs">
+              <button type="button" onclick="addAmount(1000)" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition text-[11px] font-semibold">+1,000円</button>
+              <button type="button" onclick="addAmount(5000)" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition text-[11px] font-semibold">+5,000円</button>
+              <button type="button" onclick="addAmount(10000)" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition text-[11px] font-semibold">+1万円</button>
+              <button type="button" onclick="addAmount(50000)" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition text-[11px] font-semibold">+5万円</button>
+              <button type="button" onclick="addAmount(100000)" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition text-[11px] font-semibold">+10万円</button>
+              <button type="button" onclick="clearAmount()" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-rose-400 transition text-[11px] font-bold">クリア</button>
+            </div>
+          </div>
+
+          <!-- 3. 税率選択 (10% vs 8%) -->
+          <div class="space-y-1.5">
+            <label class="block text-xs font-bold text-slate-300">適用消費税率</label>
+            <div class="grid grid-cols-2 gap-3">
+              <button type="button" onclick="setTaxRate(10)" id="rate-btn-10" class="p-3 rounded-2xl border-2 transition text-left relative overflow-hidden bg-slate-800/90 border-emerald-500 text-white shadow-md">
+                <div class="text-sm font-black flex items-center justify-between">
+                  <span>標準税率 10%</span>
+                  <span class="text-xs text-emerald-400">一般品目</span>
+                </div>
+                <div class="text-[11px] text-slate-400 mt-1">日用品・電化製品・外食・サービス全般</div>
+              </button>
+              <button type="button" onclick="setTaxRate(8)" id="rate-btn-8" class="p-3 rounded-2xl border-2 transition text-left relative overflow-hidden bg-slate-800/50 border-slate-700 text-slate-300 hover:border-slate-600">
+                <div class="text-sm font-black flex items-center justify-between">
+                  <span>軽減税率 8%</span>
+                  <span class="text-xs text-amber-400">特例</span>
+                </div>
+                <div class="text-[11px] text-slate-400 mt-1">飲食料品（酒類・外食除く）・定期購読新聞</div>
+              </button>
+            </div>
+          </div>
+
+          <!-- 4. 端数処理設定 (切り捨て・四捨五入・切り上げ) -->
+          <div class="space-y-1.5">
+            <div class="flex items-center justify-between text-xs font-bold text-slate-300">
+              <label class="text-slate-300">1円未満の端数処理方法</label>
+              <span class="text-[11px] text-slate-400">国税庁標準: 切り捨て</span>
+            </div>
+            <div class="grid grid-cols-3 gap-2">
+              <button type="button" onclick="setRounding('floor')" id="round-btn-floor" class="py-2 px-3 rounded-xl font-bold text-xs transition border bg-emerald-500/20 text-emerald-300 border-emerald-500/40">切り捨て (floor)</button>
+              <button type="button" onclick="setRounding('round')" id="round-btn-round" class="py-2 px-3 rounded-xl font-bold text-xs transition border bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700">四捨五入 (round)</button>
+              <button type="button" onclick="setRounding('ceil')" id="round-btn-ceil" class="py-2 px-3 rounded-xl font-bold text-xs transition border bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700">切り上げ (ceil)</button>
+            </div>
+          </div>
+
+          <!-- 5. インボイス制度免税事業者等からの仕入れ経過措置 (アコーディオン) -->
+          <div class="pt-2 border-t border-slate-800">
+            <button type="button" onclick="toggleInvoicePanel()" class="w-full flex items-center justify-between py-2 text-xs font-bold text-emerald-400 hover:text-emerald-300 transition">
+              <span class="flex items-center gap-1.5">
+                <i class="fa-solid fa-file-invoice-dollar"></i>
+                <span>インボイス制度 経過措置（仕入税額控除 <span id="inv-pct-label">50</span>%）</span>
+              </span>
+              <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200" id="invoice-arrow"></i>
+            </button>
+
+            <div id="invoice-options-panel" class="hidden pt-3 space-y-3">
+              <p class="text-[11px] text-slate-400 leading-relaxed">
+                適格請求書発行事業者以外の免税事業者等からの仕入れであっても、一定期間は仕入税額相当額の一定割合を控除可能です。
+              </p>
+              <div class="grid grid-cols-2 gap-2">
+                <button type="button" onclick="setInvoiceDeduction(50)" id="inv-deduct-50" class="p-2.5 rounded-xl border font-bold text-left transition bg-emerald-500/20 text-emerald-300 border-emerald-500/40">
+                  <div class="text-xs">50%控除（現行）</div>
+                  <div class="text-[10px] text-slate-400">2026年10月1日〜2029年9月</div>
+                </button>
+                <button type="button" onclick="setInvoiceDeduction(80)" id="inv-deduct-80" class="p-2.5 rounded-xl border font-bold text-left transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700">
+                  <div class="text-xs">80%控除（前期）</div>
+                  <div class="text-[10px] text-slate-400">2023年10月〜2026年9月</div>
+                </button>
+              </div>
+
+              <!-- インボイス控除計算明細表示 -->
+              <div class="p-3 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1.5 text-xs">
+                <div class="flex items-center justify-between text-slate-300">
+                  <span>控除可能消費税額:</span>
+                  <span class="font-bold text-emerald-400" id="inv-deductible-tax">¥500</span>
+                </div>
+                <div class="flex items-center justify-between text-slate-400 text-[11px]">
+                  <span>控除不可（自己負担額）:</span>
+                  <span class="font-bold text-rose-400" id="inv-non-deductible-tax">¥500</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- リセットボタン -->
+          <div class="pt-2 text-right">
+            <button type="button" onclick="resetTaxForm()" class="text-xs text-slate-400 hover:text-slate-200 transition font-bold inline-flex items-center gap-1">
+              <i class="fa-solid fa-rotate-left text-[10px]"></i>
+              <span>初期値（1万円・10%・切り捨て）に戻す</span>
+            </button>
+          </div>
+        </div>
       </div>
 
       <!-- 右カラム: 計算結果サマリー & 10%/8% 比較カード (5 cols) -->

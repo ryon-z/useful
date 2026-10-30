@@ -15,8 +15,8 @@
   
   <!-- SEO 최적화 메타태그 -->
   <title>적립식 복리 계산기 - 72의 법칙 & 파이어족 4% 규칙 은퇴 자산 시뮬레이터 | GoModo</title>
-  <meta name="description" content="월 30만원, 50만원, 100만원 주식·ETF 적립식 투자 시 10년·20년 뒤 미래 자산은? 72의 법칙 계산기, 물가상승률(2.5%) 실질구매력, 파이어(FIRE) 4% 은퇴 생활비 즉시 계산.">>
-  <meta name="keywords" content="72의 법칙 계산기, 월 50만원 20년 복리, 월 30만원 복리, 파이어족 4% 규칙 계산기, 적립식 복리계산기, 복리의마법, 미국주식 복리수익률, S&P500 적립식투자, ISA 복리 비과세, 은퇴자산계산기, GoModo">>
+  <meta name="description" content="월 30만원, 50만원, 100만원 주식·ETF 적립식 투자 시 10년·20년 뒤 미래 자산은? 72의 법칙 계산기, 물가상승률(2.5%) 실질구매력, 파이어(FIRE) 4% 은퇴 생활비 즉시 계산.">
+  <meta name="keywords" content="72의 법칙 계산기, 월 50만원 20년 복리, 월 30만원 복리, 파이어족 4% 규칙 계산기, 적립식 복리계산기, 복리의마법, 미국주식 복리수익률, S&P500 적립식투자, ISA 복리 비과세, 은퇴자산계산기, GoModo">
   <meta name="author" content="GoModo">
   <link rel="canonical" href="https://www.gomodo.cloud/compound/">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%2310b981'/><text x='50' y='67' font-size='44' font-family='sans-serif' font-weight='bold' text-anchor='middle' fill='%23022c22'>複</text></svg>">
@@ -24,8 +24,8 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="GoModo (고모도)">
-  <meta property="og:title" content="적립식 복리 계산기 | 72의 법칙 & 파이어족 4% 은퇴 시뮬레이터">>
-  <meta property="og:description" content="월 30만·50만원 적립 시 20년 뒤 내 자산은? 72의 법칙과 파이어족 은퇴 생활비 산출">>
+  <meta property="og:title" content="적립식 복리 계산기 | 72의 법칙 & 파이어족 4% 은퇴 시뮬레이터">
+  <meta property="og:description" content="월 30만·50만원 적립 시 20년 뒤 내 자산은? 72의 법칙과 파이어족 은퇴 생활비 산출">
   <meta property="og:url" content="https://www.gomodo.cloud/compound/">
   <meta property="og:locale" content="ko_KR">
   <meta property="og:image" content="https://www.gomodo.cloud/og-image.png">
@@ -34,8 +34,8 @@
 
   <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="적립식 복리 계산기 | 72의 법칙 & 파이어족 4% 은퇴 시뮬레이터">>
-  <meta name="twitter:description" content="월 30만·50만원 적립 시 20년 뒤 내 자산은? 72의 법칙과 파이어족 은퇴 생활비 산출">>
+  <meta name="twitter:title" content="적립식 복리 계산기 | 72의 법칙 & 파이어족 4% 은퇴 시뮬레이터">
+  <meta name="twitter:description" content="월 30만·50만원 적립 시 20년 뒤 내 자산은? 72의 법칙과 파이어족 은퇴 생활비 산출">
   <meta name="twitter:image" content="https://www.gomodo.cloud/og-image.png">
 
   <!-- 검색엔진 지침 -->
@@ -1321,10 +1321,14 @@
       });
 
       rateInput.addEventListener('input', calculateAndRender);
-      freqSelect.addEventListener('change', calculateAndRender);
-      timingSelect.addEventListener('change', calculateAndRender);
-      taxSelect.addEventListener('change', calculateAndRender);
-      inflationToggle.addEventListener('change', calculateAndRender);
+      freqSelect.addEventListener('input', calculateAndRender);
+    freqSelect.addEventListener('change', calculateAndRender);
+      timingSelect.addEventListener('input', calculateAndRender);
+    timingSelect.addEventListener('change', calculateAndRender);
+      taxSelect.addEventListener('input', calculateAndRender);
+    taxSelect.addEventListener('change', calculateAndRender);
+      inflationToggle.addEventListener('input', calculateAndRender);
+    inflationToggle.addEventListener('change', calculateAndRender);
       inflationRateInput.addEventListener('input', calculateAndRender);
 
       yearsRange.addEventListener('input', (e) => {

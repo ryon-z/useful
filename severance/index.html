@@ -486,7 +486,7 @@
           <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-2">
             <div class="text-xs font-bold text-slate-200">2. 퇴사 사유 (이직 사유)</div>
             <p class="text-[11px] text-slate-400">퇴직 시 회사에 제출한 주요 퇴사 사유를 선택하세요.</p>
-            <select id="leave-reason" onchange="onReasonChange()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs font-bold text-white focus:outline-none focus:border-teal-500">
+            <select id="leave-reason" oninput="onReasonChange()" onchange="onReasonChange()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs font-bold text-white focus:outline-none focus:border-teal-500">
               <option value="involuntary" selected>권고사직 / 경영상 해고 / 회사부도</option>
               <option value="contract_end">계약기간 만료 (재계약 거부)</option>
               <option value="retirement">정년 퇴직</option>
@@ -1249,7 +1249,7 @@
       calculateUnemployment();
 
       // 리스너
-      [dateJoin, dateLeave].forEach(inp => inp.addEventListener('change', calculateSeverance));
+      [dateJoin, dateLeave].forEach(inp => { inp.addEventListener('input', calculateSeverance); inp.addEventListener('change', calculateSeverance); });
       [salary3mInput, allowance3mInput, annualBonusInput, annualLeaveInput].forEach(inp => {
         inp.addEventListener('input', () => {
           inp.value = parseNumber(inp.value).toLocaleString('ko-KR');
@@ -1262,6 +1262,7 @@
         calculateUnemployment();
       });
       ageUnempInput.addEventListener('input', calculateUnemployment);
+      periodUnempSelect.addEventListener('input', calculateUnemployment);
       periodUnempSelect.addEventListener('change', calculateUnemployment);
     });
 

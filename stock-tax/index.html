@@ -933,7 +933,7 @@
           <input type="text" value="${row.name}" onchange="updateRowName(${idx}, this.value)" class="flex-1 bg-transparent text-xs font-semibold text-white focus:outline-none placeholder-slate-500 min-w-0" placeholder="증권사 및 종목명">
           <div class="flex items-center gap-1 flex-shrink-0">
             <span class="text-xs ${row.profit >= 0 ? 'text-emerald-400' : 'text-rose-400'} font-bold">${currentCurrency === 'KRW' ? '₩' : '$'}</span>
-            <input type="text" value="${currentCurrency === 'KRW' ? row.profit.toLocaleString('ko-KR') : displayVal.toLocaleString('en-US')}" onchange="updateRowProfit(${idx}, this.value)" class="w-28 sm:w-32 bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1 text-right text-xs font-black ${row.profit >= 0 ? 'text-emerald-400' : 'text-rose-400'} focus:outline-none focus:border-sky-500">
+            <input type="text" value="${currentCurrency === 'KRW' ? row.profit.toLocaleString('ko-KR') : displayVal.toLocaleString('en-US')}" oninput="updateRowProfitLive(${idx}, this.value, this)" onchange="updateRowProfit(${idx}, this.value)" class="w-28 sm:w-32 bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1 text-right text-xs font-black ${row.profit >= 0 ? 'text-emerald-400' : 'text-rose-400'} focus:outline-none focus:border-sky-500">
             ${stockRows.length > 1 ? `<button type="button" onclick="removeStockRow(${idx})" class="w-6 h-6 rounded-lg text-slate-500 hover:text-rose-400 hover:bg-slate-700/50 flex items-center justify-center transition" title="삭제"><i class="fa-solid fa-trash-can text-[11px]"></i></button>` : ''}
           </div>
         `;
@@ -960,6 +960,28 @@
     function updateRowName(idx, val) {
       stockRows[idx].name = val;
       syncToUrl();
+    }
+
+    function updateRowProfitLive(idx, val, el) {
+      const clean = String(val).replace(/,/g, '').trim();
+      if (clean === '-' || clean === '') return;
+      const num = parseFloat(clean) || 0;
+      const rate = parseNumber(exchangeRateInput.value) || 1380;
+      if (currentCurrency === 'USD') {
+        stockRows[idx].profit = Math.round(num * rate);
+      } else {
+        stockRows[idx].profit = Math.round(num);
+      }
+      if (el) {
+        if (stockRows[idx].profit >= 0) {
+          el.classList.remove('text-rose-400');
+          el.classList.add('text-emerald-400');
+        } else {
+          el.classList.remove('text-emerald-400');
+          el.classList.add('text-rose-400');
+        }
+      }
+      calculateTax();
     }
 
     function updateRowProfit(idx, val) {
@@ -1258,21 +1280,28 @@
       updateCountdownTimer();
       setInterval(updateCountdownTimer, 60000);
 
-      // 입력 리스너
+      // 입력 리스너 (실시간 즉각 반응 & blur 포맷팅)
       exchangeRateInput.addEventListener('input', () => {
+        calculateTax();
+      });
+      exchangeRateInput.addEventListener('blur', () => {
         exchangeRateInput.value = parseNumber(exchangeRateInput.value).toLocaleString('ko-KR');
         renderStockRows();
         calculateTax();
       });
 
       harvestProfitInput.addEventListener('input', () => {
-        harvestProfitInput.value = parseNumber(harvestProfitInput.value).toLocaleString('ko-KR');
         calculateHarvest();
+      });
+      harvestProfitInput.addEventListener('blur', () => {
+        harvestProfitInput.value = parseNumber(harvestProfitInput.value).toLocaleString('ko-KR');
       });
 
       dividendInput.addEventListener('input', () => {
-        dividendInput.value = parseNumber(dividendInput.value).toLocaleString('ko-KR');
         calculateDividend();
+      });
+      dividendInput.addEventListener('blur', () => {
+        dividendInput.value = parseNumber(dividendInput.value).toLocaleString('ko-KR');
       });
     });
 

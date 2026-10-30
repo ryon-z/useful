@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>US Mortgage Calculator - 30-Yr Fixed Live FRED Rates &amp; PITI Payment Breakdown | GoModo</title>
-  <meta name="description" content="Free online US mortgage calculator with live FRED rates (7.32%). Calculate monthly PITI payment (Principal, Interest, Property Taxes, Insurance, PMI) and complete 30-year amortization schedule.">>
-  <meta name="keywords" content="30 year fixed mortgage live fred rate, mortgage payment calculator with taxes and insurance, PITI calculator, 30 year mortgage amortization table, us home loan payment, down payment pmi calculator, GoModo">>
+  <meta name="description" content="Free online US mortgage calculator with live FRED rates (7.32%). Calculate monthly PITI payment (Principal, Interest, Property Taxes, Insurance, PMI) and complete 30-year amortization schedule.">
+  <meta name="keywords" content="30 year fixed mortgage live fred rate, mortgage payment calculator with taxes and insurance, PITI calculator, 30 year mortgage amortization table, us home loan payment, down payment pmi calculator, GoModo">
   <meta name="author" content="GoModo">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://www.gomodo.cloud/en/mortgage/">
@@ -17,15 +17,15 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="GoModo US">
-  <meta property="og:title" content="US Mortgage Calculator - 30-Yr Fixed Live FRED Rates & PITI Breakdown">>
-  <meta property="og:description" content="Calculate monthly PITI payments and full 30-year amortization with benchmark FRED mortgage rates.">>
+  <meta property="og:title" content="US Mortgage Calculator - 30-Yr Fixed Live FRED Rates & PITI Breakdown">
+  <meta property="og:description" content="Calculate monthly PITI payments and full 30-year amortization with benchmark FRED mortgage rates.">
   <meta property="og:url" content="https://www.gomodo.cloud/en/mortgage/">
   <meta property="og:image" content="https://www.gomodo.cloud/og-image.png">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="US Mortgage Calculator - 30-Yr Fixed Live FRED Rates & PITI Breakdown">>
-  <meta name="twitter:description" content="Calculate monthly PITI payments and full 30-year amortization with benchmark FRED mortgage rates.">>
+  <meta name="twitter:title" content="US Mortgage Calculator - 30-Yr Fixed Live FRED Rates & PITI Breakdown">
+  <meta name="twitter:description" content="Calculate monthly PITI payments and full 30-year amortization with benchmark FRED mortgage rates.">
   <meta name="twitter:image" content="https://www.gomodo.cloud/og-image.png">
 
   <!-- Favicon -->
@@ -245,6 +245,90 @@
           </div>
         </div>
         <!-- /SHARED:TOOL_DROPDOWN -->
+
+        <!-- Dark/Light Theme Toggle -->
+        <button id="theme-toggle" type="button" aria-label="Toggle theme" class="p-2 sm:p-2.5 text-slate-400 hover:text-white hover:bg-slate-800 rounded-xl transition border border-transparent hover:border-slate-700">
+          <i class="fa-solid fa-moon text-sm"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="max-w-5xl mx-auto px-4 py-6 sm:py-8 flex-1 w-full space-y-6">
+
+    <!-- Hero Title -->
+    <div class="space-y-1">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold">
+        <i class="fa-solid fa-house-chimney text-xs"></i>
+        <span>PITI Monthly Payment &amp; Amortization Schedule</span>
+      </div>
+      <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+        US Mortgage &amp; PITI Calculator
+      </h1>
+      <p class="text-xs sm:text-sm text-slate-400">
+        Calculate your exact monthly mortgage payment including Principal, Interest, Taxes, Insurance (PITI), and HOA fees with live Federal Reserve (FRED) benchmark rates.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      <!-- Left Column: Input Controls (7 cols) -->
+      <div class="lg:col-span-7 space-y-5">
+        <!-- FRED Live Benchmark Rate Banner -->
+        <div class="p-3.5 sm:p-4 rounded-2xl bg-indigo-950/40 border border-indigo-500/30 flex items-center justify-between gap-3 text-xs">
+          <div class="flex items-center gap-2.5 min-w-0">
+            <div class="w-8 h-8 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-black flex-shrink-0">
+              <i class="fa-solid fa-chart-simple"></i>
+            </div>
+            <div class="min-w-0 flex-1">
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-white text-xs sm:text-sm">Official FRED Benchmark Rate</span>
+                <span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30" id="fred-rate-value">7.32%</span>
+              </div>
+              <p class="text-slate-400 text-[11px] truncate" id="fred-rate-desc">30-Year Fixed Mortgage Average: <strong class="text-white font-black text-sm">7.32%</strong></p>
+            </div>
+          </div>
+          <button type="button" onclick="applyFredRate()" class="flex-shrink-0 px-2.5 py-1.5 rounded-xl bg-indigo-500 hover:bg-indigo-400 text-slate-950 font-black text-[11px] transition shadow-sm">
+            Apply Rate
+          </button>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-6 shadow-xl space-y-5">
+          <!-- 1. Home Price -->
+          <div class="space-y-1.5">
+            <div class="flex items-center justify-between text-xs font-bold text-slate-300">
+              <label for="home-price" class="text-slate-300">Home Purchase Price</label>
+              <span id="home-price-display" class="text-indigo-400 font-black text-sm">$400,000</span>
+            </div>
+            <div class="relative">
+              <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500 font-bold text-base">$</div>
+              <input type="number" id="home-price" value="400000" min="10000" step="5000" class="w-full pl-8 pr-4 py-3 bg-slate-800/90 border border-slate-700/80 rounded-2xl text-white font-black text-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none transition">
+            </div>
+            <div class="flex items-center gap-1.5 pt-1 text-xs">
+              <button type="button" onclick="setHomePrice(300000)" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition text-[11px] font-semibold">$300k</button>
+              <button type="button" onclick="setHomePrice(400000)" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition text-[11px] font-semibold">$400k</button>
+              <button type="button" onclick="setHomePrice(500000)" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition text-[11px] font-semibold">$500k</button>
+              <button type="button" onclick="setHomePrice(750000)" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition text-[11px] font-semibold">$750k</button>
+              <button type="button" onclick="setHomePrice(1000000)" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition text-[11px] font-semibold">$1M</button>
+            </div>
+          </div>
+
+          <!-- 2. Down Payment (Amount & Percent) -->
+          <div class="space-y-1.5">
+            <div class="flex items-center justify-between text-xs font-bold">
+              <label class="text-slate-300">Down Payment</label>
+              <span id="down-payment-pmi-badge" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">PMI Not Required (20%+)</span>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="relative">
+                <input type="number" id="down-payment-pct" value="20" min="0" max="100" step="0.5" class="w-full pl-3.5 pr-8 py-2.5 bg-slate-800/90 border border-slate-700/80 rounded-xl text-white font-bold text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none transition">
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-slate-500 font-bold">%</div>
+              </div>
+              <div class="relative">
+                <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-500 font-bold text-sm">$</div>
+                <input type="number" id="down-payment-amount" value="80000" min="0" step="1000" class="w-full pl-7 pr-3.5 py-2.5 bg-slate-800/90 border border-slate-700/80 rounded-xl text-white font-bold text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none transition">
+              </div>
+            </div>
           <div class="flex items-center gap-1.5 pt-1 text-xs">
             <button type="button" onclick="setDownPaymentPct(3.5)" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition text-[11px] font-semibold">3.5% (FHA)</button>
             <button type="button" onclick="setDownPaymentPct(5)" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition text-[11px] font-semibold">5%</button>
@@ -986,6 +1070,7 @@ Calculated via GoModo US: ${window.location.href}`;
         calculateMortgage();
       });
 
+      document.getElementById('loan-term').addEventListener('input', calculateMortgage);
       document.getElementById('loan-term').addEventListener('change', calculateMortgage);
       document.getElementById('interest-rate').addEventListener('input', calculateMortgage);
       document.getElementById('property-tax-rate').addEventListener('input', calculateMortgage);

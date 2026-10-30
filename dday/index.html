@@ -372,23 +372,23 @@
             <!-- 연도 선택 -->
             <div>
               <label for="conv-year" class="block text-xs text-slate-400 font-bold mb-1">연도</label>
-              <select id="conv-year" onchange="convertDate()" class="w-full h-[48px] bg-slate-900 border border-slate-700 rounded-xl px-2 sm:px-3 text-sm sm:text-base font-bold text-white focus:outline-none focus:border-rose-400 cursor-pointer"></select>
+              <select id="conv-year" oninput="convertDate()" onchange="convertDate()" class="w-full h-[48px] bg-slate-900 border border-slate-700 rounded-xl px-2 sm:px-3 text-sm sm:text-base font-bold text-white focus:outline-none focus:border-rose-400 cursor-pointer"></select>
             </div>
             <!-- 월 선택 -->
             <div>
               <label for="conv-month" class="block text-xs text-slate-400 font-bold mb-1">월</label>
-              <select id="conv-month" onchange="convertDate()" class="w-full h-[48px] bg-slate-900 border border-slate-700 rounded-xl px-2 sm:px-3 text-sm sm:text-base font-bold text-white focus:outline-none focus:border-rose-400 cursor-pointer"></select>
+              <select id="conv-month" oninput="convertDate()" onchange="convertDate()" class="w-full h-[48px] bg-slate-900 border border-slate-700 rounded-xl px-2 sm:px-3 text-sm sm:text-base font-bold text-white focus:outline-none focus:border-rose-400 cursor-pointer"></select>
             </div>
             <!-- 일 선택 -->
             <div>
               <label for="conv-day" class="block text-xs text-slate-400 font-bold mb-1">일</label>
-              <select id="conv-day" onchange="convertDate()" class="w-full h-[48px] bg-slate-900 border border-slate-700 rounded-xl px-2 sm:px-3 text-sm sm:text-base font-bold text-white focus:outline-none focus:border-rose-400 cursor-pointer"></select>
+              <select id="conv-day" oninput="convertDate()" onchange="convertDate()" class="w-full h-[48px] bg-slate-900 border border-slate-700 rounded-xl px-2 sm:px-3 text-sm sm:text-base font-bold text-white focus:outline-none focus:border-rose-400 cursor-pointer"></select>
             </div>
           </div>
 
           <!-- 음력 ➔ 양력 모드일 때만 보이는 윤달 체크박스 -->
           <div id="conv-leap-wrapper" class="hidden flex items-center gap-2 pt-1">
-            <input type="checkbox" id="conv-is-leap" onchange="convertDate()" class="w-4 h-4 rounded text-rose-500 focus:ring-rose-400 bg-slate-900 border-slate-700 cursor-pointer">
+            <input type="checkbox" id="conv-is-leap" oninput="convertDate()" onchange="convertDate()" class="w-4 h-4 rounded text-rose-500 focus:ring-rose-400 bg-slate-900 border-slate-700 cursor-pointer">
             <label for="conv-is-leap" class="text-xs sm:text-sm font-bold text-slate-300 cursor-pointer select-none">
               윤달(閏月) 여부 체크 (음력 윤달인 경우 체크)
             </label>
@@ -454,7 +454,7 @@
             </div>
             <div>
               <label for="dday-target-date" class="block text-xs sm:text-sm font-bold text-slate-300 mb-1">목표 날짜</label>
-              <input type="date" id="dday-target-date" onchange="calculateDDayTarget()" class="w-full h-[48px] bg-slate-900 border border-slate-700 rounded-xl px-4 text-white font-bold text-base focus:outline-none focus:border-rose-400 cursor-pointer">
+              <input type="date" id="dday-target-date" oninput="calculateDDayTarget()" onchange="calculateDDayTarget()" class="w-full h-[48px] bg-slate-900 border border-slate-700 rounded-xl px-4 text-white font-bold text-base focus:outline-none focus:border-rose-400 cursor-pointer">
             </div>
 
             <!-- D-Day 결과 박스 -->
@@ -474,7 +474,7 @@
             <div class="grid grid-cols-2 gap-2">
               <div>
                 <label for="dday-plus-base" class="block text-xs text-slate-300 font-bold mb-1">기준일</label>
-                <input type="date" id="dday-plus-base" onchange="calculatePlusMinusDays()" class="w-full h-[44px] bg-slate-900 border border-slate-700 rounded-xl px-3 text-white font-bold text-sm focus:outline-none focus:border-rose-400 cursor-pointer">
+                <input type="date" id="dday-plus-base" oninput="calculatePlusMinusDays()" onchange="calculatePlusMinusDays()" class="w-full h-[44px] bg-slate-900 border border-slate-700 rounded-xl px-3 text-white font-bold text-sm focus:outline-none focus:border-rose-400 cursor-pointer">
               </div>
               <div>
                 <label for="dday-plus-count" class="block text-xs text-slate-300 font-bold mb-1">더할 일수 (N일)</label>
@@ -537,11 +537,11 @@
           <div class="grid grid-cols-2 gap-3 max-w-md">
             <div>
               <label for="parents-lunar-month" class="block text-xs text-slate-400 font-bold mb-1">음력 월</label>
-              <select id="parents-lunar-month" onchange="calculateParentsSchedule()" class="w-full h-[48px] bg-slate-900 border border-slate-700 rounded-xl px-3 text-sm sm:text-base font-bold text-white focus:outline-none focus:border-amber-400 cursor-pointer"></select>
+              <select id="parents-lunar-month" oninput="calculateParentsSchedule()" onchange="calculateParentsSchedule()" class="w-full h-[48px] bg-slate-900 border border-slate-700 rounded-xl px-3 text-sm sm:text-base font-bold text-white focus:outline-none focus:border-amber-400 cursor-pointer"></select>
             </div>
             <div>
               <label for="parents-lunar-day" class="block text-xs text-slate-400 font-bold mb-1">음력 일</label>
-              <select id="parents-lunar-day" onchange="calculateParentsSchedule()" class="w-full h-[48px] bg-slate-900 border border-slate-700 rounded-xl px-3 text-sm sm:text-base font-bold text-white focus:outline-none focus:border-amber-400 cursor-pointer"></select>
+              <select id="parents-lunar-day" oninput="calculateParentsSchedule()" onchange="calculateParentsSchedule()" class="w-full h-[48px] bg-slate-900 border border-slate-700 rounded-xl px-3 text-sm sm:text-base font-bold text-white focus:outline-none focus:border-amber-400 cursor-pointer"></select>
             </div>
           </div>
         </div>
@@ -628,15 +628,15 @@
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div>
               <label for="suyeon-birth-year" class="block text-xs sm:text-sm font-bold text-slate-300 mb-1">출생 연도</label>
-              <select id="suyeon-birth-year" onchange="calculateSuyeonDates()" class="w-full h-[48px] bg-slate-900 border border-slate-700 rounded-xl px-3 text-sm sm:text-base font-bold text-sky-400 focus:outline-none focus:border-sky-400 cursor-pointer"></select>
+              <select id="suyeon-birth-year" oninput="calculateSuyeonDates()" onchange="calculateSuyeonDates()" class="w-full h-[48px] bg-slate-900 border border-slate-700 rounded-xl px-3 text-sm sm:text-base font-bold text-sky-400 focus:outline-none focus:border-sky-400 cursor-pointer"></select>
             </div>
             <div>
               <label for="suyeon-birth-month" class="block text-xs sm:text-sm font-bold text-slate-300 mb-1">생월</label>
-              <select id="suyeon-birth-month" onchange="calculateSuyeonDates()" class="w-full h-[48px] bg-slate-900 border border-slate-700 rounded-xl px-3 text-sm sm:text-base font-bold text-white focus:outline-none focus:border-sky-400 cursor-pointer"></select>
+              <select id="suyeon-birth-month" oninput="calculateSuyeonDates()" onchange="calculateSuyeonDates()" class="w-full h-[48px] bg-slate-900 border border-slate-700 rounded-xl px-3 text-sm sm:text-base font-bold text-white focus:outline-none focus:border-sky-400 cursor-pointer"></select>
             </div>
             <div>
               <label for="suyeon-birth-day" class="block text-xs sm:text-sm font-bold text-slate-300 mb-1">생일</label>
-              <select id="suyeon-birth-day" onchange="calculateSuyeonDates()" class="w-full h-[48px] bg-slate-900 border border-slate-700 rounded-xl px-3 text-sm sm:text-base font-bold text-white focus:outline-none focus:border-sky-400 cursor-pointer"></select>
+              <select id="suyeon-birth-day" oninput="calculateSuyeonDates()" onchange="calculateSuyeonDates()" class="w-full h-[48px] bg-slate-900 border border-slate-700 rounded-xl px-3 text-sm sm:text-base font-bold text-white focus:outline-none focus:border-sky-400 cursor-pointer"></select>
             </div>
           </div>
         </div>
