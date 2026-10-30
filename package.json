@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "sync": "node scripts/sync-common.js",
-    "test": "node scripts/sync-common.js && node scripts/fetch-lotto.js --dry-run",
+    "audit": "node scripts/audit-pre-deploy.js",
+    "test": "node scripts/sync-common.js && node scripts/audit-pre-deploy.js",
     "fetch:data": "node scripts/fetch-public-data.js"
   },
   "keywords": [
