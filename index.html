@@ -959,8 +959,8 @@
             <i class="fa-solid fa-scale-balanced"></i>
           </div>
           <div>
-            <h4 class="font-bold text-white text-sm sm:text-base">공식 기준 정밀 연산</h4>
-            <p class="text-xs text-slate-400 mt-0.5 leading-relaxed">한국천문연구원 음양력, 법제처 만 나이 통일법, 국세청 세법 기준을 엄격히 준수합니다.</p>
+            <h4 class="font-bold text-white text-sm sm:text-base">공식 법령·공공데이터 연동</h4>
+            <p class="text-xs text-slate-400 mt-0.5 leading-relaxed">국세청, 고용노동부, 국토교통부, 한국천문연구원의 최신 법정 산식 및 공공 API를 기준으로 매일 자동 검증됩니다.</p>
           </div>
         </div>
         <div class="flex items-start gap-3.5">
@@ -968,8 +968,8 @@
             <i class="fa-solid fa-shield-halved"></i>
           </div>
           <div>
-            <h4 class="font-bold text-white text-sm sm:text-base">100% 로컬 보안 연산</h4>
-            <p class="text-xs text-slate-400 mt-0.5 leading-relaxed">입력한 생년월일과 금융 수치는 외부 서버로 전송되지 않고 브라우저에서만 처리됩니다.</p>
+            <h4 class="font-bold text-white text-sm sm:text-base">100% 로컬 클라이언트 연산</h4>
+            <p class="text-xs text-slate-400 mt-0.5 leading-relaxed">입력된 연봉, 퇴직금, 자산 및 생년월일 데이터는 외부 서버에 절대 전송되지 않으며 사용자 기기 브라우저에서만 즉시 처리됩니다.</p>
           </div>
         </div>
         <div class="flex items-start gap-3.5">
@@ -977,9 +977,50 @@
             <i class="fa-solid fa-mobile-screen"></i>
           </div>
           <div>
-            <h4 class="font-bold text-white text-sm sm:text-base">무설치 &amp; 전 기기 호환</h4>
-            <p class="text-xs text-slate-400 mt-0.5 leading-relaxed">별도 앱 설치나 가입 없이 PC, 태블릿, 스마트폰 브라우저에서 바로 사용할 수 있습니다.</p>
+            <h4 class="font-bold text-white text-sm sm:text-base">사전 검증 제로 디펙트 (Zero-Defect)</h4>
+            <p class="text-xs text-slate-400 mt-0.5 leading-relaxed">모든 계산기와 시뮬레이터는 배포 전 4대 무결성 자동 감사(DOM 일치, 태그 밸런스, 반응형 렌더링)를 통과한 코드만 운영됩니다.</p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 플랫폼 권위 및 공공 데이터 출처 상세 (E-E-A-T 검증 체계) -->
+    <section class="bg-slate-900/60 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-4">
+      <div class="flex items-center gap-2.5 border-b border-slate-800 pb-3">
+        <div class="w-8 h-8 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-sm">
+          <i class="fa-solid fa-building-columns"></i>
+        </div>
+        <div>
+          <h3 class="text-base sm:text-lg font-black text-white">공식 법령 및 정부 공공 데이터 준수 체계</h3>
+          <p class="text-xs text-slate-400">GoModo는 신뢰할 수 있는 국가 공공기관 및 법령 정보에 근거하여 시뮬레이션을 제공합니다.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-slate-300">
+        <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800/80 space-y-1.5">
+          <div class="font-bold text-white flex items-center gap-1.5">
+            <i class="fa-solid fa-check text-emerald-400"></i>
+            <span>세무·노동 공식 근거 (대한민국)</span>
+          </div>
+          <p class="text-slate-400 leading-relaxed text-[11px]">
+            &bull; 소득세법 제48조(퇴직소득공제), 제55조(거주자의 종합소득세율), 제118조의2(해외주식 양도소득세)<br>
+            &bull; 근로기준법 제34조(퇴직급여제도), 제36조(금품 청산 14일 원칙), 제56조(연장·야간·휴일근로)<br>
+            &bull; 고용보험법 제40조(구직급여 수급 자격) 및 고용노동부 2026년 구직급여 상·하한액 고시<br>
+            &bull; 국민건강보험법 시행령(직장가입자 보험료율 7.09% 및 장기요양보험료율 12.95%)
+          </p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800/80 space-y-1.5">
+          <div class="font-bold text-white flex items-center gap-1.5">
+            <i class="fa-solid fa-check text-sky-400"></i>
+            <span>부동산·생활·천문 공식 근거</span>
+          </div>
+          <p class="text-slate-400 leading-relaxed text-[11px]">
+            &bull; 국토교통부 공인중개사법 시행규칙 제20조(중개보수 상한 요율표 및 70계수 환산보증금 룰)<br>
+            &bull; 지방세법 제11조(부동산 취득세 표준세율 및 생애최초 주택 취득세 200만 원 감면 특례)<br>
+            &bull; 한국천문연구원(KASI) 역서 및 음양력 변환 데이터 기준 만세력·절기 연산<br>
+            &bull; 행정안전부 및 법제처 만(滿) 나이 통일법(민법 제158조 및 행정기본법 제7조의2)
+          </p>
         </div>
       </div>
     </section>

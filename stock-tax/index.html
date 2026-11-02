@@ -114,6 +114,22 @@
               "@type": "Answer",
               "text": "네, 국민건강보험법 시행규칙에 따라 연간 금융소득(배당금+이자)이 1,000만 원을 초과할 경우 건강보험 피부양자 자격 심사 대상이 되어 지역가입자로 전환될 수 있습니다. 또한 2,000만 원 초과 시에는 타 소득과 합산되어 종합소득세(6%~45%) 과세 대상이 됩니다."
             }
+          },
+          {
+            "@type": "Question",
+            "name": "여러 증권사(토스, 키움, 미래에셋 등)를 쓰면 250만 원 공제가 계좌마다 각각 적용되나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "아닙니다. 연간 250만 원 기본공제는 투자자 '1인' 기준 연간 합산 한도입니다. 국내외 모든 증권사 계좌에서 발생한 해외주식 양도손익을 전부 하나로 합산한 뒤 1년에 단 한 번 250만 원만 차감됩니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "해외주식 손익통산 시 미국 주식 외에 일본, 중국, 유럽 주식도 모두 합산되나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "네. 소득세법상 해외주식은 국가 구분 없이 모두 동일한 과세 대상(해외 상장 주식)으로 묶입니다. 따라서 미국 나스닥 종목의 수익과 일본 도쿄증시 또는 홍콩증시 종목의 손실은 100% 상계(손익통산)되어 과세표준이 계산됩니다."
+            }
           }
         ]
       }
@@ -747,28 +763,199 @@
       </div>
     </div>
 
-    <!-- 0위 피처드 스니펫 가이드 (검색엔진 상위 노출 템플릿) -->
-    <section class="mt-10 bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-7">
-      <h2 class="text-base sm:text-lg font-black text-white mb-2 flex items-center gap-2">
-        <i class="fa-solid fa-book-bookmark text-sky-400"></i>
-        <span>해외주식 양도소득세 &amp; 손익통산 핵심 3분 가이드</span>
-      </h2>
-      <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
-        해외주식 양도소득세는 당해 연도(1월 1일~12월 31일) 동안 실현된 모든 종목의 <strong>이익과 손실을 합산(손익통산)</strong>한 뒤, 연간 <strong>기본공제 250만 원</strong>을 차감한 순수익에 대해 <strong>22%(양도세 20% + 지방세 2%)</strong>를 부과합니다. 수익 종목이 있다면 손실 중인 종목을 연말 폐장일(T+1 결제일 기준 12월 30일) 전 매도하여 순수익을 250만 원 이하로 맞추면 합법적으로 세금을 0원으로 만들 수 있습니다.
+    <!-- 정적 참조 조견표: 해외주식 실현손익 구간별 양도소득세 & 손익통산 절세 조견표 (구글 크롤러 인덱싱용) -->
+    <section class="mt-10 bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-7 shadow-xl space-y-4" aria-label="해외주식 양도세 조견표">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+        <h3 class="text-base sm:text-lg font-black text-white flex items-center gap-2">
+          <i class="fa-solid fa-table-list text-sky-400"></i>
+          <span>해외주식 실현손익 구간별 양도소득세 &amp; 손익통산 절세 조견표</span>
+        </h3>
+        <span class="text-xs text-slate-400 font-medium">소득세법 제118조의2 (양도소득세 20% + 지방세 2%)</span>
+      </div>
+      <p class="text-xs text-slate-300 leading-relaxed">
+        해외주식 양도소득세는 당해 연도(1월 1일~12월 31일) 동안 실현된 모든 종목의 <strong>손익을 합산</strong>한 뒤 연간 <strong>250만 원을 차감한 과세표준에 22% 단일세율</strong>을 적용합니다. 아래 표는 수익 구간별 정규 납부세액과 마이너스 종목 200만 원을 손실 확정(Tax-Loss Harvesting)했을 때의 실제 세금 감면 효과입니다.
       </p>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-800 text-xs">
-        <div class="p-3.5 rounded-2xl bg-slate-800/50 border border-slate-700/60">
-          <div class="font-bold text-white mb-1">Q. 여러 증권사(토스, 키움)를 쓰면 각각 250만 원 공제인가요?</div>
-          <p class="text-slate-400 text-[11px] leading-relaxed">
-            아닙니다. 250만 원 기본공제는 투자자 1인 기준 연간 합산 한도입니다. 여러 증권사 계좌의 손익을 모두 합쳐서 단 250만 원만 1회 공제됩니다.
+      <div class="overflow-x-auto">
+        <table class="w-full text-xs text-left text-slate-300 border-collapse">
+          <thead>
+            <tr class="border-b border-slate-700 bg-slate-950/70 text-slate-200">
+              <th scope="col" class="py-3 px-3 font-bold">연간 실현손익 (순수익)</th>
+              <th scope="col" class="py-3 px-3 font-bold text-right">기본공제 (250만)</th>
+              <th scope="col" class="py-3 px-3 font-bold text-right">과세표준</th>
+              <th scope="col" class="py-3 px-3 font-bold text-right text-rose-300">정규 양도소득세 (22%)</th>
+              <th scope="col" class="py-3 px-3 font-bold text-right text-emerald-300">200만 손실 상계 후 세액</th>
+              <th scope="col" class="py-3 px-3 font-bold text-right text-sky-400 font-black">실제 절세액 (아낀 돈)</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800 font-mono">
+            <tr class="hover:bg-slate-800/40">
+              <td class="py-2.5 px-3 font-sans font-bold text-white">250만 원 이하</td>
+              <td class="py-2.5 px-3 text-right">전액 공제</td>
+              <td class="py-2.5 px-3 text-right">0원</td>
+              <td class="py-2.5 px-3 text-right text-slate-400 font-sans">0원 (비과세)</td>
+              <td class="py-2.5 px-3 text-right text-slate-400 font-sans">0원</td>
+              <td class="py-2.5 px-3 text-right text-slate-500 font-sans">-</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40 bg-slate-800/20">
+              <td class="py-2.5 px-3 font-sans font-bold text-white">500만 원</td>
+              <td class="py-2.5 px-3 text-right">2,500,000원</td>
+              <td class="py-2.5 px-3 text-right">2,500,000원</td>
+              <td class="py-2.5 px-3 text-right text-rose-300 font-bold">550,000원</td>
+              <td class="py-2.5 px-3 text-right text-emerald-300 font-bold">110,000원</td>
+              <td class="py-2.5 px-3 text-right text-sky-400 font-black">440,000원 절세!</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40">
+              <td class="py-2.5 px-3 font-sans font-bold text-white">1,000만 원</td>
+              <td class="py-2.5 px-3 text-right">2,500,000원</td>
+              <td class="py-2.5 px-3 text-right">7,500,000원</td>
+              <td class="py-2.5 px-3 text-right text-rose-300 font-bold">1,650,000원</td>
+              <td class="py-2.5 px-3 text-right text-emerald-300 font-bold">1,210,000원</td>
+              <td class="py-2.5 px-3 text-right text-sky-400 font-black">440,000원 절세!</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40">
+              <td class="py-2.5 px-3 font-sans font-bold text-white">2,000만 원</td>
+              <td class="py-2.5 px-3 text-right">2,500,000원</td>
+              <td class="py-2.5 px-3 text-right">17,500,000원</td>
+              <td class="py-2.5 px-3 text-right text-rose-300 font-bold">3,850,000원</td>
+              <td class="py-2.5 px-3 text-right text-emerald-300 font-bold">3,410,000원</td>
+              <td class="py-2.5 px-3 text-right text-sky-400 font-black">440,000원 절세!</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40">
+              <td class="py-2.5 px-3 font-sans font-bold text-white">5,000만 원</td>
+              <td class="py-2.5 px-3 text-right">2,500,000원</td>
+              <td class="py-2.5 px-3 text-right">47,500,000원</td>
+              <td class="py-2.5 px-3 text-right text-rose-300 font-bold">10,450,000원</td>
+              <td class="py-2.5 px-3 text-right text-emerald-300 font-bold">10,010,000원</td>
+              <td class="py-2.5 px-3 text-right text-sky-400 font-black">440,000원 절세!</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40">
+              <td class="py-2.5 px-3 font-sans font-bold text-white">1억 원</td>
+              <td class="py-2.5 px-3 text-right">2,500,000원</td>
+              <td class="py-2.5 px-3 text-right">97,500,000원</td>
+              <td class="py-2.5 px-3 text-right text-rose-300 font-bold">21,450,000원</td>
+              <td class="py-2.5 px-3 text-right text-emerald-300 font-bold">21,010,000원</td>
+              <td class="py-2.5 px-3 text-right text-sky-400 font-black">440,000원 절세!</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-[11px] text-slate-400">
+        * 결론: 손실 중인 종목을 200만 원 매도하여 손익통산하는 것만으로 국세청에 납부할 세금을 무려 440,000원(200만 &times; 22%) 즉시 절감할 수 있습니다.
+      </p>
+    </section>
+
+    <!-- 심층 서학개미 3대 절세 전략 & 세무 가이드 (E-E-A-T) -->
+    <section class="mt-8 bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-7 space-y-6">
+      <div class="space-y-2 border-b border-slate-800 pb-4">
+        <h2 class="text-base sm:text-lg font-black text-white flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-sky-400"></i>
+          <span>서학개미 3대 합법적 절세 전략 &amp; 세금 리스크 가이드</span>
+        </h2>
+        <p class="text-xs text-slate-300 leading-relaxed">
+          미국 주식 투자는 매매차익에 22%의 세금이 붙기 때문에, 절세 기법을 얼마나 영리하게 활용하느냐에 따라 연간 최종 수익률이 수백만 원에서 수천만 원까지 갈립니다.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 text-xs text-slate-300 leading-relaxed">
+        <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
+          <h3 class="font-bold text-white text-sm flex items-center gap-2">
+            <span class="w-6 h-6 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center text-xs font-black">1</span>
+            <span>손실확정(Tax-Loss Harvesting) 기법</span>
+          </h3>
+          <p>
+            한국 세법에는 미국 IRS와 같은 30일 이내 재매수 금지 규정인 <strong>워시세일 룰(Wash Sale Rule)이 존재하지 않습니다.</strong> 따라서 올해 테슬라나 엔비디아로 큰 이익을 실현했다면, 계좌에서 마이너스 상태인 종목을 12월 30일(결제일 기준 폐장일) 전 매도하여 순이익을 250만 원 이하로 맞춘 후 다음 날 재매수해도 완벽하게 합법적인 절세로 인정받습니다.
           </p>
         </div>
-        <div class="p-3.5 rounded-2xl bg-slate-800/50 border border-slate-700/60">
-          <div class="font-bold text-white mb-1">Q. 손실 금액은 내년으로 이월해서 공제받을 수 있나요?</div>
-          <p class="text-slate-400 text-[11px] leading-relaxed">
-            불가능합니다. 현행 한국 세법상 해외주식 양도차손은 다음 해로 이월되지 않고 당해 연도 말에 소멸하므로, 올해 이익 종목과 상계하여 당해 연도에 절세해야 합니다.
+
+        <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
+          <h3 class="font-bold text-white text-sm flex items-center gap-2">
+            <span class="w-6 h-6 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-black">2</span>
+            <span>배우자 6억 증여 취득가액 리셋 기법</span>
+          </h3>
+          <p>
+            상속세 및 증여세법 제53조에 따라 배우자 간 증여는 <strong>10년간 6억 원까지 증여세가 전액 면제</strong>됩니다. 양도차익이 수억 원에 달하는 미국 주식을 매도하기 전 배우자에게 증여하면, 수증자(배우자)의 주식 취득가액이 '증여일 전후 2개월(총 4개월) 종가 평균'으로 새롭게 리셋됩니다. 이후 배우자가 매도하면 양도차익이 거의 발생하지 않아 수천만 원의 세금을 아낄 수 있습니다.
           </p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
+          <h3 class="font-bold text-white text-sm flex items-center gap-2">
+            <span class="w-6 h-6 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center text-xs font-black">3</span>
+            <span>배당소득 1,000만 건보료 &amp; ISA 활용법</span>
+          </h3>
+          <p>
+            SCHD, JEPI 등 미국 고배당주에 직접 투자할 때 배당소득(금융소득)이 <strong>연 1,000만 원을 초과하면 건강보험 피부양자 자격이 박탈</strong>되어 매월 수십만 원의 지역건보료 고지서가 날아올 수 있습니다. 이를 방지하려면 국내 상장 미국 ETF(TIGER 미국배당다우존스 등)를 <strong>중개형 ISA 계좌 또는 연금저축계좌</strong>에 담아 비과세 및 9.9% 분리과세 혜택을 챙겨야 합니다.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 아코디언 (6종 전수 탑재) -->
+      <div class="pt-4 border-t border-slate-800 space-y-3">
+        <h3 class="text-sm font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-circle-question text-sky-400"></i>
+          <span>해외주식 세금 자주 묻는 질문 (FAQ)</span>
+        </h3>
+
+        <div class="space-y-2.5">
+          <details class="group bg-slate-950/70 border border-slate-800 rounded-2xl p-4 transition [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-xs sm:text-sm text-slate-200 group-hover:text-sky-400 transition">
+              <span>Q. 해외주식 양도소득세 기본공제 250만 원과 손익통산은 어떻게 적용되나요?</span>
+              <i class="fa-solid fa-chevron-down text-xs text-slate-500 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <p class="mt-3 text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-slate-800/60 pt-3">
+              해외주식 양도소득세는 당해 연도(1월 1일~12월 31일) 동안 실현된 모든 종목의 이익과 손실을 합산(손익통산)한 뒤, 연간 250만 원의 기본공제를 차감한 과세표준에 22%(양도소득세 20% + 지방소득세 2%)의 단일세율을 곱해 산출합니다. 여러 증권사를 사용하더라도 모든 계좌의 손익이 하나로 합산됩니다.
+            </p>
+          </details>
+
+          <details class="group bg-slate-950/70 border border-slate-800 rounded-2xl p-4 transition [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-xs sm:text-sm text-slate-200 group-hover:text-sky-400 transition">
+              <span>Q. 손실 종목을 매도해 절세한 뒤 즉시 재매수해도 되나요? (워시세일 룰)</span>
+              <i class="fa-solid fa-chevron-down text-xs text-slate-500 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <p class="mt-3 text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-slate-800/60 pt-3">
+              미국 국세청(IRS)과 달리 대한민국 현행 소득세법에는 30일 이내 재매수를 금지하는 워시세일 룰(Wash Sale Rule)이 없습니다. 따라서 손실 종목을 매도하여 세금을 줄인 후 즉시 재매수하더라도 합법적인 절세로 인정됩니다. 단, 같은 날 매도 후 매수 시 증권사별 이동평균법 적용에 따라 매도 단가가 달라질 수 있으므로 하루 시차를 두는 것을 권장합니다.
+            </p>
+          </details>
+
+          <details class="group bg-slate-950/70 border border-slate-800 rounded-2xl p-4 transition [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-xs sm:text-sm text-slate-200 group-hover:text-sky-400 transition">
+              <span>Q. 여러 증권사(토스, 키움, 미래에셋 등)를 쓰면 250만 원 공제가 계좌마다 각각 적용되나요?</span>
+              <i class="fa-solid fa-chevron-down text-xs text-slate-500 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <p class="mt-3 text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-slate-800/60 pt-3">
+              아닙니다. 연간 250만 원 기본공제는 투자자 1인 기준 연간 합산 한도입니다. 예를 들어 토스증권에서 200만 원, 키움증권에서 300만 원의 수익이 났다면 총 수익은 500만 원이며, 여기서 250만 원만 1회 차감되어 250만 원에 대해 22%의 세금이 부과됩니다.
+            </p>
+          </details>
+
+          <details class="group bg-slate-950/70 border border-slate-800 rounded-2xl p-4 transition [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-xs sm:text-sm text-slate-200 group-hover:text-sky-400 transition">
+              <span>Q. 손실 금액은 내년으로 이월해서 공제받을 수 있나요?</span>
+              <i class="fa-solid fa-chevron-down text-xs text-slate-500 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <p class="mt-3 text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-slate-800/60 pt-3">
+              불가능합니다. 현행 한국 세법상 해외주식 양도차손은 다음 해로 이월되지 않고 당해 연도 12월 31일에 전액 소멸합니다. 따라서 손실 중인 종목이 있다면 반드시 당해 연도 폐장일 전에 매도하여 올해 발생한 이익과 상계 처리해야만 절세 혜택을 누릴 수 있습니다.
+            </p>
+          </details>
+
+          <details class="group bg-slate-950/70 border border-slate-800 rounded-2xl p-4 transition [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-xs sm:text-sm text-slate-200 group-hover:text-sky-400 transition">
+              <span>Q. 해외주식 손익통산 시 미국 주식 외에 일본, 중국, 유럽 주식도 모두 합산되나요?</span>
+              <i class="fa-solid fa-chevron-down text-xs text-slate-500 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <p class="mt-3 text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-slate-800/60 pt-3">
+              네. 소득세법상 해외주식은 국가 구분 없이 모두 동일한 해외 자산으로 분류됩니다. 따라서 미국 나스닥 종목의 수익과 일본 도쿄증시 종목의 손실, 홍콩증시 종목의 손실은 100% 손익통산되어 과세표준이 산출됩니다. (단, 국내 상장 국내주식과의 교차 통산은 불가능합니다.)
+            </p>
+          </details>
+
+          <details class="group bg-slate-950/70 border border-slate-800 rounded-2xl p-4 transition [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-xs sm:text-sm text-slate-200 group-hover:text-sky-400 transition">
+              <span>Q. 해외주식 양도소득세는 언제, 어떻게 국세청 홈택스로 신고하나요?</span>
+              <i class="fa-solid fa-chevron-down text-xs text-slate-500 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <p class="mt-3 text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-slate-800/60 pt-3">
+              전년도(1월~12월) 동안 순수익이 250만 원을 초과한 투자자는 다음 해 <strong>5월 1일부터 5월 31일까지</strong> 국세청 홈택스 또는 관할 세무서에 양도소득세 확정신고를 진행해야 합니다. 대부분의 증권사(키움, 토스, 미래에셋, 삼성 등)에서 4월경 무료 해외주식 세무대행 신고 서비스를 제공하므로 앱에서 간편 신청하면 손쉽게 신고를 마칠 수 있습니다.
+            </p>
+          </details>
         </div>
       </div>
     </section>

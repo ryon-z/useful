@@ -106,6 +106,22 @@
               "@type": "Answer",
               "text": "네. 퇴직 전 3개월간의 기본급 및 수당 외에도, 퇴직일 이전 1년간 지급된 정기 상여금 총액의 3/12(25%)과 퇴직 전 사용하지 못해 현금으로 정산받은 미사용 연차유급휴가 수당의 3/12가 1일 평균임금 산정 기준에 법적으로 합산됩니다."
             }
+          },
+          {
+            "@type": "Question",
+            "name": "퇴직금을 IRP(개인형 퇴직연금) 계좌로 수령하면 세금이 얼마나 감면되나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "퇴직금을 일반 입출금 계좌가 아닌 IRP 계좌로 이전하면 퇴직소득세가 원천징수되지 않고 과세이연(세금 납부 연기)됩니다. 만 55세 이후 10년 이상 연금 형태로 분할 수령할 경우 원래 납부해야 할 퇴직소득세의 30%~40%를 법적으로 감면받을 수 있습니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "회사가 퇴직금을 퇴직 후 14일 이내에 주지 않으면 어떻게 되나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "근로기준법 제36조에 따라 당사자 간 합의 없이 퇴직일로부터 14일 이내에 퇴직금을 전액 지급하지 않을 경우 법 위반(3년 이하의 징역 또는 3천만 원 이하의 벌금)에 해당하며, 동법 제37조에 의거하여 지급 지연일수에 대해 연 20%의 지연이자가 법적으로 부과됩니다."
+            }
           }
         ]
       }
@@ -730,9 +746,98 @@
       <span class="text-[11px] text-slate-500">100% 클라이언트 브라우저 로컬 연산 (개인정보 무수집)</span>
     </div>
 
-    <!-- 3단 SEO 가이드 & FAQ 아코디언 -->
+    <!-- 정적 참조 조견표: 근속연수 및 월급여별 법정 퇴직금 & 근속연수공제 (구글 크롤러 인덱싱용) -->
+    <section class="mt-8 bg-slate-900/80 border border-slate-800 rounded-3xl p-5 sm:p-7 shadow-xl space-y-4" aria-label="퇴직금 및 근속연수공제 조견표">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+        <h3 class="text-base sm:text-lg font-black text-white flex items-center gap-2">
+          <i class="fa-solid fa-table-list text-indigo-400"></i>
+          <span>근속연수 및 월급대별 법정 퇴직금 &amp; 소득공제 조견표 (2026년 기준)</span>
+        </h3>
+        <span class="text-xs text-slate-400 font-medium">근로기준법 제34조 &amp; 소득세법 제48조</span>
+      </div>
+      <p class="text-xs text-slate-300 leading-relaxed">
+        퇴직소득세는 다른 종합소득과 합산되지 않는 <strong>분류과세</strong> 항목이며, 장기근속자를 보호하기 위해 개정된 <strong>근속연수공제</strong>가 대폭 차감됩니다. 아래 표는 1년 평균임금 인상률을 고려하지 않은 동일 기본급 기준 법정 퇴직금 원금과 2026년 적용 근속연수공제액 비교입니다.
+      </p>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-xs text-left text-slate-300 border-collapse">
+          <thead>
+            <tr class="border-b border-slate-700 bg-slate-950/70 text-slate-200">
+              <th scope="col" class="py-3 px-3 font-bold">근속연수</th>
+              <th scope="col" class="py-3 px-3 font-bold text-right">월 250만 원</th>
+              <th scope="col" class="py-3 px-3 font-bold text-right text-indigo-300">월 350만 원</th>
+              <th scope="col" class="py-3 px-3 font-bold text-right text-emerald-300">월 500만 원</th>
+              <th scope="col" class="py-3 px-3 font-bold text-right text-amber-300">월 700만 원</th>
+              <th scope="col" class="py-3 px-3 font-bold text-right text-sky-400">근속연수공제액</th>
+              <th scope="col" class="py-3 px-3 font-bold text-center">예상 실효세율</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800 font-mono">
+            <tr class="hover:bg-slate-800/40">
+              <td class="py-2.5 px-3 font-sans font-bold text-white">1년 (365일)</td>
+              <td class="py-2.5 px-3 text-right">2,500,000원</td>
+              <td class="py-2.5 px-3 text-right text-indigo-300">3,500,000원</td>
+              <td class="py-2.5 px-3 text-right text-emerald-300">5,000,000원</td>
+              <td class="py-2.5 px-3 text-right text-amber-300">7,000,000원</td>
+              <td class="py-2.5 px-3 text-right text-sky-400">1,000,000원</td>
+              <td class="py-2.5 px-3 text-center font-sans text-slate-400">0.5% ~ 1.5%</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40">
+              <td class="py-2.5 px-3 font-sans font-bold text-white">3년 (1,095일)</td>
+              <td class="py-2.5 px-3 text-right">7,500,000원</td>
+              <td class="py-2.5 px-3 text-right text-indigo-300">10,500,000원</td>
+              <td class="py-2.5 px-3 text-right text-emerald-300">15,000,000원</td>
+              <td class="py-2.5 px-3 text-right text-amber-300">21,000,000원</td>
+              <td class="py-2.5 px-3 text-right text-sky-400">3,000,000원</td>
+              <td class="py-2.5 px-3 text-center font-sans text-slate-400">1.0% ~ 2.0%</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40 bg-slate-800/20">
+              <td class="py-2.5 px-3 font-sans font-bold text-white">5년 (1,825일)</td>
+              <td class="py-2.5 px-3 text-right">12,500,000원</td>
+              <td class="py-2.5 px-3 text-right text-indigo-300 font-bold">17,500,000원</td>
+              <td class="py-2.5 px-3 text-right text-emerald-300 font-bold">25,000,000원</td>
+              <td class="py-2.5 px-3 text-right text-amber-300 font-bold">35,000,000원</td>
+              <td class="py-2.5 px-3 text-right text-sky-400 font-bold">5,000,000원</td>
+              <td class="py-2.5 px-3 text-center font-sans text-emerald-400 font-bold">1.5% ~ 2.5%</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40">
+              <td class="py-2.5 px-3 font-sans font-bold text-white">10년 (3,650일)</td>
+              <td class="py-2.5 px-3 text-right">25,000,000원</td>
+              <td class="py-2.5 px-3 text-right text-indigo-300">35,000,000원</td>
+              <td class="py-2.5 px-3 text-right text-emerald-300">50,000,000원</td>
+              <td class="py-2.5 px-3 text-right text-amber-300">70,000,000원</td>
+              <td class="py-2.5 px-3 text-right text-sky-400">15,000,000원</td>
+              <td class="py-2.5 px-3 text-center font-sans text-slate-400">2.0% ~ 3.5%</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40">
+              <td class="py-2.5 px-3 font-sans font-bold text-white">15년 (5,475일)</td>
+              <td class="py-2.5 px-3 text-right">37,500,000원</td>
+              <td class="py-2.5 px-3 text-right text-indigo-300">52,500,000원</td>
+              <td class="py-2.5 px-3 text-right text-emerald-300">75,000,000원</td>
+              <td class="py-2.5 px-3 text-right text-amber-300">105,000,000원</td>
+              <td class="py-2.5 px-3 text-right text-sky-400">27,500,000원</td>
+              <td class="py-2.5 px-3 text-center font-sans text-slate-400">2.8% ~ 4.5%</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40">
+              <td class="py-2.5 px-3 font-sans font-bold text-white">20년 (7,300일)</td>
+              <td class="py-2.5 px-3 text-right">50,000,000원</td>
+              <td class="py-2.5 px-3 text-right text-indigo-300">70,000,000원</td>
+              <td class="py-2.5 px-3 text-right text-emerald-300">100,000,000원</td>
+              <td class="py-2.5 px-3 text-right text-amber-300">140,000,000원</td>
+              <td class="py-2.5 px-3 text-right text-sky-400">42,500,000원</td>
+              <td class="py-2.5 px-3 text-center font-sans text-slate-400">3.5% ~ 5.5%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-[11px] text-slate-400">
+        * 참고: 2023년 소득세법 개정으로 근속연수공제가 5년 이하 100만 원/년, 10년 이하 200만 원/년, 20년 이하 250만 원/년으로 대폭 확대되어, 대다수 10년 이하 근속 직장인의 퇴직소득세 실효세율은 2~3% 수준에 불과합니다.
+      </p>
+    </section>
+
+    <!-- 심층 노동법 & 세무 가이드 (E-E-A-T 전문 콘텐츠) -->
     <section class="space-y-6 pt-4 border-t border-slate-800/80" aria-label="퇴직금 및 실업급여 법률 가이드">
-      <div class="bg-slate-900/60 border border-slate-800/80 rounded-3xl p-5 sm:p-7 space-y-4">
+      <div class="bg-slate-900/60 border border-slate-800/80 rounded-3xl p-5 sm:p-7 space-y-5">
         <h3 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
           <i class="fa-solid fa-scale-balanced text-indigo-400"></i>
           <span>퇴직금 및 실업급여 핵심 법정 산출 공식</span>
@@ -752,6 +857,39 @@
             <div class="text-slate-400 text-[11px] font-sans pt-1">
               * 2026년 상한 66,000원 / 하한 64,192원 자동 보정 (실질 1일 지급액은 해당 범위 고정)
             </div>
+          </div>
+        </div>
+
+        <!-- 3대 심층 노동법률 & 절세 전략 아티클 -->
+        <div class="space-y-4 pt-3 border-t border-slate-800 text-xs sm:text-sm text-slate-300 leading-relaxed">
+          <div class="space-y-2">
+            <h4 class="font-bold text-white text-sm sm:text-base flex items-center gap-2">
+              <span class="w-6 h-6 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-xs font-black">1</span>
+              <span>평균임금 vs 통상임금 비교 보장 원칙 (근로기준법 제19조 제2항)</span>
+            </h4>
+            <p>
+              근로기준법 제19조 제2항에 따르면, 산출된 <strong>1일 평균임금이 근로자의 1일 '통상임금'보다 적은 경우에는 통상임금을 1일 평균임금으로 간주</strong>하여 퇴직금을 계산해야 합니다. 예를 들어 퇴직 직전 3개월 동안 무급 휴직, 육아휴직 후 복직, 병가, 또는 회사 귀책사유로 인한 휴업으로 임금이 일시적으로 급감했더라도, 통상임금(기본급 및 고정수당 기준) 하한선이 법적으로 완벽하게 보장됩니다.
+            </p>
+          </div>
+
+          <div class="space-y-2">
+            <h4 class="font-bold text-white text-sm sm:text-base flex items-center gap-2">
+              <span class="w-6 h-6 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-black">2</span>
+              <span>퇴직소득세 30%~40% 감면: IRP(개인형 퇴직연금) 이전 필수 전략</span>
+            </h4>
+            <p>
+              근로자퇴직급여 보장법 제17조에 따라 퇴직금은 원칙적으로 근로자가 지정한 <strong>IRP(개인형 퇴직연금) 계좌로 이전</strong>되어야 합니다. IRP 계좌로 수령 시 퇴직소득세가 즉시 원천징수되지 않고 <strong>과세이연(Tax Deferral)</strong>되어 퇴직금 원금 100%를 그대로 굴릴 수 있습니다. 이후 만 55세 도달 후 연금 형태로 10년 이상 분할 수령하면 본래 내야 할 <strong>퇴직소득세의 30%(10년 초과 시 40%)를 법적으로 영구 감면</strong>받게 됩니다.
+            </p>
+          </div>
+
+          <div class="space-y-2">
+            <h4 class="font-bold text-white text-sm sm:text-base flex items-center gap-2">
+              <span class="w-6 h-6 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center text-xs font-black">3</span>
+              <span>퇴직일로부터 14일 이내 지급 원칙 &amp; 연 20% 지연이자 (근로기준법 제36조·제37조)</span>
+            </h4>
+            <p>
+              사용자(회사)는 근로자가 사망 또는 퇴직한 경우, 그 지급 사유가 발생한 날부터 <strong>14일 이내에 임금, 퇴직금 등 일체의 금품을 청산</strong>해야 합니다(특별한 사정이 있는 경우 당사자 간 합의로 기일 연장 가능). 만약 합의 없이 14일을 넘길 경우 회사는 형사처벌 대상이 될 뿐만 아니라, 지급 지연 일수에 대해 연 100분의 20(<strong>연 20%</strong>)의 법정 지연손해금을 근로자에게 추가로 지급해야 합니다.
+            </p>
           </div>
         </div>
       </div>
@@ -791,6 +929,26 @@
             </summary>
             <p class="mt-3 text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-slate-800/60 pt-3">
               네. 퇴직 전 3개월간의 기본급 및 수당 외에도, 퇴직일 이전 1년간 지급된 정기 상여금 총액의 3/12(25%)과 퇴직 전 사용하지 못해 현금으로 정산받은 미사용 연차유급휴가 수당의 3/12가 1일 평균임금 산정 기준에 법적으로 합산됩니다.
+            </p>
+          </details>
+
+          <details class="group bg-slate-950/70 border border-slate-800/80 rounded-2xl p-4 transition [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-xs sm:text-sm text-slate-200 group-hover:text-indigo-400 transition">
+              <span>Q. 퇴직금을 IRP(개인형 퇴직연금) 계좌로 수령하면 세금이 얼마나 감면되나요?</span>
+              <i class="fa-solid fa-chevron-down text-xs text-slate-500 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <p class="mt-3 text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-slate-800/60 pt-3">
+              퇴직금을 일반 통장이 아닌 IRP 계좌로 이전하면 세금이 원천징수되지 않고 과세이연됩니다. 만 55세 이후 연금 개시 시 연금 수령 연차가 10년 이하이면 원래 세금의 70%(30% 감면), 10년을 초과하여 수령하면 60%(40% 감면)만 연금소득세로 납부하게 되므로 상당한 절세 효과를 누릴 수 있습니다.
+            </p>
+          </details>
+
+          <details class="group bg-slate-950/70 border border-slate-800/80 rounded-2xl p-4 transition [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-xs sm:text-sm text-slate-200 group-hover:text-indigo-400 transition">
+              <span>Q. 회사가 퇴직금을 퇴직 후 14일 이내에 주지 않으면 어떻게 되나요?</span>
+              <i class="fa-solid fa-chevron-down text-xs text-slate-500 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <p class="mt-3 text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-slate-800/60 pt-3">
+              근로기준법 제36조에 따라 사전에 지급 기일 연장 합의를 하지 않고 14일을 도과하면 형사처벌 대상이 됩니다. 또한 동법 제37조에 따라 지연된 기간 동안 연 20%의 지연이자(지연손해금)가 가산되므로, 사업장 관할 지방고용노동청에 임금체불 진정을 제기하여 법적 구제를 받을 수 있습니다.
             </p>
           </details>
         </div>

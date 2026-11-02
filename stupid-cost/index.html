@@ -546,18 +546,90 @@
 
     </div>
 
+    <!-- 정적 참조 조견표: 소비 금액대별 대체 생활화폐 및 30년 복리 기회비용 조견표 (구글 크롤러 인덱싱용) -->
+    <section class="mt-10 bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-7 shadow-xl space-y-4" aria-label="기회비용 조견표">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+        <h3 class="text-base sm:text-lg font-black text-white flex items-center gap-2">
+          <i class="fa-solid fa-table-list text-rose-400"></i>
+          <span>충동 지출액별 대체 생활화폐 및 30년 복리 기회비용 조견표</span>
+        </h3>
+        <span class="text-xs text-slate-400 font-medium">S&amp;P 500 연 8% 복리 및 2026 물가 기준</span>
+      </div>
+      <p class="text-xs text-slate-300 leading-relaxed">
+        무심코 결제하는 금액이 <strong>순대국밥 몇 그릇</strong>에 해당하는지, 그리고 이 돈을 미국 지수(S&amp;P 500)에 묻어두었을 때 <strong>은퇴 시점(30년 뒤)에 얼마의 목돈이 되는지</strong> 한눈에 비교해 보세요.
+      </p>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-xs text-left text-slate-300 border-collapse">
+          <thead>
+            <tr class="border-b border-slate-700 bg-slate-950/70 text-slate-200">
+              <th scope="col" class="py-3 px-3 font-bold">충동 소비 금액</th>
+              <th scope="col" class="py-3 px-3 font-bold text-right text-amber-300">순대국밥 (1만)</th>
+              <th scope="col" class="py-3 px-3 font-bold text-right text-emerald-300">스타벅스 커피 (4.5천)</th>
+              <th scope="col" class="py-3 px-3 font-bold text-right text-sky-300">필요 노동시간 (시급 1.5만)</th>
+              <th scope="col" class="py-3 px-3 font-bold text-right text-rose-400 font-black">30년 뒤 복리 가치 (8%)</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800 font-mono">
+            <tr class="hover:bg-slate-800/40">
+              <td class="py-2.5 px-3 font-sans font-bold text-white">10,000원</td>
+              <td class="py-2.5 px-3 text-right text-amber-300 font-bold">1.0 그릇</td>
+              <td class="py-2.5 px-3 text-right text-emerald-300">2.2 잔</td>
+              <td class="py-2.5 px-3 text-right text-sky-300">40분</td>
+              <td class="py-2.5 px-3 text-right text-rose-400 font-black">100,627원 (10배)</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40">
+              <td class="py-2.5 px-3 font-sans font-bold text-white">50,000원</td>
+              <td class="py-2.5 px-3 text-right text-amber-300 font-bold">5.0 그릇</td>
+              <td class="py-2.5 px-3 text-right text-emerald-300">11.1 잔</td>
+              <td class="py-2.5 px-3 text-right text-sky-300">3.3 시간</td>
+              <td class="py-2.5 px-3 text-right text-rose-400 font-black">503,133원</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40 bg-slate-800/20">
+              <td class="py-2.5 px-3 font-sans font-bold text-white">100,000원</td>
+              <td class="py-2.5 px-3 text-right text-amber-300 font-bold">10.0 그릇</td>
+              <td class="py-2.5 px-3 text-right text-emerald-300">22.2 잔</td>
+              <td class="py-2.5 px-3 text-right text-sky-300">6.7 시간 (하루 일당)</td>
+              <td class="py-2.5 px-3 text-right text-rose-400 font-black">1,006,266원</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40">
+              <td class="py-2.5 px-3 font-sans font-bold text-white">500,000원</td>
+              <td class="py-2.5 px-3 text-right text-amber-300 font-bold">50.0 그릇</td>
+              <td class="py-2.5 px-3 text-right text-emerald-300">111.1 잔</td>
+              <td class="py-2.5 px-3 text-right text-sky-300">33.3 시간 (4일치)</td>
+              <td class="py-2.5 px-3 text-right text-rose-400 font-black">5,031,328원</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40">
+              <td class="py-2.5 px-3 font-sans font-bold text-white">1,000,000원</td>
+              <td class="py-2.5 px-3 text-right text-amber-300 font-bold">100.0 그릇</td>
+              <td class="py-2.5 px-3 text-right text-emerald-300">222.2 잔</td>
+              <td class="py-2.5 px-3 text-right text-sky-300">66.7 시간 (8일치)</td>
+              <td class="py-2.5 px-3 text-right text-rose-400 font-black">10,062,657원 (천만 원!)</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40">
+              <td class="py-2.5 px-3 font-sans font-bold text-white">3,000,000원</td>
+              <td class="py-2.5 px-3 text-right text-amber-300 font-bold">300.0 그릇</td>
+              <td class="py-2.5 px-3 text-right text-emerald-300">666.7 잔</td>
+              <td class="py-2.5 px-3 text-right text-sky-300">200 시간 (한 달치)</td>
+              <td class="py-2.5 px-3 text-right text-rose-400 font-black">30,187,971원 (3천만 원!)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
     <!-- SEO 전문 가이드 및 E-E-A-T 콘텐츠 -->
-    <section class="mt-12 space-y-6 text-slate-300 text-sm leading-relaxed border-t border-slate-800 pt-8">
-      <div class="space-y-2">
+    <section class="mt-8 space-y-6 text-slate-300 text-sm leading-relaxed border-t border-slate-800 pt-8">
+      <div class="space-y-3">
         <h2 class="text-lg sm:text-xl font-black text-white flex items-center gap-2">
           <i class="fa-solid fa-brain text-rose-400"></i>
           <span>스튜피드 소비(Stupid Cost) 방지와 기회비용의 심리학</span>
         </h2>
         <p>
-          행동경제학(Behavioral Economics)에서는 인간이 돈을 지출할 때 '숫자' 그 자체보다 <strong>'체감할 수 있는 대체재'</strong>로 환산할 때 비이성적 과소비 충동이 급격히 억제된다고 설명합니다. 100만 원이라는 숫자는 추상적이지만, "내가 60시간 동안 일해야 하는 고통"이나 "순대국밥 100그릇"으로 변환되는 순간 뇌의 전두엽이 활성화되며 즉각적인 충동구매 억제 호르몬이 분비됩니다.
+          행동경제학(Behavioral Economics)에서는 인간이 돈을 지출할 때 '숫자' 그 자체보다 <strong>'체감할 수 있는 대체재'</strong>로 환산할 때 비이성적 과소비 충동이 급격히 억제된다고 설명합니다. 100만 원이라는 숫자는 추상적이지만, "내가 66시간 동안 일해야 하는 고통"이나 "순대국밥 100그릇"으로 변환되는 순간 뇌의 전두엽이 활성화되며 즉각적인 충동구매 억제 호르몬이 분비됩니다.
         </p>
         <p>
-          또한 워런 버핏(Warren Buffett)이 강조한 것처럼, 젊은 시절의 100만 원 소비는 단순한 100만 원이 아니라 30년 뒤 복리 8% 기준으로 약 <strong>1,000만 원 이상의 은퇴 자산 기회비용</strong>을 포기하는 것과 같습니다. 본 도구를 통해 일상의 소비 충동을 유쾌하게 검증해 보세요.
+          또한 노벨경제학상 수상자 리처드 탈러(Richard Thaler)의 <strong>심적 회계(Mental Accounting)</strong> 이론에 따르면, 사람들은 돈의 출처나 용도에 따라 마음속에 다른 장부를 만들어 작은 돈(커피, 택시비)은 쉽게 낭비하는 경향이 있습니다. 이른바 <strong>라테 효과(Latte Effect)</strong>로 불리는 일상의 소액 누수를 인지하고, 이를 복리 자산으로 치환해 보는 것이 자산 형성의 첫걸음입니다.
         </p>
       </div>
 

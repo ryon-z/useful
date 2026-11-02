@@ -603,8 +603,66 @@
       </button>
     </div>
 
+    <!-- 정적 참조 조견표: 90분 수면 사이클 기상 시각 & 카페인 분해 소요시간 조견표 (구글 크롤러 인덱싱용) -->
+    <section class="mt-10 bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-7 shadow-xl space-y-4" aria-label="수면 사이클 및 기상 조견표">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+        <h3 class="text-base sm:text-lg font-black text-white flex items-center gap-2">
+          <i class="fa-solid fa-table-list text-indigo-400"></i>
+          <span>취침 시각별 90분 수면 사이클 최적 기상 시각 조견표</span>
+        </h3>
+        <span class="text-xs text-slate-400 font-medium">평균 입면 소요 시간 14분 자동 반영</span>
+      </div>
+      <p class="text-xs text-slate-300 leading-relaxed">
+        인간의 수면은 <strong>90분 주기</strong>로 얕은 잠, 깊은 숙면, 렘(REM) 수면을 반복합니다. 주기가 깔끔하게 완료되는 시점에 눈을 떠야 수면 관성 없이 상쾌하게 일어날 수 있습니다.
+      </p>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-xs text-left text-slate-300 border-collapse">
+          <thead>
+            <tr class="border-b border-slate-700 bg-slate-950/70 text-slate-200">
+              <th scope="col" class="py-3 px-3 font-bold">침대에 눕는 시각</th>
+              <th scope="col" class="py-3 px-3 font-bold text-center text-amber-300">주기 3회 (4.5시간)</th>
+              <th scope="col" class="py-3 px-3 font-bold text-center text-emerald-300">주기 4회 (6.0시간)</th>
+              <th scope="col" class="py-3 px-3 font-bold text-center text-indigo-300 font-black">주기 5회 (7.5시간 - 골든)</th>
+              <th scope="col" class="py-3 px-3 font-bold text-center text-sky-300">주기 6회 (9.0시간)</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800 font-mono">
+            <tr class="hover:bg-slate-800/40">
+              <td class="py-2.5 px-3 font-sans font-bold text-white">밤 10:00 취침</td>
+              <td class="py-2.5 px-3 text-center text-amber-300">새벽 02:44</td>
+              <td class="py-2.5 px-3 text-center text-emerald-300">새벽 04:14</td>
+              <td class="py-2.5 px-3 text-center text-indigo-300 font-bold">오전 05:44</td>
+              <td class="py-2.5 px-3 text-center text-sky-300">오전 07:14</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40 bg-slate-800/20">
+              <td class="py-2.5 px-3 font-sans font-bold text-white">밤 11:00 취침</td>
+              <td class="py-2.5 px-3 text-center text-amber-300">새벽 03:44</td>
+              <td class="py-2.5 px-3 text-center text-emerald-300">새벽 05:14</td>
+              <td class="py-2.5 px-3 text-center text-indigo-300 font-bold">오전 06:44</td>
+              <td class="py-2.5 px-3 text-center text-sky-300">오전 08:14</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40">
+              <td class="py-2.5 px-3 font-sans font-bold text-white">자정 12:00 취침</td>
+              <td class="py-2.5 px-3 text-center text-amber-300">새벽 04:44</td>
+              <td class="py-2.5 px-3 text-center text-emerald-300">오전 06:14</td>
+              <td class="py-2.5 px-3 text-center text-indigo-300 font-bold">오전 07:44</td>
+              <td class="py-2.5 px-3 text-center text-sky-300">오전 09:14</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40">
+              <td class="py-2.5 px-3 font-sans font-bold text-white">새벽 01:00 취침</td>
+              <td class="py-2.5 px-3 text-center text-amber-300">새벽 05:44</td>
+              <td class="py-2.5 px-3 text-center text-emerald-300">오전 07:14</td>
+              <td class="py-2.5 px-3 text-center text-indigo-300 font-bold">오전 08:44</td>
+              <td class="py-2.5 px-3 text-center text-sky-300">오전 10:14</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
     <!-- Sleep Science & FAQ Section (SEO E-E-A-T) -->
-    <div class="mt-12 space-y-8">
+    <div class="mt-8 space-y-8">
       <div class="border-t border-slate-800 pt-8">
         <h2 class="text-xl sm:text-2xl font-black text-white mb-4 flex items-center gap-2">
           <i class="fa-solid fa-brain text-indigo-400"></i>
