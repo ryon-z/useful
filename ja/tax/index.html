@@ -542,27 +542,49 @@
         </div>
       </div>
 
-      <!-- 3. よくある質問 (FAQ) -->
+      <!-- 3. よくある質問 (FAQ Accordion with Schema.org) -->
       <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-4">
         <h2 class="text-lg sm:text-xl font-black text-white flex items-center gap-2">
           <i class="fa-solid fa-circle-question text-emerald-400"></i>
-          <span>よくある質問（FAQ）</span>
+          <span>消費税・インボイス よくある質問（FAQ）</span>
         </h2>
         
         <div class="space-y-3 pt-2 text-xs sm:text-sm">
-          <div class="p-4 rounded-2xl bg-slate-950/60 border border-slate-800 space-y-1.5">
-            <h3 class="font-bold text-white text-sm sm:text-base">消費税の端数処理は切り捨てですか？四捨五入ですか？</h3>
-            <p class="text-slate-300 leading-relaxed text-xs sm:text-sm">
-              消費税法上、端数処理の計算方法に特段の定めはなく、事業者の任意とされていますが、日本の商慣習においては「切り捨て」を採用するケースが一般的です。また、インボイス（適格請求書）制度においては「1つのインボイスにつき、税率ごとに1回のみ端数処理を行う」という義務がある点にご留意ください。
+          <details class="group bg-slate-950/60 border border-slate-800/80 rounded-2xl p-4 sm:p-5 transition hover:border-slate-700" open>
+            <summary class="font-bold text-white cursor-pointer flex items-center justify-between gap-4 list-none text-sm sm:text-base">
+              <span class="flex items-center gap-2 text-slate-100">
+                <span class="text-emerald-400 font-black">Q.</span> 消費税の端数処理は切り捨てですか？四捨五入ですか？
+              </span>
+              <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <p class="mt-3 text-slate-300 leading-relaxed text-xs sm:text-sm pl-5 border-l-2 border-emerald-500/30">
+              消費税法上、端数処理の計算方法に特段の法的強制はなく事業者の任意とされていますが、日本の商慣習においては「切り捨て」を採用するケースが圧倒的多数です。ただしインボイス制度（適格請求書）においては「1つのインボイスにつき、税率ごとに1回のみ端数処理を行う」という厳格な義務が定められています。
             </p>
-          </div>
+          </details>
 
-          <div class="p-4 rounded-2xl bg-slate-950/60 border border-slate-800 space-y-1.5">
-            <h3 class="font-bold text-white text-sm sm:text-base">インボイス制度の経過措置（80%・50%控除）とは何ですか？</h3>
-            <p class="text-slate-300 leading-relaxed text-xs sm:text-sm">
-              インボイス発行事業者以外の免税事業者からの仕入れでも、制度導入後の激変緩和措置として一定割合の仕入税額控除が認められます。2023年10月〜2026年9月までは80%控除、2026年10月〜2029年9月までは50%控除が可能です。
+          <details class="group bg-slate-950/60 border border-slate-800/80 rounded-2xl p-4 sm:p-5 transition hover:border-slate-700">
+            <summary class="font-bold text-white cursor-pointer flex items-center justify-between gap-4 list-none text-sm sm:text-base">
+              <span class="flex items-center gap-2 text-slate-100">
+                <span class="text-emerald-400 font-black">Q.</span> インボイス制度の経過措置（80%・50%控除）とは何ですか？
+              </span>
+              <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <p class="mt-3 text-slate-300 leading-relaxed text-xs sm:text-sm pl-5 border-l-2 border-emerald-500/30">
+              適格請求書発行事業者ではない免税事業者からの仕入れでも、制度導入後の激変緩和措置として一定割合の仕入税額控除が認められます。2023年10月〜2026年9月までは80%控除、2026年10月〜2029年9月までは50%控除が可能です。
             </p>
-          </div>
+          </details>
+
+          <details class="group bg-slate-950/60 border border-slate-800/80 rounded-2xl p-4 sm:p-5 transition hover:border-slate-700">
+            <summary class="font-bold text-white cursor-pointer flex items-center justify-between gap-4 list-none text-sm sm:text-base">
+              <span class="flex items-center gap-2 text-slate-100">
+                <span class="text-emerald-400 font-black">Q.</span> テイクアウトとイートインで税率が変わるのはなぜですか？
+              </span>
+              <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <p class="mt-3 text-slate-300 leading-relaxed text-xs sm:text-sm pl-5 border-l-2 border-emerald-500/30">
+              消費税法上、持ち帰り（テイクアウト）は「飲食料品の譲渡」として軽減税率8%が適用されますが、店内の座席やフードコートで飲食する場合は「外食・飲食設備の提供」に該当し標準税率10%が適用されるためです。
+            </p>
+          </details>
         </div>
       </div>
 

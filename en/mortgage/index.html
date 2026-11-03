@@ -650,7 +650,7 @@
         </p>
       </div>
 
-      <!-- Section 3: Frequently Asked Questions (FAQ) -->
+      <!-- Section 3: Frequently Asked Questions (FAQ Accordion with Schema.org) -->
       <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-4">
         <h2 class="text-xl font-black text-white flex items-center gap-2">
           <i class="fa-solid fa-circle-question text-indigo-400"></i>
@@ -658,26 +658,41 @@
         </h2>
         
         <div class="space-y-3 pt-2 text-xs sm:text-sm">
-          <div class="p-4 rounded-2xl bg-slate-950/60 border border-slate-800 space-y-1.5">
-            <h3 class="font-bold text-white text-sm sm:text-base">What does PITI stand for?</h3>
-            <p class="text-slate-300 leading-relaxed text-xs sm:text-sm">
+          <details class="group bg-slate-950/60 border border-slate-800/80 rounded-2xl p-4 sm:p-5 transition hover:border-slate-700" open>
+            <summary class="font-bold text-white cursor-pointer flex items-center justify-between gap-4 list-none text-sm sm:text-base">
+              <span class="flex items-center gap-2 text-slate-100">
+                <span class="text-indigo-400 font-black">Q.</span> What does PITI stand for in homeownership?
+              </span>
+              <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <p class="mt-3 text-slate-300 leading-relaxed text-xs sm:text-sm pl-5 border-l-2 border-indigo-500/30">
               PITI represents Principal, Interest, Taxes, and Insurance. It encompasses the four core components of an escrowed monthly mortgage payment in the United States.
             </p>
-          </div>
+          </details>
 
-          <div class="p-4 rounded-2xl bg-slate-950/60 border border-slate-800 space-y-1.5">
-            <h3 class="font-bold text-white text-sm sm:text-base">How does Private Mortgage Insurance (PMI) work?</h3>
-            <p class="text-slate-300 leading-relaxed text-xs sm:text-sm">
-              If your down payment is less than 20%, lenders require PMI to mitigate default risk. Annual PMI typically costs between 0.5% and 1.2% of the original loan balance. By federal law, you can request PMI cancellation once your loan principal reaches 80% of original value, and lenders must automatically cancel it at 78%.
+          <details class="group bg-slate-950/60 border border-slate-800/80 rounded-2xl p-4 sm:p-5 transition hover:border-slate-700">
+            <summary class="font-bold text-white cursor-pointer flex items-center justify-between gap-4 list-none text-sm sm:text-base">
+              <span class="flex items-center gap-2 text-slate-100">
+                <span class="text-indigo-400 font-black">Q.</span> How does Private Mortgage Insurance (PMI) work and when can it be removed?
+              </span>
+              <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <p class="mt-3 text-slate-300 leading-relaxed text-xs sm:text-sm pl-5 border-l-2 border-indigo-500/30">
+              If your down payment is less than 20%, conventional lenders require PMI to mitigate default risk. Annual PMI typically costs between 0.5% and 1.2% of the original loan balance. By federal law (Homeowners Protection Act), you can request PMI cancellation once your loan principal reaches 80% of original value, and lenders must automatically cancel it at 78%.
             </p>
-          </div>
+          </details>
 
-          <div class="p-4 rounded-2xl bg-slate-950/60 border border-slate-800 space-y-1.5">
-            <h3 class="font-bold text-white text-sm sm:text-base">Where do GoModo benchmark rates originate?</h3>
-            <p class="text-slate-300 leading-relaxed text-xs sm:text-sm">
+          <details class="group bg-slate-950/60 border border-slate-800/80 rounded-2xl p-4 sm:p-5 transition hover:border-slate-700">
+            <summary class="font-bold text-white cursor-pointer flex items-center justify-between gap-4 list-none text-sm sm:text-base">
+              <span class="flex items-center gap-2 text-slate-100">
+                <span class="text-indigo-400 font-black">Q.</span> Where do GoModo benchmark mortgage rates originate?
+              </span>
+              <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <p class="mt-3 text-slate-300 leading-relaxed text-xs sm:text-sm pl-5 border-l-2 border-indigo-500/30">
               GoModo integrates weekly 30-Year Fixed Rate Mortgage benchmark averages published by the Federal Reserve Bank of St. Louis (FRED MORTGAGE30US series) using automated serverless data pipelines.
             </p>
-          </div>
+          </details>
         </div>
       </div>
 

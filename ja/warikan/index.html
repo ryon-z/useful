@@ -615,6 +615,74 @@
 
     </div>
 
+    <!-- 静的参照早見表: 飲み会・食事会 傾斜配分標準早見表 (クローラーインデックス用) -->
+    <section class="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-7 shadow-xl space-y-4" aria-label="傾斜配分標準早見表">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+        <h3 class="text-base sm:text-lg font-black text-white flex items-center gap-2">
+          <i class="fa-solid fa-table-list text-rose-400"></i>
+          <span>飲み会・食事会 傾斜配分標準早見表（会計総額・役職別目安）</span>
+        </h3>
+        <span class="text-xs text-slate-400 font-medium">上司2.0x・先輩1.5x・一般1.0x・飲まない人割引</span>
+      </div>
+      <p class="text-xs text-slate-300 leading-relaxed">
+        職場の歓送迎会や懇親会において、参加者全員が納得しやすい役職・飲食状況別の支払い金額シミュレーション早見表です（500円単位切り上げ調整例）。
+      </p>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-xs text-left text-slate-300 border-collapse">
+          <thead>
+            <tr class="border-b border-slate-700 bg-slate-950/70 text-slate-200">
+              <th scope="col" class="py-3 px-3 font-bold">総額 / 人数規模</th>
+              <th scope="col" class="py-3 px-3 font-bold text-center">参加者構成</th>
+              <th scope="col" class="py-3 px-3 font-bold text-right text-rose-300">上司・役員（2.0x）</th>
+              <th scope="col" class="py-3 px-3 font-bold text-right text-amber-300">先輩・リーダー（1.5x）</th>
+              <th scope="col" class="py-3 px-3 font-bold text-right text-slate-200">一般・後輩（1.0x）</th>
+              <th scope="col" class="py-3 px-3 font-bold text-right text-sky-400">お酒を飲まない人</th>
+              <th scope="col" class="py-3 px-3 font-bold text-center">幹事の端数管理</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800 font-mono">
+            <tr class="hover:bg-slate-800/40">
+              <td class="py-2.5 px-3 font-sans font-bold text-white">20,000円（4名）</td>
+              <td class="py-2.5 px-3 font-sans text-center text-slate-400">上司1/先輩1/一般2</td>
+              <td class="py-2.5 px-3 text-right text-rose-300 font-bold">7,500円</td>
+              <td class="py-2.5 px-3 text-right text-amber-300 font-bold">5,500円</td>
+              <td class="py-2.5 px-3 text-right text-slate-200">3,500円</td>
+              <td class="py-2.5 px-3 text-right text-sky-400 font-sans">2,500円 (-1,000)</td>
+              <td class="py-2.5 px-3 text-center font-sans text-slate-400">お釣り+500円</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40 bg-slate-800/20">
+              <td class="py-2.5 px-3 font-sans font-bold text-white">35,000円（6名）</td>
+              <td class="py-2.5 px-3 font-sans text-center text-slate-400">上司1/先輩2/一般3</td>
+              <td class="py-2.5 px-3 text-right text-rose-300 font-bold">9,500円</td>
+              <td class="py-2.5 px-3 text-right text-amber-300 font-bold">7,000円</td>
+              <td class="py-2.5 px-3 text-right text-slate-200">4,500円</td>
+              <td class="py-2.5 px-3 text-right text-sky-400 font-sans">3,500円 (-1,000)</td>
+              <td class="py-2.5 px-3 text-center font-sans text-slate-400">お釣り+500円</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40">
+              <td class="py-2.5 px-3 font-sans font-bold text-white">50,000円（8名）</td>
+              <td class="py-2.5 px-3 font-sans text-center text-slate-400">役員1/先輩3/一般4</td>
+              <td class="py-2.5 px-3 text-right text-rose-300 font-bold">12,000円</td>
+              <td class="py-2.5 px-3 text-right text-amber-300 font-bold">8,000円</td>
+              <td class="py-2.5 px-3 text-right text-slate-200">5,000円</td>
+              <td class="py-2.5 px-3 text-right text-sky-400 font-sans">4,000円 (-1,000)</td>
+              <td class="py-2.5 px-3 text-center font-sans text-emerald-400 font-bold">±0円ピッタリ回収</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40">
+              <td class="py-2.5 px-3 font-sans font-bold text-white">80,000円（12名）</td>
+              <td class="py-2.5 px-3 font-sans text-center text-slate-400">役員2/先輩4/一般6</td>
+              <td class="py-2.5 px-3 text-right text-rose-300 font-bold">13,000円</td>
+              <td class="py-2.5 px-3 text-right text-amber-300 font-bold">9,000円</td>
+              <td class="py-2.5 px-3 text-right text-slate-200">5,500円</td>
+              <td class="py-2.5 px-3 text-right text-sky-400 font-sans">4,500円 (-1,000)</td>
+              <td class="py-2.5 px-3 text-center font-sans text-slate-400">お釣り+1,000円</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
     <!-- よくある質問 (FAQ Accordion with Schema.org) -->
     <section class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-5">
       <div class="flex items-center gap-2.5">
