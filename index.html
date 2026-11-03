@@ -1,36 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <!-- Client-Side Browser Language Auto-Detection & Redirection -->
-  <script>
-    (function() {
-      var ua = navigator.userAgent || '';
-      var isBot = /bot|googlebot|crawler|spider|robot|crawling|yeti|bingbot|yahoo|baiduspider|duckduck|twitterbot|facebookexternalhit/i.test(ua);
-      if (isBot) return;
-
-      var params = new URLSearchParams(window.location.search);
-      if (params.get('stay') || params.get('lang') === 'ko') {
-        try { localStorage.setItem('gomodo_lang_choice', 'ko'); } catch(e) {}
-        return;
-      }
-      try {
-        if (localStorage.getItem('gomodo_lang_choice') === 'ko') return;
-      } catch(e) {}
-
-      try {
-        if (sessionStorage.getItem('gomodo_auto_redirected')) return;
-      } catch(e) {}
-
-      var lang = (navigator.language || (navigator.languages && navigator.languages[0]) || '').toLowerCase();
-      try { sessionStorage.setItem('gomodo_auto_redirected', 'true'); } catch(e) {}
-
-      if (lang.indexOf('ja') === 0) {
-        window.location.replace('./ja/');
-      } else if (lang.indexOf('en') === 0) {
-        window.location.replace('./en/');
-      }
-    })();
-  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
