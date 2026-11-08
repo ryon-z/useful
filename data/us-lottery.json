@@ -1,6 +1,18 @@
 {
-  "updatedAt": "2026-11-07T21:34:24.209Z",
+  "updatedAt": "2026-11-08T21:49:10.003Z",
   "powerball": [
+    {
+      "drawDate": "2026-11-07",
+      "winningNumbers": [
+        3,
+        36,
+        37,
+        56,
+        61
+      ],
+      "powerball": 21,
+      "multiplier": "2"
+    },
     {
       "drawDate": "2026-11-04",
       "winningNumbers": [
@@ -107,18 +119,6 @@
         35
       ],
       "powerball": 11,
-      "multiplier": "3"
-    },
-    {
-      "drawDate": "2026-10-14",
-      "winningNumbers": [
-        3,
-        34,
-        37,
-        42,
-        46
-      ],
-      "powerball": 20,
       "multiplier": "3"
     }
   ],
