@@ -1,7 +1,15 @@
 {
-  "updatedAt": "2026-11-08T21:49:11.616Z",
+  "updatedAt": "2026-11-10T01:16:38.865Z",
   "status": "live_fss_api",
   "topDeposits": [
+    {
+      "bankName": "부산은행",
+      "productName": "더(The) 특판 정기예금",
+      "termMonths": 12,
+      "baseRate": 2.1,
+      "maxRate": 4.1,
+      "joinWay": "인터넷,스마트폰"
+    },
     {
       "bankName": "전북은행",
       "productName": "JB 123 정기예금\n (만기일시지급식)",
@@ -28,11 +36,11 @@
     },
     {
       "bankName": "부산은행",
-      "productName": "더(The) 특판 정기예금",
+      "productName": "더(The) 레벨업 정기예금",
       "termMonths": 12,
-      "baseRate": 2.1,
+      "baseRate": 2.65,
       "maxRate": 4.05,
-      "joinWay": "인터넷,스마트폰"
+      "joinWay": "스마트폰"
     },
     {
       "bankName": "제주은행",
@@ -49,14 +57,6 @@
       "baseRate": 2.96,
       "maxRate": 4.01,
       "joinWay": "인터넷,스마트폰"
-    },
-    {
-      "bankName": "부산은행",
-      "productName": "더(The) 레벨업 정기예금",
-      "termMonths": 12,
-      "baseRate": 2.65,
-      "maxRate": 4,
-      "joinWay": "스마트폰"
     },
     {
       "bankName": "경남은행",
