@@ -1177,6 +1177,16 @@
       return { totalTax: Math.round(severanceTax + localTax), tenureDeduct };
     }
 
+    // 퇴직소득세 근속연수: 입사일~퇴사일(포함)을 달력 기준으로 세고 1년 미만 끝수는 1년 (재직일수/365 올림은 윤년 때문에 정확히 N년이 N+1년이 됨)
+    function calcTenureYearsForTax(joinDate, leaveDate) {
+      const end = new Date(leaveDate);
+      end.setDate(end.getDate() + 1);
+      let years = end.getFullYear() - joinDate.getFullYear();
+      const anniversary = (n) => { const a = new Date(joinDate); a.setFullYear(joinDate.getFullYear() + n); return a; };
+      if (anniversary(years) > end) years--;
+      return Math.max(1, anniversary(years) < end ? years + 1 : years);
+    }
+
     // 퇴직금 산출 함수
     function calculateSeverance() {
       const d1 = new Date(dateJoin.value);
@@ -1209,7 +1219,7 @@
       // 법정 퇴직금 = 1일 평균임금 * 30 * (재직일수 / 365)
       const severanceGross = dailyAvgWage * 30 * tenureYears;
 
-      const { totalTax, tenureDeduct } = calculateSeveranceTax(severanceGross, tenureYears);
+      const { totalTax, tenureDeduct } = calculateSeveranceTax(severanceGross, calcTenureYearsForTax(d1, d2));
       const netPay = Math.max(0, severanceGross - totalTax);
       const effectiveRate = severanceGross > 0 ? (totalTax / severanceGross) * 100 : 0;
 
