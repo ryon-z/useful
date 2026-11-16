@@ -127,6 +127,10 @@ htmlFiles.forEach(file => {
     pageErrors.push('Missing Google AdSense Client ID');
   }
 
+  if (!content.includes('gtag/js?id=G-47W29ZQ6ZH')) {
+    pageErrors.push('Missing Google Analytics 4 tag (G-47W29ZQ6ZH)');
+  }
+
   if (!/<title>[^<]+<\/title>/i.test(content)) {
     pageErrors.push('Missing or empty <title> tag');
   }
