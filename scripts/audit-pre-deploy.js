@@ -129,6 +129,8 @@ htmlFiles.forEach(file => {
 
   if (!content.includes('gtag/js?id=G-47W29ZQ6ZH')) {
     pageErrors.push('Missing Google Analytics 4 tag (G-47W29ZQ6ZH)');
+  } else if (!content.includes("gtag('config', 'G-47W29ZQ6ZH', { page_location: location.href })")) {
+    pageErrors.push('GA4 config must capture page_location (UTM 보존) — salary/index.html 스니펫 복사');
   }
 
   if (/<meta\b[^>]*\bcontent="[^"]*</i.test(content)) {

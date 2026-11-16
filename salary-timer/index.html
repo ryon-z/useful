@@ -9,7 +9,9 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-47W29ZQ6ZH');
+    gtag('config', 'G-47W29ZQ6ZH', { page_location: location.href }); // UTM 포함 랜딩 URL을 GA4에 먼저 기록
+    // 기록 후 주소창에서 utm_* 제거: 공유 링크에 유입 출처가 섞이지 않도록 하고, 도구 URL 상태 동기화와의 충돌 방지
+    try { if (/[?&]utm_/.test(location.search)) { var u = new URL(location.href); Array.from(u.searchParams.keys()).filter(function (k) { return k.indexOf('utm_') === 0; }).forEach(function (k) { u.searchParams.delete(k); }); history.replaceState(history.state, '', u.pathname + u.search + u.hash); } } catch (e) {}
   </script>
   <title>실시간 월급 타이머 & 화장실 재테크 | GoModo</title>
   <meta name="description" content="연봉과 출퇴근 시간을 입력하면 초당 통장에 꽂히는 돈을 실시간 0.01원 단위로 카운트업! 오늘 출근 후 번 돈, 화장실에 앉아있는 동안 번 돈(Poop Salary), 고통의 회의 인건비 및 퇴근 D-Day 타이머를 실시간으로 확인하세요.">

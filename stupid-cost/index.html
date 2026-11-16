@@ -9,7 +9,9 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-47W29ZQ6ZH');
+    gtag('config', 'G-47W29ZQ6ZH', { page_location: location.href }); // UTM 포함 랜딩 URL을 GA4에 먼저 기록
+    // 기록 후 주소창에서 utm_* 제거: 공유 링크에 유입 출처가 섞이지 않도록 하고, 도구 URL 상태 동기화와의 충돌 방지
+    try { if (/[?&]utm_/.test(location.search)) { var u = new URL(location.href); Array.from(u.searchParams.keys()).filter(function (k) { return k.indexOf('utm_') === 0; }).forEach(function (k) { u.searchParams.delete(k); }); history.replaceState(history.state, '', u.pathname + u.search + u.hash); } } catch (e) {}
   </script>
   <title>스튜피드 소비 판독기 (국밥 기회비용) | GoModo</title>
   <meta name="description" content="사고 싶은 물건 가격을 입력하면 뜨끈한 국밥, 치킨, 스타벅스 잔수로 즉시 환산! 내 시급 기준 노동시간 팩폭 및 30년 뒤 S&P500 복리 기회비용을 유쾌하게 확인하고 과소비를 방어하세요.">

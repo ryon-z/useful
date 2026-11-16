@@ -9,7 +9,9 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-47W29ZQ6ZH');
+    gtag('config', 'G-47W29ZQ6ZH', { page_location: location.href }); // UTM 포함 랜딩 URL을 GA4에 먼저 기록
+    // 기록 후 주소창에서 utm_* 제거: 공유 링크에 유입 출처가 섞이지 않도록 하고, 도구 URL 상태 동기화와의 충돌 방지
+    try { if (/[?&]utm_/.test(location.search)) { var u = new URL(location.href); Array.from(u.searchParams.keys()).filter(function (k) { return k.indexOf('utm_') === 0; }).forEach(function (k) { u.searchParams.delete(k); }); history.replaceState(history.state, '', u.pathname + u.search + u.hash); } } catch (e) {}
   </script>
   <title>消費税・軽減税率（8%・10%）＆インボイス計算機 - 経過措置50%控除・端数処理 | GoModo</title>
   <meta name="description" content="2026年最新インボイス制度対応！税込・税抜の相互変換、標準税率10% vs 軽減税率8%の差額、免税事業者からの仕入税額控除（50%・80%経過措置）、端数処理（切り捨て等）を瞬時に計算。">
