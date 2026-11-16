@@ -1137,16 +1137,17 @@
       const convertedWage = (taxableBase1 * 12) / y;
       let convertedDeduct = 0;
 
+      // 환산급여공제 (소득세법 제48조): 800만 이하 전액 / 7천만 이하 60% / 1억 이하 55% / 3억 이하 45% / 초과 35%
       if (convertedWage <= 8000000) {
         convertedDeduct = convertedWage;
       } else if (convertedWage <= 70000000) {
         convertedDeduct = 8000000 + (convertedWage - 8000000) * 0.6;
-      } else if (convertedWage <= 150000000) {
+      } else if (convertedWage <= 100000000) {
         convertedDeduct = 45200000 + (convertedWage - 70000000) * 0.55;
       } else if (convertedWage <= 300000000) {
-        convertedDeduct = 89200000 + (convertedWage - 150000000) * 0.45;
+        convertedDeduct = 61700000 + (convertedWage - 100000000) * 0.45;
       } else {
-        convertedDeduct = 156700000 + (convertedWage - 300000000) * 0.35;
+        convertedDeduct = 151700000 + (convertedWage - 300000000) * 0.35;
       }
 
       const finalBase = Math.max(0, convertedWage - convertedDeduct);
