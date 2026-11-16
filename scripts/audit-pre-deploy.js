@@ -131,6 +131,10 @@ htmlFiles.forEach(file => {
     pageErrors.push('Missing Google Analytics 4 tag (G-47W29ZQ6ZH)');
   }
 
+  if (/<meta\b[^>]*\bcontent="[^"]*</i.test(content)) {
+    pageErrors.push('HTML markup leaked into a <meta content="..."> attribute');
+  }
+
   if (!/<title>[^<]+<\/title>/i.test(content)) {
     pageErrors.push('Missing or empty <title> tag');
   }
