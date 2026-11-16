@@ -100,7 +100,7 @@
             "name": "노동 시간은 어떤 방식으로 환산되나요?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "사용자가 선택하거나 입력한 세후 시급(기본 월 300만원 기준 시급 약 14,354원 또는 2026 최저시급 10,030원)으로 물건 가격을 나눕니다. 즉, 세금을 다 떼고 순수하게 내 손에 쥐어지는 돈으로 해당 물건을 사기 위해 몇 시간 동안 상사의 눈치를 보며 일해야 하는지 정밀 계산합니다."
+              "text": "사용자가 선택하거나 입력한 세후 시급(기본 월 300만원 기준 시급 약 14,354원 또는 2026 최저시급 10,320원)으로 물건 가격을 나눕니다. 즉, 세금을 다 떼고 순수하게 내 손에 쥐어지는 돈으로 해당 물건을 사기 위해 몇 시간 동안 상사의 눈치를 보며 일해야 하는지 정밀 계산합니다."
             }
           },
           {
@@ -394,7 +394,7 @@
 
           <div class="grid grid-cols-3 gap-1.5">
             <button type="button" onclick="setWagePreset('min')" id="wage-btn-min" class="py-2 px-1.5 rounded-xl border font-bold text-xs transition bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700 text-center">
-              최저시급<br><span class="text-[10px] text-slate-400">10,030원</span>
+              최저시급<br><span class="text-[10px] text-slate-400">10,320원</span>
             </button>
             <button type="button" onclick="setWagePreset('300')" id="wage-btn-300" class="py-2 px-1.5 rounded-xl border font-black text-xs transition bg-rose-500/20 text-rose-300 border-rose-500/40 text-center">
               월급 300만<br><span class="text-[10px] text-rose-400">시급 1.4만</span>
@@ -667,7 +667,7 @@
               <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition-transform"></i>
             </summary>
             <p class="pt-3 text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-slate-800/80 mt-3">
-              사용자가 선택하거나 입력한 세후 시급(기본 월 300만원 기준 시급 약 14,354원 또는 2026 최저시급 10,030원)으로 물건 가격을 나눕니다. 즉, 세금을 다 떼고 순수하게 내 손에 쥐어지는 돈으로 해당 물건을 사기 위해 몇 시간 동안 상사의 눈치를 보며 일해야 하는지 정밀 계산합니다.
+              사용자가 선택하거나 입력한 세후 시급(기본 월 300만원 기준 시급 약 14,354원 또는 2026 최저시급 10,320원)으로 물건 가격을 나눕니다. 즉, 세금을 다 떼고 순수하게 내 손에 쥐어지는 돈으로 해당 물건을 사기 위해 몇 시간 동안 상사의 눈치를 보며 일해야 하는지 정밀 계산합니다.
             </p>
           </details>
 
@@ -899,9 +899,9 @@
       });
 
       if (preset === 'min') {
-        AppState.hourlyWage = 10030;
+        AppState.hourlyWage = 10320;
         btnMin.className = 'py-2 px-1.5 rounded-xl border font-black text-xs transition bg-rose-500/20 text-rose-300 border-rose-500/40 text-center';
-        document.getElementById('hourly-wage-display').textContent = '시급 10,030원 (2026 최저)';
+        document.getElementById('hourly-wage-display').textContent = '시급 10,320원 (2026 최저)';
       } else if (preset === '300') {
         AppState.hourlyWage = 14354;
         btn300.className = 'py-2 px-1.5 rounded-xl border font-black text-xs transition bg-rose-500/20 text-rose-300 border-rose-500/40 text-center';
