@@ -779,43 +779,9 @@
       meetingHeadcount: 5
     };
 
-    // 2026 4대보험 및 세후 계산기
+    // 세후 월 실수령액: 연봉 계산기(salary/)와 같은 공통 로직 사용 (비과세 식대 20만, 본인 1인, 자녀 0 기준)
     function calculateNetSalary(annualGross) {
-      const monthlyGross = Math.floor(annualGross / 12);
-      const nonTax = 200000;
-      const taxable = Math.max(0, monthlyGross - nonTax);
-
-      // 국민연금 (4.5%, 상한 590만, 하한 37만)
-      const npBase = Math.min(Math.max(taxable, 370000), 5900000);
-      const nationalPension = Math.floor(npBase * 0.045);
-
-      // 건강보험 (3.545%)
-      const healthInsurance = Math.floor(taxable * 0.03545);
-
-      // 장기요양보험 (건보료의 12.81%)
-      const longTermCare = Math.floor(healthInsurance * 0.1281);
-
-      // 고용보험 (0.9%)
-      const employmentInsurance = Math.floor(taxable * 0.009);
-
-      // 소득세 약식 산출 (간이세액표 근사)
-      let incomeTax = 0;
-      const annualTaxable = taxable * 12;
-      if (annualTaxable <= 14000000) {
-        incomeTax = (annualTaxable * 0.06) / 12;
-      } else if (annualTaxable <= 50000000) {
-        incomeTax = (840000 + (annualTaxable - 14000000) * 0.15) / 12;
-      } else if (annualTaxable <= 88000000) {
-        incomeTax = (6240000 + (annualTaxable - 50000000) * 0.24) / 12;
-      } else {
-        incomeTax = (15360000 + (annualTaxable - 88000000) * 0.35) / 12;
-      }
-      incomeTax = Math.max(0, Math.floor(incomeTax * 0.85)); // 기본 근로소득세액공제 반영
-      const localTax = Math.floor(incomeTax * 0.10);
-
-      const totalDeduction = nationalPension + healthInsurance + longTermCare + employmentInsurance + incomeTax + localTax;
-      const netMonthly = Math.max(0, monthlyGross - totalDeduction);
-      return netMonthly;
+      return computeSalaryDetails(annualGross, 200000, 1, 0).netMonthly;
     }
 
     // 통상 시급/초당 단가 도출
