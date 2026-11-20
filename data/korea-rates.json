@@ -1,7 +1,15 @@
 {
-  "updatedAt": "2026-11-18T23:59:53.125Z",
+  "updatedAt": "2026-11-20T00:22:58.487Z",
   "status": "live_fss_api",
   "topDeposits": [
+    {
+      "bankName": "한국스탠다드차타드은행",
+      "productName": "e-그린세이브예금",
+      "termMonths": 12,
+      "baseRate": 3.95,
+      "maxRate": 4.15,
+      "joinWay": "인터넷,스마트폰"
+    },
     {
       "bankName": "부산은행",
       "productName": "더(The) 특판 정기예금",
@@ -25,14 +33,6 @@
       "baseRate": 2.55,
       "maxRate": 4.1,
       "joinWay": "스마트폰"
-    },
-    {
-      "bankName": "한국스탠다드차타드은행",
-      "productName": "e-그린세이브예금",
-      "termMonths": 12,
-      "baseRate": 3.85,
-      "maxRate": 4.05,
-      "joinWay": "인터넷,스마트폰"
     },
     {
       "bankName": "부산은행",
