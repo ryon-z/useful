@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-20T23:45:31.699Z",
+  "updatedAt": "2026-11-21T22:52:48.808Z",
   "powerball": [
     {
       "drawDate": "2026-11-18",
@@ -124,6 +124,18 @@
   ],
   "megaMillions": [
     {
+      "drawDate": "2026-11-20",
+      "winningNumbers": [
+        32,
+        35,
+        48,
+        58,
+        61
+      ],
+      "megaBall": 21,
+      "multiplier": "1"
+    },
+    {
       "drawDate": "2026-11-17",
       "winningNumbers": [
         3,
@@ -229,18 +241,6 @@
         48
       ],
       "megaBall": 3,
-      "multiplier": "1"
-    },
-    {
-      "drawDate": "2026-10-16",
-      "winningNumbers": [
-        2,
-        15,
-        31,
-        41,
-        68
-      ],
-      "megaBall": 11,
       "multiplier": "1"
     }
   ]
