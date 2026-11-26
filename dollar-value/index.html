@@ -14,7 +14,7 @@
     try { if (/[?&]utm_/.test(location.search)) { var u = new URL(location.href); Array.from(u.searchParams.keys()).filter(function (k) { return k.indexOf('utm_') === 0; }).forEach(function (k) { u.searchParams.delete(k); }); history.replaceState(history.state, '', u.pathname + u.search + u.hash); } } catch (e) {}
   </script>
   <title>달러로 본 내 자산 가치 계산기 - 아파트·금·연봉, 환율 빼면 정말 올랐을까 | GoModo</title>
-  <meta name="description" content="매수일과 비교일의 원/달러 환율(한국은행 매매기준율)로 아파트·금·연봉의 원화 상승률과 달러 기준 상승률을 나란히 비교합니다. 원화 가치 변화를 뺀 상승률을 확인하세요.">
+  <meta name="description" content="매수일과 비교일의 원/달러 환율(한국은행 종가)로 아파트·금·연봉의 원화 상승률과 달러 기준 상승률을 나란히 비교합니다. 원화 가치 변화를 뺀 상승률을 확인하세요.">
   <link rel="canonical" href="https://www.gomodo.cloud/dollar-value/">
 
   <!-- Open Graph -->
@@ -33,7 +33,7 @@
         "@type": "WebApplication",
         "name": "달러로 본 내 자산 가치 계산기",
         "url": "https://www.gomodo.cloud/dollar-value/",
-        "description": "두 시점의 원화 금액을 한국은행 원/달러 매매기준율로 달러 환산해 원화 기준 상승률과 달러 기준 상승률을 비교하는 계산기",
+        "description": "두 시점의 원화 금액을 한국은행 원/달러 종가로 달러 환산해 원화 기준 상승률과 달러 기준 상승률을 비교하는 계산기",
         "applicationCategory": "FinanceApplication",
         "operatingSystem": "All",
         "inLanguage": "ko-KR",
@@ -57,7 +57,7 @@
           {
             "@type": "Question",
             "name": "어떤 환율을 쓰나요?",
-            "acceptedAnswer": { "@type": "Answer", "text": "한국은행 경제통계시스템(ECOS)의 원/미국달러 매매기준율 일별 값을 매일 자동으로 받아 씁니다. 환율 칸은 직접 고칠 수도 있습니다." }
+            "acceptedAnswer": { "@type": "Answer", "text": "한국은행 경제통계시스템(ECOS)의 원/달러 종가(15:30) 일별 값을 매일 자동으로 받아 씁니다. 환율 칸은 직접 고칠 수도 있습니다." }
           },
           {
             "@type": "Question",
@@ -291,7 +291,7 @@
     <div class="space-y-2">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400 text-xs font-semibold">
         <i class="fa-solid fa-building-columns text-xs"></i>
-        <span id="dv-source">한국은행 원/달러 매매기준율 자동 반영</span>
+        <span id="dv-source">한국은행 원/달러 종가 자동 반영</span>
       </div>
       <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight break-keep">
         내 아파트, <span class="text-teal-400">달러로 재도 올랐을까?</span>
@@ -322,7 +322,7 @@
           <legend class="px-1 text-xs font-black text-teal-300" id="dv-legend1">그때</legend>
           <div class="space-y-1.5">
             <label for="dv-d1" class="text-xs font-bold text-slate-300 block" id="dv-d1-label">매수일</label>
-            <input type="date" id="dv-d1" min="1990-01-01" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white text-sm outline-none focus:border-teal-400">
+            <input type="date" id="dv-d1" min="1990-03-02" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white text-sm outline-none focus:border-teal-400">
           </div>
           <div class="space-y-1.5">
             <div class="flex items-center justify-between gap-2">
@@ -349,7 +349,7 @@
           <legend class="px-1 text-xs font-black text-teal-300">지금</legend>
           <div class="space-y-1.5">
             <label for="dv-d2" class="text-xs font-bold text-slate-300 block" id="dv-d2-label">비교일 (매도일 또는 오늘)</label>
-            <input type="date" id="dv-d2" min="1990-01-01" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white text-sm outline-none focus:border-teal-400">
+            <input type="date" id="dv-d2" min="1990-03-02" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white text-sm outline-none focus:border-teal-400">
           </div>
           <div class="space-y-1.5">
             <div class="flex items-center justify-between gap-2">
@@ -464,7 +464,7 @@
           <li>(1 + 원화 상승률) = (1 + 달러 상승률) × (지금 환율 ÷ 그때 환율)</li>
           <li>연평균 상승률은 기간이 1년 이상일 때만 표시합니다.</li>
         </ul>
-        <p>예: 2016년 6월 1일 5억 원에 산 아파트가 2026년 11월 26일 9억 원이라면, 같은 기간 한국은행 매매기준율이 1,190.5원에서 1,343.9원으로 올라 원화로는 +80%지만 달러로는 $419,992 → $669,693으로 +59.5%입니다. (아파트 금액은 예시이며 실제 시세가 아닙니다)</p>
+        <p>예: 2016년 6월 1일 5억 원에 산 아파트가 2026년 11월 26일 9억 원이라면, 같은 기간 한국은행 원/달러 종가가 1,193.0원에서 1,342.7원으로 올라 원화로는 +80%지만 달러로는 $419,111 → $670,291로 +59.9%입니다. (아파트 금액은 예시이며 실제 시세가 아닙니다)</p>
       </div>
       <div class="space-y-3">
         <h2 class="text-lg sm:text-xl font-black text-white">자산별로 읽는 법</h2>
@@ -488,7 +488,7 @@
           </details>
           <details class="group bg-slate-900 border border-slate-800 rounded-2xl p-4">
             <summary class="cursor-pointer font-bold text-white text-sm">어떤 환율을 쓰나요?</summary>
-            <p class="pt-3 text-sm text-slate-400">한국은행 경제통계시스템(ECOS)의 원/미국달러 매매기준율 일별 값을 매일 자동으로 받아 씁니다. 환율 칸은 직접 고칠 수도 있습니다.</p>
+            <p class="pt-3 text-sm text-slate-400">한국은행 경제통계시스템(ECOS)의 원/달러 종가(15:30) 일별 값을 매일 자동으로 받아 씁니다. 환율 칸은 직접 고칠 수도 있습니다.</p>
           </details>
           <details class="group bg-slate-900 border border-slate-800 rounded-2xl p-4">
             <summary class="cursor-pointer font-bold text-white text-sm">주말이나 공휴일 날짜를 넣으면 어떻게 되나요?</summary>
@@ -527,7 +527,7 @@
 
       <!-- 3. 면책 조항 -->
       <div class="max-w-3xl mx-auto text-[11px] text-slate-500 leading-relaxed border-t border-slate-900 pt-3">
-        본 계산기는 한국은행 경제통계시스템(ECOS)의 원/미국달러 매매기준율로 두 시점의 원화 금액을 달러로 환산한 참고용 계산입니다. 투자 권유가 아니며 세금·거래비용·물가 변화는 반영하지 않습니다.
+        본 계산기는 한국은행 경제통계시스템(ECOS)의 원/달러 종가(15:30)로 두 시점의 원화 금액을 달러로 환산한 참고용 계산입니다. 투자 권유가 아니며 세금·거래비용·물가 변화는 반영하지 않습니다.
       </div>
 
       <!-- 4. 저작권 & E-E-A-T 지원 이메일 -->
@@ -573,7 +573,7 @@
       if (hit) {
         S.fx[i] = hit.rate;
         $(i ? 'dv-fx2' : 'dv-fx1').value = hit.rate.toLocaleString('ko-KR', { maximumFractionDigits: 1 });
-        note.textContent = (hit.date === d ? '' : '휴일이라 직전 영업일 ') + hit.date + ' · 한국은행 매매기준율';
+        note.textContent = (hit.date === d ? '' : '휴일이라 직전 영업일 ') + hit.date + ' · 한국은행 종가';
       } else {
         S.fx[i] = 0;
         $(i ? 'dv-fx2' : 'dv-fx1').value = '';
@@ -707,7 +707,7 @@
         .then((data) => {
           if (!data || typeof data.rates !== 'object') throw new Error('bad data');
           S.rates = data.rates; S.latest = data.latestDate || '';
-          $('dv-source').textContent = `한국은행 원/달러 매매기준율 · 최신 ${S.latest}`;
+          $('dv-source').textContent = `한국은행 원/달러 종가 · 최신 ${S.latest}`;
         })
         .catch(() => { S.rates = null; })
         .finally(initDates);
