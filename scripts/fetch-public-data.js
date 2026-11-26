@@ -8,6 +8,7 @@
  * 2. 🇯🇵 일본 공휴일 및 연호 캘린더 (내각부 공휴일 API) - 인증키 불필요
  * 3. 🇰🇷 한국 금융감독원 예·적금 최고 금리 순위 - GitHub Secret: FSS_API_KEY 필요 (미설정 시 기본 템플릿 유지)
  * 4. 🇺🇸 미국 연준(FRED) 30년 모기지 금리 - GitHub Secret: FRED_API_KEY 필요 (미설정 시 기본 템플릿 유지)
+ * 5. 🇰🇷 한국은행 ECOS 원/달러 매매기준율 일별 - GitHub Secret: ECOS_API_KEY 필요 (미설정 시 기존 파일 유지)
  * 
  * 외부 의존성(npm 패키지) 없이 Node.js 18+ 네이티브 fetch 및 fs 모듈만 사용합니다.
  */
@@ -228,6 +229,70 @@ async function fetchUSFredMortgage() {
   }
 }
 
+/**
+ * 5. 🇰🇷 한국은행 ECOS 원/달러 매매기준율 (일별) — /dollar-value/ 용
+ * GitHub Secret: ECOS_API_KEY 필요. 파일이 없으면 1990년부터 백필, 있으면 최근 40일만 받아 병합.
+ * 키가 들어간 URL은 로그에 찍지 않는다.
+ */
+const ymd = (d) => d.toISOString().slice(0, 10).replace(/-/g, '');
+
+// ECOS StatisticSearch 응답 행 → { 'YYYY-MM-DD': 환율 } (값이 숫자가 아닌 행은 버림)
+function parseEcosRows(rows) {
+  const out = {};
+  for (const r of rows || []) {
+    const t = String(r.TIME || '');
+    const v = Number(String(r.DATA_VALUE || '').replace(/,/g, ''));
+    if (/^\d{8}$/.test(t) && v > 0) out[`${t.slice(0, 4)}-${t.slice(4, 6)}-${t.slice(6)}`] = Math.round(v * 10) / 10;
+  }
+  return out;
+}
+
+async function fetchUsdKrw() {
+  console.log('[5/5] 🇰🇷 Fetching USD/KRW daily rates (Bank of Korea ECOS)...');
+  const apiKey = (process.env.ECOS_API_KEY || '').trim();
+  const filePath = path.join(DATA_DIR, 'usdkrw.json');
+  if (!apiKey) {
+    console.log('  ℹ️ [Notice] ECOS_API_KEY is not configured. Keeping existing data/usdkrw.json.');
+    return;
+  }
+
+  const existing = fs.existsSync(filePath) ? JSON.parse(fs.readFileSync(filePath, 'utf-8')) : null;
+  const rates = { ...(existing?.rates || {}) };
+  const today = new Date();
+  // 백필은 5년 단위로 나눠 요청 (1회 요청 행 수 한도를 피함)
+  const ranges = [];
+  if (existing) {
+    ranges.push([new Date(today.getTime() - 40 * 86400000), today]);
+  } else {
+    for (let y = 1990; y <= today.getUTCFullYear(); y += 5) {
+      ranges.push([new Date(Date.UTC(y, 0, 1)), new Date(Math.min(Date.UTC(y + 4, 11, 31), today.getTime()))]);
+    }
+  }
+
+  try {
+    let added = 0;
+    for (const [from, to] of ranges) {
+      const url = `https://ecos.bok.or.kr/api/StatisticSearch/${encodeURIComponent(apiKey)}/json/kr/1/5000/731Y001/D/${ymd(from)}/${ymd(to)}/0000001`;
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`ECOS HTTP error: ${res.status}`);
+      const json = await res.json();
+      if (json.RESULT && json.RESULT.CODE !== 'INFO-200') throw new Error(`ECOS ${json.RESULT.CODE}: ${json.RESULT.MESSAGE}`);
+      const parsed = parseEcosRows(json?.StatisticSearch?.row);
+      added += Object.keys(parsed).length;
+      Object.assign(rates, parsed);
+    }
+    const keys = Object.keys(rates).sort();
+    if (keys.length === 0) throw new Error('ECOS returned no rows');
+    const sorted = Object.fromEntries(keys.map((k) => [k, rates[k]]));
+    const result = { updatedAt: new Date().toISOString(), source: 'ecos_731Y001_0000001', latestDate: keys[keys.length - 1], rates: sorted };
+    fs.writeFileSync(filePath, JSON.stringify(result), 'utf-8');
+    console.log(`  ✅ ${added} rows fetched, ${keys.length} days total (${keys[0]} ~ ${result.latestDate}) → data/usdkrw.json`);
+  } catch (err) {
+    // 실패 시 기존 파일을 건드리지 않음
+    console.error('  ❌ Error querying ECOS API:', err.message);
+  }
+}
+
 async function main() {
   console.log('====================================================');
   console.log(' GoModo Global & Domestic Public Data Pipeline');
@@ -238,6 +303,7 @@ async function main() {
   await fetchJapanCalendar();
   await fetchKoreaDepositRates();
   await fetchUSFredMortgage();
+  await fetchUsdKrw();
 
   console.log('====================================================');
   console.log(' Pipeline execution completed successfully!');

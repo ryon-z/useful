@@ -26,6 +26,7 @@ jobs:
         env:
           FSS_API_KEY: ${{ secrets.FSS_API_KEY }}
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
         run: node scripts/fetch-public-data.js
 
       - name: Commit and Push if Changed

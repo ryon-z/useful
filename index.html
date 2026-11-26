@@ -145,18 +145,24 @@
           {
             "@type": "ListItem",
             "position": 11,
+            "name": "달러로 본 자산 가치 계산기",
+            "url": "https://www.gomodo.cloud/dollar-value/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 12,
             "name": "로또 명당 번호 분석기",
             "url": "https://www.gomodo.cloud/lottery/"
           },
           {
             "@type": "ListItem",
-            "position": 12,
+            "position": 13,
             "name": "만 나이·띠 계산기",
             "url": "https://www.gomodo.cloud/age/"
           },
           {
             "@type": "ListItem",
-            "position": 13,
+            "position": 14,
             "name": "D-Day·기념일 계산기",
             "url": "https://www.gomodo.cloud/dday/"
           }
@@ -257,10 +263,10 @@
             <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition-transform duration-200" id="tool-dropdown-arrow"></i>
           </button>
 
-          <!-- 드롭다운 메뉴 (대한민국 특화 도구 13개) -->
+          <!-- 드롭다운 메뉴 (대한민국 특화 도구 14개) -->
           <div id="tool-dropdown-menu" class="hidden absolute right-0 mt-2 w-64 sm:w-72 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl p-2 z-50 divide-y divide-slate-800">
             <div class="px-3 py-2 text-[11px] font-bold text-slate-400 flex items-center justify-between">
-              <span>GoModo 제공 도구 (13)</span>
+              <span>GoModo 제공 도구 (14)</span>
               <a href="./" class="text-[10px] text-amber-400 font-semibold hover:underline">홈으로</a>
             </div>
             
@@ -362,6 +368,16 @@
                 <div class="min-w-0 flex-1">
                   <div class="text-xs font-bold text-white group-hover:text-indigo-300 transition truncate">부동산 중개보수 계산기</div>
                   <div class="text-[10px] text-slate-400 truncate">매매·전월세 복비 상한 요율 & 취득세</div>
+                </div>
+              </a>
+
+              <a href="./dollar-value/" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-800 text-slate-300 transition group">
+                <div class="w-7 h-7 rounded-lg bg-teal-500/20 text-teal-400 flex items-center justify-center text-xs font-black">
+                  <i class="fa-solid fa-dollar-sign"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs font-bold text-white group-hover:text-teal-300 transition truncate">달러로 본 자산 가치 계산기</div>
+                  <div class="text-[10px] text-slate-400 truncate">아파트·금·연봉, 환율 빼면 정말 올랐을까</div>
                 </div>
               </a>
 
@@ -814,6 +830,40 @@
 
           <a href="./real-estate/" class="w-full bg-indigo-500 hover:bg-indigo-400 text-slate-950 font-black py-3.5 px-5 rounded-xl transition text-center text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-indigo-500/20 active:scale-95">
             <span>부동산 복비 &amp; 취득세 계산하기</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <div class="bg-slate-900 border-2 border-teal-500/50 hover:border-teal-400 rounded-3xl p-6 sm:p-7 shadow-xl transition-all flex flex-col justify-between group relative overflow-hidden">
+          <div class="absolute -top-10 -right-10 w-48 h-48 bg-teal-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
+          <div>
+            <div class="flex items-center justify-between gap-3 mb-4">
+              <div class="w-12 h-12 rounded-2xl bg-teal-500/20 text-teal-400 border border-teal-500/40 flex items-center justify-center text-2xl shadow-sm shrink-0">
+                <i class="fa-solid fa-dollar-sign"></i>
+              </div>
+              <span class="px-2.5 py-1 rounded-full bg-teal-500/20 text-teal-300 border border-teal-500/30 text-xs font-bold whitespace-nowrap flex items-center gap-1.5 shrink-0">
+                <i class="fa-solid fa-building-columns text-teal-400"></i> 한국은행 환율
+              </span>
+            </div>
+
+            <h3 class="text-xl sm:text-2xl font-black text-white mb-2 group-hover:text-teal-300 transition break-keep">
+              달러로 본 자산 가치 계산기
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
+              내 아파트, 달러로 재도 올랐을까? 두 시점의 원화 금액을 그날의 원/달러 환율(한국은행 매매기준율)로 환산해 원화 기준 상승률과 달러 기준 상승률을 나란히 비교합니다.
+            </p>
+
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">아파트 달러 환산</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">금 환율 효과</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">연봉 달러 비교</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">일별 환율 자동 적용</span>
+            </div>
+          </div>
+
+          <a href="./dollar-value/" class="w-full bg-teal-500 hover:bg-teal-400 text-slate-950 font-black py-3.5 px-5 rounded-xl transition text-center text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-teal-500/20 active:scale-95">
+            <span>달러 기준 상승률 계산하기</span>
             <i class="fa-solid fa-arrow-right"></i>
           </a>
         </div>

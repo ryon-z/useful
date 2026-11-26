@@ -244,6 +244,16 @@
       <image:title>부동산 중개보수(복비) &amp; 취득세 간편 계산기</image:title>
     </image:image>
   </url>
+  <url>
+    <loc>https://www.gomodo.cloud/dollar-value/</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.gomodo.cloud/og-image.png</image:loc>
+      <image:title>달러로 본 내 자산 가치 계산기</image:title>
+    </image:image>
+  </url>
 
   <!-- 정보 및 정책 페이지 -->
   <url>
